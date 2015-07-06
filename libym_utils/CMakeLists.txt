@@ -14,21 +14,8 @@ include (FindPOPT)
 
 
 # ===================================================================
-# サブディレクトリの設定
-# ===================================================================
-
-if (GTEST_FOUND)
-  add_subdirectory(gtest)
-endif (GTEST_FOUND)
-
-
-# ===================================================================
 # インクルードパスの設定
 # ===================================================================
-include_directories(
-  ${PROJECT_SOURCE_DIR}/include
-  ${PROJECT_BINARY_DIR}
-  )
 
 if (ZLIB_FOUND)
   include_directories(${ZLIBINCLUDE_DIRS})
@@ -45,6 +32,15 @@ endif (LIBLZMA_FOUND)
 if (POPT_FOUND)
   include_directories(${POPT_INCLUDE_DIR})
 endif (POPT_FOUND)
+
+
+# ===================================================================
+# サブディレクトリの設定
+# ===================================================================
+
+if (GTEST_FOUND)
+  add_subdirectory(gtest)
+endif (GTEST_FOUND)
 
 
 # ===================================================================
