@@ -45,19 +45,6 @@ include (FindDoxygen)
 
 find_package(BISON REQUIRED)
 
-#include (FindPythonInterp)
-#include (FindPythonLibs)
-
-#include (FindQt4)
-#find_package(Qt4 4.8.0 REQUIRED QtCore QtGui QtXml)
-#include(${QT_USE_FILE})
-
-#set( CMAKE_INCLUDE_CURRENT_DIR ON )
-#find_package(Qt5Widgets)
-#find_package(OpenGL)
-
-find_package(TCL)
-
 if ( OPT_GPERFTOOLS )
   find_package(Gperftools)
 endif (OPT_GPERFTOOLS)
@@ -190,10 +177,6 @@ add_subdirectory (libym_logic)
 add_subdirectory (libym_cell)
 add_subdirectory (libym_verilog)
 add_subdirectory (libym_networks)
-
-if (TCL_FOUND)
-  add_subdirectory (libym_tclpp)
-endif (TCL_FOUND)
 
 
 # ===================================================================
