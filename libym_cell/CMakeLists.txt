@@ -102,15 +102,63 @@ set (mislib_SOURCES
   src/mislib/MislibSymbol.cc
   )
 
+
 # ===================================================================
-#  ターゲットの設定
+#  release ターゲットの設定
 # ===================================================================
 add_library(ym_cell
+  SHARED
   ${main_SOURCES}
   ${ci_SOURCES}
   ${dotlib_SOURCES}
   ${libcomp_SOURCES}
   ${mislib_SOURCES}
+  )
+
+target_compile_options (ym_cell
+  PRIVATE "-O3"
+  )
+
+target_compile_definitions (ym_cell
+  PRIVATE "-DNDEBUG"
+  )
+
+
+# ===================================================================
+#  release with debug info ターゲットの設定
+# ===================================================================
+add_library(ym_cell_p
+  SHARED
+  ${main_SOURCES}
+  ${ci_SOURCES}
+  ${dotlib_SOURCES}
+  ${libcomp_SOURCES}
+  ${mislib_SOURCES}
+  )
+
+target_compile_options (ym_cell_p
+  PRIVATE "-O2" "-g"
+  )
+
+target_compile_definitions (ym_cell_p
+  PRIVATE "-DNDEBUG"
+  )
+
+
+# ===================================================================
+#  debug ターゲットの設定
+# ===================================================================
+add_library(ym_cell_d
+  SHARED
+  ${main_SOURCES}
+  ${ci_SOURCES}
+  ${dotlib_SOURCES}
+  ${libcomp_SOURCES}
+  ${mislib_SOURCES}
+  )
+
+target_compile_options (ym_cell_d
+  PRIVATE "-g"
   )
 
 
@@ -119,7 +167,7 @@ add_library(ym_cell
 # ===================================================================
 
 install(
-  TARGETS ym_cell
+  TARGETS ym_cell ym_cell_p ym_cell_d
   DESTINATION lib
   EXPORT ymtools-targets
   )

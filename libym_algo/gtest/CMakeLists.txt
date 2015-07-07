@@ -30,10 +30,14 @@ add_executable(YmAlgoTest
   ${btg_SOURCES}
   )
 
+target_compile_options (YmAlgoTest
+  PRIVATE "-g"
+  )
+
 target_link_libraries(YmAlgoTest
   pthread
-  ym_algo
-  ym_utils
+  ym_algo_d
+  ym_utils_d
   ${GTEST_BOTH_LIBRARIES}
   )
 
