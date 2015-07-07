@@ -10,10 +10,6 @@ include_directories (
   include
   )
 
-if (READLINE_FOUND)
-  include_directories (${Readline_INCLUDE_DIR})
-endif (READLINE_FOUND)
-
 
 # ===================================================================
 #  ソースファイルの設定
@@ -161,27 +157,6 @@ set (sat_SOURCES
   src/sat/ymsat/YmSatMS2.cc
   )
 
-set (smt_SOURCES
-  src/smt/core/SmtFunImpl.cc
-  src/smt/core/SmtFunValidatorImpl.cc
-  src/smt/core/SmtSolverImpl.cc
-  src/smt/core/SmtSortImpl.cc
-  src/smt/core/SmtTermImpl.cc
-  src/smt/core/SmtVarImpl.cc
-
-  src/smt/smtlibv2/parser/SmtLibNodeImpl.cc
-  src/smt/smtlibv2/parser/SmtLibParser.cc
-  src/smt/smtlibv2/parser/SmtLibScanner.cc
-  src/smt/smtlibv2/shell/IdImpl.cc
-  src/smt/smtlibv2/shell/IdMgr.cc
-  src/smt/smtlibv2/shell/NameMgr.cc
-  src/smt/smtlibv2/shell/NameObjImpl.cc
-  src/smt/smtlibv2/shell/ShellImpl.cc
-  src/smt/smtlibv2/shell/SmtLibShell.cc
-  src/smt/smtlibv2/shell/SortElem.cc
-  src/smt/smtlibv2/shell/SortMgr.cc
-  )
-
 set (tvfunc_SOURCES
   src/tvfunc/TvFunc.cc
   src/tvfunc/TvFuncM.cc
@@ -218,30 +193,91 @@ set (zdd_SOURCES
 
 
 # ===================================================================
-#  ターゲットの設定
+#  release ターゲットの設定
 # ===================================================================
+
 add_library(ym_logic
+  SHARED
   ${aig_SOURCES}
   ${bdd_SOURCES}
   ${cnfdd_SOURCES}
   ${expr_SOURCES}
   ${npn_SOURCES}
   ${sat_SOURCES}
-  ${smt_SOURCES}
   ${tvfunc_SOURCES}
   ${zdd_SOURCES}
+  )
+
+target_compile_options (ym_logic
+  PRIVATE "-O3"
+  )
+
+target_compile_definitions (ym_logic
+  PRIVATE "-DNDEBUG"
   )
 
 target_link_libraries(ym_logic
   ym_utils
 )
 
-if (READLINE_FOUND)
-  target_link_libraries(ym_logic
-    ${Readline_LIBRARY}
-    )
-endif (READLINE_FOUND)
 
+# ===================================================================
+#  release with debug info ターゲットの設定
+# ===================================================================
+
+add_library(ym_logic_p
+  SHARED
+  ${aig_SOURCES}
+  ${bdd_SOURCES}
+  ${cnfdd_SOURCES}
+  ${expr_SOURCES}
+  ${npn_SOURCES}
+  ${sat_SOURCES}
+  ${tvfunc_SOURCES}
+  ${zdd_SOURCES}
+  )
+
+target_compile_options (ym_logic_p
+  PRIVATE "-O2" "-g"
+  )
+
+target_compile_definitions (ym_logic_p
+  PRIVATE "-DNDEBUG"
+  )
+
+target_link_libraries(ym_logic_p
+  ym_utils_p
+)
+
+
+# ===================================================================
+#  debug ターゲットの設定
+# ===================================================================
+
+add_library(ym_logic_d
+  SHARED
+  ${aig_SOURCES}
+  ${bdd_SOURCES}
+  ${cnfdd_SOURCES}
+  ${expr_SOURCES}
+  ${npn_SOURCES}
+  ${sat_SOURCES}
+  ${tvfunc_SOURCES}
+  ${zdd_SOURCES}
+  )
+
+target_compile_options (ym_logic_d
+  PRIVATE "-g"
+  )
+
+target_link_libraries(ym_logic_d
+  ym_utils_d
+)
+
+
+# ===================================================================
+#  ターゲットの設定
+# ===================================================================
 
 add_executable(ymsat
   tests/sat/ymsat.cc
@@ -257,7 +293,7 @@ target_link_libraries(ymsat
 # ===================================================================
 
 install(
-  TARGETS ym_logic
+  TARGETS ym_logic ym_logic_p ym_logic_d
   DESTINATION lib
   EXPORT ymtools-targets
   )

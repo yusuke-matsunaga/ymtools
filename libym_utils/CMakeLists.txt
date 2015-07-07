@@ -147,10 +147,11 @@ set (textproc_SOURCES
 
 
 # ===================================================================
-#  ターゲットの設定
+#  release ターゲットの設定
 # ===================================================================
 
-add_library(ym_utils
+add_library (ym_utils
+  SHARED
   ${alloc_SOURCES}
   ${file_SOURCES}
   ${gen_SOURCES}
@@ -160,6 +161,14 @@ add_library(ym_utils
   ${msg_SOURCES}
   ${popt_SOURCES}
   ${textproc_SOURCES}
+  )
+
+target_compile_options (ym_utils
+  PRIVATE "-O3"
+  )
+
+target_compile_definitions (ym_utils
+  PRIVATE "-DNDEBUG"
   )
 
 if (ZLIB_FOUND)
@@ -186,11 +195,107 @@ if (POPT_FOUND)
     )
 endif (POPT_FOUND)
 
+
+# ===================================================================
+#  release with debug info ターゲットの設定
+# ===================================================================
+
+add_library (ym_utils_p
+  SHARED
+  ${alloc_SOURCES}
+  ${file_SOURCES}
+  ${gen_SOURCES}
+  ${io_SOURCES}
+  ${itvl_SOURCES}
+  ${misc_SOURCES}
+  ${msg_SOURCES}
+  ${popt_SOURCES}
+  ${textproc_SOURCES}
+  )
+
+target_compile_options (ym_utils_p
+  PRIVATE "-O2" "-g"
+  )
+
+target_compile_definitions (ym_utils_p
+  PRIVATE "-DNDEBUG"
+  )
+
+if (ZLIB_FOUND)
+  target_link_libraries(ym_utils_p
+    ${ZLIB_LIBRARIES}
+    )
+endif (ZLIB_FOUND)
+
+if (BZIP2_FOUND)
+  target_link_libraries(ym_utils_p
+    ${BZIP2_LIBRARIES}
+    )
+endif (BZIP2_FOUND)
+
+if (LIBLZMA_FOUND)
+  target_link_libraries(ym_utils_p
+    ${LIBLZMA_LIBRARIES}
+    )
+endif (LIBLZMA_FOUND)
+
+if (POPT_FOUND)
+  target_link_libraries(ym_utils_p
+    ${POPT_LIBRARY}
+    )
+endif (POPT_FOUND)
+
 if (GPERFTOOLS_FOUND)
-  target_link_libraries(ym_utils
+  target_link_libraries(ym_utils_p
     ${GPERFTOOLS_LIBRARIES}
     )
 endif (GPERFTOOLS_FOUND)
+
+
+# ===================================================================
+#  debug ターゲットの設定
+# ===================================================================
+
+add_library (ym_utils_d
+  SHARED
+  ${alloc_SOURCES}
+  ${file_SOURCES}
+  ${gen_SOURCES}
+  ${io_SOURCES}
+  ${itvl_SOURCES}
+  ${misc_SOURCES}
+  ${msg_SOURCES}
+  ${popt_SOURCES}
+  ${textproc_SOURCES}
+  )
+
+target_compile_options (ym_utils_d
+  PRIVATE "-g"
+  )
+
+if (ZLIB_FOUND)
+  target_link_libraries(ym_utils_d
+    ${ZLIB_LIBRARIES}
+    )
+endif (ZLIB_FOUND)
+
+if (BZIP2_FOUND)
+  target_link_libraries(ym_utils_d
+    ${BZIP2_LIBRARIES}
+    )
+endif (BZIP2_FOUND)
+
+if (LIBLZMA_FOUND)
+  target_link_libraries(ym_utils_d
+    ${LIBLZMA_LIBRARIES}
+    )
+endif (LIBLZMA_FOUND)
+
+if (POPT_FOUND)
+  target_link_libraries(ym_utils_d
+    ${POPT_LIBRARY}
+    )
+endif (POPT_FOUND)
 
 
 # ===================================================================
@@ -198,7 +303,7 @@ endif (GPERFTOOLS_FOUND)
 # ===================================================================
 
 install(
-  TARGETS ym_utils
+  TARGETS ym_utils ym_utils_p ym_utils_d
   DESTINATION lib
   EXPORT ymtools-targets
   )

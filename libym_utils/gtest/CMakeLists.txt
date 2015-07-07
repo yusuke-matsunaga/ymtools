@@ -38,9 +38,13 @@ add_executable(YmUtilsTest
   ${gen_SOURCES}
   )
 
+target_compile_options (YmUtilsTest
+  PRIVATE "-g"
+  )
+
 target_link_libraries(YmUtilsTest
   pthread
-  ym_utils
+  ym_utils_d
   ${GTEST_BOTH_LIBRARIES}
   )
 

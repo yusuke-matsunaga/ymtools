@@ -171,10 +171,11 @@ set ( verilog_SOURCES
 
 
 # ===================================================================
-#  ターゲットの設定
+#  release ターゲットの設定
 # ===================================================================
 
 add_library( ym_networks
+  SHARED
   ${main_SOURCES}
   ${bdn_SOURCES}
   ${blif_SOURCES}
@@ -187,6 +188,14 @@ add_library( ym_networks
   ${verilog_SOURCES}
   )
 
+target_compile_options (ym_networks
+  PRIVATE "-O3"
+  )
+
+target_compile_definitions (ym_networks
+  PRIVATE "-DNDEBUG"
+  )
+
 target_link_libraries ( ym_networks
   ym_verilog
   ym_cell
@@ -196,11 +205,75 @@ target_link_libraries ( ym_networks
 
 
 # ===================================================================
+#  release with debug info ターゲットの設定
+# ===================================================================
+
+add_library( ym_networks_p
+  SHARED
+  ${main_SOURCES}
+  ${bdn_SOURCES}
+  ${blif_SOURCES}
+  ${bnet_SOURCES}
+  ${cmn_SOURCES}
+  ${conv_mvn_bdn_SOURCES}
+  ${iscas89_SOURCES}
+  ${mvn_SOURCES}
+  ${tgnet_SOURCES}
+  ${verilog_SOURCES}
+  )
+
+target_compile_options (ym_networks_p
+  PRIVATE "-O2" "-g"
+  )
+
+target_compile_definitions (ym_networks_p
+  PRIVATE "-DNDEBUG"
+  )
+
+target_link_libraries ( ym_networks_p
+  ym_verilog_p
+  ym_cell_p
+  ym_logic_p
+  ym_utils_p
+  )
+
+
+# ===================================================================
+#  debug ターゲットの設定
+# ===================================================================
+
+add_library( ym_networks_d
+  SHARED
+  ${main_SOURCES}
+  ${bdn_SOURCES}
+  ${blif_SOURCES}
+  ${bnet_SOURCES}
+  ${cmn_SOURCES}
+  ${conv_mvn_bdn_SOURCES}
+  ${iscas89_SOURCES}
+  ${mvn_SOURCES}
+  ${tgnet_SOURCES}
+  ${verilog_SOURCES}
+  )
+
+target_compile_options (ym_networks_d
+  PRIVATE "-g"
+  )
+
+target_link_libraries ( ym_networks_d
+  ym_verilog_d
+  ym_cell_d
+  ym_logic_d
+  ym_utils_d
+  )
+
+
+# ===================================================================
 #  インストールターゲットの設定
 # ===================================================================
 
 install(
-  TARGETS ym_networks
+  TARGETS ym_networks ym_networks_p ym_networks_d
   DESTINATION lib
   EXPORT ymtools-targets
   )
