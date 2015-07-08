@@ -171,10 +171,10 @@ set ( verilog_SOURCES
 
 
 # ===================================================================
-#  release ターゲットの設定
+#  ターゲットの設定
 # ===================================================================
 
-add_library( ym_networks
+ym_add_library( ym_networks
   SHARED
   ${main_SOURCES}
   ${bdn_SOURCES}
@@ -186,14 +186,6 @@ add_library( ym_networks
   ${mvn_SOURCES}
   ${tgnet_SOURCES}
   ${verilog_SOURCES}
-  )
-
-target_compile_options (ym_networks
-  PRIVATE "-O3"
-  )
-
-target_compile_definitions (ym_networks
-  PRIVATE "-DNDEBUG"
   )
 
 target_link_libraries ( ym_networks
@@ -203,61 +195,11 @@ target_link_libraries ( ym_networks
   ym_utils
   )
 
-
-# ===================================================================
-#  release with debug info ターゲットの設定
-# ===================================================================
-
-add_library( ym_networks_p
-  SHARED
-  ${main_SOURCES}
-  ${bdn_SOURCES}
-  ${blif_SOURCES}
-  ${bnet_SOURCES}
-  ${cmn_SOURCES}
-  ${conv_mvn_bdn_SOURCES}
-  ${iscas89_SOURCES}
-  ${mvn_SOURCES}
-  ${tgnet_SOURCES}
-  ${verilog_SOURCES}
-  )
-
-target_compile_options (ym_networks_p
-  PRIVATE "-O2" "-g"
-  )
-
-target_compile_definitions (ym_networks_p
-  PRIVATE "-DNDEBUG"
-  )
-
 target_link_libraries ( ym_networks_p
   ym_verilog_p
   ym_cell_p
   ym_logic_p
   ym_utils_p
-  )
-
-
-# ===================================================================
-#  debug ターゲットの設定
-# ===================================================================
-
-add_library( ym_networks_d
-  SHARED
-  ${main_SOURCES}
-  ${bdn_SOURCES}
-  ${blif_SOURCES}
-  ${bnet_SOURCES}
-  ${cmn_SOURCES}
-  ${conv_mvn_bdn_SOURCES}
-  ${iscas89_SOURCES}
-  ${mvn_SOURCES}
-  ${tgnet_SOURCES}
-  ${verilog_SOURCES}
-  )
-
-target_compile_options (ym_networks_d
-  PRIVATE "-g"
   )
 
 target_link_libraries ( ym_networks_d

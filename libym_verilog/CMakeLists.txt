@@ -189,58 +189,14 @@ set_source_files_properties ( ${CMAKE_CURRENT_BINARY_DIR}/verilog_grammer.cc GEN
 
 
 # ===================================================================
-#  release ターゲットの設定
+#  ターゲットの設定
 # ===================================================================
 
-add_library ( ym_verilog
+ym_add_library ( ym_verilog
   SHARED
   ${common_SOURCES}
   ${elaborator_SOURCES}
   ${parser_SOURCES}
-  )
-
-target_compile_options (ym_verilog
-  PRIVATE "-O3"
-  )
-
-target_compile_definitions (ym_verilog
-  PRIVATE "-DNDEBUG"
-  )
-
-
-# ===================================================================
-#  release with debug info ターゲットの設定
-# ===================================================================
-
-add_library ( ym_verilog_p
-  SHARED
-  ${common_SOURCES}
-  ${elaborator_SOURCES}
-  ${parser_SOURCES}
-  )
-
-target_compile_options (ym_verilog_p
-  PRIVATE "-O2" "-g"
-  )
-
-target_compile_definitions (ym_verilog_p
-  PRIVATE "-DNDEBUG"
-  )
-
-
-# ===================================================================
-#  debug ターゲットの設定
-# ===================================================================
-
-add_library ( ym_verilog_d
-  SHARED
-  ${common_SOURCES}
-  ${elaborator_SOURCES}
-  ${parser_SOURCES}
-  )
-
-target_compile_options (ym_verilog_d
-  PRIVATE "-g"
   )
 
 

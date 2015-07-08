@@ -193,10 +193,10 @@ set (zdd_SOURCES
 
 
 # ===================================================================
-#  release ターゲットの設定
+#  ターゲットの設定
 # ===================================================================
 
-add_library(ym_logic
+ym_add_library(ym_logic
   SHARED
   ${aig_SOURCES}
   ${bdd_SOURCES}
@@ -206,73 +206,19 @@ add_library(ym_logic
   ${sat_SOURCES}
   ${tvfunc_SOURCES}
   ${zdd_SOURCES}
-  )
-
-target_compile_options (ym_logic
-  PRIVATE "-O3"
-  )
-
-target_compile_definitions (ym_logic
-  PRIVATE "-DNDEBUG"
   )
 
 target_link_libraries(ym_logic
   ym_utils
-)
-
-
-# ===================================================================
-#  release with debug info ターゲットの設定
-# ===================================================================
-
-add_library(ym_logic_p
-  SHARED
-  ${aig_SOURCES}
-  ${bdd_SOURCES}
-  ${cnfdd_SOURCES}
-  ${expr_SOURCES}
-  ${npn_SOURCES}
-  ${sat_SOURCES}
-  ${tvfunc_SOURCES}
-  ${zdd_SOURCES}
-  )
-
-target_compile_options (ym_logic_p
-  PRIVATE "-O2" "-g"
-  )
-
-target_compile_definitions (ym_logic_p
-  PRIVATE "-DNDEBUG"
   )
 
 target_link_libraries(ym_logic_p
   ym_utils_p
-)
-
-
-# ===================================================================
-#  debug ターゲットの設定
-# ===================================================================
-
-add_library(ym_logic_d
-  SHARED
-  ${aig_SOURCES}
-  ${bdd_SOURCES}
-  ${cnfdd_SOURCES}
-  ${expr_SOURCES}
-  ${npn_SOURCES}
-  ${sat_SOURCES}
-  ${tvfunc_SOURCES}
-  ${zdd_SOURCES}
-  )
-
-target_compile_options (ym_logic_d
-  PRIVATE "-g"
   )
 
 target_link_libraries(ym_logic_d
   ym_utils_d
-)
+  )
 
 
 # ===================================================================

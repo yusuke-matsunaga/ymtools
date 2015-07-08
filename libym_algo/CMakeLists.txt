@@ -55,58 +55,14 @@ set (mincov_SOURCES
 
 
 # ===================================================================
-#  release ターゲットの設定
+#  ターゲットの設定
 # ===================================================================
 
-add_library(ym_algo
+ym_add_library(ym_algo
   SHARED
   ${btg_SOURCES}
   ${graph_SOURCES}
   ${mincov_SOURCES}
-  )
-
-target_compile_options (ym_algo
-  PRIVATE "-O3"
-  )
-
-target_compile_definitions (ym_algo
-  PRIVATE "-DNDEBUG"
-  )
-
-
-# ===================================================================
-#  release with debug info ターゲットの設定
-# ===================================================================
-
-add_library(ym_algo_p
-  SHARED
-  ${btg_SOURCES}
-  ${graph_SOURCES}
-  ${mincov_SOURCES}
-  )
-
-target_compile_options (ym_algo_p
-  PRIVATE "-O2" "-g"
-  )
-
-target_compile_definitions (ym_algo_p
-  PRIVATE "-DNDEBUG"
-  )
-
-
-# ===================================================================
-#  debug ターゲットの設定
-# ===================================================================
-
-add_library(ym_algo_d
-  SHARED
-  ${btg_SOURCES}
-  ${graph_SOURCES}
-  ${mincov_SOURCES}
-  )
-
-target_compile_options (ym_algo_d
-  PRIVATE "-g"
   )
 
 
