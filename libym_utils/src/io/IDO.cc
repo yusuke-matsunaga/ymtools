@@ -42,7 +42,7 @@ IDO::_read(ymuint8* buff,
   ymint64 ret = read(buff, n);
   if ( static_cast<ymuint64>(ret) != n ) {
     ostringstream buf;
-    buf << "IDO::read(" << n << ") failed. read " << ret << " bytes.";
+    buf << "IDO::_read(" << n << ") failed. read " << ret << " bytes.";
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    FileRegion(),
 		    kMsgFailure,
@@ -208,7 +208,14 @@ ymint64
 StreamIDO::read(ymuint8* buff,
 		ymuint64 n)
 {
-  return mS.readsome(reinterpret_cast<char*>(buff), n);
+  mS.read(reinterpret_cast<char*>(buff), n);
+  if ( mS ) {
+    return n;
+  }
+  else {
+    // かなり乱暴
+    return 0;
+  }
 }
 
 

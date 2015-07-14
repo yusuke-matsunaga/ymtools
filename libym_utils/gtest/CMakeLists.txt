@@ -28,6 +28,11 @@ set (gen_SOURCES
   gen/PermGenTest.cc
   )
 
+set (io_SOURCES
+  io/FileIOTest.cc
+  io/StreamIOTest.cc
+  )
+
 
 # ===================================================================
 #  テストターゲットの設定
@@ -36,6 +41,7 @@ set (gen_SOURCES
 add_executable(YmUtilsTest
   ${alloc_SOURCES}
   ${gen_SOURCES}
+  ${io_SOURCES}
   )
 
 target_compile_options (YmUtilsTest
