@@ -17,7 +17,7 @@
 BEGIN_NAMESPACE_YM
 
 class FileIOTest :
-  public testing::Test
+  public testing::TestWithParam<CodecType>
 {
 public:
 
@@ -45,27 +45,30 @@ FileIOTest::~FileIOTest()
 {
 }
 
-TEST_F(FileIOTest, ODO_auto_close)
+TEST_P(FileIOTest, ODO_auto_close)
 {
+  CodecType codec_type = GetParam();
 
   // open() のみでデストラクタで自動的に close() されるかテスト
   {
-    FileODO ofd;
+    FileODO ofd(codec_type);
     ASSERT_TRUE( ofd.open("test.dat") ) << "Could not open file";
     ofd.write_32(0);
   }
 }
 
-TEST_F(FileIOTest, rw_8)
+TEST_P(FileIOTest, rw_8)
 {
   ymuint8 data_list[] = {
     0xFF, 0x00, 0xAA, 0x55
   };
 
+  CodecType codec_type = GetParam();
+
   ymuint n = sizeof(data_list) / sizeof(ymuint8);
 
   {
-    FileODO ofd;
+    FileODO ofd(codec_type);
     ASSERT_TRUE( ofd.open("test.dat") ) << "Could not open file";
 
     for (ymuint i = 0; i < n; ++i) {
@@ -74,7 +77,7 @@ TEST_F(FileIOTest, rw_8)
   }
 
   {
-    FileIDO ifd;
+    FileIDO ifd(codec_type);
     ASSERT_TRUE( ifd.open("test.dat") ) << "Could not open file";
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -84,15 +87,17 @@ TEST_F(FileIOTest, rw_8)
   }
 }
 
-TEST_F(FileIOTest, rw_misc)
+TEST_P(FileIOTest, rw_misc)
 {
   const ymuint8  data1 = 0x01U;
   const ymuint16 data2 = 0xFEDCU;
   const ymuint32 data3 = 0xABCD9876UL;
   const ymuint64 data4 = 0x0123456789ABCDEFULL;
 
+  CodecType codec_type = GetParam();
+
   {
-    FileODO ofd;
+    FileODO ofd(codec_type);
     ASSERT_TRUE( ofd.open("test.dat") ) << "Could not open file";
 
     ofd.write_8(data1);
@@ -102,7 +107,7 @@ TEST_F(FileIOTest, rw_misc)
   }
 
   {
-    FileIDO ifd;
+    FileIDO ifd(codec_type);
     ASSERT_TRUE( ifd.open("test.dat") ) << "Could not open file";
 
     ymuint8 val1 = ifd.read_8();
@@ -120,16 +125,18 @@ TEST_F(FileIOTest, rw_misc)
   }
 }
 
-TEST_F(FileIOTest, rw_float)
+TEST_P(FileIOTest, rw_float)
 {
   const float data_list[] = {
     0.0, 1.0, 1.23456789, 9.8765432e-30
   };
 
+  CodecType codec_type = GetParam();
+
   ymuint n = sizeof(data_list) / sizeof(float);
 
   {
-    FileODO ofd;
+    FileODO ofd(codec_type);
     ASSERT_TRUE( ofd.open("test.dat") ) << "Could not open file";
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -138,7 +145,7 @@ TEST_F(FileIOTest, rw_float)
   }
 
   {
-    FileIDO ifd;
+    FileIDO ifd(codec_type);
     ASSERT_TRUE( ifd.open("test.dat") ) << "Could not open file";
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -148,16 +155,18 @@ TEST_F(FileIOTest, rw_float)
   }
 }
 
-TEST_F(FileIOTest, rw_double)
+TEST_P(FileIOTest, rw_double)
 {
   const double data_list[] = {
     0.0, 1.0, 1.23456789, 9.8765432e-30
   };
 
+  CodecType codec_type = GetParam();
+
   ymuint n = sizeof(data_list) / sizeof(double);
 
   {
-    FileODO ofd;
+    FileODO ofd(codec_type);
     ASSERT_TRUE( ofd.open("test.dat") ) << "Could not open file";
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -166,7 +175,7 @@ TEST_F(FileIOTest, rw_double)
   }
 
   {
-    FileIDO ifd;
+    FileIDO ifd(codec_type);
     ASSERT_TRUE( ifd.open("test.dat") ) << "Could not open file";
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -176,7 +185,7 @@ TEST_F(FileIOTest, rw_double)
   }
 }
 
-TEST_F(FileIOTest, rw_string)
+TEST_P(FileIOTest, rw_string)
 {
   const char* data_list[] = {
     "",
@@ -184,10 +193,12 @@ TEST_F(FileIOTest, rw_string)
     "a quick fox jumped over a lazy sheep"
   };
 
+  CodecType codec_type = GetParam();
+
   ymuint n = sizeof(data_list) / sizeof(float);
 
   {
-    FileODO ofd;
+    FileODO ofd(codec_type);
     ASSERT_TRUE( ofd.open("test.dat") ) << "Could not open file";
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -196,7 +207,7 @@ TEST_F(FileIOTest, rw_string)
   }
 
   {
-    FileIDO ifd;
+    FileIDO ifd(codec_type);
     ASSERT_TRUE( ifd.open("test.dat") ) << "Could not open file";
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -206,5 +217,6 @@ TEST_F(FileIOTest, rw_string)
   }
 }
 
+INSTANTIATE_TEST_CASE_P(AllFileIo, FileIOTest, testing::ValuesIn(get_codec_type_list()));
 
 END_NAMESPACE_YM

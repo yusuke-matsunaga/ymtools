@@ -7,6 +7,7 @@
 /// All rights reserved.
 
 
+#include "CodecTypeConf.h"
 #include "FileCoder.h"
 #include "ThruCoder.h"
 #include "ZCoder.h"

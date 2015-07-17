@@ -17,6 +17,8 @@ include (FindPOPT)
 # インクルードパスの設定
 # ===================================================================
 
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+
 if (ZLIB_FOUND)
   include_directories(${ZLIBINCLUDE_DIRS})
 endif (ZLIB_FOUND)
@@ -41,6 +43,15 @@ endif (POPT_FOUND)
 if (GTEST_FOUND)
   add_subdirectory(gtest)
 endif (GTEST_FOUND)
+
+
+# ===================================================================
+# コンフィグレーション依存のファイルの生成
+# ===================================================================
+configure_file(
+  "${CMAKE_CURRENT_SOURCE_DIR}/etc/CodecTypeConf.h.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/CodecTypeConf.h"
+  )
 
 
 # ===================================================================
@@ -72,6 +83,7 @@ set (gen_SOURCES
   )
 
 set (io_SOURCES
+  src/io/CodecType.cc
   src/io/FileBuff.cc
   src/io/FileBuff.h
   src/io/FileCoder.cc

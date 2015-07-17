@@ -147,7 +147,19 @@ BzCoder::write(const ymuint8* buff,
 	      rcode == BZ_SEQUENCE_ERROR ||
 	      rcode == BZ_MEM_ERROR ) {
       // エラーが起きた．
-      cerr << "Error in BzCompEngine::compress()" << endl;
+      {
+	cerr << "Error in BzCompEngine::compress()";
+	if ( rcode == BZ_PARAM_ERROR ) {
+	  cerr << ": BZ_PARAM_ERROR";
+	}
+	else if ( rcode == BZ_SEQUENCE_ERROR ) {
+	  cerr << ": BZ_SEQUENCE_ERROR";
+	}
+	else if ( rcode == BZ_MEM_ERROR ) {
+	  cerr << ": BZ_MEM_ERROR";
+	}
+	cerr << endl;
+      }
       goto error_out;
     }
 

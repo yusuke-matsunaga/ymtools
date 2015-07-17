@@ -131,13 +131,13 @@ ODO::write_double(double val)
 void
 ODO::write_str(const char* val)
 {
+  ymuint64 l = 0;
   if ( val ) {
-    ymuint64 l = strlen(val);
-    write_64(l);
-    _write(reinterpret_cast<const ymuint8*>(val), l);
+    l = strlen(val);
   }
-  else {
-    write_64(0);
+  write_64(l);
+  if ( l > 0 ) {
+    _write(reinterpret_cast<const ymuint8*>(val), l);
   }
 }
 

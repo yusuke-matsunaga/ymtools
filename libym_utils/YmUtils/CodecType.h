@@ -30,6 +30,10 @@ enum CodecType {
   kCodecLzma
 };
 
+/// @brief 実際に利用可能な codec type のリストを返す関数
+extern
+vector<CodecType> get_codec_type_list();
+
 END_NAMESPACE_YM
 
 #endif // YMUTILS_CODECTYPE_H
