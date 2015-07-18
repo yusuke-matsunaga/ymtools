@@ -1,5 +1,5 @@
-﻿#ifndef YMYMLOGIC_BOOL3_H
-#define YMYMLOGIC_BOOL3_H
+﻿#ifndef YMLOGIC_BOOL3_H
+#define YMLOGIC_BOOL3_H
 
 /// @file YmLogic/Bool3.h
 /// @brief Bool3 の定義ファイル
@@ -81,4 +81,4 @@ operator<<(ostream& s,
 
 END_NAMESPACE_YM
 
-#endif // YMYMLOGIC_BOOL3_H
+#endif // YMLOGIC_BOOL3_H
