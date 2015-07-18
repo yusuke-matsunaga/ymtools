@@ -40,36 +40,43 @@ public:
 
   /// @brief 1バイトの読み出し
   /// @return 読み込んだ値を返す．
+  virtual
   ymuint8
   read_8();
 
   /// @brief 2バイトの読み出し
   /// @return 読み込んだ値を返す．
+  virtual
   ymuint16
   read_16();
 
   /// @brief 4バイトの読み出し
   /// @return 読み込んだ値を返す．
+  virtual
   ymuint32
   read_32();
 
   /// @brief 8バイトの読み出し
   /// @return 読み込んだ値を返す．
+  virtual
   ymuint64
   read_64();
 
   /// @brief 単精度不動週数点数の読み出し
   /// @return 読み込んだ値を返す．
+  virtual
   float
   read_float();
 
   /// @brief 倍精度不動週数点数の読み出し
   /// @return 読み込んだ値を返す．
+  virtual
   double
   read_double();
 
   /// @brief 文字列の読み出し
   /// @return 読み込んだ値を返す．
+  virtual
   string
   read_str();
 

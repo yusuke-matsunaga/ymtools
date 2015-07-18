@@ -195,7 +195,7 @@ TEST_P(FileIOTest, rw_string)
 
   CodecType codec_type = GetParam();
 
-  ymuint n = sizeof(data_list) / sizeof(float);
+  ymuint n = sizeof(data_list) / sizeof(const char*);
 
   {
     FileODO ofd(codec_type);

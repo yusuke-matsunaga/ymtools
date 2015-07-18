@@ -192,7 +192,7 @@ TEST_F(StreamIOTest, rw_string)
     "a quick fox jumped over a lazy sheep"
   };
 
-  ymuint n = sizeof(data_list) / sizeof(float);
+  ymuint n = sizeof(data_list) / sizeof(const char*);
 
   {
     ofstream ofs("test.dat");

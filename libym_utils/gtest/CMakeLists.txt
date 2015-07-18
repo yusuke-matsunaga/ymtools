@@ -29,6 +29,8 @@ set (gen_SOURCES
 set (io_SOURCES
   io/FileIOTest.cc
   io/StreamIOTest.cc
+  io/StringIDOTest.cc
+  io/StrListTest.cc
   )
 
 

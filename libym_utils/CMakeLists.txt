@@ -92,6 +92,9 @@ set (io_SOURCES
   src/io/FileODO.cc
   src/io/IDO.cc
   src/io/ODO.cc
+  src/io/StreamIDO.cc
+  src/io/StringIDO.cc
+  src/io/StrListIDO.cc
   src/io/ThruCoder.cc
   src/io/ThruDecoder.cc
   src/io/ZCoder.cc
