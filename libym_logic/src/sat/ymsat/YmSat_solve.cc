@@ -123,9 +123,6 @@ YmSat::solve(const vector<Literal>& assumptions,
     }
   }
 
-  // 充足した節があれば取り除く．
-  reduce_CNF();
-
   // 以降，現在のレベルが基底レベルとなる．
   mRootLevel = decision_level();
   if ( debug & (debug_assign | debug_decision) ) {
@@ -522,7 +519,7 @@ YmSat::reduce_CNF()
   if ( !mSane ) {
     return;
   }
-  ASSERT_COND(decision_level() == 0 );
+  ASSERT_COND( decision_level() == 0 );
 
   if ( implication() != kNullSatReason ) {
     mSane = false;

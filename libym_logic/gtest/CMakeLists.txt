@@ -22,6 +22,7 @@ set (misc_SOURCES
   )
 
 set (sat_SOURCES
+  sat/SatSolverTest.cc
   )
 
 
