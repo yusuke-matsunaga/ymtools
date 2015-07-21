@@ -13,7 +13,7 @@ ymtools は cmake を用いて Makefile の生成を行います．
 大まかな流れは以下のとおりです．
 
 0. [ビルドに必要なツールのインストール](#0-ビルドに必要なツールのインストール)
-1. [cmake の実行 (mk_builddir.sh スクリプト, do_cmake.sh スクリプト)](#1-cmake-の実行 (mk_builddir.sh スクリプト, do_cmake.sh スクリプト))
+1. [cmake の実行 (mk_builddir.sh スクリプト, do_cmake.sh スクリプト)](#1-cmake-の実行-mk_builddirsh-スクリプト-do_cmakesh-スクリプト)
 2. [make の実行](#2-make-の実行)
 3. [make test の実行](#3-make-test-の実行)
 4. [make install の実行](#4-make-install-の実行)
@@ -194,7 +194,7 @@ make test
 エラーがなければ最後に
 
 ~~~
-$ make install
+$ make installの実行
 ~~~
 
 を実行すればインストールディレクトリにファイルがインストールされます．
