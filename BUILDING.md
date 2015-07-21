@@ -72,10 +72,10 @@ bison-1.X.X では %define api.pure ディレクティブを理解してくれ�
 `~/proj/ymtools` というディレクトリを用意したとします．
 例えば，bison をインストールする際に，bison のソースディレクトリに移って，
 
-~~~
-./configure --prefix=~/proj/ymtools
-make
-make install
+~~~shell
+$ ./configure --prefix=~/proj/ymtools
+$ make
+$ make install
 ~~~
 
 とすれば，`~/proj/ymtools/bin/bison` などがインストールされます．
@@ -126,10 +126,10 @@ cmake はソースディレクトリ上で実行することも可能ですが�
 レクトリを $(BUILD_DIR) とします．すると cmake の実行は以下のような手
 順で行います．
 
-~~~
-mkdir -p $(BUILD_DIR)
-cd $(BUILD_DIR)
-cmake $(SRC_DIR)
+~~~shell
+$ mkdir -p $(BUILD_DIR)
+$ cd $(BUILD_DIR)
+$ cmake $(SRC_DIR)
 ~~~
 
 これで $(BUILD_DIR) 以下に Makefile といくつかの作業用ディレクトリが生
@@ -140,7 +140,7 @@ cmake $(SRC_DIR)
 ソースディレクトリで
 
 ~~~
-mk_builddir.sh <ビルドディレクトリ> <インストールディレクトリ>
+$ mk_builddir.sh <ビルドディレクトリ> <インストールディレクトリ>
 ~~~
 
 を実行すると
@@ -206,5 +206,3 @@ $ make install
 を実行すればインストールディレクトリにファイルがインストールされます．
 インストールディレクトリが存在しない場合，作成されますのでスペルミスする
 とエラーとならずに新しいディレクトリを作ってしまうので注意してください．
-
---END
