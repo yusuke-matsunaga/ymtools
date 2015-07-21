@@ -1,4 +1,5 @@
 # ymtools のビルドについて
+
 //						松永　裕介
 //                                             ????.??.?? Ver.1
 //                                             2013.11.20 Ver.2
@@ -14,7 +15,8 @@ ymtools は cmake を用いて Makefile の生成を行います．
 0. ビルドに必要なツールのインストール
 1. cmake の実行 (mk_builddir.sh スクリプト, do_cmake.sh スクリプト)
 2. make の実行
-3. make install の実行
+3. make test の実行
+4. make install の実行
 
 このうち 0. は PC 上のソフトウェア開発環境を一回インストールすれば以降
 は必要ありません．たまにソフトウェアのバージョンアップが必要になるかも
@@ -70,7 +72,7 @@ bison-1.X.X では %define api.pure ディレクティブを理解してくれ�
 `~/proj/ymtools` というディレクトリを用意したとします．
 例えば，bison をインストールする際に，bison のソースディレクトリに移って，
 
----shell
+---
 ./configure --prefix=~/proj/ymtools
 make
 make install
@@ -124,7 +126,7 @@ cmake はソースディレクトリ上で実行することも可能ですが�
 レクトリを $(BUILD_DIR) とします．すると cmake の実行は以下のような手
 順で行います．
 
----shell
+---
 $ mkdir -p $(BUILD_DIR)
 $ cd $(BUILD_DIR)
 $ cmake $(SRC_DIR)
@@ -137,13 +139,13 @@ $ cmake $(SRC_DIR)
 を行うためのスクリプトを作りました．
 ソースディレクトリで
 
----shell
+---
 $ mk_builddir.sh <ビルドディレクトリ> <インストールディレクトリ>
 ---
 
 を実行すると
 
----shell
+---
  ****
  source  directory: XXX
  build   directory: XXX
@@ -156,9 +158,9 @@ $ mk_builddir.sh <ビルドディレクトリ> <インストールディレク�
 その後，<ビルドディレクトリ>　直下に do_cmake.sh というシェルスクリプト
 が生成され，ビルドディレクトリで
 
----shell
+---
 $ ./do_cmake.sh
----shell
+---
 
 が実行されます．
 
@@ -197,7 +199,7 @@ make が終わったら make test で各ライブラリのテストを行って�
 
 エラーがなければ最後に
 
----shell
+---
 $ make install
 ---
 
