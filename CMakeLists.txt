@@ -26,9 +26,6 @@ set (YMTOOLS_NAMESPACE "nsYm")
 # オプション
 # ===================================================================
 
-# google-perftools を使う時にこのオプションを ON にする．
-option (OPT_GPERFTOOLS "use google-perftools" OFF)
-
 
 # ===================================================================
 # CTest モジュールの読み込み
@@ -47,9 +44,7 @@ include (FindDoxygen)
 
 find_package(BISON REQUIRED)
 
-if ( OPT_GPERFTOOLS )
-  find_package(Gperftools)
-endif (OPT_GPERFTOOLS)
+find_package(Gperftools)
 
 find_package (GTest)
 
