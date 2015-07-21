@@ -127,9 +127,9 @@ cmake はソースディレクトリ上で実行することも可能ですが�
 順で行います．
 
 ---
-$ mkdir -p $(BUILD_DIR)
-$ cd $(BUILD_DIR)
-$ cmake $(SRC_DIR)
+ mkdir -p $(BUILD_DIR)
+ cd $(BUILD_DIR)
+ cmake $(SRC_DIR)
 ---
 
 これで $(BUILD_DIR) 以下に Makefile といくつかの作業用ディレクトリが生
@@ -140,7 +140,7 @@ $ cmake $(SRC_DIR)
 ソースディレクトリで
 
 ---
-$ mk_builddir.sh <ビルドディレクトリ> <インストールディレクトリ>
+ mk_builddir.sh <ビルドディレクトリ> <インストールディレクトリ>
 ---
 
 を実行すると
