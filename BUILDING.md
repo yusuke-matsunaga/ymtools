@@ -71,13 +71,11 @@ bison-1.X.X では %define api.pure ディレクティブを理解してくれ�
 インストールすることをおすすめします．例えば，ymtools 用に，
 `~/proj/ymtools` というディレクトリを用意したとします．
 例えば，bison をインストールする際に，bison のソースディレクトリに移って，
-
 ~~~shell
 $ ./configure --prefix=~/proj/ymtools
 $ make
 $ make install
 ~~~
-
 とすれば，`~/proj/ymtools/bin/bison` などがインストールされます．
 
 これら，自分でインストールしたツールを ymtools のビルドに使う場合の指
@@ -125,26 +123,21 @@ cmake はソースディレクトリ上で実行することも可能ですが�
 やりかたは極めて簡単です．今，ソースディレクトリを $(SRC_DIR) ビルドディ
 レクトリを $(BUILD_DIR) とします．すると cmake の実行は以下のような手
 順で行います．
-
 ~~~shell
 $ mkdir -p $(BUILD_DIR)
 $ cd $(BUILD_DIR)
 $ cmake $(SRC_DIR)
 ~~~
-
 これで $(BUILD_DIR) 以下に Makefile といくつかの作業用ディレクトリが生
 成されます．
 
 ビルドディレクトリの用意と毎回の cmake の実行を行うスクリプトの生成
 を行うためのスクリプトを作りました．
 ソースディレクトリで
-
 ~~~
 $ mk_builddir.sh <ビルドディレクトリ> <インストールディレクトリ>
 ~~~
-
 を実行すると
-
 ~~~
 ****
 source  directory: XXX
@@ -153,15 +146,12 @@ install directory: XXX
 ****
 continue ? (yes/no)
 ~~~
-
 という表示が出ますので問題なければ yes と入力してください．
 その後，<ビルドディレクトリ>　直下に do_cmake.sh というシェルスクリプト
 が生成され，ビルドディレクトリで
-
 ~~~
 $ ./do_cmake.sh
 ~~~
-
 が実行されます．
 
 do_cmake は簡単なシェルスクリプトで毎回同じ cmake の引数を手でタイプ
@@ -187,7 +177,11 @@ make だけでOKです．
 ##3. make test
 
 まだすごく不十分ですが，テストコードを作っています．
-make が終わったら make test で各ライブラリのテストを行ってください．
+make が終わったら
+~~~shell
+make test
+~~~
+で各ライブラリのテストを行ってください．
 現在は CTest (cmake のテストツール)と google-test ライブラリを用いて
 います．このような枠組みは CppUnit とか CppUtest とかいろいろあって
 いろいろ試しているのですが，現在は CTest と google-test になっています．
