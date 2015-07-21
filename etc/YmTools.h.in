@@ -72,24 +72,6 @@
 // times() が存在する時定義されるマクロ
 #cmakedefine HAVE_TIMES
 
-// Gperftools が使用可能の時定義されるマクロ
-#cmakedefine GPERFTOOLS_FOUND
-
-// readline が使用可能の時定義されるマクロ
-#cmakedefine READLINE_FOUND
-
-// <curses.h> があるとき定義されるマクロ
-#cmakedefine CURSES_HAVE_CURSES_H
-
-// <ncurses.h> があるとき定義されるマクロ
-#cmakedefine CURSES_HAVE_NCURSES_H
-
-// <ncurses/curses.h> があるとき定義されるマクロ
-#cmakedefine CURSES_HAVE_NCURSES_CURSES_H
-
-// <ncurses/ncurses.h> があるとき定義されるマクロ
-#cmakedefine CURSES_HAVE_NCURSES_NCURSES_H
-
 // UNIX の時 true となるマクロ
 #cmakedefine YM_UNIX
 

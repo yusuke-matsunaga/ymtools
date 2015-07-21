@@ -15,12 +15,6 @@ set (YMTOOLS_VERSION "${YMTOOLS_VERSION_MAJOR}.${YMTOOLS_VERSION_MINOR}")
 # 名前空間
 set (YMTOOLS_NAMESPACE "nsYm")
 
-# リリースモード
-#set (CMAKE_BUILD_TYPE RELEASE)
-
-# デバッグモード
-#set (CMAKE_BUILD_TYPE DEBUG)
-
 
 # ===================================================================
 # オプション
