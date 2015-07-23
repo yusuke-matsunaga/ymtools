@@ -1,11 +1,11 @@
 # ymtools のビルドについて
 
-<div style="text-align:right">
-松永　裕介
-????.??.?? Ver.1
-2013.11.20 Ver.2
-2015.03.07 Ver.3
-2015.07.22 Ver.3.1
+<div style="text-align:right;">
+松永　裕介<br>
+????.??.?? Ver.1<br>
+2013.11.20 Ver.2<br>
+2015.03.07 Ver.3<br>
+2015.07.22 Ver.3.1<br>
 </div>
 
 ## はじめに
