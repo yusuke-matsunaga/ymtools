@@ -98,7 +98,7 @@ $ make install
 デフォルトで見つけてくれると思います．
 
 
-##2. cmake の実行 (mk_builddir.sh, do_cmake.sh スクリプト)
+##2. cmake の実行
 
 cmake の仕事は Cコンパイラなどのビルドツールの確認や必要なライブラリの
 検索などを行って Makefile を生成することです．
