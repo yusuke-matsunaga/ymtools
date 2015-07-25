@@ -151,7 +151,7 @@ IDO::read_line(string& str)
       break;
     }
     empty = false;
-    if ( ret == '\n' || ret == '\r' ) {
+    if ( c == '\n' || c == '\r' ) {
       break;
     }
     buf.put_char(c);
