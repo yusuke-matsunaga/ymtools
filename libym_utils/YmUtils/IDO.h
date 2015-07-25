@@ -40,45 +40,69 @@ public:
 
   /// @brief 1バイトの読み出し
   /// @return 読み込んだ値を返す．
+  ///
+  /// ODO の write_8() に対応する．
   virtual
   ymuint8
   read_8();
 
   /// @brief 2バイトの読み出し
   /// @return 読み込んだ値を返す．
+  ///
+  /// ODO の write_16() に対応する．
   virtual
   ymuint16
   read_16();
 
   /// @brief 4バイトの読み出し
   /// @return 読み込んだ値を返す．
+  ///
+  /// ODO の write_32() に対応する．
   virtual
   ymuint32
   read_32();
 
   /// @brief 8バイトの読み出し
   /// @return 読み込んだ値を返す．
+  ///
+  /// ODO の write_64() に対応する．
   virtual
   ymuint64
   read_64();
 
   /// @brief 単精度不動週数点数の読み出し
   /// @return 読み込んだ値を返す．
+  ///
+  /// ODO の write_float() に対応する．
   virtual
   float
   read_float();
 
   /// @brief 倍精度不動週数点数の読み出し
   /// @return 読み込んだ値を返す．
+  ///
+  /// ODO の write_double() に対応する．
   virtual
   double
   read_double();
 
   /// @brief 文字列の読み出し
   /// @return 読み込んだ値を返す．
+  ///
+  /// ODO の write_str() に対応する．
   virtual
   string
   read_str();
+
+  /// @brief 一行の読み出し
+  /// @param[out] str 読みだした文字列を格納する変数
+  /// @return 読み出しが成功したら true を返す．
+  ///
+  /// 空行の場合には str に string() を入れて true を返す．
+  /// データがなければ false を返す．
+  virtual
+  bool
+  read_line(string& str);
 
 
 public:
@@ -122,7 +146,8 @@ private:
   /// @brief read() を呼び出して結果をチェックする．
   /// @param[in] buff 読み込んだデータを格納する領域の先頭アドレス．
   /// @param[in] n 読み込むデータサイズ
-  /// @note n バイトの読み込みに失敗したらエラーメッセージを出力する．
+  ///
+  /// 読みだしたサイズが n と異なっていたらエラーメッセージを出力する．
   void
   _read(ymuint8* buff,
 	ymuint64 n);

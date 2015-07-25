@@ -10,6 +10,7 @@
 #include "YmUtils/IDO.h"
 #include "YmUtils/MsgMgr.h"
 #include "YmUtils/FileRegion.h"
+#include "YmUtils/StrBuff.h"
 
 
 BEGIN_NAMESPACE_YM
@@ -26,23 +27,6 @@ IDO::IDO()
 // @brief デストラクタ
 IDO::~IDO()
 {
-}
-
-// @brief read() を呼び出して結果をチェックする．
-void
-IDO::_read(ymuint8* buff,
-	   ymuint64 n)
-{
-  ymint64 ret = read(buff, n);
-  if ( static_cast<ymuint64>(ret) != n ) {
-    ostringstream buf;
-    buf << "IDO::_read(" << n << ") failed. read " << ret << " bytes.";
-    MsgMgr::put_msg(__FILE__, __LINE__,
-		    FileRegion(),
-		    kMsgFailure,
-		    "IDO",
-		    buf.str());
-  }
 }
 
 // @brief 1バイトの読み出し
@@ -146,6 +130,53 @@ IDO::read_str()
   }
   else {
     return string();
+  }
+}
+
+// @brief 一行の読み出し
+// @param[out] str 読みだした文字列を格納する変数
+// @return 読み出しが成功したら true を返す．
+//
+// 空行の場合には str に string() を入れて true を返す．
+// データがなければ false を返す．
+bool
+IDO::read_line(string& str)
+{
+  bool empty = true;
+  StrBuff buf;
+  for ( ; ; ) {
+    ymuint8 c;
+    ymuint64 ret = read(&c, 1);
+    if ( ret == 0 ) {
+      break;
+    }
+    empty = false;
+    if ( ret == '\n' || ret == '\r' ) {
+      break;
+    }
+    buf.put_char(c);
+  }
+  if ( empty ) {
+    return false;
+  }
+  str = buf;
+  return true;
+}
+
+// @brief read() を呼び出して結果をチェックする．
+void
+IDO::_read(ymuint8* buff,
+	   ymuint64 n)
+{
+  ymint64 ret = read(buff, n);
+  if ( static_cast<ymuint64>(ret) != n ) {
+    ostringstream buf;
+    buf << "IDO::_read(" << n << ") failed. read " << ret << " bytes.";
+    MsgMgr::put_msg(__FILE__, __LINE__,
+		    FileRegion(),
+		    kMsgFailure,
+		    "IDO",
+		    buf.str());
   }
 }
 
