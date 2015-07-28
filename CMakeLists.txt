@@ -181,29 +181,6 @@ configure_file(
 
 
 # ===================================================================
-# doxygen 起動用のコマンド
-# ===================================================================
-
-if (DOXYGEN_FOUND)
-  configure_file (
-    "${PROJECT_SOURCE_DIR}/etc/Doxyfile.in"
-    "${PROJECT_BINARY_DIR}/Doxyfile"
-    )
-
-  add_custom_target(dox ALL
-    DEPENDS "${PROJECT_BINARY_DIR}/docs/html/index.html"
-    )
-
-  add_custom_command(
-    COMMAND "${DOXYGEN_EXECUTABLE}" ">" "${PROJECT_BINARY_DIR}/doxygen.log"
-    DEPENDS "${PROJECT_BINARY_DIR}/Doxyfile"
-    OUTPUT "${PROJECT_BINARY_DIR}/docs/html/index.html"
-    COMMENT "generating doxygen documents"
-    )
-endif (DOXYGEN_FOUND)
-
-
-# ===================================================================
 # パッケージコンフィグレーションファイルの生成
 # ===================================================================
 
@@ -251,13 +228,48 @@ install (FILES
   DESTINATION lib/ymtools-${YMTOOLS_VERSION}
   )
 
-# doxygen で生成されたファイル
+
+# ===================================================================
+# doxygen 起動用のコマンド
+# ===================================================================
+
 if (DOXYGEN_FOUND)
+  configure_file (
+    "${PROJECT_SOURCE_DIR}/etc/Doxyfile.in"
+    "${PROJECT_BINARY_DIR}/Doxyfile"
+    )
+
+  add_custom_target(dox ALL
+    DEPENDS "${PROJECT_BINARY_DIR}/docs/html/index.html"
+    )
+
+  # doxygen の対象となるヘッダファイル(のパタン)を YM_DOXY_SRCS に入れる．
+  set (YM_DOXY_SRCS )
+  foreach (dir
+      "etc/doxygen-src"
+      "include"
+      "include/YmAlgo"
+      "include/YmCell"
+      "include/YmLogic"
+      "include/YmNetworks"
+      "include/YmUtils"
+      "include/YmVerilog"
+      )
+    list ( APPEND YM_DOXY_SRCS ${dir} )
+  endforeach()
+
+  add_custom_command(
+    COMMAND "${DOXYGEN_EXECUTABLE}" ">" "${PROJECT_BINARY_DIR}/doxygen.log"
+    DEPENDS "${PROJECT_BINARY_DIR}/Doxyfile" ${YM_DOXY_SRCS}
+    OUTPUT "${PROJECT_BINARY_DIR}/docs/html/index.html"
+    COMMENT "generating doxygen documents"
+    )
+
   install (DIRECTORY
     ${PROJECT_BINARY_DIR}/docs
     DESTINATION share/ymtools-${YMTOOLS_VERSION}
     )
-endif ()
+endif (DOXYGEN_FOUND)
 
 # ===================================================================
 # end-of-CMakeLists.txt

@@ -13,13 +13,14 @@
 ///   \ref YmUtils
 ///   その他のモジュールに使われる基本的なクラス／関数を提供する
 ///
-/// - libym_tclpp
-///   \ref Tclpp
-///   Tck/Tk の内部拡張を行うための C++ ラッパクラスライブラリ
+/// - libym_algo
+///   \ref YmAlgo
+///   汎用のアルゴリズムモジュール
 ///
 /// - libym_logic
 ///   \ref LexpGroup
 ///   \ref Bdd
+///   \ref SAT
 ///   論理関数処理を行うクラス群
 ///
 /// - libym_verilog
@@ -33,9 +34,5 @@
 /// - libym_cell
 ///   \ref Cell
 ///   セルライブラリを扱うためのクラスライブラリ
-///
-/// - magus
-///   \ref MagusGroup
-///   Magus の基本部品
 
 #error "don't include me!"
