@@ -234,17 +234,19 @@ install (FILES
 # ===================================================================
 
 if (DOXYGEN_FOUND)
+  # Doxyfile の生成
   configure_file (
     "${PROJECT_SOURCE_DIR}/etc/Doxyfile.in"
     "${PROJECT_BINARY_DIR}/Doxyfile"
     )
 
+  # doxygen 用ターゲット
   add_custom_target(dox ALL
     DEPENDS "${PROJECT_BINARY_DIR}/docs/html/index.html"
     )
 
   # doxygen の対象となるヘッダファイル(のパタン)を YM_DOXY_SRCS に入れる．
-  set (YM_DOXY_SRCS )
+  set ( YM_DOXY_SRCS )
   foreach (dir
       "etc/doxygen-src"
       "include"
@@ -258,6 +260,7 @@ if (DOXYGEN_FOUND)
     list ( APPEND YM_DOXY_SRCS ${dir} )
   endforeach()
 
+  # doxygen 起動ルール
   add_custom_command(
     COMMAND "${DOXYGEN_EXECUTABLE}" ">" "${PROJECT_BINARY_DIR}/doxygen.log"
     DEPENDS "${PROJECT_BINARY_DIR}/Doxyfile" ${YM_DOXY_SRCS}
@@ -265,10 +268,12 @@ if (DOXYGEN_FOUND)
     COMMENT "generating doxygen documents"
     )
 
+  # 生成物のインストールルール
   install (DIRECTORY
     ${PROJECT_BINARY_DIR}/docs
     DESTINATION share/ymtools-${YMTOOLS_VERSION}
     )
+
 endif (DOXYGEN_FOUND)
 
 # ===================================================================
