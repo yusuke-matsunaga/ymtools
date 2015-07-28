@@ -190,10 +190,14 @@ if (DOXYGEN_FOUND)
     "${PROJECT_BINARY_DIR}/Doxyfile"
     )
 
-  add_custom_target(dox
-    "${DOXYGEN_EXECUTABLE}" ">" "${PROJECT_BINARY_DIR}/doxygen.log"
+  add_custom_target(dox ALL
+    DEPENDS "${PROJECT_BINARY_DIR}/docs/html/index.html"
+    )
+
+  add_custom_command(
+    COMMAND "${DOXYGEN_EXECUTABLE}" ">" "${PROJECT_BINARY_DIR}/doxygen.log"
     DEPENDS "${PROJECT_BINARY_DIR}/Doxyfile"
-    WORKING_DIRECTORY "${PROJECT_BINARY_DIR}"
+    OUTPUT "${PROJECT_BINARY_DIR}/docs/html/index.html"
     COMMENT "generating doxygen documents"
     )
 endif (DOXYGEN_FOUND)
@@ -220,11 +224,13 @@ configure_file(
 # インストールターゲット
 # ===================================================================
 
+# YmTools.h ヘッダ
 install (
   FILES "${PROJECT_BINARY_DIR}/YmTools.h"
   DESTINATION include
   )
 
+# verilog の API 用ヘッダ
 foreach ( _header "acc_user.h" "veriuser.h" "vpi_user.h" )
   install (
     FILES "${PROJECT_SOURCE_DIR}/include/${_header}"
@@ -232,17 +238,26 @@ foreach ( _header "acc_user.h" "veriuser.h" "vpi_user.h" )
     )
 endforeach ()
 
+# YmTools のエクスポート用 cmake ファイル
 install (
   EXPORT ymtools-targets
   DESTINATION lib/ymtools-${YMTOOLS_VERSION}
   )
 
+# YmTools のインポート用 cmake ファイル
 install (FILES
   ${PROJECT_BINARY_DIR}/YmToolsConfig.cmake
   ${PROJECT_BINARY_DIR}/YmToolsConfig-version.cmake
   DESTINATION lib/ymtools-${YMTOOLS_VERSION}
   )
 
+# doxygen で生成されたファイル
+if (DOXYGEN_FOUND)
+  install (DIRECTORY
+    ${PROJECT_BINARY_DIR}/docs
+    DESTINATION share/ymtools-${YMTOOLS_VERSION}
+    )
+endif ()
 
 # ===================================================================
 # end-of-CMakeLists.txt
