@@ -22,14 +22,6 @@ set (YMTOOLS_NAMESPACE "nsYm")
 
 
 # ===================================================================
-# CTest モジュールの読み込み
-# ===================================================================
-include (CTest)
-
-enable_testing()
-
-
-# ===================================================================
 # パッケージの検査
 # ===================================================================
 list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -39,8 +31,6 @@ include (FindDoxygen)
 find_package(BISON REQUIRED)
 
 find_package(Gperftools)
-
-find_package (GTest)
 
 if ( UNIX )
   set ( YM_UNIX 1 )
@@ -53,6 +43,24 @@ if ( WIN32 )
 endif ( WIN32 )
 
 include (ym_add_library)
+
+
+# ===================================================================
+# CTest モジュールの読み込み
+# ===================================================================
+include (CTest)
+
+enable_testing()
+
+
+# ===================================================================
+# google-test は内蔵のものを使う．
+# ===================================================================
+add_subdirectory (gtest-1.7.0)
+set (GTEST_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/gtest-1.7.0/include")
+set (GTEST_BOTH_LIBRARIES
+  "${PROJECT_BINARY_DIR}/gtest-1.7.0/libgtest.a"
+  "${PROJECT_BINARY_DIR}/gtest-1.7.0/libgtest_main.a")
 
 
 # ===================================================================
