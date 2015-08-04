@@ -14,9 +14,7 @@ include_directories(
 # サブディレクトリの設定
 # ===================================================================
 
-if (GTEST_FOUND)
-  add_subdirectory(gtest)
-endif (GTEST_FOUND)
+add_subdirectory(gtest)
 
 
 # ===================================================================
