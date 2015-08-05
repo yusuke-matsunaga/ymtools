@@ -24,7 +24,9 @@ set (YMTOOLS_NAMESPACE "nsYm")
 # ===================================================================
 # パッケージの検査
 # ===================================================================
-list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+list ( APPEND CMAKE_MODULE_PATH
+  "${CMAKE_CURRENT_SOURCE_DIR}/ym-common/cmake"
+  )
 
 include (FindDoxygen)
 
