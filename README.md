@@ -1,5 +1,26 @@
 # ymtools
 
+## [***注意***] git でリポジトリを取得する場合の注意事項
+
+ymtools な内部で ym-common という別のリポジトリを submodule として使っています．
+ymtools をただ git clone で持ってきた場合には ym-common が空のディレクトリになっていますので
+
+```shell
+$ git submodule init
+$ git submodule update
+```
+
+で ym-common の中身を持ってくるようにしてください．
+
+## [***注意***] zip でソースツリーを取得する場合の注意事項
+
+`ymtools/include` の下に `YmUtils` などのサブディレクトリがありますが，
+これは `libym_utils/YmUtils` のシンボリックリンクです．
+どうやら zip 形式のアーカイブではシンボリックリンクが復元されないようなので，
+手でシンボリックリンクを張る必要があります．
+じきに CMakeLists.txt をいじって自動的にリンクを張るようにします．
+
+
 ## はじめに
 
 YmTools は論理回路の検証・合成アルゴリズムの研究・開発のためのライブラリ群です．
