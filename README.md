@@ -1,13 +1,17 @@
 # ymtools
 
+## はじめに
+
 YmTools は論理回路の検証・合成アルゴリズムの研究・開発のためのライブラリ群です．
 ビルドに関しては BUILDING.md ファイルを参照してください．
+おおまなか構成を以下に示します．
+詳細については Wiki (https://github.com/yusuke-matsunaga/ymtools/wiki) を参考にしてください．
+また，make dox で名前空間やクラスのリファレンスが生成されます．
 
-## 内容
 
 YmTools は以下のライブラリからなります．
 
-- [libym_utils](libym_utils)
+- libym_utils
 
   汎用のユーティリティ関数
 
@@ -168,8 +172,8 @@ YmTools は以下のライブラリからなります．
 
    - BDN
 
-   一応 Binary Decomposed Network の略．AIG と似ているが，こちらは 2入力XOR
-   も用いている．また，ラッチやD-FFといった実際の回路に必要なノードも含んでいます．
+   一応 Binary Decomposed Network の略．AIG と似ていますが，こちらは 2入力XOR
+   も用いています．また，ラッチやD-FFといった実際の回路に必要なノードも含んでいます．
    将来的にはメインのデータ構造になるはずです．
 
    - TgNetwork
