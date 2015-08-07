@@ -550,24 +550,24 @@ void Solver::printStats() const {
 
     printf("c variables         : %-12d   (init %d, after simp %d)\n", nFreeVars(), init_vars, simp_vars);
     printf("c clauses           : %-12d   (init %d, after simp %d)\n", nClauses(), init_clauses, simp_clauses);
-    printf("c restarts          : %-12"PRIu64"   (%.2f confs/res, %"PRIu64" ~ %"PRIu64" confs, %"PRIu64" blk, last %"PRIu64")\n", starts - 1, (double)conflicts / starts, min_confs, max_confs, blocked_restarts, last_blocked - 1);
-    printf("c conflicts         : %-12"PRIu64"   (%.0f /sec, %"PRIu64" blks, avg %.2f)\n", conflicts, conflicts / cpu_time, succ_confs.total(), succ_confs.avg());
-    printf("c decisions         : %-12"PRIu64"   (%4.2f%% random, %.0f /sec)\n", decisions, (float)rnd_decisions*100 / (float)decisions, decisions / cpu_time);
-    printf("c propagations      : %-12"PRIu64"   (%.0f /sec, %4.2f lits/dec)\n", propagations, propagations/cpu_time, (float)propagations / decisions);
-    printf("c conflict literals : %-12"PRIu64"   (%4.2f%% deleted, %4.2f%% by bin min, %.3f s)\n", tot_literals, (max_literals - tot_literals)*100 / (double)max_literals, (double)rm_lrn_lits*100 / (tot_literals + rm_lrn_lits), bin_min_time);
+    printf("c restarts          : %-12" PRIu64 "   (%.2f confs/res, %" PRIu64 " ~ %" PRIu64 " confs, %" PRIu64 " blk, last %" PRIu64 ")\n", starts - 1, (double)conflicts / starts, min_confs, max_confs, blocked_restarts, last_blocked - 1);
+    printf("c conflicts         : %-12" PRIu64 "   (%.0f /sec, %" PRIu64 " blks, avg %.2f)\n", conflicts, conflicts / cpu_time, succ_confs.total(), succ_confs.avg());
+    printf("c decisions         : %-12" PRIu64 "   (%4.2f%% random, %.0f /sec)\n", decisions, (float)rnd_decisions*100 / (float)decisions, decisions / cpu_time);
+    printf("c propagations      : %-12" PRIu64 "   (%.0f /sec, %4.2f lits/dec)\n", propagations, propagations/cpu_time, (float)propagations / decisions);
+    printf("c conflict literals : %-12" PRIu64 "   (%4.2f%% deleted, %4.2f%% by bin min, %.3f s)\n", tot_literals, (max_literals - tot_literals)*100 / (double)max_literals, (double)rm_lrn_lits*100 / (tot_literals + rm_lrn_lits), bin_min_time);
     printf("c lbd               : %-12.2f   (%4.2f for all, %4.2f%% bumps)\n", (double)tot_lbds / nLearnts(), (double)global_LBDs / conflicts, (double)lbd_act_bumps * 100 / prop_lits_by_learnts);
-    printf("c reduce dbs        : %-12d   (%"PRIu64" learnts removed, %4.2f%%, %.3f s)\n", reduce_dbs, removed_learnts, removed_learnts * 100 / (double)conflicts, reduce_time);
-    printf("c rewrite dbs       : %-12d   (%"PRIu64"+%"PRIu64" rw-lits, %"PRIu64"+%"PRIu64" taut, %"PRIu64"+%"PRIu64" unit, %.3f s)\n", rewrite_dbs, rw_clause_lits, rw_learnt_lits, rw_taut_clauses, rw_taut_learnts, rw_unit_clauses, rw_unit_learnts, rewrite_time);
-    printf("c premise updates   : %-12"PRIu64"   (%4.2f /lit)\n", premise_updates, (double)premise_updates / simp_vars / 2);
+    printf("c reduce dbs        : %-12d   (%" PRIu64 " learnts removed, %4.2f%%, %.3f s)\n", reduce_dbs, removed_learnts, removed_learnts * 100 / (double)conflicts, reduce_time);
+    printf("c rewrite dbs       : %-12d   (%" PRIu64 "+%" PRIu64 " rw-lits, %" PRIu64 "+%" PRIu64 " taut, %" PRIu64 "+%" PRIu64 " unit, %.3f s)\n", rewrite_dbs, rw_clause_lits, rw_learnt_lits, rw_taut_clauses, rw_taut_learnts, rw_unit_clauses, rw_unit_learnts, rewrite_time);
+    printf("c premise updates   : %-12" PRIu64 "   (%4.2f /lit)\n", premise_updates, (double)premise_updates / simp_vars / 2);
     printf("c probed variables  : %-12d   (%d chain, %d fls, %d pol, %d eqv, %d bin, %d cla, %d ss)\n", probed_vars, num_probed_lits[PRB_PREMISE_CHAIN], num_probed_lits[PRB_FAILED_LIT], num_probed_lits[PRB_POLALITY], num_probed_lits[PRB_EQV_LIT], num_probed_lits[PRB_BIN_CLAUSE], num_probed_lits[PRB_CLAUSE], num_probed_lits[PRB_SELF_SUBSUMP]);
-    printf("c unwatched lit elim: %-12"PRIu64"   (bin %"PRIu64"+%"PRIu64", %4.2f+%4.2f%%, lazy %"PRIu64"+%"PRIu64", %4.2f+%4.2f%% of %"PRIu64"+%"PRIu64")\n", bin_rm_uw_cla_lits + bin_rm_uw_lrn_lits + lazy_rm_uw_cla_lits + lazy_rm_uw_lrn_lits, bin_rm_uw_cla_lits, bin_rm_uw_lrn_lits, (double)bin_rm_uw_cla_lits * 100 / simp_clauses_literals, (double)bin_rm_uw_lrn_lits * 100 / tot_literals, lazy_rm_uw_cla_lits, lazy_rm_uw_lrn_lits, (double)lazy_rm_uw_cla_lits * 100 / simp_clauses_literals, (double)lazy_rm_uw_lrn_lits * 100 / tot_literals, simp_clauses_literals, tot_literals);
+    printf("c unwatched lit elim: %-12" PRIu64 "   (bin %" PRIu64 "+%" PRIu64 ", %4.2f+%4.2f%%, lazy %" PRIu64 "+%" PRIu64 ", %4.2f+%4.2f%% of %" PRIu64 "+%" PRIu64 ")\n", bin_rm_uw_cla_lits + bin_rm_uw_lrn_lits + lazy_rm_uw_cla_lits + lazy_rm_uw_lrn_lits, bin_rm_uw_cla_lits, bin_rm_uw_lrn_lits, (double)bin_rm_uw_cla_lits * 100 / simp_clauses_literals, (double)bin_rm_uw_lrn_lits * 100 / tot_literals, lazy_rm_uw_cla_lits, lazy_rm_uw_lrn_lits, (double)lazy_rm_uw_cla_lits * 100 / simp_clauses_literals, (double)lazy_rm_uw_lrn_lits * 100 / tot_literals, simp_clauses_literals, tot_literals);
     printf("c lazy added bins   : %-12d\n", lazy_added_bins);
     printf("c subsumed learnts  : %-12d   (%4.2f %%)\n", sc_subsumed_learnts, (double)sc_subsumed_learnts * 100 / conflicts);
     printf("c partial model     : %-12d   (%4.2f %%, %d removed)\n", init_vars - shrinked_assignments, (double)(init_vars - shrinked_assignments) * 100 / init_vars, shrinked_assignments);
 
     printf("c\n");
     printf("c             learnts len        learnts lbd        succ confs\n");
-    printf("c total %10"PRIu64"         %10"PRIu64"         %10"PRIu64"\n",
+    printf("c total %10" PRIu64 "         %10" PRIu64 "         %10" PRIu64 "\n",
             learnts_len.total(),
             learnts_lbd.total(),
             succ_confs.total());
@@ -576,7 +576,7 @@ void Solver::printStats() const {
             learnts_lbd.avg(),
             succ_confs.avg());
     for (int i=1; i < succ_confs.size(); i++)
-        printf("c  %2d   %10"PRIu64" (%4.1f%%) %10"PRIu64" (%4.1f%%) %10"PRIu64" (%4.1f%%)\n", i,
+        printf("c  %2d   %10" PRIu64 " (%4.1f%%) %10" PRIu64 " (%4.1f%%) %10" PRIu64 " (%4.1f%%)\n", i,
                 learnts_len.freq[i], learnts_len.freq[i] * 100 / (double)learnts_len.total(),
                 learnts_lbd.freq[i], learnts_lbd.freq[i] * 100 / (double)learnts_lbd.total(),
                 succ_confs.freq[i], succ_confs.freq[i] * 100 / (double)succ_confs.total());
@@ -2061,7 +2061,7 @@ lbool Solver::search(int nof_conflicts)
 
             if (blocked) {
                 // DEBUG
-                //printf("%-12"PRIu64" local trail avg %.3f, local trail %.3f\n", conflicts, local_trails.average(), local_trails.last());
+                //printf("%-12" PRIu64 " local trail avg %.3f, local trail %.3f\n", conflicts, local_trails.average(), local_trails.last());
                 local_LBDs.wait((int)(lbd_queue_size * blk_restart_weight));
                 dec_restart_limit = conflictC + dec_queue_size;
                 blocked_restarts++;
@@ -2793,17 +2793,17 @@ void Solver::printProgress(const char sign) {
             for (int i=0; i < num_probed_lits.size(); i++)
                 probed_vars += num_probed_lits[i];
             printf("c\n");
-            printf("c    restarts          : %-12"PRIu64"   (%.2f confs/res, %"PRIu64" ~ %"PRIu64" confs, %"PRIu64" blk, last %"PRIu64")\n", starts - 1, (double)conflicts / starts, min_confs, max_confs, blocked_restarts, last_blocked - 1);
-            printf("c    conflicts         : %-12"PRIu64"   (%.0f /sec, %"PRIu64" blks, avg %.2f)\n", conflicts, conflicts / cpu_time, succ_confs.total(), succ_confs.avg());
-            printf("c    decisions         : %-12"PRIu64"   (%4.2f%% random, %.0f /sec)\n", decisions, (float)rnd_decisions*100 / (float)decisions, decisions / cpu_time);
-            printf("c    propagations      : %-12"PRIu64"   (%.0f /sec, %4.2f lits/dec)\n", propagations, propagations/cpu_time, (float)propagations / decisions);
-            printf("c    conflict literals : %-12"PRIu64"   (%4.2f%% deleted, %4.2f%% by bin min, %.3f s)\n", tot_literals, (max_literals - tot_literals)*100 / (double)max_literals, (double)rm_lrn_lits*100 / (tot_literals + rm_lrn_lits), bin_min_time);
+            printf("c    restarts          : %-12" PRIu64 "   (%.2f confs/res, %" PRIu64 " ~ %" PRIu64 " confs, %" PRIu64 " blk, last %" PRIu64 ")\n", starts - 1, (double)conflicts / starts, min_confs, max_confs, blocked_restarts, last_blocked - 1);
+            printf("c    conflicts         : %-12" PRIu64 "   (%.0f /sec, %" PRIu64 " blks, avg %.2f)\n", conflicts, conflicts / cpu_time, succ_confs.total(), succ_confs.avg());
+            printf("c    decisions         : %-12" PRIu64 "   (%4.2f%% random, %.0f /sec)\n", decisions, (float)rnd_decisions*100 / (float)decisions, decisions / cpu_time);
+            printf("c    propagations      : %-12" PRIu64 "   (%.0f /sec, %4.2f lits/dec)\n", propagations, propagations/cpu_time, (float)propagations / decisions);
+            printf("c    conflict literals : %-12" PRIu64 "   (%4.2f%% deleted, %4.2f%% by bin min, %.3f s)\n", tot_literals, (max_literals - tot_literals)*100 / (double)max_literals, (double)rm_lrn_lits*100 / (tot_literals + rm_lrn_lits), bin_min_time);
             printf("c    lbd               : %-12.2f   (%4.2f for all, %4.2f%% bumps)\n", (double)tot_lbds / nLearnts(), (double)global_LBDs / conflicts, (double)lbd_act_bumps * 100 / prop_lits_by_learnts);
-            printf("c    reduce dbs        : %-12d   (%"PRIu64" learnts removed, %4.2f%%, %.3f s)\n", reduce_dbs, removed_learnts, removed_learnts * 100 / (double)conflicts, reduce_time);
-            printf("c    rewrite dbs       : %-12d   (%"PRIu64"+%"PRIu64" rw-lits, %"PRIu64"+%"PRIu64" taut, %"PRIu64"+%"PRIu64" unit, %.3f s)\n", rewrite_dbs, rw_clause_lits, rw_learnt_lits, rw_taut_clauses, rw_taut_learnts, rw_unit_clauses, rw_unit_learnts, rewrite_time);
-            printf("c    premise updates   : %-12"PRIu64"   (%4.2f /lit)\n", premise_updates, (double)premise_updates / simp_vars / 2);
+            printf("c    reduce dbs        : %-12d   (%" PRIu64 " learnts removed, %4.2f%%, %.3f s)\n", reduce_dbs, removed_learnts, removed_learnts * 100 / (double)conflicts, reduce_time);
+            printf("c    rewrite dbs       : %-12d   (%" PRIu64 "+%" PRIu64 " rw-lits, %" PRIu64 "+%" PRIu64 " taut, %" PRIu64 "+%" PRIu64 " unit, %.3f s)\n", rewrite_dbs, rw_clause_lits, rw_learnt_lits, rw_taut_clauses, rw_taut_learnts, rw_unit_clauses, rw_unit_learnts, rewrite_time);
+            printf("c    premise updates   : %-12" PRIu64 "   (%4.2f /lit)\n", premise_updates, (double)premise_updates / simp_vars / 2);
             printf("c    probed variables  : %-12d   (%d chain, %d fls, %d pol, %d eqv, %d bin, %d cla, %d ss)\n", probed_vars, num_probed_lits[PRB_PREMISE_CHAIN], num_probed_lits[PRB_FAILED_LIT], num_probed_lits[PRB_POLALITY], num_probed_lits[PRB_EQV_LIT], num_probed_lits[PRB_BIN_CLAUSE], num_probed_lits[PRB_CLAUSE], num_probed_lits[PRB_SELF_SUBSUMP]);
-            printf("c    unwatched lit elim: %-12"PRIu64"   (bin %"PRIu64"+%"PRIu64", %4.2f+%4.2f%%, lazy %"PRIu64"+%"PRIu64", %4.2f+%4.2f%% of %"PRIu64"+%"PRIu64")\n", bin_rm_uw_cla_lits + bin_rm_uw_lrn_lits + lazy_rm_uw_cla_lits + lazy_rm_uw_lrn_lits, bin_rm_uw_cla_lits, bin_rm_uw_lrn_lits, (double)bin_rm_uw_cla_lits * 100 / simp_clauses_literals, (double)bin_rm_uw_lrn_lits * 100 / tot_literals, lazy_rm_uw_cla_lits, lazy_rm_uw_lrn_lits, (double)lazy_rm_uw_cla_lits * 100 / simp_clauses_literals, (double)lazy_rm_uw_lrn_lits * 100 / tot_literals, simp_clauses_literals, tot_literals);
+            printf("c    unwatched lit elim: %-12" PRIu64 "   (bin %" PRIu64 "+%" PRIu64 ", %4.2f+%4.2f%%, lazy %" PRIu64 "+%" PRIu64 ", %4.2f+%4.2f%% of %" PRIu64 "+%" PRIu64 ")\n", bin_rm_uw_cla_lits + bin_rm_uw_lrn_lits + lazy_rm_uw_cla_lits + lazy_rm_uw_lrn_lits, bin_rm_uw_cla_lits, bin_rm_uw_lrn_lits, (double)bin_rm_uw_cla_lits * 100 / simp_clauses_literals, (double)bin_rm_uw_lrn_lits * 100 / tot_literals, lazy_rm_uw_cla_lits, lazy_rm_uw_lrn_lits, (double)lazy_rm_uw_cla_lits * 100 / simp_clauses_literals, (double)lazy_rm_uw_lrn_lits * 100 / tot_literals, simp_clauses_literals, tot_literals);
             printf("c    lazy added bins   : %-12d\n", lazy_added_bins);
             printf("c    subsumed learnts  : %-12d   (%4.2f %%)\n", sc_subsumed_learnts, (double)sc_subsumed_learnts * 100 / conflicts);
         }

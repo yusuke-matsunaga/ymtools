@@ -110,7 +110,7 @@ BEGIN_NONAMESPACE
 // ちょっと無駄だけどまあいいか
 
 // magic number
-const char_type k_MAGICHEADER[] = { '\037', '\235' };
+const char_type k_MAGICHEADER[] = { 037, 0235 };
 
 // 左端(msb)から1を埋めていくビットパタン
 const char_type lmask[] = {

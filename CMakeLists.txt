@@ -15,6 +15,9 @@ set (YMTOOLS_VERSION "${YMTOOLS_VERSION_MAJOR}.${YMTOOLS_VERSION_MINOR}")
 # 名前空間
 set (YMTOOLS_NAMESPACE "nsYm")
 
+# C++11 の指定
+set (CMAKE_CXX_STANDARD 11)
+
 
 # ===================================================================
 # オプション

@@ -32,11 +32,7 @@ StreamIDO::~StreamIDO()
 bool
 StreamIDO::is_ready() const
 {
-#if defined(YM_WIN32)
   return mS.good();
-#else
-  return mS;
-#endif
 }
 
 // @brief オープン中のファイル情報を得る．

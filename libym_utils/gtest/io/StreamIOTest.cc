@@ -50,7 +50,7 @@ TEST_F(StreamIOTest, ODO_auto_close)
   // open() のみでデストラクタで自動的に close() されるかテスト
   {
     ofstream ofs("test.dat");
-    ASSERT_TRUE( ofs ) << "Could not open file";
+    ASSERT_TRUE( ofs.good() ) << "Could not open file";
     StreamODO ofd(ofs);
     ofd.write_32(0);
   }
@@ -66,7 +66,7 @@ TEST_F(StreamIOTest, rw_8)
 
   {
     ofstream ofs("test.dat");
-    ASSERT_TRUE( ofs ) << "Could not open file";
+    ASSERT_TRUE( ofs.good() ) << "Could not open file";
     StreamODO ofd(ofs);
 
     for (ymuint i = 0; i < n; ++i) {
@@ -76,7 +76,7 @@ TEST_F(StreamIOTest, rw_8)
 
   {
     ifstream ifs("test.dat");
-    ASSERT_TRUE( ifs ) << "Could not open file";
+    ASSERT_TRUE( ifs.good() ) << "Could not open file";
     StreamIDO ifd(ifs);
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -95,7 +95,7 @@ TEST_F(StreamIOTest, rw_misc)
 
   {
     ofstream ofs("test.dat");
-    ASSERT_TRUE( ofs ) << "Could not open file";
+    ASSERT_TRUE( ofs.good() ) << "Could not open file";
     StreamODO ofd(ofs);
 
     ofd.write_8(data1);
@@ -106,7 +106,7 @@ TEST_F(StreamIOTest, rw_misc)
 
   {
     ifstream ifs("test.dat");
-    ASSERT_TRUE( ifs ) << "Could not open file";
+    ASSERT_TRUE( ifs.good() ) << "Could not open file";
     StreamIDO ifd(ifs);
 
     ymuint8 val1 = ifd.read_8();
@@ -134,7 +134,7 @@ TEST_F(StreamIOTest, rw_float)
 
   {
     ofstream ofs("test.dat");
-    ASSERT_TRUE( ofs ) << "Could not open file";
+    ASSERT_TRUE( ofs.good() ) << "Could not open file";
     StreamODO ofd(ofs);
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -144,7 +144,7 @@ TEST_F(StreamIOTest, rw_float)
 
   {
     ifstream ifs("test.dat");
-    ASSERT_TRUE( ifs ) << "Could not open file";
+    ASSERT_TRUE( ifs.good() ) << "Could not open file";
     StreamIDO ifd(ifs);
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -164,7 +164,7 @@ TEST_F(StreamIOTest, rw_double)
 
   {
     ofstream ofs("test.dat");
-    ASSERT_TRUE( ofs ) << "Could not open file";
+    ASSERT_TRUE( ofs.good() ) << "Could not open file";
     StreamODO ofd(ofs);
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -174,7 +174,7 @@ TEST_F(StreamIOTest, rw_double)
 
   {
     ifstream ifs("test.dat");
-    ASSERT_TRUE( ifs ) << "Could not open file";
+    ASSERT_TRUE( ifs.good() ) << "Could not open file";
     StreamIDO ifd(ifs);
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -196,7 +196,7 @@ TEST_F(StreamIOTest, rw_string)
 
   {
     ofstream ofs("test.dat");
-    ASSERT_TRUE( ofs ) << "Could not open file";
+    ASSERT_TRUE( ofs.good() ) << "Could not open file";
     StreamODO ofd(ofs);
 
     for (ymuint i = 0; i < n; ++ i) {
@@ -206,7 +206,7 @@ TEST_F(StreamIOTest, rw_string)
 
   {
     ifstream ifs("test.dat");
-    ASSERT_TRUE( ifs ) << "Could not open file";
+    ASSERT_TRUE( ifs.good() ) << "Could not open file";
     StreamIDO ifd(ifs);
 
     for (ymuint i = 0; i < n; ++ i) {
