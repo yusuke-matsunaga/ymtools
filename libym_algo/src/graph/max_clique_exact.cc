@@ -20,8 +20,8 @@ BEGIN_NONAMESPACE
 struct NodeLt
 {
   bool
-  operator()(pair<Node*, ymuint>& left,
-	     pair<Node*, ymuint>& right)
+  operator()(const pair<Node*, ymuint>& left,
+	     const pair<Node*, ymuint>& right)
   {
     return left.second > right.second;
   }
