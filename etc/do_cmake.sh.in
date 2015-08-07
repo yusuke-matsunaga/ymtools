@@ -1,11 +1,19 @@
 #! /bin/sh
+#
+# cmake を実行するだけのシェルスクリプト
+# 毎回手でオプションの指定をするのがめんどくさい人向け
 
-# コマンドの定義
-# 必要に応じてここを変える．
-MAKE="make"
-CMAKE="cmake"
+# 環境変数 MAKE をセットしておけばその値が使われる．
+# そうでなければデフォルトの make が使われる．
+echo ${MAKE:="make"} > /dev/null
 
+# 環境変数 CMAKE をセットしておけばその値が使われる．
+# そうでなければデフォルトの cmake が使われる．
+echo ${CMAKE:="cmake"} > /dev/null
+
+# mk_builddir.sh が設定するディレクトリ名
 SRC_DIR=__YM_SRC_DIRECTORY__
 INSTALL_DIR=__YM_INSTALL_DIRECTORY__
 
+# cmake の実行
 ${CMAKE} -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} ${SRC_DIR}
