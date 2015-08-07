@@ -253,6 +253,7 @@ class IntOption : public Option
 };
 
 
+  #if 0
 // Leave this out for visual C++ until Microsoft implements C99 and gets support for strtoll.
 #ifndef _MSC_VER
 
@@ -313,6 +314,7 @@ class Int64Option : public Option
         }
     }
 };
+#endif
 #endif
 
 //==================================================================================================
