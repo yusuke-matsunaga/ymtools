@@ -32,15 +32,16 @@ echo "source  directory: $srcdir"
 echo "build   directory: $builddir"
 echo "install directory: $installdir"
 echo "****"
-echo -n "continue ? (yes/no)"
+echo -n "continue with the above configuration ? (yes/no): "
 while read confirmation; do
     case $confirmation in
 	"yes")
 	    break;;
 	"no")
+	    echo "Setup canceled."
 	    exit 0;;
 	*)
-	    echo "please answer 'yes' or 'no'"
+	    echo "Please answer 'yes' or 'no'"
 	    echo -n "continue ? (yes/no)"
 	    ;;
     esac
@@ -51,12 +52,10 @@ test -d $builddir || mkdir -p $builddir
 
 # do_cmake ファイルを作る．
 do_cmake="do_cmake.sh"
-sed -e s!__YM_SRC_DIRECTORY__!$srcdir! \
-    -e s!__YM_INSTALL_DIRECTORY__!$installdir! \
+sed -e s!__SRC_DIR__!$srcdir! \
+    -e s!__INSTALL_DIR__!$installdir! \
     $srcdir/etc/${do_cmake}.in > $builddir/${do_cmake}
 chmod +x $builddir/${do_cmake}
 
-# do_cmake.sh を実行する．
-(cd $builddir && ./${do_cmake})
-
-echo "  done"
+echo "Build directory setup completed."
+echo "Move to '$builddir', and execute './do_cmake.sh'"

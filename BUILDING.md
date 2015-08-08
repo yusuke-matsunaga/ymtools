@@ -88,7 +88,8 @@ bison-1.X.X では %define api.pure ディレクティブを理解してくれ�
 
 - doxygen
   ヘッダファイル中のコメントを元にクラスや関数に関するドキュメントを自動生成する
-  プログラムです．
+  プログラムです．どうも Linux のディストリビューションに入っているものは
+  バージョンが古いようですが，まだあまり調べていません．
 
 - google-perftools
   プロファイリングを行うためのライブラリです．旧来の gprof と異なり，google-perftools
@@ -134,6 +135,26 @@ $ make install
 別件ですが，YmTools のインストール先を上記のディレクトリと同じにしておくと
 いろいろと便利なことがありません．たぶん，実行ファイルやライブラリファイルを
 デフォルトで見つけてくれると思います．
+
+
+###1.1.1 cmake のインストール
+
+Linux 系で一番問題なのが多くのディストリビューションで用意されている cmake
+が未だに 2.8 なことです．2015年8月8日時点で最新は 3.3 です．
+cmake のダウンロードサイト(http://www.cmake.org/download/)からソース一式
+(例えば cmake-3.3.0.tar.gz)を取ってきて，適当な場所に展開し，
+```shell
+$ ./bootstrap
+$ gmake
+$ sudo gmake install
+```
+を実行すれば(たぶん/usr/localの下に)cmake一式がインストールされます．
+インストール先を変えたい場合は README.rst を見てください(--prefix オプションを使う)．
+ただし，もともとのディストリビューションに古い cmake が含まれていた場合，
+新しい cmake をインストールしてだけでは意味がありません．
+古い cmake は削除してもかまわないのですが，パッケージの依存関係がいろいろと
+あるのでそれもできません．実際に cmake を実行するときに新しい cmake
+を呼ぶようにしてください．詳細は次に述べます．
 
 
 ##2. cmake の実行
@@ -188,15 +209,16 @@ source  directory: XXX
 build   directory: XXX
 install directory: XXX
 ****
-continue ? (yes/no)
+continue with above configuration ? (yes/no):
 ~~~
 という表示が出ますので問題なければ yes と入力してください．
 その後，<ビルドディレクトリ>　直下に do_cmake.sh というシェルスクリプト
-が生成され，ビルドディレクトリで
+が生成されます．
+次に，ビルドディレクトリに移動して
 ~~~
 $ ./do_cmake.sh
 ~~~
-が実行されます．
+を実行してください．
 通常はこのスクリプトは最初の一回だけ実行すればよいです．
 ビルドディレクトリをまっさらにしてやり直す場合などに再実行します．
 
@@ -207,6 +229,35 @@ do_cmake は簡単なシェルスクリプトで毎回同じ cmake の引数を�
 しなくて済むためのものです．cmake の引数にオプションを加えたい場合は
 直接 cmake コマンドを手で入力するか do_cmake スクリプトを書き換えて
 ください．
+
+上に書きましたが，古い cmake と新しい cmake が存在している場合，
+ここで新しい cmake を起動しなければなりません．
+そのためには `CMAKE` という環境変数に新しい cmake のパスを入れておけばOKです．
+たとえば `/usr/local/bin/cmake` に cmake-3.3.0 がインストールされているとすると，
+```shell
+$ env CMAKE=/usr/local/bin/cmake ./do_cmake.sh
+```
+で新しい cmake を使ってくれます．
+もしくは sh(bash) 系のシェルの場合は
+```shell
+$ export CMAKE=/usr/local/bin/cmake
+```
+を実行しておけば `env CMAKE=...` の部分は不要になります．
+csh(tcsh) 系のシェルの場合は
+```csh
+% setenv CMAKE /usr/local/bin/cmake
+```
+です．
+
+また，cmake 実行時(do_cmake.sh実行時)に環境変数 `CC` および `CXX` をセットしておくと
+Cコンパイラ/C++コンパイラを指定することができます．
+例えば `/usr/local/bin/clagn34`, `/usr/local/bin/clang++34`をそれぞれCコンパイラ/C++コンパイラ
+として使いたい場合(実はYmToolsではC++のみを使う)には，
+```shell
+$ env CC=/usr/local/bin/clang34 CXX=/usr/local/bin/clang++34 ./do_cmake.sh
+```
+を実行すればOKです．環境変数の設定は上と同様に `export` 文で一回設定してしまってもOKです．
+`env` 文はその行のコマンド実行のみに環境変数が設定されます．
 
 通常はこの do_cmake.sh スクリプトは一回，実行するだけで良いのですが，
 ソースファイルを追加したり，リンクするライブラリを追加した場合
