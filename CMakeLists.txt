@@ -256,7 +256,9 @@ if (DOXYGEN_FOUND)
     )
 
   # doxygen の対象となるヘッダファイル(のパタン)を YM_DOXY_SRCS に入れる．
-  set ( YM_DOXY_SRCS )
+  set ( YM_DOXY_SRCS
+    "${PROJECT_BINARY_DIR}/YmTools.h"
+    )
   foreach (dir
       "etc/doxygen-src"
       "include"
@@ -280,8 +282,8 @@ if (DOXYGEN_FOUND)
 
   # 生成物のインストールルール
   install (DIRECTORY
-    ${PROJECT_BINARY_DIR}/docs
-    DESTINATION share/ymtools-${YMTOOLS_VERSION}
+    ${PROJECT_BINARY_DIR}/html
+    DESTINATION share/doc/ymtools-${YMTOOLS_VERSION}/
     )
 
 endif (DOXYGEN_FOUND)
