@@ -37,7 +37,7 @@ void
 AttrHash::clear()
 {
   for (ymuint i = 0; i < mSize; ++ i ) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
   mNum = 0;
 }
@@ -57,7 +57,7 @@ AttrHash::add(const VlObj* obj,
     cell = new_cell(obj);
   }
   ymuint pos = (def) ? 1 : 0;
-  ASSERT_COND(cell->mAttrList[pos] == NULL );
+  ASSERT_COND(cell->mAttrList[pos] == nullptr );
   cell->mAttrList[pos] = attr_list;
 }
 
@@ -74,7 +74,7 @@ AttrHash::find(const VlObj* obj,
     ymuint pos = (def) ? 1 : 0;
     return cell->mAttrList[pos];
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief 新しい Cell を生成する．
@@ -102,8 +102,8 @@ AttrHash::new_cell(const VlObj* obj)
   void* p = mAlloc.get_memory(sizeof(Cell));
   Cell* cell = new (p) Cell;
   cell->mObj = obj;
-  cell->mAttrList[0] = NULL;
-  cell->mAttrList[1] = NULL;
+  cell->mAttrList[0] = nullptr;
+  cell->mAttrList[1] = nullptr;
   cell->mLink = mTable[pos];
   mTable[pos] = cell;
   ++ mNum;
@@ -121,7 +121,7 @@ AttrHash::find_cell(const VlObj* obj) const
       return cell;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief このオブジェクトが使用しているメモリ量を返す．
@@ -139,7 +139,7 @@ AttrHash::alloc_table(ymuint size)
   mLimit = static_cast<ymuint>(mSize * 1.8);
   mTable = new Cell*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

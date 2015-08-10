@@ -93,22 +93,22 @@ CptIOHBase::is_signed() const
 
 // @brief 範囲のMSBの取得
 // @retval 範囲のMSB
-// @retval NULL 範囲を持たないとき
-// @note このクラスでは NULL を返す．
+// @retval nullptr 範囲を持たないとき
+// @note このクラスでは nullptr を返す．
 const PtExpr*
 CptIOHBase::left_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲のLSBの取得
 // @retval 範囲のLSB
-// @retval NULL 範囲を持たないとき
-// @note このクラスでは NULL を返す．
+// @retval nullptr 範囲を持たないとき
+// @note このクラスでは nullptr を返す．
 const PtExpr*
 CptIOHBase::right_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 要素数の取得
@@ -248,12 +248,12 @@ CptIOItem::name() const
 
 // @brief 初期値の取得
 // @retval 初期値
-// @retval NULL 初期値を持たないとき
-// @note このクラスでは NULL を返す．
+// @retval nullptr 初期値を持たないとき
+// @note このクラスでは nullptr を返す．
 const PtExpr*
 CptIOItem::init_value() const
 {
-  return NULL;
+  return nullptr;
 }
 
 

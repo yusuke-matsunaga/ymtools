@@ -32,7 +32,7 @@ EiFactory::new_TernaryOp(const PtExpr* pt_expr,
 			 ElbExpr* opr1,
 			 ElbExpr* opr2)
 {
-  ElbExpr* expr = NULL;
+  ElbExpr* expr = nullptr;
   void* p;
   switch ( op_type ) {
   case kVlConditionOp:

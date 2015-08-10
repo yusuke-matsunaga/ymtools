@@ -28,8 +28,8 @@ struct AssignInfo
   /// @param[in] cond 代入条件
   /// @param[in] block blocking 代入の時に true とするフラグ
   explicit
-  AssignInfo(MvnNode* rhs = NULL,
-	     MvnNode* cond = NULL,
+  AssignInfo(MvnNode* rhs = nullptr,
+	     MvnNode* cond = nullptr,
 	     bool block = false) :
     mRhs(rhs),
     mCond(cond),
@@ -40,7 +40,7 @@ struct AssignInfo
   MvnNode* mRhs;
 
   /// @brief 代入条件を表すノード
-  /// ただし常に代入する時は NULL
+  /// ただし常に代入する時は nullptr
   MvnNode* mCond;
 
   /// @brief blocking 代入を表すフラグ
@@ -103,7 +103,7 @@ public:
   /// @brief 対応するノードを取り出す．
   /// @param[in] decl 宣言要素
   /// @return 対応するノードを返す．
-  /// @note 登録されていない場合と配列型の場合には NULL を返す．
+  /// @note 登録されていない場合と配列型の場合には nullptr を返す．
   virtual
   MvnNode*
   get(const VlDecl* decl) const;
@@ -113,7 +113,7 @@ public:
   /// @param[in] offset オフセット
   /// @return 対応するノードを返す．
   /// @note 登録されていない場合と配列型でない場合，
-  /// オフセットが範囲外の場合には NULL を返す．
+  /// オフセットが範囲外の場合には nullptr を返す．
   virtual
   MvnNode*
   get(const VlDeclArray* decl,
@@ -203,7 +203,7 @@ public:
   /// @brief 対応するノードを取り出す．
   /// @param[in] decl 宣言要素
   /// @return 対応するノードを返す．
-  /// @note 登録されていない場合と配列型の場合には NULL を返す．
+  /// @note 登録されていない場合と配列型の場合には nullptr を返す．
   virtual
   MvnNode*
   get(const VlDecl* decl) const;
@@ -213,7 +213,7 @@ public:
   /// @param[in] offset オフセット
   /// @return 対応するノードを返す．
   /// @note 登録されていない場合と配列型でない場合，
-  /// オフセットが範囲外の場合には NULL を返す．
+  /// オフセットが範囲外の場合には nullptr を返す．
   virtual
   MvnNode*
   get(const VlDeclArray* decl,
@@ -222,7 +222,7 @@ public:
   /// @brief 対応するノードを取り出す．
   /// @param[in] decl 宣言要素
   /// @return 対応するノードを返す．
-  /// @note 登録されていない場合と配列型の場合には NULL を返す．
+  /// @note 登録されていない場合と配列型の場合には nullptr を返す．
   AssignInfo
   get_info(const VlDecl* decl) const;
 
@@ -231,7 +231,7 @@ public:
   /// @param[in] offset オフセット
   /// @return 対応するノードを返す．
   /// @note 登録されていない場合と配列型でない場合，
-  /// オフセットが範囲外の場合には NULL を返す．
+  /// オフセットが範囲外の場合には nullptr を返す．
   AssignInfo
   get_info(const VlDeclArray* decl,
 	   ymuint offset) const;

@@ -331,7 +331,7 @@ SptModule::cell() const
 // 関数名から関数の検索
 // @param name 検索対象の関数名
 // @return 該当する関数
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 const PtItem*
 SptModule::find_function(const char* name) const
 {
@@ -340,7 +340,7 @@ SptModule::find_function(const char* name) const
     return item;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -395,7 +395,7 @@ SptPort::file_region() const
 
 // 外向の名前の取得
 // @return 外向の名前(本当のポート名)
-// 無い場合は NULL を返す
+// 無い場合は nullptr を返す
 const char*
 SptPort::ext_name() const
 {
@@ -532,7 +532,7 @@ SptFactory::new_Port(const FileRegion& file_region,
 {
   void* p = alloc().get_memory(sizeof(SptPort));
   return new (p) SptPort(file_region,
-			 NULL,
+			 nullptr,
 			 PtExprArray(),
 			 ext_name);
 }

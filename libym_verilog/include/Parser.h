@@ -1896,8 +1896,8 @@ public:
   const PtConnection*
   new_NamedCon(const FileRegion& fr,
 	       const char* name,
-	       const PtExpr* expr = NULL,
-	       PtrList<const PtAttrInst>* ai_list = NULL);
+	       const PtExpr* expr = nullptr,
+	       PtrList<const PtAttrInst>* ai_list = nullptr);
 
   /// @brief strength の生成
   /// @param[in] fr ファイル位置の情報
@@ -2332,7 +2332,7 @@ private:
 
   /// @brief 現在の declhead リストをスタックに積む．
   /// @param[in] new_declhead 新しく設定する declhead
-  /// @note new_declhead が NULL の場合，新たに生成する．
+  /// @note new_declhead が nullptr の場合，新たに生成する．
   void
   push_declhead_list(PtDeclHeadList* new_declhead);
 

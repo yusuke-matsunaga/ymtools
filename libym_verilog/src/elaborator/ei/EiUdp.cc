@@ -86,7 +86,7 @@ EiUdpDefn::EiUdpDefn(const PtUdp* pt_udp,
   mPortNum(io_num),
   mProtected(is_protected),
   mIODeclList(io_array),
-  mInitExpr(NULL),
+  mInitExpr(nullptr),
   mInitVal(VlScalarVal::x()),
   mTableEntrySize(table_num),
   mTableEntryList(table),
@@ -333,19 +333,19 @@ EiUdpIO::bit_size() const
 }
 
 // @brief 対応する宣言要素を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlDecl*
 EiUdpIO::decl() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 親のモジュールの取得
-// @return このクラスは NULL を返す．
+// @return このクラスは nullptr を返す．
 const VlModule*
 EiUdpIO::module() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 親のUDP定義を返す．
@@ -356,19 +356,19 @@ EiUdpIO::udp_defn() const
 }
 
 // @brief 親のタスク/の取得
-// @return このクラスは NULL を返す．
+// @return このクラスは nullptr を返す．
 const VlTaskFunc*
 EiUdpIO::task() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 親の関数の取得
-// @return このクラスは NULL を返す．
+// @return このクラスは nullptr を返す．
 const VlTaskFunc*
 EiUdpIO::function() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 内容を設定する．

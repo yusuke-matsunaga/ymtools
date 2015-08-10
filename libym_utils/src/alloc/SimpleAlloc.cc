@@ -22,7 +22,7 @@ SimpleAlloc::SimpleAlloc(ymuint64 page_size)
   ASSERT_COND( page_size > 0 );
 
   mPageSize = align(page_size);
-  mBlockTop = NULL;
+  mBlockTop = nullptr;
 }
 
 // デストラクタ
@@ -113,7 +113,7 @@ SimpleAlloc::_destroy()
     free(block->mSize + sizeof(BigBlock) - sizeof(char), block);
     block = next;
   }
-  mBlockTop = NULL;
+  mBlockTop = nullptr;
 }
 
 // @brief アラインメントを考慮してサイズを調節する．

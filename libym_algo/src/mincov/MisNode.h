@@ -97,7 +97,7 @@ void
 MisNode::set(ymuint row_pos)
 {
   mRowPos = row_pos;
-  mAdjLink = NULL;
+  mAdjLink = nullptr;
   mAdjSize = 0;
   mNum = 0;
   mHeapIdx = 0;

@@ -146,7 +146,7 @@ StopWatch::cur_time()
   r = (double)tv.time + (double)tv.millitm / 1000.0;
 #else
   struct timeval tv;
-  (void) gettimeofday(&tv, NULL);
+  (void) gettimeofday(&tv, nullptr);
   // オーバーフローさせないためのオフセット
   const int kRTimeOffset = ((2000 - 1970)*365+(2000-1969)/4)*24*3600;
   tv.tv_sec -= kRTimeOffset;

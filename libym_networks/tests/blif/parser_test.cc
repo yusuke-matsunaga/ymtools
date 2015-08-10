@@ -48,7 +48,7 @@ main(int argc,
   try {
 #endif
     BlifParser parser;
-    BlifHandler* handler = NULL;
+    BlifHandler* handler = nullptr;
     if ( null ) {
       handler = new NullBlifHandler;
     }
@@ -59,7 +59,7 @@ main(int argc,
     StreamMsgHandler* msg_handler = new StreamMsgHandler(&cerr);
     MsgMgr::reg_handler(msg_handler);
 
-    if ( !parser.read(filename, NULL) ) {
+    if ( !parser.read(filename, nullptr) ) {
       cerr << "Error in reading " << filename << endl;
       return 4;
     }

@@ -18,7 +18,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief コンストラクタ
 ElbParamAssign::ElbParamAssign() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 
@@ -34,7 +34,7 @@ ElbParamAssign::~ElbParamAssign()
 
 // @brief コンストラクタ
 ElbDefParam::ElbDefParam() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 

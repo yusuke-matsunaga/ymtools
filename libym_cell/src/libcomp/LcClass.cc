@@ -26,7 +26,7 @@ LcClass::LcClass(ymuint id,
 		 const TvFunc& repfunc) :
   mId((id << 1) | static_cast<ymuint>(builtin)),
   mRepFunc(TvFuncM(vector<TvFunc>(1, repfunc))),
-  mCellClass(NULL)
+  mCellClass(nullptr)
 {
 }
 
@@ -39,7 +39,7 @@ LcClass::LcClass(ymuint id,
 		 const TvFuncM& repfunc) :
   mId((id << 1) | static_cast<ymuint>(builtin)),
   mRepFunc(repfunc),
-  mCellClass(NULL)
+  mCellClass(nullptr)
 {
 }
 

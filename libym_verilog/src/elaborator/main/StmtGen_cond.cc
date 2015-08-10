@@ -26,7 +26,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief if 文の生成を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -38,23 +38,23 @@ StmtGen::instantiate_if(const VlNamedObj* parent,
   ElbExpr* cond = instantiate_expr(parent, env, pt_stmt->expr());
   if ( !cond ) {
     // たぶんエラー
-    return NULL;
+    return nullptr;
   }
 
   const PtStmt* pt_then = pt_stmt->body();
   ElbStmt* then_stmt = instantiate_stmt(parent, process, env, pt_then);
   if ( !then_stmt ) {
     // たぶんエラー
-    return NULL;
+    return nullptr;
   }
 
-  ElbStmt* else_stmt = NULL;
+  ElbStmt* else_stmt = nullptr;
   const PtStmt* pt_else = pt_stmt->else_body();
   if ( pt_else ) {
     else_stmt = instantiate_stmt(parent, process, env, pt_else);
     if ( !else_stmt ) {
       // たぶんエラー
-      return NULL;
+      return nullptr;
     }
   }
 
@@ -66,7 +66,7 @@ StmtGen::instantiate_if(const VlNamedObj* parent,
 
 // @brief case 文の実体化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -79,7 +79,7 @@ StmtGen::instantiate_case(const VlNamedObj* parent,
 
   if ( !cond ) {
     // たぶんエラー
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_CaseStmt(parent, process, pt_stmt, cond);
@@ -112,11 +112,11 @@ StmtGen::instantiate_case(const VlNamedObj* parent,
   // case-item の生成
   for (ymuint i = 0; i < nc; ++ i) {
     const PtCaseItem* pt_item = caseitem_list[i];
-    ElbStmt* body = NULL;
+    ElbStmt* body = nullptr;
     if ( pt_item->body() ) {
       body = instantiate_stmt(parent, process, env, pt_item->body());
       if ( !body ) {
-	return NULL;
+	return nullptr;
       }
     }
 
@@ -128,7 +128,7 @@ StmtGen::instantiate_case(const VlNamedObj* parent,
       ElbExpr* tmp = instantiate_expr(parent, env, pt_expr);
       if ( !tmp ) {
 	// たぶんエラー
-	return NULL;
+	return nullptr;
       }
       label_list[j] = tmp;
       expr_list.push_back(tmp);
@@ -148,7 +148,7 @@ StmtGen::instantiate_case(const VlNamedObj* parent,
 		    kMsgError,
 		    "ELAB",
 		    "Case expression should not be real-type.");
-    return NULL;
+    return nullptr;
   }
   bool sign = value_type0.is_signed();
   ymuint size = value_type0.size();
@@ -162,7 +162,7 @@ StmtGen::instantiate_case(const VlNamedObj* parent,
 		      kMsgError,
 		      "ELAB",
 		      "Case-item expression should not be real-type.");
-      return NULL;
+      return nullptr;
     }
     if ( value_type1.is_signed() ) {
       sign = true;
@@ -186,7 +186,7 @@ StmtGen::instantiate_case(const VlNamedObj* parent,
 
 // @brief wait 文の実体化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -200,7 +200,7 @@ StmtGen::instantiate_wait(const VlNamedObj* parent,
 				   pt_stmt->body());
 
   if ( !cond || !body ) {
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_WaitStmt(parent, process, pt_stmt,
@@ -211,7 +211,7 @@ StmtGen::instantiate_wait(const VlNamedObj* parent,
 
 // @brief forever 文のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -223,7 +223,7 @@ StmtGen::instantiate_forever(const VlNamedObj* parent,
   ElbStmt* body = instantiate_stmt(parent, process, env, pt_stmt->body());
 
   if ( !body ) {
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_ForeverStmt(parent, process, pt_stmt,
@@ -234,7 +234,7 @@ StmtGen::instantiate_forever(const VlNamedObj* parent,
 
 // @brief repeat 文のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -248,7 +248,7 @@ StmtGen::instantiate_repeat(const VlNamedObj* parent,
   ElbStmt* body = instantiate_stmt(parent, process, env, pt_stmt->body());
 
   if ( !expr || !body ) {
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_RepeatStmt(parent, process, pt_stmt,
@@ -259,7 +259,7 @@ StmtGen::instantiate_repeat(const VlNamedObj* parent,
 
 // @brief while 文のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -273,7 +273,7 @@ StmtGen::instantiate_while(const VlNamedObj* parent,
   ElbStmt* body = instantiate_stmt(parent, process, env, pt_stmt->body());
 
   if ( !cond || !body ) {
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_WhileStmt(parent, process, pt_stmt,
@@ -284,7 +284,7 @@ StmtGen::instantiate_while(const VlNamedObj* parent,
 
 // @brief for 文のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -302,7 +302,7 @@ StmtGen::instantiate_for(const VlNamedObj* parent,
 				   pt_stmt->body());
 
   if ( !cond || !init || !next || !body ) {
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_ForStmt(parent, process, pt_stmt,

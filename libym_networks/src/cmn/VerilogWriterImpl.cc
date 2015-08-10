@@ -155,11 +155,11 @@ VerilogWriterImpl::dump(ostream& s,
 	const CmnNode* output = port->output(j);
 	ostringstream buf;
 	buf << vescape(port_name) << "[" << j << "]";
-	if ( input != NULL ) {
+	if ( input != nullptr ) {
 	  has_input = true;
 	  set_node_name(input, buf.str());
 	}
-	if ( output != NULL ) {
+	if ( output != nullptr ) {
 	  has_output = true;
 	  set_node_name(output, buf.str());
 	}
@@ -208,7 +208,7 @@ VerilogWriterImpl::dump(ostream& s,
       continue;
     }
     const CmnNode* inode = node->fanin(0);
-    ASSERT_COND( inode != NULL );
+    ASSERT_COND( inode != nullptr );
 
     VlwAssign vlw_assign(writer);
     if ( node->alt_node() ) {
@@ -293,7 +293,7 @@ VerilogWriterImpl::dump(ostream& s,
        p != logic_list.end(); ++ p) {
     const CmnNode* node = *p;
     const Cell* cell = node->cell();
-    ASSERT_COND( cell != NULL );
+    ASSERT_COND( cell != nullptr );
 
     VlwInst vlw_inst(writer, cell->name());
 
@@ -342,7 +342,7 @@ string
 VerilogWriterImpl::dff_node_name(const CmnNode* node) const
 {
   const CmnNode* inode = node->fanin(0);
-  ASSERT_COND( inode != NULL );
+  ASSERT_COND( inode != nullptr );
   return node_name(inode);
 }
 

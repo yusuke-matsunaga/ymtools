@@ -42,9 +42,9 @@ EiFactory::new_DeclArray(ElbDeclHead* head,
     elem_size *= range_array[i].size();
   }
 
-  EiDeclArray* decl = NULL;
-  void* p = NULL;
-  void* r = NULL;
+  EiDeclArray* decl = nullptr;
+  void* p = nullptr;
+  void* r = nullptr;
   switch ( head->type() ) {
   case kVpiReg:
   case kVpiNet:
@@ -312,7 +312,7 @@ EiDeclArray::charge() const
 
 // @brief delay の取得
 // @retval delay
-// @retval NULL delay の指定なし
+// @retval nullptr delay の指定なし
 const VlDelay*
 EiDeclArray::delay() const
 {

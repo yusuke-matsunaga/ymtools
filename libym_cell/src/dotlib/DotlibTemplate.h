@@ -60,17 +60,17 @@ public:
   variable_3() const;
 
   /// @brief 'index_1' を返す．
-  /// @note 未定義なら NULL を返す．
+  /// @note 未定義なら nullptr を返す．
   const DotlibNode*
   index_1() const;
 
   /// @brief 'index_2' を返す．
-  /// @note 未定義なら NULL を返す．
+  /// @note 未定義なら nullptr を返す．
   const DotlibNode*
   index_2() const;
 
   /// @brief 'index_3' を返す．
-  /// @note 未定義なら NULL を返す．
+  /// @note 未定義なら nullptr を返す．
   const DotlibNode*
   index_3() const;
 

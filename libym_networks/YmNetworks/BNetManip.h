@@ -49,21 +49,21 @@ public:
   /// @brief 外部入力節点を追加する．
   /// @param[in] name 名前
   /// @retval 生成されたノード
-  /// @retval NULL 名前が重複していた場合(エラー)
+  /// @retval nullptr 名前が重複していた場合(エラー)
   BNode*
   new_input(const char* name);
 
   /// @brief 外部入力節点を追加する．
   /// @param[in] name 名前
   /// @retval 生成されたノード
-  /// @retval NULL 名前が重複していた場合(エラー)
+  /// @retval nullptr 名前が重複していた場合(エラー)
   BNode*
   new_input(const string& name);
 
   /// @brief 外部出力節点を追加する．
   /// @param[in] name 名前
   /// @retval 生成されたノード
-  /// @retval NULL 名前が重複していた場合(エラー)
+  /// @retval nullptr 名前が重複していた場合(エラー)
   /// @note 初期状態では入力数0になっている．
   /// その後，ChgOutput() を呼ぶことで適切に入力がセットされる．
   /// @note 外部出力は外部入力/中間節点とは別の名前空間に属するが，
@@ -74,7 +74,7 @@ public:
   /// @brief 外部出力節点を追加する．
   /// @param[in] name 名前
   /// @retval 生成されたノード
-  /// @retval NULL 名前が重複していた場合(エラー)
+  /// @retval nullptr 名前が重複していた場合(エラー)
   /// @note 初期状態では入力数0になっている．
   /// その後，ChgOutput() を呼ぶことで適切に入力がセットされる．
   /// @note 外部出力は外部入力/中間節点とは別の名前空間に属するが，
@@ -85,15 +85,15 @@ public:
   /// @brief 中間節点を追加する．
   /// @param[in] name 名前
   /// @retval 生成されたノード
-  /// @retval NULL 名前が重複していた場合(エラー)
+  /// @retval nullptr 名前が重複していた場合(エラー)
   /// @note 入力数無しの定数0節点の状態で初期化される．
   BNode*
-  new_logic(const char* name = NULL);
+  new_logic(const char* name = nullptr);
 
   /// @brief 中間節点を追加する．
   /// @param[in] name 名前
   /// @retval 生成されたノード
-  /// @retval NULL 名前が重複していた場合(エラー)
+  /// @retval nullptr 名前が重複していた場合(エラー)
   /// @note 入力数無しの定数0節点の状態で初期化される．
   BNode*
   new_logic(const string& name);
@@ -101,15 +101,15 @@ public:
   /// @brief latch ノードを追加する．
   /// @param[in] name 名前
   /// @retval 生成されたノード
-  /// @retval NULL 名前が重複していた場合(エラー)
+  /// @retval nullptr 名前が重複していた場合(エラー)
   /// @note ファンインがつながっていない初期値0の状態で初期化される．
   BNode*
-  new_latch(const char* name = NULL);
+  new_latch(const char* name = nullptr);
 
   /// @brief latch ノードを追加する．
   /// @param[in] name 名前
   /// @retval 生成されたノード
-  /// @retval NULL 名前が重複していた場合(エラー)
+  /// @retval nullptr 名前が重複していた場合(エラー)
   /// @note ファンインがつながっていない初期値0の状態で初期化される．
   BNode*
   new_latch(const string& name);
@@ -328,17 +328,17 @@ public:
   /// @param[in] cval 0の時，定数0ノードを生成する．
   ///  非0の時，定数1ノードを生成する．
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複などでノードが生成されなかった場合
+  /// @retval nullptr 名前の重複などでノードが生成されなかった場合
   BNode*
   make_const(int cval,
-	     const char* dst_name = NULL);
+	     const char* dst_name = nullptr);
 
   /// @brief 定数ノードの生成
   /// @param[in] dst_name 生成するノード名
   /// @param[in] cval 0の時，定数0ノードを生成する．
   ///  非0の時，定数1ノードを生成する．
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複などでノードが生成されなかった場合
+  /// @retval nullptr 名前の重複などでノードが生成されなかった場合
   BNode*
   make_const(int cval,
 	     const string& dst_name);
@@ -347,18 +347,18 @@ public:
   /// @param[in] dst_name 生成するノード名
   /// @param[in] src_node 入力のノード
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複などでノードが生成されなかった場合
+  /// @retval nullptr 名前の重複などでノードが生成されなかった場合
   /// @note src_node を入力とした，dst_name という名前のバッファ
   /// ノードを生成する．
   BNode*
   make_buffer(BNode* src_node,
-	      const char* dst_name = NULL);
+	      const char* dst_name = nullptr);
 
   /// @brief バッファノードの生成
   /// @param[in] dst_name 生成するノード名
   /// @param[in] src_node 入力のノード
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複などでノードが生成されなかった場合
+  /// @retval nullptr 名前の重複などでノードが生成されなかった場合
   /// @note src_node を入力とした，dst_name という名前のバッファ
   /// ノードを生成する．
   BNode*
@@ -369,18 +369,18 @@ public:
   /// @param[in] dst_name 生成するノード名
   /// @param[in] src_node 入力のノード
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複などでノードが生成されなかった場合
+  /// @retval nullptr 名前の重複などでノードが生成されなかった場合
   /// @note src_node を入力とした，dst_name という名前のインバータ
   /// ノードを生成する．
   BNode*
   make_inverter(BNode* src_node,
-		const char* dst_name = NULL);
+		const char* dst_name = nullptr);
 
   /// @brief インバータノードの生成
   /// @param[in] dst_name 生成するノード名
   /// @param[in] src_node 入力のノード
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複などでノードが生成されなかった場合
+  /// @retval nullptr 名前の重複などでノードが生成されなかった場合
   /// @note src_node を入力とした，dst_name という名前のインバータ
   /// ノードを生成する．
   BNode*
@@ -391,19 +391,19 @@ public:
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のANDノード
   ///  を生成する．
   BNode*
   make_and(const BNodeVector& fanins,
-	   const char* dst_name = NULL);
+	   const char* dst_name = nullptr);
 
   /// @brief ANDノードの生成
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のANDノード
   ///  を生成する．
@@ -415,19 +415,19 @@ public:
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のNANDノード
   ///  を生成する．
   BNode*
   make_nand(const BNodeVector& fanins,
-	    const char* dst_name = NULL);
+	    const char* dst_name = nullptr);
 
   /// @brief NANDノードの生成
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のNANDノード
   ///  を生成する．
@@ -439,19 +439,19 @@ public:
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のORノード
   ///  を生成する．
   BNode*
   make_or(const BNodeVector& fanins,
-	  const char* dst_name = NULL);
+	  const char* dst_name = nullptr);
 
   /// @brief ORノードの生成
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のORノード
   ///  を生成する．
@@ -463,19 +463,19 @@ public:
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のNORノード
   ///  を生成する．
   BNode*
   make_nor(const BNodeVector& fanins,
-	   const char* dst_name = NULL);
+	   const char* dst_name = nullptr);
 
   /// @brief NORノードの生成
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のNORノード
   ///  を生成する．
@@ -487,19 +487,19 @@ public:
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のXORノード
   ///  を生成する．
   BNode*
   make_xor(const BNodeVector& fanins,
-	   const char* dst_name = NULL);
+	   const char* dst_name = nullptr);
 
   /// @brief XORノードの生成
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のXORノード
   ///  を生成する．
@@ -511,19 +511,19 @@ public:
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のXNORノード
   ///  を生成する．
   BNode*
   make_xnor(const BNodeVector& fanins,
-	    const char* dst_name = NULL);
+	    const char* dst_name = nullptr);
 
   /// @brief XNORノードの生成
   /// @param[in] dst_name 生成するノード名
   /// @param[in] fanins 入力ノードのベクタ
   /// @retval 生成されたノード
-  /// @retval NULL 名前の重複や fanins の不備などでノードが生成
+  /// @retval nullptr 名前の重複や fanins の不備などでノードが生成
   ///  されなかった場合
   /// @note fanins を入力とした，dst_name という名前のXNORノード
   ///  を生成する．
@@ -611,14 +611,14 @@ public:
   /// @brief nameという名前をもつノードを探す．
   /// @param[in] name 探索対象の名前
   /// @retval name という名前を持つノード
-  /// @retval NULL 該当するノードがない場合
+  /// @retval nullptr 該当するノードがない場合
   BNode*
   find_node(const char* name);
 
   /// @brief name という名前を持つ外部出力節点を取出す．
   /// @param[in] name 探索対象の名前
   /// @retval name という名前を持つ外部出力ノード
-  /// @retval NULL 該当する節点が無い場合
+  /// @retval nullptr 該当する節点が無い場合
   BNode*
   find_ponode(const char* name);
 
@@ -719,7 +719,7 @@ private:
 
 // 外部入力節点を追加する．
 // 通常は新たに生成された節点を返すが，名前が重複していた場合には
-// 節点を作らずに NULL を返す(エラーとなる)．
+// 節点を作らずに nullptr を返す(エラーとなる)．
 inline
 BNode*
 BNetManip::new_input(const string& name)
@@ -731,7 +731,7 @@ BNetManip::new_input(const string& name)
 // そのときに作られた外部出力節点を返す．
 // 初期状態では入力数0になっている．
 // その後，ChgOutput() を呼ぶことで適切に入力がセットされる．
-// 同一の名前を持つ節点が既に存在すればエラーとなる(NULLを返す)．
+// 同一の名前を持つ節点が既に存在すればエラーとなる(nullptrを返す)．
 inline
 BNode*
 BNetManip::new_output(const string& name)
@@ -742,7 +742,7 @@ BNetManip::new_output(const string& name)
 // 中間節点を追加する．
 // そのときに作られた中間出力節点を返す．
 // 入力数無しの定数0節点の状態で初期化される．
-// 名前が重複していたらエラーとなり，NULLを返す．
+// 名前が重複していたらエラーとなり，nullptrを返す．
 inline
 BNode*
 BNetManip::new_logic(const string& name)
@@ -753,7 +753,7 @@ BNetManip::new_logic(const string& name)
 // latch 節点を追加する．
 // そのときに作られた中間節点を返す．
 // ファンインが未接続で，初期値0の状態でえ初期化される．
-// 名前が重複していたらエラーとなり，NULLを返す．
+// 名前が重複していたらエラーとなり，nullptrを返す．
 inline
 BNode*
 BNetManip::new_latch(const string& name)
@@ -990,7 +990,7 @@ BNetManip::latch_nodes_end()
 // @brief nameという名前をもつノードを探す．
 // @param[in] name 探索対象の名前
 // @retval name という名前を持つノード
-// @retval NULL 該当するノードがない場合
+// @retval nullptr 該当するノードがない場合
 inline
 BNode*
 BNetManip::find_node(const char* name)
@@ -1001,7 +1001,7 @@ BNetManip::find_node(const char* name)
 // @brief name という名前を持つ外部出力節点を取出す．
 // @param[in] name 探索対象の名前
 // @retval name という名前を持つ外部出力ノード
-// @retval NULL 該当する節点が無い場合
+// @retval nullptr 該当する節点が無い場合
 inline
 BNode*
 BNetManip::find_ponode(const char* name)

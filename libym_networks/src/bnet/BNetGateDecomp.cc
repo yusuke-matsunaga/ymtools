@@ -71,7 +71,7 @@ BNetGateDecomp::decomp_sub(BNetwork& network,
 {
   ymuint n = network.max_node_id();
   mNodeMap.clear();
-  mNodeMap.resize(n * 2, NULL);
+  mNodeMap.resize(n * 2, nullptr);
 
   // 入力ノードとFFノードを mNodeMap に設定する．
   for (BNodeList::const_iterator p = network.inputs_begin();
@@ -270,10 +270,10 @@ BNetGateDecomp::decomp_sub(BNetwork& network,
     BNodeVector new_fanins(ni);
     for (ymuint i = 0; i < ni; ++ i) {
       BNode* node1 = node->fanin(i);
-      BNode* new_node = NULL;
+      BNode* new_node = nullptr;
       if ( best_iinv[i] ) {
 	new_node = node_map(node1, true);
-	if ( new_node == NULL ) {
+	if ( new_node == nullptr ) {
 	  BNode* node0 = node_map(node1, false);
 	  new_node = manip.make_inverter(node0);
 	}
@@ -354,7 +354,7 @@ BNetGateDecomp::count_inv(const Expr& expr,
     else {
       iinv_array[pos] = false;
     }
-    if ( node_map(node1, inv) == NULL ) {
+    if ( node_map(node1, inv) == nullptr ) {
       ++ c;
     }
   }

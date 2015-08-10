@@ -64,7 +64,7 @@ public:
 
   /// @brief ID番号から D-FF を得る．
   /// @param[in] id ID番号 ( 0 <= id < max_dff_id() )
-  /// @note 該当するD-FFが無い場合には NULL を返す．
+  /// @note 該当するD-FFが無い場合には nullptr を返す．
   const BdnDff*
   dff(ymuint id) const;
 
@@ -82,7 +82,7 @@ public:
 
   /// @brief ID番号からラッチを得る．
   /// @param[in] id ID番号 ( 0 <= id < max_latch_id() )
-  /// @note 該当するラッチが無い場合には NULL を返す．
+  /// @note 該当するラッチが無い場合には nullptr を返す．
   const BdnLatch*
   latch(ymuint id) const;
 
@@ -267,7 +267,7 @@ public:
   /// @param[in] name 名前
   /// @return 生成されたD-FFを返す．
   BdnDff*
-  new_dff(const char* name = NULL);
+  new_dff(const char* name = nullptr);
 
   /// @brief ラッチを作る．
   /// @param[in] name 名前
@@ -279,7 +279,7 @@ public:
   /// @param[in] name 名前
   /// @return 生成されたラッチを返す．
   BdnLatch*
-  new_latch(const char* name = NULL);
+  new_latch(const char* name = nullptr);
 
   /// @}
   //////////////////////////////////////////////////////////////////////

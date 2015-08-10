@@ -169,8 +169,8 @@ BitVector::dec_str_sub(const ymuint32* val,
 // 空のコンストラクタ
 BitVector::BitVector(ymuint32 val) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   set(~val, val, kVpiSizeInteger, false, false, 10);
 }
@@ -191,8 +191,8 @@ BitVector::operator=(ymuint32 val)
 // int からのキャスト用コンストラクタ
 BitVector::BitVector(int val) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   set(~val, val, kVpiSizeInteger, false, true, 10);
 }
@@ -213,8 +213,8 @@ BitVector::operator=(int val)
 // bool からの変換コンストラクタ
 BitVector::BitVector(bool value) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   if ( value ) {
     set(0, 1, 1, true, false, 2);
@@ -245,8 +245,8 @@ BitVector::operator=(bool value)
 // @brief time 型からの変換コンストラクタ
 BitVector::BitVector(VlTime time) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   // サイズあり, 符号無し, 基数10
   resize(kVpiSizeTime);
@@ -280,8 +280,8 @@ BitVector::operator=(VlTime time)
 BitVector::BitVector(const VlScalarVal& value,
 		     ymuint32 size) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   resize(size);
   set_type(true, false, 2);
@@ -320,8 +320,8 @@ BitVector::BitVector(const VlScalarVal& value,
 // brief C文字列からの変換用コンストラクタ
 BitVector::BitVector(const char* str) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   operator=(str);
 }
@@ -349,8 +349,8 @@ BitVector::operator=(const char* str)
 // string 文字列からの変換用コンストラクタ
 BitVector::BitVector(const string& str) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   operator=(str);
 }
@@ -403,8 +403,8 @@ BitVector::operator=(const string& str)
 // 浮動小数点数を整数に変換してからビットベクタにする
 BitVector::BitVector(double val) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   double r = rint(val);
   int intval = static_cast<int>(r);
@@ -430,8 +430,8 @@ BitVector::BitVector(ymuint32 size,
 		     ymuint32 base,
 		     const string& str) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   bool is_sized = true;
   if ( size == 0 ) {
@@ -452,8 +452,8 @@ BitVector::BitVector(ymuint32 size,
 // src_list の内容を連結したものをセットする
 BitVector::BitVector(const list<BitVector>& src_list) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   ymuint32 tl = 0;
   for (list<BitVector>::const_iterator p = src_list.begin();
@@ -518,8 +518,8 @@ BitVector::BitVector(const list<BitVector>& src_list) :
 // src_list の内容を連結したものをセットする
 BitVector::BitVector(const vector<BitVector>& src_list) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   ymuint32 tl = 0;
   for (vector<BitVector>::const_iterator p = src_list.begin();
@@ -615,8 +615,8 @@ BitVector::operator=(const BitVector& src)
 BitVector::BitVector(const BitVector& src,
 		     ymuint32 size) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   set(src.mVal0, src.mVal1, src.size(), size, true,
       src.is_signed(), src.base());
@@ -629,8 +629,8 @@ BitVector::BitVector(const BitVector& src,
 		     bool is_signed,
 		     ymuint32 base) :
   mSize(0),
-  mVal0(NULL),
-  mVal1(NULL)
+  mVal0(nullptr),
+  mVal1(nullptr)
 {
   set(src.mVal0, src.mVal1, src.size(), size, is_sized, is_signed, base);
 }

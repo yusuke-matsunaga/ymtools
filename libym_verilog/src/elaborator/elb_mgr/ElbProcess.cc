@@ -18,7 +18,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief コンストラクタ
 ElbProcess::ElbProcess() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 

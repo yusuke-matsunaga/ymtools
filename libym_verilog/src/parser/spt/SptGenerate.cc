@@ -327,7 +327,7 @@ SptFactory::new_Generate(const FileRegion& file_region,
 			 PtItemArray item_array)
 {
   void* p = alloc().get_memory(sizeof(SptGenerate));
-  return new (p) SptGenerate(file_region, kPtItem_Generate, NULL,
+  return new (p) SptGenerate(file_region, kPtItem_Generate, nullptr,
 			     declhead_array, item_array);
 }
 
@@ -342,7 +342,7 @@ SptFactory::new_GenBlock(const FileRegion& file_region,
 			 PtItemArray item_array)
 {
   void* p = alloc().get_memory(sizeof(SptGenerate));
-  return new (p) SptGenerate(file_region, kPtItem_GenBlock, NULL,
+  return new (p) SptGenerate(file_region, kPtItem_GenBlock, nullptr,
 			     declhead_array, item_array);
 }
 

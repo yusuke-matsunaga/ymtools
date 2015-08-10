@@ -33,7 +33,7 @@ ElbCaHead::~ElbCaHead()
 
 // @brief コンストラクタ
 ElbContAssign::ElbContAssign() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 

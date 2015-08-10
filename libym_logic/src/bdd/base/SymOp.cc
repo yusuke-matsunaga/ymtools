@@ -96,7 +96,7 @@ BddEdge
 SymOp::apply_step1(BddEdge e)
 {
   BddNode* node = e.get_node();
-  if ( node == NULL ) {
+  if ( node == nullptr ) {
     // e は mX と mY に無関係だった．
     return BddEdge::make_one();
   }

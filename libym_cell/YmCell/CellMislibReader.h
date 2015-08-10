@@ -35,14 +35,14 @@ public:
   /// @brief mislib 形式のファイルを読み込んでライブラリを生成する．
   /// @param[in] filename ファイル名
   /// @return 読み込んで作成したセルライブラリを返す．
-  /// @note エラーが起きたら NULL を返す．
+  /// @note エラーが起きたら nullptr を返す．
   const CellLibrary*
   operator()(const string& filename);
 
   /// @brief mislib 形式のファイルを読み込んでライブラリを生成する．
   /// @param[in] filename ファイル名
   /// @return 読み込んで作成したセルライブラリを返す．
-  /// @note エラーが起きたら NULL を返す．
+  /// @note エラーが起きたら nullptr を返す．
   const CellLibrary*
   operator()(const char* filename);
 

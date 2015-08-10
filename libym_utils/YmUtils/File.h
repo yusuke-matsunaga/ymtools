@@ -129,17 +129,17 @@ public:
 #if defined(YM_WIN32)
   /// @brief パスが存在しているか調べる．
   /// @param[out] sbp stat システムコールの結果を格納する構造体
-  /// NULL ならどこにも結果を格納しない
+  /// nullptr ならどこにも結果を格納しない
   /// @return 存在していたら true を返す．
   bool
-  stat(struct _stat64i32* sbp = NULL) const;
+  stat(struct _stat64i32* sbp = nullptr) const;
 #else
   /// @brief パスが存在しているか調べる．
   /// @param[out] sbp stat システムコールの結果を格納する構造体
-  /// NULL ならどこにも結果を格納しない
+  /// nullptr ならどこにも結果を格納しない
   /// @return 存在していたら true を返す．
   bool
-  stat(struct stat* sbp = NULL) const;
+  stat(struct stat* sbp = nullptr) const;
 #endif
 
   /// @brief 末尾にパスをつなげる．

@@ -29,7 +29,7 @@ public:
   //////////////////////////////////////////////////////////////////////
 
   /// @brief 空のコンストラクタ
-  /// @note NULL がセットされる．
+  /// @note nullptr がセットされる．
   ShString();
 
   /// @brief C文字列を指定したコンストラクタ
@@ -215,7 +215,7 @@ struct HashFunc<ShString>
 // 空のコンストラクタ
 inline
 ShString::ShString() :
-  mPtr(NULL)
+  mPtr(nullptr)
 {
 }
 
@@ -336,7 +336,7 @@ bool
 operator==(const ShString& a,
 	   const char* b)
 {
-  if ( b == NULL ) {
+  if ( b == nullptr ) {
     // 境界条件のチェック
     return false;
   }

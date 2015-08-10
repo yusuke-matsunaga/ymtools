@@ -219,7 +219,7 @@ SptFactory::new_CmbUdp(const FileRegion& file_region,
 			name,
 			port_array,
 			iohead_array,
-			false, NULL,
+			false, nullptr,
 			entry_array);
 }
 
@@ -262,7 +262,7 @@ SptFactory::new_UdpEntry(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptUdpEntry));
   return new (p) SptUdpEntry(file_region,
 			     input_array,
-			     NULL,
+			     nullptr,
 			     output);
 }
 

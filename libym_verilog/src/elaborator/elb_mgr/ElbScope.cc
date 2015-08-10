@@ -18,7 +18,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief コンストラクタ
 ElbScope::ElbScope() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 

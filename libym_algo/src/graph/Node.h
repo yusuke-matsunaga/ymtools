@@ -105,7 +105,7 @@ void
 Node::set(ymuint id)
 {
   mId = id;
-  mAdjLink = NULL;
+  mAdjLink = nullptr;
   mAdjSize = 0;
   mNum = 0;
   mHeapIdx = 0;

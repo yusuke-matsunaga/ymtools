@@ -31,7 +31,7 @@ struct Func {
 
   // 正規化後の関数
   TvFunc mNormFunc;
-  
+
   // コンストラクタ
   Func(const TvFunc& ofunc, const TvFunc& nfunc);
 
@@ -45,7 +45,7 @@ struct FuncGroup {
   list<Func*> mRepList;
 
   FuncGroup* mLink;
-  
+
   // コンストラクタ
   FuncGroup(const WalshSigInt& sig);
 
@@ -136,7 +136,7 @@ FuncGroup::add(const TvFunc& of, const TvFunc& nf)
 FuncGroupList::FuncGroupList()
 {
   mSize = 0;
-  mTable = NULL;
+  mTable = nullptr;
   mNum = 0;
   resize(512);
 }
@@ -263,7 +263,7 @@ FuncGroupList::reg(size_t ni, const vector<int>& buff)
 	ivars[i] = ni;
       }
     }
-    
+
     for (size_t i = 0; i < ni_pow; ++ i) {
       size_t j = 0;
       for (size_t b = 0; b < ni; ++ b) {
@@ -274,7 +274,7 @@ FuncGroupList::reg(size_t ni, const vector<int>& buff)
       }
       new_i[i] = j;
     }
-    
+
     size_t bp = 1 << bitpos;
     for (size_t b = 0; b < bp; ++ b) {
       size_t imask = 0;
@@ -283,7 +283,7 @@ FuncGroupList::reg(size_t ni, const vector<int>& buff)
 	  imask |= (1 << k);
 	}
       }
-      
+
       size_t v1 = 0;
       for(size_t i = 0; i < ni_pow; ++ i) {
 	if ( norm_func.value(i ^ imask) ) {
@@ -303,7 +303,7 @@ FuncGroupList::reg(size_t ni, const vector<int>& buff)
 	    imask |= (1 << k);
 	  }
 	}
-	
+
 	size_t v2 = 0;
 	for(size_t i = 0; i < ni_pow; ++ i) {
 	  if ( norm_func.value(i ^ imask) ) {
@@ -319,19 +319,19 @@ FuncGroupList::reg(size_t ni, const vector<int>& buff)
   }
 
   size_t h = sig.hash() % mSize;
-  FuncGroup* fg = NULL;
+  FuncGroup* fg = nullptr;
   for (fg = mTable[h]; fg; fg = fg->mLink) {
     if ( fg->mSignature == sig ) {
       fg->add(func, norm_func);
       return;
     }
   }
-  if ( fg == NULL ) {
+  if ( fg == nullptr ) {
     // グループを作成し追加する．
     FuncGroup* new_group = new FuncGroup(sig);
     new_group->add(func, norm_func);
     add(new_group);
-  } 
+  }
 }
 
 // ハッシュ表に FuncGroup を追加する．
@@ -359,7 +359,7 @@ FuncGroupList::resize(size_t size)
   mTable = new FuncGroupPtr[size];
   mSize = size;
   for (size_t i = 0; i < size; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 
   if ( old_size ) {
@@ -380,7 +380,7 @@ void
 gen(size_t ni, size_t limit)
 {
   FuncGroupList func_group_list;
-  
+
   size_t ni_exp = 1 << ni;
   vector<int> buff(ni_exp);
   for (size_t i = 0; i < ni_exp; ++ i) {
@@ -444,7 +444,7 @@ void
 rgen(size_t ni, size_t num)
 {
   FuncGroupList func_group_list;
-  
+
   size_t ni_exp = 1 << ni;
   vector<int> buff(ni_exp);
   for (size_t k = 0; k < num; ++ k) {
@@ -526,7 +526,7 @@ main(int argc, char** argv)
     usage(argv[0]);
     return 2;
   }
-  
+
   if ( strcmp(argv[base], "signature") == 0 ) {
     if ( argc - base != 2 ) {
       usage(argv[0]);

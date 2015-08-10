@@ -27,7 +27,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 // @param[in] lex 親の Lex
 InputMgr::InputMgr(RawLex& lex) :
   mLex(lex),
-  mCurFile(NULL)
+  mCurFile(nullptr)
 {
 }
 
@@ -44,7 +44,7 @@ void
 InputMgr::clear()
 {
   delete_file(mCurFile);
-  mCurFile = NULL;
+  mCurFile = nullptr;
   for (vector<InputFile*>::iterator p = mFileStack.begin();
        p != mFileStack.end(); ++ p) {
     delete_file(*p);
@@ -117,7 +117,7 @@ InputMgr::set_file_loc(const char* new_filename,
 		       ymuint line,
 		       ymuint level)
 {
-  if ( mCurFile == NULL ) {
+  if ( mCurFile == nullptr ) {
     // ないと思うけど念のため
     return;
   }
@@ -174,7 +174,7 @@ InputMgr::wrap_up()
     delete_file(mCurFile);
     if ( mFileStack.empty() ) {
       // もうファイルが残っていない．
-      mCurFile = NULL;
+      mCurFile = nullptr;
       return false;
     }
 

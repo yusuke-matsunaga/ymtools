@@ -214,7 +214,7 @@ SatSolver::solve(const vector<Literal>& assumptions,
 void
 SatSolver::put_lit(Literal lit) const
 {
-  ASSERT_COND( mRecOut != NULL );
+  ASSERT_COND( mRecOut != nullptr );
 
   *mRecOut << " " << lit.varid();
   if ( lit.is_positive() ) {

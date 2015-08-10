@@ -110,7 +110,7 @@ SimRepeatLink::SimRepeatLink(SimEngine* engine,
   SimNode(engine, scope),
   mParent(parent)
 {
-  mBody = NULL;
+  mBody = nullptr;
 }
 
 // デストラクタ

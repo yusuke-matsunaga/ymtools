@@ -21,10 +21,10 @@ BEGIN_NAMESPACE_YM_DOTLIB
 
 // @brief コンストラクタ
 DotlibParserImpl::DotlibParserImpl() :
-  mDotlibMgr(NULL),
+  mDotlibMgr(nullptr),
   mLibraryHandler( HandlerFactory::new_library(*this) )
 {
-  mScanner = NULL;
+  mScanner = nullptr;
 }
 
 // デストラクタ
@@ -106,7 +106,7 @@ DotlibParserImpl::read_file(const string& filename,
 
  last:
   delete mScanner;
-  mScanner = NULL;
+  mScanner = nullptr;
 
   if ( error ) {
     return false;
@@ -125,7 +125,7 @@ DotlibParserImpl::expect(tTokenType req_type)
     return true;
   }
 
-  const char* type_str = NULL;
+  const char* type_str = nullptr;
   switch ( req_type ) {
   case COLON:      type_str = "':'"; break;
   case SEMI:       type_str = "';'"; break;

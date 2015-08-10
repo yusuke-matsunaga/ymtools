@@ -310,7 +310,7 @@ CptModule::cell() const
 }
 
 // 関数名から関数を検索する．
-// なければ NULL を返す．
+// なければ nullptr を返す．
 const PtItem*
 CptModule::find_function(const char* name) const
 {
@@ -319,7 +319,7 @@ CptModule::find_function(const char* name) const
     return ans;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -349,7 +349,7 @@ CptPort::file_region() const
 }
 
 // 外向の名前(本当のポート名)を取出す
-// 無い場合は NULL を返す
+// 無い場合は nullptr を返す
 const char*
 CptPort::ext_name() const
 {
@@ -360,7 +360,7 @@ CptPort::ext_name() const
 const PtExpr*
 CptPort::portref() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 内部のポート結線リストのサイズの取得
@@ -376,7 +376,7 @@ const PtExpr*
 CptPort::portref_elem(ymuint pos) const
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 //@brief 内部ポート結線の方向の取得

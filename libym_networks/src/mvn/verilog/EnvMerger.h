@@ -62,7 +62,7 @@ protected:
   /// @param[in] cond 切り替え条件
   /// @param[in] then_cond cond が成り立ったときの代入条件
   /// @param[in] else_cond cond が成り立たなかったときの代入条件
-  /// @note 基本的には ITE(cond, then_cond, else_cond) だが，NULL の場合がある．
+  /// @note 基本的には ITE(cond, then_cond, else_cond) だが，nullptr の場合がある．
   MvnNode*
   merge_cond(MvnModule* parent_module,
 	     MvnNode* cond,

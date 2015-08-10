@@ -73,7 +73,7 @@ public:
   /// @brief 名前からピンの取得
   /// @param[in] name ピン名
   /// @return name という名前をピンを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   virtual
   const CellPin*
   pin(const string& name) const = 0;
@@ -81,7 +81,7 @@ public:
   /// @brief 名前からピンの取得
   /// @param[in] name ピン名
   /// @return name という名前をピンを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   virtual
   const CellPin*
   pin(const char* name) const = 0;
@@ -152,7 +152,7 @@ public:
   /// @brief 名前からバスの取得
   /// @param[in] name バス名
   /// @return name という名前のバスを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   virtual
   const CellBus*
   bus(const string& name) const = 0;

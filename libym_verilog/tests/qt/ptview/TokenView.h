@@ -31,7 +31,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のウィジェット
-  TokenView(QWidget* parent = NULL);
+  TokenView(QWidget* parent = nullptr);
 
   /// @brief デストラクタ
   ~TokenView();

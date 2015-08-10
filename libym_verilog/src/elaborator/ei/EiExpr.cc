@@ -99,28 +99,28 @@ EiExpr::is_sysfunccall() const
 }
 
 // @brief 宣言要素もしくは配列型宣言要素への参照を返す．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlDeclBase*
 EiExpr::decl_base() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 対象のオブジェクトを返す．
 // @note プライマリ，ビット選択，部分選択の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlDecl*
 EiExpr::decl_obj() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 宣言要素の配列への参照の場合，対象のオブジェクトを返す．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlDeclArray*
 EiExpr::declarray_obj() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 配列型宣言要素への参照の場合，配列の次元を返す．
@@ -133,11 +133,11 @@ EiExpr::declarray_dimension() const
 
 // @brief 配列型宣言要素への参照の場合，配列のインデックスを返す．
 // @param[in] pos 位置番号 ( 0 <= pos < declarray_dimension() )
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 EiExpr::declarray_index(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 配列型宣言要素への参照のオフセットを返す．
@@ -150,29 +150,29 @@ EiExpr::declarray_offset() const
 
 // @brief 対象のオブジェクトを返す．
 // @note 対象がスコープの時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlNamedObj*
 EiExpr::scope_obj() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 対象のオブジェクトを返す．
 // @note 対象が ElbPrimitive の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlPrimitive*
 EiExpr::primitive_obj() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief インデックス式を返す．
 // @note ビット選択の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 EiExpr::index() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief インデックス値を返す．
@@ -193,11 +193,11 @@ EiExpr::range_mode() const
 
 // @brief 範囲の MSB を返す．
 // @note 部分選択の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 EiExpr::left_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲の MSB の値を返す．
@@ -211,11 +211,11 @@ EiExpr::left_range_val() const
 
 // @brief 範囲の LSB を返す．
 // @note 部分選択の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 EiExpr::right_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲の LSB の値を返す．
@@ -229,11 +229,11 @@ EiExpr::right_range_val() const
 
 // @brief 範囲のベースを表す式を返す．
 // @note 可変範囲選択の時，意味を持つ．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlExpr*
 EiExpr::base() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲のビット幅を返す．
@@ -247,11 +247,11 @@ EiExpr::range_width() const
 
 // @brief 親の式を返す．
 // @note 式に対するビット選択/範囲選択の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 EiExpr::parent_expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 演算子のタイプを返す．
@@ -310,20 +310,20 @@ EiExpr::constant_value() const
 
 // @brief 対象の関数を返す．
 // @note function call の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlTaskFunc*
 EiExpr::function() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 対象のシステム関数を返す．
 // @note system function call の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlUserSystf*
 EiExpr::user_systf() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 引数の数を返す．
@@ -338,11 +338,11 @@ EiExpr::argument_num() const
 // @brief 引数を返す．
 // @param[in] pos 位置番号 ( 0 <= pos < argument_num() )
 // @note kVpiFuncCall/kVpiSysFuncCall の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 EiExpr::argument(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 左辺式の要素数の取得
@@ -358,11 +358,11 @@ EiExpr::lhs_elem_num() const
 // @brief 左辺式の要素の取得
 // @param[in] pos 位置 ( 0 <= pos < lhs_elem_num() )
 // @note 連結演算子の見かけと異なり LSB 側が0番めの要素となる．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 EiExpr::lhs_elem(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 

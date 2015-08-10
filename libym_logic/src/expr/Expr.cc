@@ -20,21 +20,21 @@ BEGIN_NAMESPACE_YM_EXPR
 
 // 根のノードを指定したコンストラクタ
 Expr::Expr(const ExprNode* node) :
-  mRootPtr(NULL)
+  mRootPtr(nullptr)
 {
   set_root(node);
 }
 
 // デフォルトコンストラクタ
 Expr::Expr() :
-  mRootPtr(NULL)
+  mRootPtr(nullptr)
 {
   set_root(ExprMgr::the_obj().make_zero());
 }
 
 // コピーコンストラクタ
 Expr::Expr(const Expr& src) :
-  mRootPtr(NULL)
+  mRootPtr(nullptr)
 {
   set_root(src.root());
 }
@@ -70,7 +70,7 @@ Expr::operator=(const Expr& src)
 // デストラクタ
 Expr::~Expr()
 {
-  set_root(NULL);
+  set_root(nullptr);
 }
 
 // 定数 0 の論理式を作る

@@ -661,7 +661,7 @@ DlListBase::_end() const
 template<typename T>
 inline
 DlListIter<T>::DlListIter() :
-  mPtr(NULL)
+  mPtr(nullptr)
 {
 }
 
@@ -802,7 +802,7 @@ DlListIter<T>::prev_ptr()
 template<typename T>
 inline
 DlListConstIter<T>::DlListConstIter() :
-  mPtr(NULL)
+  mPtr(nullptr)
 {
 }
 

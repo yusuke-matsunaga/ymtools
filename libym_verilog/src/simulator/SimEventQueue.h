@@ -23,7 +23,7 @@ class SimEventQueue
 {
   friend class SimEqSet;
   friend class SimEngine;
-  
+
 private:
 
   // コンストラクタ
@@ -69,7 +69,7 @@ class SimEqSet
   friend class SimEqSetMgr;
 
 private:
-  
+
   // コンストラクタ
   SimEqSet();
 
@@ -81,7 +81,7 @@ public:
 
   // 時刻を得る．
   const VlTime& time() const;
-  
+
 
 private:
   //////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ public:
   void add(SimEqSet* eqset);
 
   // time の時刻を持つ要素を取り出す．
-  // なければ NULL を返す．
+  // なければ nullptr を返す．
   SimEqSet* find(const VlTime& time) const;
 
   // イベントキューが空の時 true を返す．
@@ -197,7 +197,7 @@ SimNode*
 SimEventQueue::pop()
 {
   if ( empty() ) {
-    return NULL;
+    return nullptr;
   }
   else {
     SimNode* ans = mQueue.front();
@@ -217,7 +217,7 @@ SimEventQueue::empty() const
 // コンストラクタ
 inline
 SimEqSet::SimEqSet() :
-  mAvailLink(NULL)
+  mAvailLink(nullptr)
 {
 }
 

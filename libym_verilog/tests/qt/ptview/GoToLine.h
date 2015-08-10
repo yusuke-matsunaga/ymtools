@@ -32,7 +32,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のウィジェット
-  GoToLine(QWidget* parent = NULL);
+  GoToLine(QWidget* parent = nullptr);
 
   /// @brief デストラクタ
   ~GoToLine();

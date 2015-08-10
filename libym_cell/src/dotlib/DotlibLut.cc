@@ -56,7 +56,7 @@ DotlibLut::set_data(const DotlibNode* lut_node)
     mIndex1 = index1_node->list_elem(0);
   }
   else {
-    mIndex1 = NULL;
+    mIndex1 = nullptr;
   }
 
   // 'index_2' を取り出す．
@@ -68,7 +68,7 @@ DotlibLut::set_data(const DotlibNode* lut_node)
     mIndex2 = index2_node->list_elem(0);
   }
   else {
-    mIndex2 = NULL;
+    mIndex2 = nullptr;
   }
 
   // 'index_3' を取り出す．
@@ -80,7 +80,7 @@ DotlibLut::set_data(const DotlibNode* lut_node)
     mIndex3 = index3_node->list_elem(0);
   }
   else {
-    mIndex3 = NULL;
+    mIndex3 = nullptr;
   }
 
   // 'values' を取り出す．
@@ -99,7 +99,7 @@ DotlibLut::template_name() const
 }
 
 // @brief 'index_1' のノードを返す．
-// @note 未定義なら NULL を返す．
+// @note 未定義なら nullptr を返す．
 const DotlibNode*
 DotlibLut::index_1() const
 {
@@ -107,7 +107,7 @@ DotlibLut::index_1() const
 }
 
 // @brief 'index_2' のノードを返す．
-// @note 未定義なら NULL を返す．
+// @note 未定義なら nullptr を返す．
 const DotlibNode*
 DotlibLut::index_2() const
 {
@@ -115,7 +115,7 @@ DotlibLut::index_2() const
 }
 
 // @brief 'index_3' のノードを返す．
-// @note 未定義なら NULL を返す．
+// @note 未定義なら nullptr を返す．
 const DotlibNode*
 DotlibLut::index_3() const
 {

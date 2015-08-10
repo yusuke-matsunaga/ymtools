@@ -45,7 +45,7 @@ BNetSopDecomp::operator()(BNetwork& network)
   }
 
   delete mManip;
-  mManip = NULL;
+  mManip = nullptr;
 }
 
 // sop_decomp_node で用いられるサブルーティン
@@ -165,8 +165,8 @@ BNetSopDecomp::sop_decomp_sub(BNode* orig_node,
 
 // tmp_fanins[b: b + ni - 1] を入力とする XOR をあらわす
 // SOP 2分木を network 上のノードとして作る．
-// root_node が NULL でない場合には root_node を根のノードとする．
-// root_node が NULL の場合には新しいノードを作る．
+// root_node が nullptr でない場合には root_node を根のノードとする．
+// root_node が nullptr の場合には新しいノードを作る．
 // いずれの場合でも根のノードを返す．
 BNode*
 BNetSopDecomp::build_xorsop_tree(ymuint b,
@@ -185,7 +185,7 @@ BNetSopDecomp::build_xorsop_tree(ymuint b,
     fanins[0] = tmp_fanins[b1];
   }
   else {
-    fanins[0] = build_xorsop_tree(b1, ni1, tmp_fanins, false, NULL);
+    fanins[0] = build_xorsop_tree(b1, ni1, tmp_fanins, false, nullptr);
   }
 
   ymuint b2 = b1 + ni1;
@@ -194,7 +194,7 @@ BNetSopDecomp::build_xorsop_tree(ymuint b,
     fanins[1] = tmp_fanins[b2];
   }
   else {
-    fanins[1] = build_xorsop_tree(b2, ni2, tmp_fanins, false, NULL);
+    fanins[1] = build_xorsop_tree(b2, ni2, tmp_fanins, false, nullptr);
   }
 
   Expr plit0 = Expr::make_posiliteral(VarId(0));
@@ -210,7 +210,7 @@ BNetSopDecomp::build_xorsop_tree(ymuint b,
     // XOR を表す積和形論理式
     expr = plit0 & nlit1 | plit1 & nlit0;
   }
-  if ( root_node == NULL ) {
+  if ( root_node == nullptr ) {
     root_node = mManip->new_logic();
   }
   bool stat = mManip->change_logic(root_node, expr, fanins);

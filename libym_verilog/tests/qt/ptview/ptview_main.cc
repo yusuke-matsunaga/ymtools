@@ -40,7 +40,7 @@ main(int argc,
 
   // サーチパスリスト
   // 今は未設定
-  const char* spath = NULL;
+  const char* spath = nullptr;
   SearchPathList splist;
   if ( spath ) {
     splist = SearchPathList(spath);

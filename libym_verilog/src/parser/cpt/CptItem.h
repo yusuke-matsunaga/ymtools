@@ -47,14 +47,14 @@ public:
 
   /// @brief strength の取得
   /// @return 信号強度
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtStrength*
   strength() const;
 
   /// @brief delay の取得
   /// @return 遅延
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtDelay*
   delay() const;
@@ -98,7 +98,7 @@ public:
 
   /// @brief 名前の取得
   /// @return 名前
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const char*
   name() const;
@@ -125,7 +125,7 @@ public:
 
   /// @brief 本体のステートメントの取得
   /// @return 本体のステートメント
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtStmt*
   body() const;
@@ -140,14 +140,14 @@ public:
 
   /// @brief 範囲の左側の式の取得
   /// @return 範囲の左側の式
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   left_range() const;
 
   /// @brief 範囲の右側の式の取得
   /// @return 範囲の右側の式
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   right_range() const;
@@ -200,14 +200,14 @@ public:
 
   /// @brief パス記述の取得
   /// @return パス記述
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtPathDecl*
   path_decl() const;
 
   /// @brief 条件式の取得
   /// @return 条件式
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   expr() const;
@@ -233,28 +233,28 @@ public:
   else_item_array() const;
 
   /// @brief case item の取得
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtGenCaseItem*
   caseitem(ymuint32 pos) const;
 
   /// @brief 繰り返し制御用の変数名の取得
   /// @return 繰り返し制御用の変数名
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const char*
   loop_var() const;
 
   /// @brief 初期化文の右辺の取得
   /// @return 初期化文の右辺
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   init_expr() const;
 
   /// @brief 増加文の右辺の取得
   /// @return 増加文の右辺
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   next_expr() const;

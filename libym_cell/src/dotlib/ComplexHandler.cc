@@ -42,7 +42,7 @@ ComplexHandler::read_attr(const ShString& attr_name,
 {
   FileRegion end_loc;
   DotlibNodeImpl* value = parse_complex(vector_mode(), end_loc);
-  if ( value == NULL ) {
+  if ( value == nullptr ) {
     return false;
   }
 

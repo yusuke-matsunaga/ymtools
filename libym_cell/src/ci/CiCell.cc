@@ -87,7 +87,7 @@ CiCell::CiCell(CiLibrary* library,
     mInternalArray = new (p) CiPin*[nit];
   }
   else {
-    mInternalArray = NULL;
+    mInternalArray = nullptr;
   }
 
   {
@@ -95,7 +95,7 @@ CiCell::CiCell(CiLibrary* library,
     void* s = alloc.get_memory(sizeof(const CiTimingArray*) * n);
     mTimingMap = new (s) CiTimingArray*[n];
     for (ymuint i = 0; i < n; ++ i) {
-      mTimingMap[i] = NULL;
+      mTimingMap[i] = nullptr;
     }
   }
 
@@ -176,7 +176,7 @@ CiCell::pin(ymuint id) const
 // @brief 名前からピンの取得
 // @param[in] name ピン名
 // @return name という名前をピンを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const CellPin*
 CiCell::pin(const string& name) const
 {
@@ -186,7 +186,7 @@ CiCell::pin(const string& name) const
 // @brief 名前からピンの取得
 // @param[in] name ピン名
 // @return name という名前をピンを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const CellPin*
 CiCell::pin(const char* name) const
 {
@@ -279,12 +279,12 @@ CiCell::bus(ymuint pos) const
 // @brief 名前からバスの取得
 // @param[in] name バス名
 // @return name という名前のバスを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const CellBus*
 CiCell::bus(const string& name) const
 {
   // 未完
-  return NULL;
+  return nullptr;
 }
 
 // @brief バンドル数の取得
@@ -307,7 +307,7 @@ const CellBundle*
 CiCell::bundle(const string& name) const
 {
   // 未完
-  return NULL;
+  return nullptr;
 }
 
 // @brief タイミング情報の数の取得
@@ -342,7 +342,7 @@ CiCell::timing_num(ymuint ipos,
   default:
     ASSERT_NOT_REACHED;
   }
-  if ( mTimingMap[base] == NULL ) {
+  if ( mTimingMap[base] == nullptr ) {
     return 0;
   }
   return mTimingMap[base]->mNum;

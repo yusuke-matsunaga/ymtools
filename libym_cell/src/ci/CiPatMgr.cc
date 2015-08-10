@@ -25,10 +25,10 @@ using namespace nsLibcomp;
 // @brief コンストラクタ
 CiPatMgr::CiPatMgr() :
   mNodeNum(0U),
-  mNodeTypeArray(NULL),
-  mEdgeArray(NULL),
+  mNodeTypeArray(nullptr),
+  mEdgeArray(nullptr),
   mPatNum(0),
-  mPatArray(NULL)
+  mPatArray(nullptr)
 {
 }
 

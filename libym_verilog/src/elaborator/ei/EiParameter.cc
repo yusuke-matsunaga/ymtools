@@ -48,8 +48,8 @@ EiFactory::new_ParamHead(const VlNamedObj* parent,
 			 int left_val,
 			 int right_val)
 {
-  ASSERT_COND( left != NULL );
-  ASSERT_COND( right != NULL );
+  ASSERT_COND( left != nullptr );
+  ASSERT_COND( right != nullptr );
 
   void* p = mAlloc.get_memory(sizeof(EiParamHeadV));
   EiParamHead* head = new (p) EiParamHeadV(parent, pt_head,
@@ -68,7 +68,7 @@ EiFactory::new_Parameter(ElbParamHead* head,
 			 const PtNamedBase* pt_item,
 			 bool is_local)
 {
-  EiParameter* param = NULL;
+  EiParameter* param = nullptr;
 
   switch ( head->type() ) {
   case kVpiParameter:
@@ -471,7 +471,7 @@ EiParameter::EiParameter(ElbParamHead* head,
 			 const PtNamedBase* pt_item) :
   mHead(head),
   mPtItem(pt_item),
-  mExpr(NULL)
+  mExpr(nullptr)
 {
 }
 

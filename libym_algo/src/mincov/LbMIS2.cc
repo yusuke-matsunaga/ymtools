@@ -43,7 +43,7 @@ LbMIS2::operator()(const McMatrix& matrix)
   void* p = alloc.get_memory(sizeof(MisNode*) * rs);
   MisNode** node_array = new (p) MisNode*[rs];
   for (ymuint i = 0; i < rs; ++ i) {
-    node_array[i] = NULL;
+    node_array[i] = nullptr;
   }
 
   ymuint idx = 0;

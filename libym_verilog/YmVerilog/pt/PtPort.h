@@ -37,7 +37,7 @@ public:
 
   /// @brief 外向の名前の取得
   /// @return 外向の名前(本当のポート名)\n
-  /// 無い場合は NULL を返す
+  /// 無い場合は nullptr を返す
   virtual
   const char*
   ext_name() const = 0;

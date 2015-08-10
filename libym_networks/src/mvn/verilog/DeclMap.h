@@ -56,7 +56,7 @@ public:
   /// @brief 対応するノードを取り出す．
   /// @param[in] decl 宣言要素
   /// @return 対応するノードを返す．
-  /// @note 登録されていない場合と配列型の場合には NULL を返す．
+  /// @note 登録されていない場合と配列型の場合には nullptr を返す．
   MvnNode*
   get(const VlDecl* decl) const;
 
@@ -65,7 +65,7 @@ public:
   /// @param[in] offset オフセット
   /// @return 対応するノードを返す．
   /// @note 登録されていない場合と配列型でない場合，
-  /// オフセットが範囲外の場合には NULL を返す．
+  /// オフセットが範囲外の場合には nullptr を返す．
   MvnNode*
   get(const VlDecl* decl,
       ymuint offset) const;

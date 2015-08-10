@@ -34,7 +34,7 @@ main(int argc,
 
   const char* filename = argv[base];
 
-  const CellLibrary* library = NULL;
+  const CellLibrary* library = nullptr;
   if ( dotlib ) {
     CellDotlibReader dotlib_reader;
     library = dotlib_reader(filename);
@@ -43,7 +43,7 @@ main(int argc,
     CellMislibReader mislib_reader;
     library = mislib_reader(filename);
   }
-  if ( library == NULL ) {
+  if ( library == nullptr ) {
     cerr << filename << ": Error in reading library" << endl;
     return 1;
   }

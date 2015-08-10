@@ -353,7 +353,7 @@ inline
 bool
 GpHandle::is_const0() const
 {
-  return node() == NULL && !inv();
+  return node() == nullptr && !inv();
 }
 
 // @brief 定数1を表しているとき true を返す．
@@ -361,7 +361,7 @@ inline
 bool
 GpHandle::is_const1() const
 {
-  return node() == NULL && inv();
+  return node() == nullptr && inv();
 }
 
 // @brief 等価比較演算子

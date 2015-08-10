@@ -146,7 +146,7 @@ RawLex::get_token()
 	  // 先頭の '`' をスキップする．
 	  const char* macroname = cur_string() + 1;
 	  LexPlugin* plugin = mPluginDict.find_plugin(macroname);
-	  if ( plugin == NULL ) {
+	  if ( plugin == nullptr ) {
 	    ostringstream buf;
 	    buf << "macro `" << macroname << " is not defined.";
 	    MsgMgr::put_msg(__FILE__, __LINE__,
@@ -461,7 +461,7 @@ bool
 RawLex::is_macro_defined(const char* name) const
 {
   LexPlugin* plugin = mPluginDict.find_plugin(name);
-  if ( plugin == NULL ) {
+  if ( plugin == nullptr ) {
     return false;
   }
   return plugin->is_macro();

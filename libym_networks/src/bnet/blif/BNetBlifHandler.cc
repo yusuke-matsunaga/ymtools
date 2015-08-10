@@ -20,8 +20,8 @@ BEGIN_NAMESPACE_YM_NETWORKS_BLIF
 
 // @brief コンストラクタ
 BNetBlifHandler::BNetBlifHandler() :
-  mNetwork(NULL),
-  mManip(NULL)
+  mNetwork(nullptr),
+  mManip(nullptr)
 {
 }
 
@@ -42,7 +42,7 @@ BNetBlifHandler::set_network(BNetwork* network)
 bool
 BNetBlifHandler::init()
 {
-  ASSERT_COND( mManip == NULL );
+  ASSERT_COND( mManip == nullptr );
 
   mManip = new BNetManip(mNetwork);
   mNetwork->clear();
@@ -236,7 +236,7 @@ void
 BNetBlifHandler::normal_exit()
 {
   delete mManip;
-  mManip = NULL;
+  mManip = nullptr;
 }
 
 // @brief エラー終了時の処理
@@ -245,7 +245,7 @@ BNetBlifHandler::error_exit()
 {
   mNetwork->clear();
   delete mManip;
-  mManip = NULL;
+  mManip = nullptr;
 }
 
 // @brief ノードの取得 & 生成
@@ -254,7 +254,7 @@ BNetBlifHandler::get_node(ymuint32 id)
 {
   resize(id);
   BNode* node = mNodeArray[id];
-  if ( node == NULL ) {
+  if ( node == nullptr ) {
     node = mManip->new_logic(id2str(id));
     mNodeArray[id] = node;
   }
@@ -266,7 +266,7 @@ BNetBlifHandler::resize(ymuint32 id)
 {
   size_t n = mNodeArray.size();
   while ( n <= id ) {
-    mNodeArray.push_back(NULL);
+    mNodeArray.push_back(nullptr);
     ++ n;
   }
 }

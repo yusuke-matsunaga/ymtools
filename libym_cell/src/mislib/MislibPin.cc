@@ -36,7 +36,7 @@ MislibPin::MislibPin(const FileRegion& loc,
   mFallBlockDelay(fall_block_delay),
   mFallFanoutDelay(fall_fanout_delay)
 {
-  mNext = NULL;
+  mNext = nullptr;
 }
 
 // デストラクタ

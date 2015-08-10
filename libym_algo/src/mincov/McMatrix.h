@@ -379,7 +379,7 @@ inline
 const McRowHead*
 McMatrix::row(ymuint32 row_pos) const
 {
-  if ( mRowArray[row_pos] == NULL ) {
+  if ( mRowArray[row_pos] == nullptr ) {
     mRowArray[row_pos] = new McRowHead(row_pos);
   }
   return mRowArray[row_pos];
@@ -391,7 +391,7 @@ inline
 McRowHead*
 McMatrix::row(ymuint32 row_pos)
 {
-  if ( mRowArray[row_pos] == NULL ) {
+  if ( mRowArray[row_pos] == nullptr ) {
     mRowArray[row_pos] = new McRowHead(row_pos);
   }
   return mRowArray[row_pos];
@@ -438,7 +438,7 @@ inline
 const McColHead*
 McMatrix::col(ymuint32 col_pos) const
 {
-  if ( mColArray[col_pos] == NULL ) {
+  if ( mColArray[col_pos] == nullptr ) {
     mColArray[col_pos] = new McColHead(col_pos);
   }
   return mColArray[col_pos];
@@ -450,7 +450,7 @@ inline
 McColHead*
 McMatrix::col(ymuint32 col_pos)
 {
-  if ( mColArray[col_pos] == NULL ) {
+  if ( mColArray[col_pos] == nullptr ) {
     mColArray[col_pos] = new McColHead(col_pos);
   }
   return mColArray[col_pos];

@@ -36,8 +36,8 @@ Parser::new_Port1(const FileRegion& file_region)
   // 範囲指定が無いときには内側の名前を外側の名前とする．
   if ( mPortRefList.size() == 1 ) {
     const PtExpr* portref = mPortRefList.front();
-    const char* name = NULL;
-    if ( portref->index_num() == 0 && portref->left_range() == NULL ) {
+    const char* name = nullptr;
+    if ( portref->index_num() == 0 && portref->left_range() == nullptr ) {
       name = portref->name();
     }
     mPortRefList.clear();
@@ -46,7 +46,7 @@ Parser::new_Port1(const FileRegion& file_region)
   else {
     PtExprArray portref_array = mPortRefList.to_array(mAlloc);
     const PtExpr* portref = mFactory.new_Concat(file_region, portref_array);
-    add_port( mFactory.new_Port(file_region, portref, portref_array, NULL) );
+    add_port( mFactory.new_Port(file_region, portref, portref_array, nullptr) );
   }
 }
 

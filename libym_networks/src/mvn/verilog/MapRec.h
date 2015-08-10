@@ -45,13 +45,13 @@ public:
   is_array_elem() const = 0;
 
   /// @brief 宣言要素を返す．(単一要素版)
-  /// @note is_single_elem() == false の時は NULL が返される．
+  /// @note is_single_elem() == false の時は nullptr が返される．
   virtual
   const VlDecl*
   get_single_elem() const = 0;
 
   /// @brief 宣言要素を返す．(配列要素版)
-  /// @note is_array_elem(id) == false の時は NULL が返される．
+  /// @note is_array_elem(id) == false の時は nullptr が返される．
   virtual
   const VlDeclArray*
   get_array_elem() const = 0;
@@ -99,12 +99,12 @@ public:
   is_array_elem() const;
 
   /// @brief 宣言要素を返す．(単一要素版)
-  /// @note is_single_elem() == false の時は NULL が返される．
+  /// @note is_single_elem() == false の時は nullptr が返される．
   const VlDecl*
   get_single_elem() const;
 
   /// @brief 宣言要素を返す．(配列要素版)
-  /// @note is_array_elem(id) == false の時は NULL が返される．
+  /// @note is_array_elem(id) == false の時は nullptr が返される．
   const VlDeclArray*
   get_array_elem() const;
 
@@ -161,12 +161,12 @@ public:
   is_array_elem() const;
 
   /// @brief 宣言要素を返す．(単一要素版)
-  /// @note is_single_elem() == false の時は NULL が返される．
+  /// @note is_single_elem() == false の時は nullptr が返される．
   const VlDecl*
   get_single_elem() const;
 
   /// @brief 宣言要素を返す．(配列要素版)
-  /// @note is_array_elem(id) == false の時は NULL が返される．
+  /// @note is_array_elem(id) == false の時は nullptr が返される．
   const VlDeclArray*
   get_array_elem() const;
 

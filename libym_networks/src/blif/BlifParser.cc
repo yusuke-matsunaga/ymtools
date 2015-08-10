@@ -50,7 +50,7 @@ END_NONAMESPACE
 // @brief コンストラクタ
 BlifParser::BlifParser()
 {
-  mScanner = NULL;
+  mScanner = nullptr;
 }
 
 // @brief デストラクタ
@@ -200,7 +200,7 @@ BlifParser::read(const string& filename,
       goto ST_NAMES;
 
     case kTokenGATE:
-      if ( mCellLibrary == NULL ) {
+      if ( mCellLibrary == nullptr ) {
 	MsgMgr::put_msg(__FILE__, __LINE__,
 			mLoc1,
 			kMsgError,
@@ -571,7 +571,7 @@ BlifParser::read(const string& filename,
     }
     const char* name = mScanner->cur_string();
     mCell = mCellLibrary->cell(name);
-    if ( mCell == NULL ) {
+    if ( mCell == nullptr ) {
       ostringstream buf;
       buf << name << ": No such cell.";
       MsgMgr::put_msg(__FILE__, __LINE__, loc,
@@ -608,7 +608,7 @@ BlifParser::read(const string& filename,
       return false;
     }
     mNameArray.clear();
-    mNameArray.resize(mCell->pin_num(), NULL);
+    mNameArray.resize(mCell->pin_num(), nullptr);
     n_token = 0;
     goto ST_GATE1;
   }
@@ -621,7 +621,7 @@ BlifParser::read(const string& filename,
       mName1 = mScanner->cur_string();
       const char* name1 = mName1.c_str();
       const CellPin* pin = mCell->pin(name1);
-      if ( pin == NULL ) {
+      if ( pin == nullptr ) {
 	ostringstream buf;
 	buf << name1 << ": No such pin.";
 	MsgMgr::put_msg(__FILE__, __LINE__, loc1,
@@ -657,7 +657,7 @@ BlifParser::read(const string& filename,
 	}
 	cell->set_defined();
       }
-      if ( mNameArray[pin->pin_id()] != NULL ) {
+      if ( mNameArray[pin->pin_id()] != nullptr ) {
 	ostringstream buf;
 	buf << name2 << ": Appears more than once.";
 	MsgMgr::put_msg(__FILE__, __LINE__, loc2,
@@ -854,7 +854,7 @@ BlifParser::read(const string& filename,
     handler->normal_exit();
   }
   delete mScanner;
-  mScanner = NULL;
+  mScanner = nullptr;
 
   return true;
 
@@ -873,7 +873,7 @@ BlifParser::read(const string& filename,
     handler->error_exit();
   }
   delete mScanner;
-  mScanner = NULL;
+  mScanner = nullptr;
 
   return false;
 }

@@ -36,7 +36,7 @@ BlifNetworkImpl::~BlifNetworkImpl()
 void
 BlifNetworkImpl::clear()
 {
-  mName = NULL;
+  mName = nullptr;
   mNodeArray.clear();
   mPIArray.clear();
   mPOArray.clear();
@@ -95,7 +95,7 @@ BlifNetworkImpl::new_logic(ymuint32 node_id,
   const char* new_node_name = alloc_string(node_name);
 
   ymuint ni = inode_id_array.size();
-  ymuint32* fanins = NULL;
+  ymuint32* fanins = nullptr;
   if ( ni > 0 ) {
     void* q = mAlloc.get_memory(sizeof(ymuint32) * ni);
     fanins = new (q) ymuint32[ni];
@@ -104,7 +104,7 @@ BlifNetworkImpl::new_logic(ymuint32 node_id,
     }
   }
 
-  const char* new_cover_pat = NULL;
+  const char* new_cover_pat = nullptr;
   if ( ni > 0 ) {
     new_cover_pat = alloc_string(cover_pat);
   }
@@ -131,7 +131,7 @@ BlifNetworkImpl::new_gate(ymuint32 node_id,
   const char* new_node_name = alloc_string(node_name);
 
   ymuint ni = inode_id_array.size();
-  ymuint32* fanins = NULL;
+  ymuint32* fanins = nullptr;
   if ( ni > 0 ) {
     void* q = mAlloc.get_memory(sizeof(ymuint32) * ni);
     fanins = new (q) ymuint32[ni];
@@ -177,7 +177,7 @@ BlifNetworkImpl::set_node(ymuint32 node_id,
 			  BlifNode* node)
 {
   while ( mNodeArray.size() <= node_id ) {
-    mNodeArray.push_back(NULL);
+    mNodeArray.push_back(nullptr);
   }
 
   mNodeArray[node_id] = node;

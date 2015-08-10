@@ -41,7 +41,7 @@ EiFactory::new_Function(const VlNamedObj* parent,
 			int left_val,
 			int right_val)
 {
-  ASSERT_COND( left != NULL && right != NULL );
+  ASSERT_COND( left != nullptr && right != nullptr );
 
   // IO数を数え配列を初期化する．
   ymuint io_num = pt_item->ioitem_num();
@@ -108,7 +108,7 @@ EiTaskFunc::EiTaskFunc(const VlNamedObj* parent,
   mPtItem(pt_item),
   mIODeclNum(io_num),
   mIODeclList(io_array),
-  mStmt(NULL)
+  mStmt(nullptr)
 {
 }
 

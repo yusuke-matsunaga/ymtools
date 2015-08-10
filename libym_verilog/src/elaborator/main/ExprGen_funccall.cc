@@ -76,13 +76,13 @@ ExprGen::instantiate_funccall(const VlNamedObj* parent,
 			      const ElbEnv& env,
 			      const PtExpr* pt_expr)
 {
-  const ElbTaskFunc* child_func = NULL;
+  const ElbTaskFunc* child_func = nullptr;
   if ( env.is_constant() ) {
     // 定数関数を探し出す．
     PtNameBranchArray nb_array = pt_expr->namebranch_array();
     if ( nb_array.size() > 0 ) {
       error_hname_in_ce(pt_expr);
-      return NULL;
+      return nullptr;
     }
 
     // 関数名
@@ -96,16 +96,16 @@ ExprGen::instantiate_funccall(const VlNamedObj* parent,
     const PtItem* pt_func = pt_module->find_function(name);
     if ( !pt_func ) {
       error_no_such_function(pt_expr);
-      return NULL;
+      return nullptr;
     }
 
     if ( pt_func->is_in_use() ) {
       error_uses_itself(pt_expr);
-      return NULL;
+      return nullptr;
     }
 
     child_func = find_constant_function(module, name);
-    if ( child_func == NULL ) {
+    if ( child_func == nullptr ) {
       pt_func->set_in_use();
       // なかったので作る．
       child_func = instantiate_constant_function(parent, pt_func);
@@ -113,21 +113,21 @@ ExprGen::instantiate_funccall(const VlNamedObj* parent,
     }
     if ( !child_func ) {
       error_not_a_constant_function(pt_expr);
-      return NULL;
+      return nullptr;
     }
   }
   else {
     // 関数本体を探し出す．
     PtNameBranchArray nb_array = pt_expr->namebranch_array();
     const char* name = pt_expr->name();
-    ElbObjHandle* handle = find_obj_up(parent, nb_array, name, NULL);
-    if ( handle == NULL ) {
+    ElbObjHandle* handle = find_obj_up(parent, nb_array, name, nullptr);
+    if ( handle == nullptr ) {
       error_no_such_function(pt_expr);
-      return NULL;
+      return nullptr;
     }
     if ( handle->type() != kVpiFunction ) {
       error_not_a_function(pt_expr);
-      return NULL;
+      return nullptr;
     }
     child_func = handle->taskfunc();
     ASSERT_COND(child_func );
@@ -137,7 +137,7 @@ ExprGen::instantiate_funccall(const VlNamedObj* parent,
   ymuint n = pt_expr->operand_num();
   if ( n != child_func->io_num() ) {
     error_n_of_arguments_mismatch(pt_expr);
-    return NULL;
+    return nullptr;
   }
 
   ElbExpr** arg_list = factory().new_ExprList(n);
@@ -146,7 +146,7 @@ ExprGen::instantiate_funccall(const VlNamedObj* parent,
     ElbExpr* expr1 = instantiate_expr(parent, env, pt_expr1);
     if ( !expr1 ) {
       // エラーが起った．
-      return NULL;
+      return nullptr;
     }
     ElbIODecl* io_decl = child_func->_io(i);
     ElbDecl* decl = io_decl->_decl();
@@ -190,9 +190,9 @@ ExprGen::instantiate_sysfunccall(const VlNamedObj* parent,
 
   // system function を探し出す．
   const ElbUserSystf* user_systf = find_user_systf(name);
-  if ( user_systf == NULL ) {
+  if ( user_systf == nullptr ) {
     error_no_such_sysfunction(pt_expr);
-    return NULL;
+    return nullptr;
   }
 
 #warning "TODO: 2011-02-09-04 引数の個数と型のチェック"
@@ -202,12 +202,12 @@ ExprGen::instantiate_sysfunccall(const VlNamedObj* parent,
   ElbExpr** arg_list = factory().new_ExprList(n);
   for (ymuint i = 0; i < n; ++ i) {
     const PtExpr* pt_expr1 = pt_expr->operand(i);
-    ElbExpr* arg = NULL;
+    ElbExpr* arg = nullptr;
     if ( pt_expr ) {
       arg = instantiate_arg(parent, env, pt_expr1);
       if ( !arg ) {
 	// エラーが起った．
-	return NULL;
+	return nullptr;
       }
     }
     else {
@@ -268,7 +268,7 @@ ExprGen::evaluate_funccall(const VlNamedObj* parent,
   }
 
   const ElbTaskFunc* child_func = find_constant_function(module, name);
-  if ( child_func == NULL ) {
+  if ( child_func == nullptr ) {
     pt_func->set_in_use();
     // なかったので作る．
     child_func = instantiate_constant_function(parent, pt_func);

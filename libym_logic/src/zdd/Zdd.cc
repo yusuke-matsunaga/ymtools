@@ -32,7 +32,7 @@ Zdd::set(ZddMgrImpl* mgr,
     top->mPrev = this;
   }
   mMgr->mTopZdd = this;
-  mPrev = NULL;
+  mPrev = nullptr;
 }
 
 // @brief (mMgr, mRoot) への参照をなくす時に呼ばれる関数

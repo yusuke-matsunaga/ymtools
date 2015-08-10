@@ -28,7 +28,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief コンストラクタ
 ElbObjHandle::ElbObjHandle() :
-  mLink(NULL)
+  mLink(nullptr)
 {
 }
 
@@ -59,83 +59,83 @@ ElbObjHandle::full_name()
 }
 
 // @brief 配列要素の VlNamedObj を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlNamedObj*
 ElbObjHandle::array_elem(int index)
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ElbDecl を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbDecl*
 ElbObjHandle::decl()
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ElbDeclArray を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbDeclArray*
 ElbObjHandle::declarray()
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ElbParameter を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbParameter*
 ElbObjHandle::parameter()
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ElbTaskFunc を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbTaskFunc*
 ElbObjHandle::taskfunc()
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ElbModuleArray を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbModuleArray*
 ElbObjHandle::module_array()
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ElbPrimArray を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbPrimArray*
 ElbObjHandle::prim_array()
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ElbPrimitive を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbPrimitive*
 ElbObjHandle::primitive()
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ElbGfRoot を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbGfRoot*
 ElbObjHandle::gfroot()
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ElbGenvar を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbGenvar*
 ElbObjHandle::genvar()
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -469,7 +469,7 @@ void
 ObjDict::clear()
 {
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
   mNum = 0;
 }
@@ -605,7 +605,7 @@ ObjDict::find(const VlNamedObj* parent,
       return handle;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief このオブジェクトが使用しているメモリ量を返す．
@@ -623,7 +623,7 @@ ObjDict::alloc_table(ymuint size)
   mLimit = static_cast<ymuint>(mSize * 1.8);
   mTable = new ElbObjHandle*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

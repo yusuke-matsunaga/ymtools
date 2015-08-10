@@ -35,7 +35,7 @@ protected:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] stmt 本体のステートメント
@@ -103,7 +103,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] stmt 本体のステートメント
@@ -145,7 +145,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] stmt 本体のステートメント
@@ -187,7 +187,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] stmt 本体のステートメント
@@ -229,7 +229,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] init_stmt 初期化式
@@ -303,7 +303,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] stmt 本体のステートメント
   EiForeverStmt(const VlNamedObj* parent,
@@ -363,7 +363,7 @@ protected:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] stmt 本体のステートメント
@@ -442,7 +442,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] stmt 本体のステートメント
@@ -585,7 +585,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] expr 条件式
   /// @param[in] caseitem_num caseitem の要素数

@@ -19,7 +19,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 EiStmtBase::EiStmtBase(const VlNamedObj* parent,
 		       ElbProcess* process,

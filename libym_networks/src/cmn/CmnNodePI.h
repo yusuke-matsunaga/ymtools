@@ -45,7 +45,7 @@ public:
 
   /// @brief 関連するポートを返す．
   /// @note kPRIMARY_INPUT および kPRIMARY_OUTPUT の時のみ意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const CmnPort*
   port() const;
@@ -58,7 +58,7 @@ public:
   port_bitpos() const;
 
   /// @brief 入出力ノードの場合に相方のノードを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   virtual
   const CmnNode*
   alt_node() const;

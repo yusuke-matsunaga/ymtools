@@ -44,7 +44,7 @@ public:
   /// @brief テンプレートを取り出す．
   /// @param[in] name 名前
   /// @return name という名前のテンプレートを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   CiLutTemplate*
   get(ShString name) const;
 

@@ -53,7 +53,7 @@ public:
 
   /// @brief ID番号から D-FF を得る．
   /// @param[in] id ID番号 ( 0 <= id < max_dff_id() )
-  /// @note 該当するD-FFが無い場合には NULL を返す．
+  /// @note 該当するD-FFが無い場合には nullptr を返す．
   const BdnDff*
   dff(ymuint id) const;
 
@@ -71,7 +71,7 @@ public:
 
   /// @brief ID番号からラッチを得る．
   /// @param[in] id ID番号 ( 0 <= id < max_latch_id() )
-  /// @note 該当するラッチが無い場合には NULL を返す．
+  /// @note 該当するラッチが無い場合には nullptr を返す．
   const BdnLatch*
   latch(ymuint id) const;
 
@@ -214,7 +214,7 @@ public:
   /// @return ノード＋極性を返す．
   /// @note すでに構造的に同じノードがあればそれを返す．
   /// @note なければ node に設定する．
-  /// @note node が NULL の場合，新しいノードを確保する．
+  /// @note node が nullptr の場合，新しいノードを確保する．
   BdnNodeHandle
   set_and(BdnNode* node,
 	  BdnNodeHandle inode1_handle,
@@ -227,7 +227,7 @@ public:
   /// @return ノード＋極性を返す．
   /// @note すでに構造的に同じノードがあればそれを返す．
   /// @note なければ node に設定する．
-  /// @note node が NULL の場合，新しいノードを確保する．
+  /// @note node が nullptr の場合，新しいノードを確保する．
   BdnNodeHandle
   set_xor(BdnNode* node,
 	  BdnNodeHandle inode1_handle,
@@ -236,7 +236,7 @@ public:
   /// @brief AND のバランス木を作る．
   /// @param[in] node 根のノード
   /// @param[in] node_list 入力のノードのリスト
-  /// @note node が NULL の場合，新しいノードを確保する．
+  /// @note node が nullptr の場合，新しいノードを確保する．
   BdnNodeHandle
   make_and_tree(BdnNode* node,
 		const vector<BdnNodeHandle>& node_list);
@@ -244,7 +244,7 @@ public:
   /// @brief OR のバランス木を作る．
   /// @param[in] node 根のノード
   /// @param[in] node_list 入力のノードのリスト
-  /// @note node が NULL の場合，新しいノードを確保する．
+  /// @note node が nullptr の場合，新しいノードを確保する．
   BdnNodeHandle
   make_or_tree(BdnNode* node,
 	       const vector<BdnNodeHandle>& node_list);
@@ -252,7 +252,7 @@ public:
   /// @brief XOR のバランス木を作る．
   /// @param[in] node 根のノード
   /// @param[in] node_list 入力のノードのリスト
-  /// @note node が NULL の場合，新しいノードを確保する．
+  /// @note node が nullptr の場合，新しいノードを確保する．
   BdnNodeHandle
   make_xor_tree(BdnNode* node,
 		const vector<BdnNodeHandle>& node_list);
@@ -300,7 +300,7 @@ private:
   /// @param[in] start 開始位置
   /// @param[in] num 要素数
   /// @param[in] node_list 入力のノードのリスト
-  /// @note node が NULL の場合，新しいノードを確保する．
+  /// @note node が nullptr の場合，新しいノードを確保する．
   BdnNodeHandle
   make_tree(BdnNode* node,
 	    bool is_xor,
@@ -317,7 +317,7 @@ private:
   /// @return ノード＋極性を返す．
   /// @note すでに構造的に同じノードがあればそれを返す．
   /// @note なければ node に設定する．
-  /// @note node が NULL の場合，新しいノードを確保する．
+  /// @note node が nullptr の場合，新しいノードを確保する．
   BdnNodeHandle
   set_logic(BdnNode* node,
 	    bool is_xor,
@@ -360,7 +360,7 @@ private:
   /// @param[in] node1 1番めのノード
   /// @param[in] node2 2番めのノード
   /// @return 該当のノードを返す．
-  /// @note 見つからなければ NULL を返す．
+  /// @note 見つからなければ nullptr を返す．
   BdnNode*
   find_node(ymuint fcode,
 	    const BdnNode* node1,
@@ -511,7 +511,7 @@ BdnMgrImpl::max_dff_id() const
 
 // @brief ID番号から D-FF を得る．
 // @param[in] id ID番号 ( 0 <= id < max_dff_id() )
-// @note 該当するD-FFが無い場合には NULL を返す．
+// @note 該当するD-FFが無い場合には nullptr を返す．
 inline
 const BdnDff*
 BdnMgrImpl::dff(ymuint id) const
@@ -545,7 +545,7 @@ BdnMgrImpl::max_latch_id() const
 
 // @brief ID番号からラッチを得る．
 // @param[in] id ID番号 ( 0 <= id < max_latch_id() )
-// @note 該当するラッチが無い場合には NULL を返す．
+// @note 該当するラッチが無い場合には nullptr を返す．
 inline
 const BdnLatch*
 BdnMgrImpl::latch(ymuint id) const
@@ -641,7 +641,7 @@ BdnMgrImpl::lnode_list() const
 // @return ノード＋極性を返す．
 // @note すでに構造的に同じノードがあればそれを返す．
 // @note なければ node に設定する．
-// @note node が NULL の場合，新しいノードを確保する．
+// @note node が nullptr の場合，新しいノードを確保する．
 inline
 BdnNodeHandle
 BdnMgrImpl::set_and(BdnNode* node,
@@ -658,7 +658,7 @@ BdnMgrImpl::set_and(BdnNode* node,
 // @return ノード＋極性を返す．
 // @note すでに構造的に同じノードがあればそれを返す．
 // @note なければ node に設定する．
-// @note node が NULL の場合，新しいノードを確保する．
+// @note node が nullptr の場合，新しいノードを確保する．
 inline
 BdnNodeHandle
 BdnMgrImpl::set_xor(BdnNode* node,
@@ -671,7 +671,7 @@ BdnMgrImpl::set_xor(BdnNode* node,
 // @brief AND のバランス木を作る．
 // @param[in] node 根のノード
 // @param[in] node_list 入力のノードのリスト
-// @note node が NULL の場合，新しいノードを確保する．
+// @note node が nullptr の場合，新しいノードを確保する．
 inline
 BdnNodeHandle
 BdnMgrImpl::make_and_tree(BdnNode* node,
@@ -683,7 +683,7 @@ BdnMgrImpl::make_and_tree(BdnNode* node,
 // @brief OR のバランス木を作る．
 // @param[in] node 根のノード
 // @param[in] node_list 入力のノードのリスト
-// @note node が NULL の場合，新しいノードを確保する．
+// @note node が nullptr の場合，新しいノードを確保する．
 inline
 BdnNodeHandle
 BdnMgrImpl::make_or_tree(BdnNode* node,
@@ -695,7 +695,7 @@ BdnMgrImpl::make_or_tree(BdnNode* node,
 // @brief XOR のバランス木を作る．
 // @param[in] node 根のノード
 // @param[in] node_list 入力のノードのリスト
-// @note node が NULL の場合，新しいノードを確保する．
+// @note node が nullptr の場合，新しいノードを確保する．
 inline
 BdnNodeHandle
 BdnMgrImpl::make_xor_tree(BdnNode* node,

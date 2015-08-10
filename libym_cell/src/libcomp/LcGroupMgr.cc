@@ -96,7 +96,7 @@ LcGroupMgr::find_group(const TvFuncM& f,
   NpnMapM xmap;
   find_repfunc(f, repfunc, xmap);
 
-  LcClass* fclass = NULL;
+  LcClass* fclass = nullptr;
   ymuint fcid;
   if ( mClassMap.find(repfunc, fcid) ) {
     // 登録されていた．

@@ -290,13 +290,13 @@ public:
   bit_size() const;
 
   /// @brief 対応する宣言要素を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlDecl*
   decl() const;
 
   /// @brief 親のモジュールの取得
-  /// @return このクラスは NULL を返す．
+  /// @return このクラスは nullptr を返す．
   virtual
   const VlModule*
   module() const;
@@ -307,13 +307,13 @@ public:
   udp_defn() const;
 
   /// @brief 親のタスクの取得
-  /// @return このクラスは NULL を返す．
+  /// @return このクラスは nullptr を返す．
   virtual
   const VlTaskFunc*
   task() const;
 
   /// @brief 親の関数の取得
-  /// @return このクラスは NULL を返す．
+  /// @return このクラスは nullptr を返す．
   virtual
   const VlTaskFunc*
   function() const;

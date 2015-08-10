@@ -55,9 +55,9 @@ END_NONAMESPACE
 TvFuncTest::TvFuncTest(ostream& out) :
   mOut(out),
   mNerr(0),
-  mW1Cache(NULL),
+  mW1Cache(nullptr),
   mW1CacheSize(0),
-  mW2Cache(NULL),
+  mW2Cache(nullptr),
   mW2CacheSize(0)
 {
 }

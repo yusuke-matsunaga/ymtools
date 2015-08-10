@@ -53,7 +53,7 @@ EiFactory::new_PartSelect(const PtExpr* pt_expr,
 {
   void* p = mAlloc.get_memory(sizeof(EiConstPartSelect));
   ElbExpr* expr = new (p) EiConstPartSelect(pt_expr, parent_expr,
-					    NULL, NULL,
+					    nullptr, nullptr,
 					    index1, index2);
 
   return expr;
@@ -142,7 +142,7 @@ EiPartSelect::is_partselect() const
 }
 
 // @brief 宣言要素もしくは配列型宣言要素への参照を返す．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlDeclBase*
 EiPartSelect::decl_base() const
 {
@@ -175,7 +175,7 @@ EiPartSelect::declarray_dimension() const
 
 // @brief 配列型宣言要素への参照の場合，配列のインデックスを返す．
 // @param[in] pos 位置番号 ( 0 <= pos < declarray_dimension() )
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlExpr*
 EiPartSelect::declarray_index(ymuint pos) const
 {
@@ -223,11 +223,11 @@ EiPartSelect::_set_reqsize(const VlValueType& type)
 // @brief オペランドを返す．
 // @param[in] pos 位置番号
 // @note 演算子の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbExpr*
 EiPartSelect::_operand(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -293,7 +293,7 @@ EiConstPartSelect::range_mode() const
 const VlExpr*
 EiConstPartSelect::left_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲の LSB の式を返す．
@@ -301,7 +301,7 @@ EiConstPartSelect::left_range() const
 const VlExpr*
 EiConstPartSelect::right_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲の MSB の値を返す．
@@ -365,7 +365,7 @@ EiVarPartSelect::is_constant_select() const
 
 // @brief 範囲のベースを表す式を返す．
 // @note 可変範囲選択の時，意味を持つ．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlExpr*
 EiVarPartSelect::base() const
 {

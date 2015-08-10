@@ -37,7 +37,7 @@ void
 NameHash::clear()
 {
   for (size_t i = 0; i < mTableSize; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
   mAlloc.destroy();
   mNum = 0;
@@ -72,7 +72,7 @@ NameHash::find_node(const char* name)
       return cell->mNode;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief ノードを登録する．
@@ -118,7 +118,7 @@ NameHash::alloc_table(size_t new_size)
   mTableSize = new_size;
   mNextLimit = static_cast<size_t>(mTableSize * 1.8);
   for (size_t i = 0; i < new_size; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
 }
 

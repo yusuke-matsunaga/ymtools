@@ -154,8 +154,8 @@ MFSetCell*
 MFSet::get(ymuint id)
 {
   if ( id >= mNum ) {
-    // 範囲外の場合はNULLを返す．
-    return NULL;
+    // 範囲外の場合は nullptr を返す．
+    return nullptr;
   }
   return &mCellArray[id];
 }

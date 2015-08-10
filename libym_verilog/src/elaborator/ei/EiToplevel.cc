@@ -63,14 +63,14 @@ EiToplevel::file_region() const
 const VlNamedObj*
 EiToplevel::parent() const
 {
-  return NULL;
+  return nullptr;
 }
 
 /// @brief このオブジェクトの属している module を返す．
 const VlModule*
 EiToplevel::parent_module() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 名前の取得

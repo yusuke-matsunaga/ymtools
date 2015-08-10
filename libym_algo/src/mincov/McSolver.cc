@@ -40,8 +40,8 @@ McSolver::McSolver()
 
   mSelector = new SelSimple();
   //mSelector = new SelCS();
-  mMatrix = NULL;
-  mCostArray = NULL;
+  mMatrix = nullptr;
+  mCostArray = nullptr;
 }
 
 // @brief デストラクタ

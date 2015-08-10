@@ -211,7 +211,7 @@ ItemGen::instantiate_cont_assign(const VlNamedObj* parent,
 				 const PtItem* pt_header)
 {
   const PtDelay* pt_delay = pt_header->delay();
-  ElbDelay* delay = NULL;
+  ElbDelay* delay = nullptr;
   if ( pt_delay ) {
     delay = instantiate_delay(parent, pt_delay);
   }
@@ -289,7 +289,7 @@ ItemGen::phase1_genblock(const VlNamedObj* parent,
 			 const PtItem* pt_genblock)
 {
   const char* name = pt_genblock->name();
-  if ( name != NULL ) {
+  if ( name != nullptr ) {
     ElbScope* genblock = factory().new_GenBlock(parent, pt_genblock);
     reg_internalscope(genblock);
 
@@ -377,7 +377,7 @@ ItemGen::phase1_genfor(const VlNamedObj* parent,
   const FileRegion& fr = pt_genfor->file_region();
 
   const char* name0 = pt_genfor->name();
-  ASSERT_COND(name0 != NULL );
+  ASSERT_COND(name0 != nullptr );
 
   ElbObjHandle* handle = find_obj(parent, pt_genfor->loop_var());
   if ( !handle ) {

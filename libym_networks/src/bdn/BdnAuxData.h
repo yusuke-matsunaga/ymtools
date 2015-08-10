@@ -36,7 +36,7 @@ public:
 
   /// @brief 関連するポートを返す．
   /// @note kINPUT および kOUTPUT の時に意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const BdnPort*
   port() const;
@@ -49,13 +49,13 @@ public:
   port_bitpos() const;
 
   /// @brief 関連する D-FF を返す．
-  /// @note D-FF に関連していない場合には NULL を返す．
+  /// @note D-FF に関連していない場合には nullptr を返す．
   virtual
   const BdnDff*
   dff() const;
 
   /// @brief 関連するラッチを返す．
-  /// @note ラッチに関連していない場合には NULL を返す．
+  /// @note ラッチに関連していない場合には nullptr を返す．
   virtual
   const BdnLatch*
   latch() const;
@@ -92,7 +92,7 @@ public:
 
   /// @brief 関連するポートを返す．
   /// @note kINPUT および kOUTPUT の時に意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const BdnPort*
   port() const;
@@ -145,7 +145,7 @@ public:
   //////////////////////////////////////////////////////////////////////
 
   /// @brief 関連する D-FF を返す．
-  /// @note D-FF に関連していない場合には NULL を返す．
+  /// @note D-FF に関連していない場合には nullptr を返す．
   virtual
   const BdnDff*
   dff() const;
@@ -188,7 +188,7 @@ public:
   //////////////////////////////////////////////////////////////////////
 
   /// @brief 関連するラッチを返す．
-  /// @note ラッチに関連していない場合には NULL を返す．
+  /// @note ラッチに関連していない場合には nullptr を返す．
   virtual
   const BdnLatch*
   latch() const;

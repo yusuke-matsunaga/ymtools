@@ -382,7 +382,7 @@ MpInt::MpInt(const vector<ymuint64>& block_list,
 	     bool inv)
 {
   mBlockNum = 0;
-  mBlockArray = NULL;
+  mBlockArray = nullptr;
   set(block_list, inv);
 }
 

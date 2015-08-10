@@ -56,7 +56,7 @@ ReaderImpl::gen_expr(MvnModule* parent_module,
 {
   xmask.set_bit_width(expr->bit_size());
 
-  MvnNode* node = NULL;
+  MvnNode* node = nullptr;
   if ( expr->is_const() ) {
     node = gen_const(parent_module, expr, case_type, xmask);
   }
@@ -78,7 +78,7 @@ ReaderImpl::gen_expr(MvnModule* parent_module,
 			  kMsgError,
 			  "MVN_VL",
 			  "Index is out of range.");
-	  return NULL;
+	  return nullptr;
 	}
 	MvnNode* node1 = mMvnMgr->new_constbitselect(parent_module,
 						     bitpos,
@@ -107,7 +107,7 @@ ReaderImpl::gen_expr(MvnModule* parent_module,
 			  kMsgError,
 			  "MVN_VL",
 			  "Left range is out of range");
-	  return NULL;
+	  return nullptr;
 	}
 	ymuint lsb;
 	if ( !decl->calc_bit_offset(expr->right_range_val(), lsb) ) {
@@ -116,7 +116,7 @@ ReaderImpl::gen_expr(MvnModule* parent_module,
 			  kMsgError,
 			  "MVN_VL",
 			  "Right range is out of range");
-	  return NULL;
+	  return nullptr;
 	}
 	MvnNode* node1 = mMvnMgr->new_constpartselect(parent_module,
 						      msb, lsb,
@@ -129,15 +129,15 @@ ReaderImpl::gen_expr(MvnModule* parent_module,
 	// まだできてない．
 	// というか可変 part_select は VPI がおかしいと思う．
 	ASSERT_NOT_REACHED;
-	return NULL;
+	return nullptr;
       }
     }
     else {
       ASSERT_NOT_REACHED;
     }
   }
-  if ( node == NULL ) {
-    return NULL;
+  if ( node == nullptr ) {
+    return nullptr;
   }
 
   MvnNode* node1 = coerce_expr(parent_module, node, expr->req_type());
@@ -177,7 +177,7 @@ ReaderImpl::gen_const(MvnModule* parent_module,
 	xmask.set_bit(i);
       }
       else {
-	return NULL;
+	return nullptr;
       }
     }
     else if ( v.is_z() ) {
@@ -185,12 +185,12 @@ ReaderImpl::gen_const(MvnModule* parent_module,
 	xmask.set_bit(i);
       }
       else {
-	return NULL;
+	return nullptr;
       }
     }
     else {
       ASSERT_NOT_REACHED;
-      return NULL;
+      return nullptr;
     }
   }
   return mMvnMgr->new_const(parent_module, bit_size, val);
@@ -223,7 +223,7 @@ ReaderImpl::gen_opr(MvnModule* parent_module,
 		      kMsgError,
 		      "MVN_VLXXX",
 		      "'X' or 'Z' value in the operands");
-      return NULL;
+      return nullptr;
     }
     operand_array[i] = node1;
   }
@@ -627,7 +627,7 @@ ReaderImpl::gen_opr(MvnModule* parent_module,
     break;
   }
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief 宣言要素への参照に対応するノードを作る．
@@ -643,11 +643,11 @@ ReaderImpl::gen_primary(const VlExpr* expr,
     ASSERT_COND(expr->declarray_dimension() == 0 );
     MvnNode* node = env.get(decl);
 #if defined(YM_DEBUG)
-    if ( node == NULL ) {
+    if ( node == nullptr ) {
       cerr << decl->name() << " is not found in mGlobalEnv" << endl;
     }
 #endif
-    ASSERT_COND( node != NULL );
+    ASSERT_COND( node != nullptr );
     return node;
   }
   else if ( declarray ) {
@@ -655,13 +655,13 @@ ReaderImpl::gen_primary(const VlExpr* expr,
       // インデックス固定の配列要素
       ymuint offset = expr->declarray_offset();
       MvnNode* node = env.get(declarray, offset);
-      if ( node == NULL ) {
+      if ( node == nullptr ) {
 	MsgMgr::put_msg(__FILE__, __LINE__,
 			expr->file_region(),
 			kMsgError,
 			"MVN_VL",
 			"Index is out of range.");
-	return NULL;
+	return nullptr;
       }
       return node;
     }
@@ -681,15 +681,15 @@ ReaderImpl::gen_primary(const VlExpr* expr,
 	mlt *= declarray->range(i)->size();
       }
       MvnNode* node = env.get(declarray, offset);
-      if ( node == NULL ) {
+      if ( node == nullptr ) {
 	cerr << decl->name() << " is not found in mGlobalEnv" << endl;
       }
-      ASSERT_COND( node != NULL );
+      ASSERT_COND( node != nullptr );
       return node;
 #else
 #warning "TODO-2011-07-07-03: 可変インデックスの配列要素"
       ASSERT_NOT_REACHED;
-      return NULL;
+      return nullptr;
 #endif
     }
   }
@@ -698,7 +698,7 @@ ReaderImpl::gen_primary(const VlExpr* expr,
   cerr << "  " << expr->file_region() << endl;
 #endif
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @bief 右辺式に対応するノードを作る．
@@ -773,7 +773,7 @@ ReaderImpl::coerce_expr(MvnModule* parent_module,
     node = mMvnMgr->new_constpartselect(parent_module, bit_width - 1, 0, src_bw);
     mMvnMgr->connect(src_node, 0, node, 0);
   }
-  ASSERT_COND( node != NULL );
+  ASSERT_COND( node != nullptr );
   return node;
 }
 
@@ -784,7 +784,7 @@ ReaderImpl::coerce_expr(MvnModule* parent_module,
 // @param[in] bit_width ビット幅
 // @note rhs_node から [offset: offset + bit_width - 1] の選択するノードを返す．
 // @note 全範囲を選択する場合には node を返す．
-// @note 範囲が合わなかったら NULL を返す．
+// @note 範囲が合わなかったら nullptr を返す．
 MvnNode*
 ReaderImpl::splice_rhs(MvnModule* parent_module,
 		       MvnNode* rhs_node,
@@ -794,7 +794,7 @@ ReaderImpl::splice_rhs(MvnModule* parent_module,
   ymuint src_bw = rhs_node->bit_width();
   ASSERT_COND( offset + bit_width <= src_bw );
 
-  MvnNode* src_node = NULL;
+  MvnNode* src_node = nullptr;
   if ( offset == 0 && bit_width == src_bw ) {
     // 全範囲の選択
     src_node = rhs_node;

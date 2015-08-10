@@ -41,7 +41,7 @@ public:
 
   /// @brief 名前からノードを検索する
   /// @param[in] name 検索対象の名前
-  /// @return name という名前のノードを返す．なければ NULL を返す．
+  /// @return name という名前のノードを返す．なければ nullptr を返す．
   TgNode*
   find_node(const char* name);
 

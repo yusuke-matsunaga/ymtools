@@ -60,13 +60,13 @@ BmmVar::BmmVar(BddMgrModern* mgr,
   mMgr(mgr),
   mId(id)
 {
-  mLink = NULL;
+  mLink = nullptr;
 
   // 節点テーブルの初期化
   mTableSize = 0;
   mTableSize_1 = 0;
   mNextLimit = 0;
-  mNodeTable = NULL;
+  mNodeTable = nullptr;
   if ( mgr->is_reorderable() ) {
     resize(INIT_SIZE);
   }
@@ -111,7 +111,7 @@ BmmVar::sweep()
 	// どこからも参照されていないノードは節点テーブルから除く
 	// この時点ではフリーリストを作る必要は無い．
 	*prev = temp->mLink;
-	temp->mLink = NULL;
+	temp->mLink = nullptr;
 	++ nf;
       }
       else {

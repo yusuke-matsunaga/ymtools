@@ -36,10 +36,10 @@ DotlibCell::set_data(const DotlibNode* cell_node)
   init();
 
   mArea = 0.0;
-  mBusNamingStyle = NULL;
-  mFF = NULL;
-  mLatch = NULL;
-  mStateTable = NULL;
+  mBusNamingStyle = nullptr;
+  mFF = nullptr;
+  mLatch = nullptr;
+  mStateTable = nullptr;
 
   mPinList.clear();
   mBusList.clear();
@@ -93,8 +93,8 @@ DotlibCell::set_data(const DotlibNode* cell_node)
 
   // ff と latch と statetable は排他的
   {
-    const char* first_name = NULL;
-    const char* last_name = NULL;
+    const char* first_name = nullptr;
+    const char* last_name = nullptr;
     FileRegion first_loc;
     FileRegion last_loc;
     if ( mFF && mLatch ) {
@@ -197,7 +197,7 @@ DotlibCell::bundle_list() const
 }
 
 // @brief ff グループを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const DotlibNode*
 DotlibCell::ff() const
 {
@@ -205,7 +205,7 @@ DotlibCell::ff() const
 }
 
 // @brief latch グループを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const DotlibNode*
 DotlibCell::latch() const
 {
@@ -213,7 +213,7 @@ DotlibCell::latch() const
 }
 
 // @brief statetable グループを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const DotlibNode*
 DotlibCell::statetable() const
 {

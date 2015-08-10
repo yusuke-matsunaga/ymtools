@@ -62,7 +62,7 @@ public:
   is_partselect() const;
 
   /// @brief 宣言要素もしくは配列型宣言要素への参照を返す．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlDeclBase*
   decl_base() const;
@@ -87,7 +87,7 @@ public:
 
   /// @brief 配列型宣言要素への参照の場合，配列のインデックスを返す．
   /// @param[in] pos 位置番号 ( 0 <= pos < declarray_dimension() )
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlExpr*
   declarray_index(ymuint pos) const;
@@ -129,7 +129,7 @@ public:
   /// @brief オペランドを返す．
   /// @param[in] pos 位置番号
   /// @note 演算子の時，意味を持つ．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbExpr*
   _operand(ymuint pos) const;
@@ -284,7 +284,7 @@ public:
 
   /// @brief 範囲のベースを表す式を返す．
   /// @note 可変範囲選択の時，意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlExpr*
   base() const;

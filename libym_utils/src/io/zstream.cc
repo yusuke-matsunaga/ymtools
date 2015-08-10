@@ -17,7 +17,7 @@ BEGIN_NAMESPACE_YM
 zstream_buff::zstream_buff(istream* s,
 			   ymuint size) :
   mInStream(s),
-  mOutStream(NULL),
+  mOutStream(nullptr),
   mBuff(new Bytef[size]),
   mSize(size),
   mInFlush(Z_NO_FLUSH)
@@ -31,7 +31,7 @@ zstream_buff::zstream_buff(istream* s,
 // @param[in] s 出力ストリーム
 zstream_buff::zstream_buff(ostream* s,
 			   ymuint size) :
-  mInStream(NULL),
+  mInStream(nullptr),
   mOutStream(s),
   mBuff(new Bytef[size]),
   mSize(size),

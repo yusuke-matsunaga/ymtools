@@ -54,7 +54,7 @@ public:
 
   /// @brief ID 番号からノードを得る．
   /// @param[in] id ID 番号 ( 0 <= id < max_node_id() )
-  /// @note 使われていない ID の場合には NULL が返される．
+  /// @note 使われていない ID の場合には nullptr が返される．
   const BlifNode*
   node(ymuint32 id) const;
 
@@ -116,7 +116,7 @@ public:
   /// @retval false 読み込み中にエラーが起こった．
   bool
   read_blif(const string& filename,
-	    const CellLibrary* cell_library = NULL);
+	    const CellLibrary* cell_library = nullptr);
 
   /// @brief 内容を blif 形式で出力する．
   /// @param[in] s 出力先のストリーム
@@ -254,7 +254,7 @@ BlifNetworkImpl::max_node_id() const
 
 // @brief ID 番号からノードを得る．
 // @param[in] id ID 番号
-// @note 使われていない ID の場合には NULL が返される．
+// @note 使われていない ID の場合には nullptr が返される．
 inline
 const BlifNode*
 BlifNetworkImpl::node(ymuint32 id) const

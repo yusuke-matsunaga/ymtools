@@ -43,7 +43,7 @@ DefineHandler::read_attr(const ShString& attr_name,
 {
   FileRegion dummy_loc;
   const DotlibNode* value = parse_complex(false, dummy_loc);
-  if ( value == NULL ) {
+  if ( value == nullptr ) {
     return false;
   }
 
@@ -56,7 +56,7 @@ DefineHandler::read_attr(const ShString& attr_name,
   }
 
   const DotlibNode* keyword = value->list_elem(0);
-  if ( keyword == NULL || !keyword->is_string() ) {
+  if ( keyword == nullptr || !keyword->is_string() ) {
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    keyword->loc(),
 		    kMsgError,
@@ -66,7 +66,7 @@ DefineHandler::read_attr(const ShString& attr_name,
   }
 
   const DotlibNode* group = value->list_elem(1);
-  if ( group == NULL || !group->is_string() ) {
+  if ( group == nullptr || !group->is_string() ) {
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    group->loc(),
 		    kMsgError,
@@ -76,7 +76,7 @@ DefineHandler::read_attr(const ShString& attr_name,
   }
 
   const DotlibNode* type_token = value->list_elem(2);
-  if ( type_token == NULL || !type_token->is_string() ) {
+  if ( type_token == nullptr || !type_token->is_string() ) {
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    type_token->loc(),
 		    kMsgError,
@@ -86,7 +86,7 @@ DefineHandler::read_attr(const ShString& attr_name,
   }
 
   DotlibHandler* handler = parent()->find_handler(group->string_value());
-  if ( handler == NULL ) {
+  if ( handler == nullptr ) {
     ostringstream buf;
     buf << group->string_value() << ": Unknown attribute. ignored.";
     MsgMgr::put_msg(__FILE__, __LINE__,
@@ -98,7 +98,7 @@ DefineHandler::read_attr(const ShString& attr_name,
   }
 
   GroupHandler* g_handler = dynamic_cast<GroupHandler*>(handler);
-  if ( g_handler == NULL ) {
+  if ( g_handler == nullptr ) {
     ostringstream buf;
     buf << group->string_value() << ": is not a group statement.";
     MsgMgr::put_msg(__FILE__, __LINE__,
@@ -109,7 +109,7 @@ DefineHandler::read_attr(const ShString& attr_name,
     return true;
   }
 
-  DotlibHandler* new_handler = NULL;
+  DotlibHandler* new_handler = nullptr;
   ShString type_str = type_token->string_value();
   if ( type_str == "int" ) {
     new_handler = new IntSimpleHandler(g_handler);

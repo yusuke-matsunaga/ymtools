@@ -47,7 +47,7 @@ EiPort::init(ElbModule* module,
   mModule = module;
   mPtPort = pt_port;
   mIndex = index;
-  mHighConn = NULL;
+  mHighConn = nullptr;
   mLowConn = low_conn;
   mDirection = dir;
   mConnByName = false;
@@ -101,7 +101,7 @@ EiPort::is_conn_by_name() const
 bool
 EiPort::is_explicit_name() const
 {
-  return mPtPort->ext_name() != NULL;
+  return mPtPort->ext_name() != nullptr;
 }
 
 // @brief 名前を返す．

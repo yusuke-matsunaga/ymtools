@@ -167,11 +167,11 @@ enqueue(const MvnNode* node0,
     }
     ymuint ni = node->input_num();
     bool marked = true;
-    const MvnNode* unmark = NULL;
+    const MvnNode* unmark = nullptr;
     for (ymuint i = 0; i < ni; ++ i) {
       const MvnInputPin* ipin = node->input(i);
       const MvnNode* inode = ipin->src_node();
-      if ( inode == NULL ) {
+      if ( inode == nullptr ) {
 	cerr << "node" << node->id() << "->input(" << i
 	     << ") has no source" << endl;
 	abort();
@@ -322,7 +322,7 @@ MvnBdnConv::operator()(const MvnMgr& mvmgr,
       // DFF
       ymuint bw = node->bit_width();
       vector<BdnDff*>& dff_array = dff_map[node->id()];
-      dff_array.resize(bw, NULL);
+      dff_array.resize(bw, nullptr);
       for (ymuint j = 0; j < bw; ++ j) {
 	BdnDff* dff = bdnetwork.new_dff();
 	dff_array[j] = dff;
@@ -336,7 +336,7 @@ MvnBdnConv::operator()(const MvnMgr& mvmgr,
       // LATCH
       ymuint bw = node->bit_width();
       vector<BdnLatch*>& latch_array = latch_map[node->id()];
-      latch_array.resize(bw, NULL);
+      latch_array.resize(bw, nullptr);
       for (ymuint j = 0; j < bw; ++ j) {
 	BdnLatch* latch = bdnetwork.new_latch();
 	latch_array[j] = latch;
@@ -399,18 +399,18 @@ MvnBdnConv::operator()(const MvnMgr& mvmgr,
   // DFFノードとラッチノードの入力を接続する．
   for (ymuint i = 0; i < nmax; ++ i) {
     const MvnNode* node = mvmgr.node(i);
-    if ( node == NULL ) continue;
+    if ( node == nullptr ) continue;
     if ( node->type() == MvnNode::kDff ) {
       // データ入力
       const MvnInputPin* data_ipin = node->input(0);
       const MvnNode* data_src_node = data_ipin->src_node();
-      ASSERT_COND( data_src_node != NULL );
+      ASSERT_COND( data_src_node != nullptr );
       ymuint bw = data_ipin->bit_width();
 
       // クロック
       const MvnInputPin* clock_ipin = node->input(1);
       const MvnNode* clock_src_node = clock_ipin->src_node();
-      ASSERT_COND( clock_src_node != NULL );
+      ASSERT_COND( clock_src_node != nullptr );
       ASSERT_COND( clock_src_node->bit_width() == 1 );
       BdnNodeHandle clock_ihandle = mvnode_map.get(clock_src_node);
       if ( node->clock_pol() == 0 ) {
@@ -459,13 +459,13 @@ MvnBdnConv::operator()(const MvnMgr& mvmgr,
       // データ入力
       const MvnInputPin* data_ipin = node->input(0);
       const MvnNode* data_src_node = data_ipin->src_node();
-      ASSERT_COND( data_src_node != NULL );
+      ASSERT_COND( data_src_node != nullptr );
       ymuint bw = data_ipin->bit_width();
 
       // イネーブル
       const MvnInputPin* enable_ipin = node->input(1);
       const MvnNode* enable_src_node = enable_ipin->src_node();
-      ASSERT_COND( enable_src_node != NULL );
+      ASSERT_COND( enable_src_node != nullptr );
       ASSERT_COND( enable_src_node->bit_width() == 1 );
       BdnNodeHandle enable_ihandle = mvnode_map.get(enable_src_node);
 
@@ -485,14 +485,14 @@ MvnBdnConv::operator()(const MvnMgr& mvmgr,
     const MvnNode* node = module->output(i);
     const MvnInputPin* ipin = node->input(0);
     const MvnNode* src_node = ipin->src_node();
-    if ( src_node == NULL ) continue;
+    if ( src_node == nullptr ) continue;
 
     ymuint bw = ipin->bit_width();
     for (ymuint j = 0; j < bw; ++ j) {
       BdnNodeHandle handle = mvnode_map.get(node, j);
       ASSERT_COND( handle.inv() == false );
       BdnNode* onode = handle.node();
-      ASSERT_COND( onode != NULL );
+      ASSERT_COND( onode != nullptr );
       BdnNodeHandle ihandle = mvnode_map.get(src_node, j);
       bdnetwork.change_output_fanin(onode, ihandle);
     }
@@ -503,14 +503,14 @@ MvnBdnConv::operator()(const MvnMgr& mvmgr,
     const MvnNode* node = module->inout(i);
     const MvnInputPin* ipin = node->input(0);
     const MvnNode* src_node = ipin->src_node();
-    if ( src_node == NULL ) continue;
+    if ( src_node == nullptr ) continue;
 
     ymuint bw = ipin->bit_width();
     for (ymuint j = 0; j < bw; ++ j) {
       BdnNodeHandle handle = mvnode_map.get(node, j);
       ASSERT_COND( handle.inv() == false );
       BdnNode* input = handle.node();
-      ASSERT_COND( input != NULL );
+      ASSERT_COND( input != nullptr );
       BdnNodeHandle ihandle = mvnode_map.get(src_node, j);
       bdnetwork.change_output_fanin(input, ihandle);
     }

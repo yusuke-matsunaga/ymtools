@@ -505,21 +505,21 @@ public:
 
   /// @brief 名前の取得
   /// @return 名前
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const char*
   name() const;
 
   /// @brief 範囲の左側の式の取得
   /// @return 範囲の左側の式
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   left_range() const;
 
   /// @brief 範囲の右側の式の取得
   /// @return 範囲の右側の式
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   right_range() const;

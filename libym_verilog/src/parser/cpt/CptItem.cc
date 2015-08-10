@@ -41,20 +41,20 @@ CptItem::prim_type() const
 
 // @brief strength の取得
 // @return 信号強度
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtStrength*
 CptItem::strength() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief delay の取得
 // @return 遅延
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtDelay*
 CptItem::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief パラメータ割り当てリストの取得
@@ -78,7 +78,7 @@ CptItem::size() const
 const PtDefParam*
 CptItem::defparam(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief continuous assign 要素の取得
@@ -86,7 +86,7 @@ CptItem::defparam(ymuint pos) const
 const PtContAssign*
 CptItem::contassign(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief module/UDP/gate instance 要素の取得
@@ -94,16 +94,16 @@ CptItem::contassign(ymuint pos) const
 const PtInst*
 CptItem::inst(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 名前の取得
 // @return 名前
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const char*
 CptItem::name() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief automatic 情報の取得
@@ -146,11 +146,11 @@ CptItem::item_array() const
 
 // @brief 本体のステートメントの取得
 // @return 本体のステートメント
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtStmt*
 CptItem::body() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 符号の取得
@@ -165,20 +165,20 @@ CptItem::is_signed() const
 
 // @brief 範囲の左側の式の取得
 // @return 範囲の左側の式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptItem::left_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲の右側の式の取得
 // @return 範囲の右側の式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptItem::right_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 戻値のデータ型の取得
@@ -236,25 +236,25 @@ CptItem::specpath_type() const
 const PtExpr*
 CptItem::terminal(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief パス記述の取得
 // @return パス記述
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtPathDecl*
 CptItem::path_decl() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 条件式の取得
 // @return 条件式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptItem::expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 条件が成り立ったときに生成される宣言ヘッダ配列の取得
@@ -288,38 +288,38 @@ CptItem::else_item_array() const
 // @brief case item の取得
 // @param[in] pos 取得する case item の位置(最初の位置は 0)
 // @return pos 番目の case item
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtGenCaseItem*
 CptItem::caseitem(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 繰り返し制御用の変数名の取得
 // @return 繰り返し制御用の変数名
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const char*
 CptItem::loop_var() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 初期化文の右辺の取得
 // @return 初期化文の右辺
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptItem::init_expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 増加文の右辺の取得
 // @return 増加文の右辺
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptItem::next_expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 

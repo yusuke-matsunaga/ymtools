@@ -42,7 +42,7 @@ public:
   /// @brief トークンから文字列を取り出す．
   /// @param[in] token トークン番号
   /// @return token に対応した文字列を返す．\n
-  /// トークンが正しくなければ NULL を返す．
+  /// トークンが正しくなければ nullptr を返す．
   const char*
   str(int token) const;
 

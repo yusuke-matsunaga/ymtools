@@ -45,8 +45,8 @@ base_test()
     cout << "ERROR[new_input_test]: input_num() != 1" << endl;
     result = false;
   }
-  if ( input0 == NULL ) {
-    cout << "ERROR[new_input_test]: input0 == NULL" << endl;
+  if ( input0 == nullptr ) {
+    cout << "ERROR[new_input_test]: input0 == nullptr" << endl;
     result = false;
   }
 
@@ -57,8 +57,8 @@ base_test()
     cout << "ERROR[new_input_test]: input_num() != 3" << endl;
     result = false;
   }
-  if ( input1 == NULL ) {
-    cout << "ERROR[new_input_test]: input1_1 == NULL" << endl;
+  if ( input1 == nullptr ) {
+    cout << "ERROR[new_input_test]: input1_1 == nullptr" << endl;
     result = false;
   }
 
@@ -71,8 +71,8 @@ base_test()
     cout << "ERROR[new_logic_test]: lnode_num() != 1" << endl;
     result = false;
   }
-  if ( and11_h.node() == NULL ) {
-    cout << "ERROR[new_logic_test]: and11_h.node() == NULL" << endl;
+  if ( and11_h.node() == nullptr ) {
+    cout << "ERROR[new_logic_test]: and11_h.node() == nullptr" << endl;
     result = false;
   }
   if ( and11_h.inv() == true ) {
@@ -148,8 +148,8 @@ base_test()
     cout << "ERROR[new_logic_test]: lnode_num() != 2" << endl;
     result = false;
   }
-  if ( and01_h.node() == NULL ) {
-    cout << "ERROR[new_logic_test]: and01_h.node() == NULL" << endl;
+  if ( and01_h.node() == nullptr ) {
+    cout << "ERROR[new_logic_test]: and01_h.node() == nullptr" << endl;
     result = false;
   }
   if ( and01_h.inv() == true ) {

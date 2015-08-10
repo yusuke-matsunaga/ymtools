@@ -264,7 +264,7 @@ decompile_impl(const PtExpr* expr,
 	return expr->const_str();
 
       case kVpiIntConst:
-	if ( expr->const_str() == NULL ) {
+	if ( expr->const_str() == nullptr ) {
 	  buf << expr->const_uint();
 	  return buf.str();
 	}
@@ -321,7 +321,7 @@ decompile_impl(const PtExpr* expr,
 	ans += "[" + expr->index(i)->decompile() + "]";
       }
       if ( expr->range_mode() != kVpiNoRange ) {
-	const char* delim = NULL;
+	const char* delim = nullptr;
 	switch ( expr->range_mode() ) {
 	case kVpiConstRange: delim = ":"; break;
 	case kVpiPlusRange:  delim = "+:"; break;
@@ -376,7 +376,7 @@ expand_full_name(const PtNameBranchArray& nb_array,
     }
     period = ".";
   }
-  if ( name != NULL ) {
+  if ( name != nullptr ) {
     buf << period << name;
   }
   buf.flush();

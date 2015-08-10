@@ -93,7 +93,7 @@ protected:
   /// @param[in] key キー
   /// @return key と一致する要素を返す．
   ///
-  /// 見つからなければ NULL を返す．
+  /// 見つからなければ nullptr を返す．
   Cell*
   find_cell(Key_Type key) const;
 
@@ -241,7 +241,7 @@ inline
 HashBase<Key_Type>::HashBase(ymuint size)
 {
   mHashSize = 0;
-  mHashTable = NULL;
+  mHashTable = nullptr;
   mNum = 0;
   alloc_table(size);
 }
@@ -262,12 +262,12 @@ void
 HashBase<Key_Type>::clear()
 {
   for (ymuint i = 0; i < mHashSize; ++ i) {
-    for (Cell* cell = mHashTable[i]; cell != NULL; ) {
+    for (Cell* cell = mHashTable[i]; cell != nullptr; ) {
       Cell* tmp = cell;
       cell = tmp->mLink;
       delete tmp;
     }
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
   mNum = 0;
 }
@@ -290,7 +290,7 @@ inline
 bool
 HashBase<Key_Type>::check(Key_Type key) const
 {
-  return find_cell(key) != NULL;
+  return find_cell(key) != nullptr;
 }
 
 // @brief 要素を削除する．
@@ -306,7 +306,7 @@ HashBase<Key_Type>::erase(Key_Type key)
   ymuint h = hash_func(key) % mHashSize;
   Cell** pprev = &mHashTable[h];
   Cell* cell;
-  while ( (cell = *pprev) != NULL ) {
+  while ( (cell = *pprev) != nullptr ) {
     if ( cell->mKey == key ) {
       // 見つけた
       *pprev = cell->mLink;
@@ -322,7 +322,7 @@ HashBase<Key_Type>::erase(Key_Type key)
 // @param[in] key キー
 // @return key と一致する要素を返す．
 //
-// 見つからなければ NULL を返す．
+// 見つからなければ nullptr を返す．
 template<typename Key_Type>
 inline
 HashBaseCell<Key_Type>*
@@ -330,13 +330,13 @@ HashBase<Key_Type>::find_cell(Key_Type key) const
 {
   HashFunc<Key_Type> hash_func;
   ymuint h = hash_func(key) % mHashSize;
-  for (Cell* cell = mHashTable[h]; cell != NULL;
+  for (Cell* cell = mHashTable[h]; cell != nullptr;
        cell = cell->mLink) {
     if ( cell->mKey == key ) {
       return cell;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief セルの先頭の反復子を返す．
@@ -346,11 +346,11 @@ HashBaseIterator<Key_Type>
 HashBase<Key_Type>::begin() const
 {
   for (ymuint i = 0; i < mHashSize; ++ i) {
-    if ( mHashTable[i] != NULL ) {
+    if ( mHashTable[i] != nullptr ) {
       return HashBaseIterator<Key_Type>(mHashTable, mHashSize, i, mHashTable[i]);
     }
   }
-  return HashBaseIterator<Key_Type>(NULL, 0, 0, NULL);
+  return HashBaseIterator<Key_Type>(nullptr, 0, 0, nullptr);
 }
 
 // @brief セルの末尾の反復子を返す．
@@ -359,7 +359,7 @@ inline
 HashBaseIterator<Key_Type>
 HashBase<Key_Type>::end() const
 {
-  return HashBaseIterator<Key_Type>(NULL, 0, 0, NULL);
+  return HashBaseIterator<Key_Type>(nullptr, 0, 0, nullptr);
 }
 
 // @brief 要素を登録する．
@@ -393,11 +393,11 @@ HashBase<Key_Type>::alloc_table(ymuint req_size)
   mNextLimit = static_cast<ymuint>(mHashSize * 1.8);
   mHashTable = new Cell*[mHashSize];
   for (ymuint i = 0; i < mHashSize; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
   for (ymuint i = 0; i < old_size; ++ i) {
     for (Cell* cell = old_table[i];
-	 cell != NULL; ) {
+	 cell != nullptr; ) {
       Cell* next = cell->mLink;
       _reg_cell(cell);
       cell = next;
@@ -428,10 +428,10 @@ template<typename Key_Type>
 inline
 HashBaseIterator<Key_Type>::HashBaseIterator()
 {
-  mTable = NULL;
+  mTable = nullptr;
   mTableSize = 0;
   mIndex = 0;
-  mCell = NULL;
+  mCell = nullptr;
 }
 
 // @brief コピーコンストラクタ
@@ -542,7 +542,7 @@ void
 HashBaseIterator<Key_Type>::next_ptr()
 {
   HashBaseCell<Key_Type>* next = mCell->mLink;
-  while ( next == NULL ) {
+  while ( next == nullptr ) {
     ++ mIndex;
     if ( mIndex < mTableSize ) {
       next = mTable[mIndex];

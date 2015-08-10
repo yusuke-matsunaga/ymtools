@@ -33,9 +33,9 @@ DotlibFF::init()
 {
   DotlibFL::init();
 
-  mNextState = NULL;
-  mClockedOn = NULL;
-  mClockedOnAlso = NULL;
+  mNextState = nullptr;
+  mClockedOn = nullptr;
+  mClockedOnAlso = nullptr;
 }
 
 // @brief "next_state" を返す．

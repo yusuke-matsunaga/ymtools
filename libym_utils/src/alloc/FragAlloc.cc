@@ -39,7 +39,7 @@ FragAlloc::FragAlloc(ymuint64 max_size) :
 
   mBlockListArray = new Block*[mMaxLogSize - mMinLogSize + 1];
   for (ymuint64 i = mMinLogSize; i <= mMaxLogSize; ++ i ) {
-    mBlockListArray[i - mMinLogSize] = NULL;
+    mBlockListArray[i - mMinLogSize] = nullptr;
   }
 }
 
@@ -97,7 +97,7 @@ void
 FragAlloc::_destroy()
 {
   for (ymuint64 i = mMinLogSize; i <= mMaxLogSize; ++ i ) {
-    mBlockListArray[i - mMinLogSize] = NULL;
+    mBlockListArray[i - mMinLogSize] = nullptr;
   }
   for (list<char*>::iterator p = mAllocList.begin();
        p != mAllocList.end(); ++ p) {
@@ -130,7 +130,7 @@ FragAlloc::alloc_block(ymuint64 p)
 }
 
 // サイズ 2^p のブロックがあれば返す．
-// なければ NULL を返す．
+// なければ nullptr を返す．
 char*
 FragAlloc::get_block(ymuint64 p)
 {
@@ -139,7 +139,7 @@ FragAlloc::get_block(ymuint64 p)
     mBlockListArray[p - mMinLogSize] = b->mLink;
     return reinterpret_cast<char*>(b);
   }
-  return NULL;
+  return nullptr;
 }
 
 // サイズ 2^p のブロックをリストに戻す．

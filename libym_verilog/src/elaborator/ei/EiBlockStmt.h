@@ -31,7 +31,7 @@ protected:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] stmt_num ステートメントのリストの要素数
   /// @param[in] array ステートメントのリスト用配列
@@ -97,7 +97,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] stmt_num ステートメントのリストの要素数
   /// @param[in] array ステートメントのリスト用配列
@@ -139,7 +139,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] stmt_num ステートメントのリストの要素数
   /// @param[in] array ステートメントのリスト用配列
@@ -181,7 +181,7 @@ protected:
 
   /// @brief コンストラクタ
   /// @param[in] block 自分自身に対応するスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] stmt_num ステートメントのリストの要素数
   /// @param[in] array ステートメントのリスト用配列
   EiNamedBlockStmt(const VlNamedObj* block,
@@ -270,7 +270,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] block 自分自身に対応するスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] stmt_num ステートメントのリストの要素数
   /// @param[in] array ステートメントのリスト用配列
   EiNamedBegin(const VlNamedObj* block,
@@ -310,7 +310,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] block 自分自身に対応するスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] stmt_num ステートメントのリストの要素数
   /// @param[in] array ステートメントのリスト用配列
   EiNamedFork(const VlNamedObj* block,

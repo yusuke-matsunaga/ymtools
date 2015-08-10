@@ -25,7 +25,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] af alloc 関数
-  LzmaEngine(lzma_allocator* af = NULL);
+  LzmaEngine(lzma_allocator* af = nullptr);
 
   /// @brief デストラクタ
   ~LzmaEngine();
@@ -132,7 +132,7 @@ inline
 LzmaEngine::LzmaEngine(lzma_allocator* af)
 {
   mLzmaStream = (lzma_stream)LZMA_STREAM_INIT;
-  if ( af != NULL ) {
+  if ( af != nullptr ) {
     mLzmaStream.allocator = af;
   }
 }

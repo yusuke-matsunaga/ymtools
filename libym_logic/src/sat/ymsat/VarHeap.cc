@@ -23,9 +23,9 @@ VarHeap::VarHeap()
   mVarDecay = 0.95;
   mVarNum = 0;
   mVarSize = 0;
-  mHeapPos = NULL;
-  mActivity = NULL;
-  mHeap = NULL;
+  mHeapPos = nullptr;
+  mActivity = nullptr;
+  mHeap = nullptr;
   mHeapNum = 0;
 }
 

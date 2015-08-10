@@ -160,8 +160,8 @@ SimCondBranch::SimCondBranch(SimEngine* engine,
   mLabel(label),
   mCaseType(case_type)
 {
-  mThenLink = NULL;
-  mElseLink = NULL;
+  mThenLink = nullptr;
+  mElseLink = nullptr;
 }
 
 // デストラクタ
@@ -286,7 +286,7 @@ SimEnableNode::SimEnableNode(SimEngine* engine,
 SimEnableNode::~SimEnableNode()
 {
 }
-  
+
 // 実行する．
 void
 SimEnableNode::exec()
@@ -307,7 +307,7 @@ SimDisableNode::SimDisableNode(SimEngine* engine,
 {
   //mDisable = disable->find_simscope(engine);
 }
-    
+
 // デストラクタ
 SimDisableNode::~SimDisableNode()
 {

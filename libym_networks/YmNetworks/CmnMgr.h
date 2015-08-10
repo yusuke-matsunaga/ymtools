@@ -75,7 +75,7 @@ public:
 
   /// @brief ID番号から D-FF を得る．
   /// @param[in] id ID番号 ( 0 <= id < max_dff_id() )
-  /// @note 該当するD-FFが無い場合には NULL を返す．
+  /// @note 該当するD-FFが無い場合には nullptr を返す．
   const CmnDff*
   dff(ymuint id) const;
 
@@ -93,7 +93,7 @@ public:
 
   /// @brief ID番号からラッチを得る．
   /// @param[in] id ID番号 ( 0 <= id < max_latch_id() )
-  /// @note 該当するラッチが無い場合には NULL を返す．
+  /// @note 該当するラッチが無い場合には nullptr を返す．
   const CmnLatch*
   latch(ymuint id) const;
 
@@ -114,7 +114,7 @@ public:
   /// @brief ID 番号によるノードの取得
   /// @param[in] id ID 番号
   /// @return ID 番号が id のノードを返す．
-  /// @note 該当するノードが無い場合には NULL を返す．
+  /// @note 該当するノードが無い場合には nullptr を返す．
   const CmnNode*
   node(ymuint id) const;
 
@@ -150,13 +150,13 @@ public:
 
   /// @brief D-FFセルの情報を得る．
   /// @param[in] cell 対象のセル
-  /// @note cell が D-FF でない場合と登録されていない場合には NULL を返す．
+  /// @note cell が D-FF でない場合と登録されていない場合には nullptr を返す．
   const CmnDffCell*
   dff_cell(const Cell* cell) const;
 
   /// @brief ラッチセルの情報を得る．
   /// @param[in] cell 対象のセル
-  /// @note cell がラッチでない場合と登録されていない場合には NULL を返す．
+  /// @note cell がラッチでない場合と登録されていない場合には nullptr を返す．
   const CmnLatchCell*
   latch_cell(const Cell* cell) const;
 

@@ -21,10 +21,10 @@ BEGIN_NAMESPACE_YM_AIG
 AigMgrImpl::AigMgrImpl() :
   mAlloc(sizeof(AigNode) * 1024),
   mInputNum(0),
-  mInputHashTable(NULL),
+  mInputHashTable(nullptr),
   mInputHashSize(0),
   mAndNum(0),
-  mAndHashTable(NULL),
+  mAndHashTable(nullptr),
   mAndHashSize(0)
 {
   // ハッシュ表の初期値は適当
@@ -47,7 +47,7 @@ AigMgrImpl::make_input(VarId id)
 {
   // すでに存在しているか調べる．
   AigNode* node = input_node(id);
-  if ( node != NULL ) {
+  if ( node != nullptr ) {
     return Aig(pack(node, false));
   }
   // なかったので新たに作る．
@@ -59,7 +59,7 @@ AigMgrImpl::make_input(VarId id)
     alloc_table(mInputHashTable, mInputHashSize * 2, mInputHashSize, mInputNextLimit);
 
     for (ymuint i = 0; i < old_size; ++ i) {
-      AigNode* next = NULL;
+      AigNode* next = nullptr;
       for (AigNode* node = old_table[i]; node; node = next) {
 	next = node->mLink;
 	ymuint pos = node->input_id().val();
@@ -90,7 +90,7 @@ AigMgrImpl::input_node(VarId id) const
       return node;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief AND ノードを作る．
@@ -146,7 +146,7 @@ AigMgrImpl::make_and(Aig handle1,
     alloc_table(mAndHashTable, mAndHashSize * 2, mAndHashSize, mAndNextLimit);
 
     for (ymuint i = 0; i < old_size; ++ i) {
-      AigNode* next = NULL;
+      AigNode* next = nullptr;
       for (AigNode* node = old_table[i]; node; node = next) {
 	next = node->mLink;
 	ymuint pos = hash_func(node->fanin0(), node->fanin1());
@@ -196,7 +196,7 @@ AigMgrImpl::alloc_table(AigNode**& table,
   }
   table = new AigNode*[size];
   for (ymuint i = 0; i < size; ++ i) {
-    table[i] = NULL;
+    table[i] = nullptr;
   }
   limit = static_cast<ymuint32>(size * 1.8);
 }

@@ -35,11 +35,11 @@ BEGIN_NAMESPACE_YM
 // @brief FileCoder のインスタンスを作る関数
 // @param[in] type FileCoder の型
 // @return 作成したインスタンスを返す．
-// @note type が不正な値の場合は NULL を返す．
+// @note type が不正な値の場合は nullptr を返す．
 FileCoder*
 FileCoder::new_coder(CodecType type)
 {
-  FileCoder* coder = NULL;
+  FileCoder* coder = nullptr;
 
   if ( type == kCodecThrough ) {
     coder = new ThruCoder();
@@ -109,7 +109,7 @@ FileCoder::new_gzip_coder()
 		  kMsgError,
 		  "FileCoder",
 		  "gzip format is not supported on this system");
-  return NULL;
+  return nullptr;
 #endif
 }
 
@@ -125,7 +125,7 @@ FileCoder::new_bzip2_coder()
 		  kMsgError,
 		  "FileCoder",
 		  "bzip2 format is not supported on this system");
-  return NULL;
+  return nullptr;
 #endif
 }
 
@@ -141,7 +141,7 @@ FileCoder::new_xz_coder()
 		  kMsgError,
 		  "FileCoder",
 		  "xz format is not supported on this system");
-  return NULL;
+  return nullptr;
 #endif
 }
 

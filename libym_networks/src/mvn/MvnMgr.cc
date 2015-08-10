@@ -42,7 +42,7 @@ MvnMgr::topmodule_list(list<const MvnModule*>& module_list) const
   for (vector<MvnModule*>::const_iterator p = mModuleArray.begin();
        p != mModuleArray.end(); ++ p) {
     MvnModule* module = *p;
-    if ( module && module->parent() == NULL ) {
+    if ( module && module->parent() == nullptr ) {
       module_list.push_back(module);
     }
   }
@@ -59,7 +59,7 @@ MvnMgr::max_module_id() const
 // @brief モジュールIDをキーにしてモジュールにアクセスする．
 // @param[in] id モジュールID ( 0 <= id < max_module_id() )
 // @return 該当するモジュールを返す．
-// @note 該当するモジュールがない場合は NULL を返す．
+// @note 該当するモジュールがない場合は nullptr を返す．
 const MvnModule*
 MvnMgr::module(ymuint id) const
 {
@@ -69,7 +69,7 @@ MvnMgr::module(ymuint id) const
 // @brief モジュールIDをキーにしてモジュールにアクセスする．
 // @param[in] id モジュールID ( 0 <= id < max_module_id() )
 // @return 該当するモジュールを返す．
-// @note 該当するモジュールがない場合は NULL を返す．
+// @note 該当するモジュールがない場合は nullptr を返す．
 MvnModule*
 MvnMgr::_module(ymuint id)
 {
@@ -85,7 +85,7 @@ MvnMgr::max_node_id() const
 
 // @brief ノードを得る．
 // @param[in] id ID番号 ( 0 <= id < max_node_id() )
-// @note NULL が還されることもある．
+// @note nullptr が還されることもある．
 const MvnNode*
 MvnMgr::node(ymuint id) const
 {
@@ -94,7 +94,7 @@ MvnMgr::node(ymuint id) const
 
 // @brief ノードを得る．
 // @param[in] id ID番号 ( 0 <= id < max_node_id() )
-// @note NULL が還されることもある．
+// @note nullptr が還されることもある．
 MvnNode*
 MvnMgr::_node(ymuint id)
 {
@@ -140,7 +140,7 @@ MvnMgr::new_module(const char* name,
   int tmp = mModuleItvlMgr.avail_num();
   if ( tmp == -1 ) {
     // IDが枯渇？
-    return NULL;
+    return nullptr;
   }
   mModuleItvlMgr.erase(tmp);
   ymuint id = tmp;
@@ -151,7 +151,7 @@ MvnMgr::new_module(const char* name,
   MvnModule* module = new MvnModule(name, np, ni, no, nio);
   module->mId = id;
   while ( mModuleArray.size() <= id ) {
-    mModuleArray.push_back(NULL);
+    mModuleArray.push_back(nullptr);
   }
   mModuleArray[id] = module;
 
@@ -185,7 +185,7 @@ MvnMgr::delete_module(MvnModule* module)
   // module の下位モジュールを再帰的に削除
 
   mModuleItvlMgr.add(module->mId);
-  mModuleArray[module->mId] = NULL;
+  mModuleArray[module->mId] = nullptr;
   delete module;
 }
 
@@ -294,16 +294,16 @@ MvnMgr::sweep()
   node_list.reserve(n);
   for (ymuint i = 0; i < n; ++ i) {
     MvnNode* node = _node(i);
-    if ( node == NULL ) continue;
+    if ( node == nullptr ) continue;
     node_list.push_back(node);
   }
   for (vector<MvnNode*>::iterator p = node_list.begin();
        p != node_list.end(); ++ p) {
     MvnNode* node = *p;
-    MvnNode* alt_node = NULL;
+    MvnNode* alt_node = nullptr;
     if ( node->type() == MvnNode::kThrough ) {
       MvnNode* src_node = node->input(0)->src_node();
-      if ( src_node != NULL ) {
+      if ( src_node != nullptr ) {
 	alt_node = src_node;
       }
     }
@@ -316,7 +316,7 @@ MvnMgr::sweep()
 	alt_node = select_from_partselect(src_node, node->bitpos());
       }
     }
-    if ( alt_node != NULL ) {
+    if ( alt_node != nullptr ) {
       // node を alt_node に置き換える．
       replace(node, alt_node);
     }
@@ -337,7 +337,7 @@ MvnMgr::sweep()
   list<MvnNode*> node_queue;
   for (ymuint i = 0; i < n; ++ i) {
     MvnNode* node = _node(i);
-    if ( node == NULL ) continue;
+    if ( node == nullptr ) continue;
     if ( node->type() == MvnNode::kInput ||
 	 node->type() == MvnNode::kOutput ||
 	 node->type() == MvnNode::kInout ) continue;
@@ -396,7 +396,7 @@ MvnMgr::select_from_concat(MvnNode* src_node,
     bitpos -= bw;
   }
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief 部分指定子からビットを抜き出す．
@@ -450,7 +450,7 @@ MvnMgr::replace(MvnNode* node,
 // @param[in] dst_node 出力先のノード
 // @param[in] dst_pin 出力先のピン番号
 // @return 接続を表すネットを返す．
-// @note 接続が失敗したら NULLを返す．
+// @note 接続が失敗したら nullptrを返す．
 // @note 接続が失敗するのは，
 //  - ピンが異なるモジュールに属していた．
 //  - ピンのビット幅が異なっていた．
@@ -492,7 +492,7 @@ MvnMgr::disconnect(MvnNode* src_node,
   MvnInputPin* dst_pin = dst_node->_input(dst_pin_pos);
   ASSERT_COND( dst_pin->mSrcNode == src_node );
   src_node->mDstPinList.erase(dst_pin);
-  dst_pin->mSrcNode = NULL;
+  dst_pin->mSrcNode = nullptr;
 }
 
 // @brief 接続を切り替える．
@@ -539,7 +539,7 @@ MvnMgr::reg_node(MvnNode* node)
   ymuint id = tmp;
   node->mId = id;
   while ( mNodeArray.size() <= id ) {
-    mNodeArray.push_back(NULL);
+    mNodeArray.push_back(nullptr);
   }
   mNodeArray[id] = node;
 
@@ -557,7 +557,7 @@ void
 MvnMgr::unreg_node(MvnNode* node)
 {
   mNodeItvlMgr.add(node->id());
-  mNodeArray[node->id()] = NULL;
+  mNodeArray[node->id()] = nullptr;
 
   if ( node->type() != MvnNode::kInput &&
        node->type() != MvnNode::kOutput &&
@@ -574,10 +574,10 @@ MvnMgr::unreg_node(MvnNode* node)
 
 // @brief コンストラクタ
 MvnInputPin::MvnInputPin() :
-  mNode(NULL),
+  mNode(nullptr),
   mPos(0),
   mBitWidth(0),
-  mSrcNode(NULL)
+  mSrcNode(nullptr)
 {
 }
 

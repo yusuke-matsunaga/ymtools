@@ -81,7 +81,7 @@ private:
   struct Page
   {
     // コンストラクタ
-    Page(void* p = NULL) :
+    Page(void* p = nullptr) :
       mNextPos(0),
       mChunk(static_cast<char*>(p))
     {

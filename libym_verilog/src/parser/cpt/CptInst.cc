@@ -359,29 +359,29 @@ CptInst::file_region() const
 
 // @brief 名前の取得
 // @return 名前
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const char*
 CptInst::name() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲の左側の式の取得
 // @return 範囲の左側の式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptInst::left_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲の右側の式の取得
 // @return 範囲の右側の式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptInst::right_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ポート数の取得

@@ -70,7 +70,7 @@ private:
 
   /// @brief disable statement の実体化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
   instantiate_disable(const VlNamedObj* parent,
@@ -79,7 +79,7 @@ private:
 
   /// @brief enable の実体化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -90,7 +90,7 @@ private:
 
   /// @brief system enable 文の実体化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -101,7 +101,7 @@ private:
 
   /// @brief delay / event control statement の実体化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -112,7 +112,7 @@ private:
 
   /// 代入文のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   /// @param[in] block ブロッキング代入の時 true
@@ -134,7 +134,7 @@ private:
 
   /// @brief event statement の実体化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
   instantiate_eventstmt(const VlNamedObj* parent,
@@ -143,7 +143,7 @@ private:
 
   /// @brief null statement の実体化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
   instantiate_nullstmt(const VlNamedObj* parent,
@@ -152,7 +152,7 @@ private:
 
   /// @brief if 文の生成を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -163,7 +163,7 @@ private:
 
   /// @brief case 文の実体化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -174,7 +174,7 @@ private:
 
   /// @brief wait 文の実体化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -185,7 +185,7 @@ private:
 
   /// @brief forever 文のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -196,7 +196,7 @@ private:
 
   /// @brief repeat 文のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -207,7 +207,7 @@ private:
 
   /// @brief while 文のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -218,7 +218,7 @@ private:
 
   /// @brief for 文のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -229,7 +229,7 @@ private:
 
   /// @brief procedural continuous assign 文のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -240,7 +240,7 @@ private:
 
   /// @brief deassign 文のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -251,7 +251,7 @@ private:
 
   /// @brief force 文のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -262,7 +262,7 @@ private:
 
   /// @brief release 文のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -273,7 +273,7 @@ private:
 
   /// @brief parallel block のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -284,7 +284,7 @@ private:
 
   /// @brief sequential block のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -300,7 +300,7 @@ private:
 
   /// @brief 名前つき parallel block のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*
@@ -311,7 +311,7 @@ private:
 
   /// @brief 名前つき sequential block のインスタンス化を行う．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] env 生成時の環境
   /// @param[in] pt_stmt 対象のステートメント
   ElbStmt*

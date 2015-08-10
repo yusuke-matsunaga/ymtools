@@ -88,7 +88,7 @@ string
 edge_name(const BdnNode* node,
 	  bool inv)
 {
-  ASSERT_COND( node != NULL );
+  ASSERT_COND( node != nullptr );
 
   ostringstream buf;
   if ( inv ) {
@@ -181,7 +181,7 @@ BdnVerilogWriter::operator()(ostream& s,
        p != output_list.end(); ++ p) {
     const BdnNode* node = *p;
     if ( node->output_type() == BdnNode::kPRIMARY_OUTPUT ) {
-      if ( node->alt_node() == NULL ) {
+      if ( node->alt_node() == nullptr ) {
 	VlwOutput vlw_output(writer);
 	writer.put_elem(node_name(node, false));
       }

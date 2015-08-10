@@ -58,8 +58,8 @@ SptExpr::op_type() const
 }
 
 // @brief 階層ブランチの取得
-// system function call の場合は常に NULL
-// このクラスでは NULL を返す．
+// system function call の場合は常に nullptr
+// このクラスでは nullptr を返す．
 PtNameBranchArray
 SptExpr::namebranch_array() const
 {
@@ -68,11 +68,11 @@ SptExpr::namebranch_array() const
 
 // @brief 末尾の名前の取得
 // @return 末尾の名前
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const char*
 SptExpr::name() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief オペランドの数の取得
@@ -89,7 +89,7 @@ SptExpr::operand_num() const
 const PtExpr*
 SptExpr::operand(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 定数インデックスのチェック
@@ -115,7 +115,7 @@ SptExpr::index_num() const
 const PtExpr*
 SptExpr::index(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲指定モードの取得
@@ -129,20 +129,20 @@ SptExpr::range_mode() const
 
 // @brief 範囲の左側の式の取得
 // @return 範囲の左側の式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 SptExpr::left_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲の右側の式の取得
 // @return 範囲の右側の式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 SptExpr::right_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 定数の種類の取得
@@ -176,11 +176,11 @@ SptExpr::const_uint() const
 // @brief 整数型および文字列型の定数の文字列表現の取得
 // @return 値の文字列表現\n
 // 整数型のサイズと基数は含まない．
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const char*
 SptExpr::const_str() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 実数型の値の取得
@@ -219,7 +219,7 @@ SptExpr::is_simple() const
 {
   if ( type() == kPtPrimaryExpr &&
        index_num() == 0 &&
-       left_range() == NULL ) {
+       left_range() == nullptr ) {
     return true;
   }
   return false;
@@ -619,7 +619,7 @@ bool
 SptConstant::is_index_expr() const
 {
   // ただの整数の場合のみが使える．
-  return const_type() == kVpiIntConst && const_str() == NULL;
+  return const_type() == kVpiIntConst && const_str() == nullptr;
 }
 
 // @brief 定数の種類の取得
@@ -647,7 +647,7 @@ SptFactory::new_Opr(const FileRegion& file_region,
 {
   void* p = alloc().get_memory(sizeof(SptOpr1));
   return new (p) SptOpr1(file_region, type,
-			 opr, NULL, NULL);
+			 opr, nullptr, nullptr);
 }
 
 // @brief 二項演算子の生成
@@ -664,7 +664,7 @@ SptFactory::new_Opr(const FileRegion& file_region,
 {
   void* p = alloc().get_memory(sizeof(SptOpr1));
   return new (p) SptOpr1(file_region, type,
-			 opr1, opr2, NULL);
+			 opr1, opr2, nullptr);
 }
 
 // @brief 三項演算子の生成
@@ -1018,7 +1018,7 @@ SptFactory::new_IntConst(const FileRegion& file_region,
 {
   void* p = alloc().get_memory(sizeof(SptConstant));
   return new (p) SptConstant(file_region, kVpiIntConst,
-			     0, value, NULL, 0.0);
+			     0, value, nullptr, 0.0);
 }
 
 // @brief 整数型の定数の生成
@@ -1076,7 +1076,7 @@ SptFactory::new_RealConst(const FileRegion& file_region,
 {
   void* p = alloc().get_memory(sizeof(SptConstant));
   return new (p) SptConstant(file_region, kVpiRealConst,
-			     0, 0, NULL, value);
+			     0, 0, nullptr, value);
 }
 
 // @brief 文字列型の定数の生成

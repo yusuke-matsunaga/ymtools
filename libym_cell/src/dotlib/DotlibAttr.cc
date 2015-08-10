@@ -43,7 +43,7 @@ DotlibAttr::DotlibAttr(const ShString& attr_name,
   mLoc(loc),
   mAttrName(attr_name),
   mValue(value),
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 

@@ -76,7 +76,7 @@ UdpGen::instantiate_udp(const PtUdp* pt_udp)
 
   // ポート名をキーにしたIOテンプレートの辞書を作る．
   IODict iodict;
-  const PtIOHead* outhead = NULL;
+  const PtIOHead* outhead = nullptr;
   for (ymuint i = 0; i < pt_udp->iohead_array().size(); ++ i) {
     const PtIOHead* iohead = pt_udp->iohead_array()[i];
     for (ymuint j = 0; j < iohead->item_num(); ++ j) {
@@ -105,7 +105,7 @@ UdpGen::instantiate_udp(const PtUdp* pt_udp)
   // 初期化文を実体化させる．
   // initial 文がある場合と変数宣言の中に初期化式が含まれている場合がある．
   const PtExpr* pt_init_value = pt_udp->init_value();
-  if ( pt_init_value == NULL ) {
+  if ( pt_init_value == nullptr ) {
     pt_init_value = outhead->item(0)->init_value();
   }
   if ( pt_init_value ) {
@@ -115,7 +115,7 @@ UdpGen::instantiate_udp(const PtUdp* pt_udp)
     const FileRegion& ifr = pt_init_value->file_region();
 
     VlScalarVal val;
-    if ( !evaluate_scalar(NULL, pt_init_value, val, true) ) {
+    if ( !evaluate_scalar(nullptr, pt_init_value, val, true) ) {
       MsgMgr::put_msg(__FILE__, __LINE__,
 		      ifr,
 		      kMsgError,

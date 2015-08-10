@@ -32,7 +32,7 @@ BEGIN_NAMESPACE_YM_CELL_LIBCOMP
 // @brief コンストラクタ
 LcPatMgr::LcPatMgr() :
   mAlloc(sizeof(LcPatNode), 1024),
-  mHashTable(NULL),
+  mHashTable(nullptr),
   mHashSize(0)
 {
   alloc_table(1024);
@@ -52,7 +52,7 @@ LcPatMgr::init()
   mInputList.clear();
   mNodeList.clear();
   delete [] mHashTable;
-  mHashTable = NULL;
+  mHashTable = nullptr;
   mHashSize = 0;
   alloc_table(1024);
   mPatList.clear();
@@ -455,7 +455,7 @@ LcPatMgr::make_input(VarId var)
     mInputList.push_back(node);
   }
   LcPatNode* node = mInputList[id];
-  ASSERT_COND( node != NULL );
+  ASSERT_COND( node != nullptr );
 
   return node;
 }
@@ -470,8 +470,8 @@ LcPatMgr::make_node(const Expr& expr,
 {
   LcPatNode* l_node = l_handle.node();
   LcPatNode* r_node = r_handle.node();
-  ASSERT_COND( l_node != NULL );
-  ASSERT_COND( r_node != NULL );
+  ASSERT_COND( l_node != nullptr );
+  ASSERT_COND( r_node != nullptr );
   bool l_inv = l_handle.inv();
   bool r_inv = r_handle.inv();
 
@@ -566,11 +566,11 @@ LcPatMgr::alloc_table(ymuint req_size)
   }
   mHashTable = new LcPatNode*[mHashSize];
   for (ymuint i = 0; i < mHashSize; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
   if ( old_size > 0 ) {
     for (ymuint i = 0; i < old_size; ++ i) {
-      LcPatNode* next = NULL;
+      LcPatNode* next = nullptr;
       for (LcPatNode* node = old_table[i]; node; node = next) {
 	next = node->mLink;
 	ymuint pos = hash_func(node->mType, node->mFanin[0], node->mFanin[1]);

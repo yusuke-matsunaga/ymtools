@@ -354,7 +354,7 @@ inline
 double
 RawLex::cur_rnumber() const
 {
-  return strtod(mCurString, static_cast<char**>(NULL));
+  return strtod(mCurString, static_cast<char**>(nullptr));
 }
 
 // @brief コンテキストを返す．

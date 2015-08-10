@@ -281,7 +281,7 @@ CmnMgrImpl::clear()
 
 // @brief D-FFセルの情報を得る．
 // @param[in] cell 対象のセル
-// @note cell が D-FF でない場合と登録されていない場合には NULL を返す．
+// @note cell が D-FF でない場合と登録されていない場合には nullptr を返す．
 const CmnDffCell*
 CmnMgrImpl::dff_cell(const Cell* cell) const
 {
@@ -290,13 +290,13 @@ CmnMgrImpl::dff_cell(const Cell* cell) const
     return ans;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
 // @brief ラッチセルの情報を得る．
 // @param[in] cell 対象のセル
-// @note cell がラッチでない場合と登録されていない場合には NULL を返す．
+// @note cell がラッチでない場合と登録されていない場合には nullptr を返す．
 const CmnLatchCell*
 CmnMgrImpl::latch_cell(const Cell* cell) const
 {
@@ -305,7 +305,7 @@ CmnMgrImpl::latch_cell(const Cell* cell) const
     return ans;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -338,8 +338,8 @@ CmnMgrImpl::new_port(const string& name,
   void* r = mAlloc.get_memory(sizeof(CmnNode*) * bit_width);
   port->mOutputArray = new (r) CmnNode*[bit_width];
   for (ymuint i = 0; i < bit_width; ++ i) {
-    CmnNodePI* input = NULL;
-    CmnNodePO* output = NULL;
+    CmnNodePI* input = nullptr;
+    CmnNodePO* output = nullptr;
     if ( iovect[i] & 1U ) {
       void* p = mAlloc.get_memory(sizeof(CmnNodePI));
       input = new (p) CmnNodePI(port, i);
@@ -374,7 +374,7 @@ CmnMgrImpl::new_dff(const CmnDffCell* cell,
   ymuint uid = static_cast<ymuint>(id);
   dff->mId = uid;
   if ( mDffArray.size() <= uid ) {
-    mDffArray.resize(uid + 1, NULL);
+    mDffArray.resize(uid + 1, nullptr);
   }
   mDffArray[uid] = dff;
 
@@ -409,7 +409,7 @@ CmnMgrImpl::new_dff(const CmnDffCell* cell,
     reg_output(clear);
   }
   else {
-    dff->mClear = NULL;
+    dff->mClear = nullptr;
   }
 
   if ( cell->has_preset() ) {
@@ -419,7 +419,7 @@ CmnMgrImpl::new_dff(const CmnDffCell* cell,
     reg_output(preset);
   }
   else {
-    dff->mPreset = NULL;
+    dff->mPreset = nullptr;
   }
 
   return dff;
@@ -432,7 +432,7 @@ void
 CmnMgrImpl::delete_dff(CmnDff* dff)
 {
   mDffItvlMgr.add(dff->id());
-  mDffArray[dff->id()] = NULL;
+  mDffArray[dff->id()] = nullptr;
 
   mDffList.erase(dff);
 
@@ -458,7 +458,7 @@ CmnMgrImpl::new_latch(const CmnLatchCell* cell,
   ymuint uid = static_cast<ymuint>(id);
   latch->mId = uid;
   if ( mLatchArray.size() < uid ) {
-    mLatchArray.resize(uid + 1, NULL);
+    mLatchArray.resize(uid + 1, nullptr);
   }
   mLatchArray[uid] = latch;
 
@@ -510,7 +510,7 @@ void
 CmnMgrImpl::delete_latch(CmnLatch* latch)
 {
   mLatchItvlMgr.add(latch->id());
-  mLatchArray[latch->id()] = NULL;
+  mLatchArray[latch->id()] = nullptr;
 
   mLatchList.erase(latch);
 
@@ -591,7 +591,7 @@ CmnMgrImpl::reg_latch_cell(const Cell* cell,
 CmnNode*
 CmnMgrImpl::new_node(ymuint ni)
 {
-  CmnNode* node = NULL;
+  CmnNode* node = nullptr;
 
   // 空いているIDを探してノード配列へ登録
   int id = mItvlMgr.avail_num();
@@ -614,7 +614,7 @@ CmnMgrImpl::new_node(ymuint ni)
     }
   }
   else {
-    node->mFanins = NULL;
+    node->mFanins = nullptr;
   }
   node->mId = uid;
 
@@ -646,7 +646,7 @@ CmnMgrImpl::reg_node(CmnNode* node)
   mNodeItvlMgr.erase(id);
   node->mId = id;
   if ( mNodeArray.size() <= node->id() ) {
-    mNodeArray.resize(node->id() + 1, NULL);
+    mNodeArray.resize(node->id() + 1, nullptr);
   }
   mNodeArray[node->id()] = node;
 }
@@ -657,7 +657,7 @@ CmnMgrImpl::unreg_node(CmnNode* node)
 {
   // new_node の逆の処理を行なう．
   mNodeItvlMgr.add(static_cast<int>(node->id()));
-  mNodeArray[node->id()] = NULL;
+  mNodeArray[node->id()] = nullptr;
 }
 
 #if 0
@@ -687,7 +687,7 @@ CmnMgrImpl::delete_logic(CmnNode* node)
   ASSERT_COND(node->fanout_num() == 0 );
   ymuint ni = node->fanin_num();
   for (ymuint i = 0; i < ni; ++ i) {
-    connect(NULL, node, i);
+    connect(nullptr, node, i);
   }
 
   mLogicList.erase(node);

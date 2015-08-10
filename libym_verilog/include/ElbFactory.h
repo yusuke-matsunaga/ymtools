@@ -230,7 +230,7 @@ public:
   ElbDecl*
   new_Decl(ElbDeclHead* head,
 	   const PtNamedBase* pt_item,
-	   ElbExpr* init = NULL) = 0;
+	   ElbExpr* init = nullptr) = 0;
 
   /// @brief 暗黙のネットを生成する．
   /// @param[in] pt_expr パース木のプライマリ式
@@ -306,12 +306,12 @@ public:
   /// @param[in] module 親のモジュール
   /// @param[in] pt_head パース木のヘッダ定義
   /// @param[in] delay 遅延値
-  /// @note 遅延を持たないときは NULL を与える．
+  /// @note 遅延を持たないときは nullptr を与える．
   virtual
   ElbCaHead*
   new_CaHead(const VlModule* module,
 	     const PtItem* pt_head,
-	     ElbDelay* delay = NULL) = 0;
+	     ElbDelay* delay = nullptr) = 0;
 
   /// @brief continuous assignment を生成する．
   /// @param[in] head ヘッダ
@@ -483,7 +483,7 @@ public:
 
   /// @brief 代入文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   /// @param[in] rhs 右辺の式
@@ -497,11 +497,11 @@ public:
 		 ElbExpr* lhs,
 		 ElbExpr* rhs,
 		 bool block,
-		 ElbControl* control = NULL) = 0;
+		 ElbControl* control = nullptr) = 0;
 
   /// @brief assign ステートメントを生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   /// @param[in] rhs 右辺の式
@@ -515,7 +515,7 @@ public:
 
   /// @brief deassign ステートメントを生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   virtual
@@ -527,7 +527,7 @@ public:
 
   /// @brief force ステートメントを生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   /// @param[in] rhs 右辺の式
@@ -541,7 +541,7 @@ public:
 
   /// @brief release ステートメントを生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   virtual
@@ -553,7 +553,7 @@ public:
 
   /// @brief begin ブロックを生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] stmt_list 子のステートメントリスト
   virtual
@@ -565,7 +565,7 @@ public:
 
   /// @brief fork ブロックを生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] stmt_list 子のステートメントリスト
   virtual
@@ -585,7 +585,7 @@ public:
 
   /// @brief 名前付き begin ブロックを生成する．
   /// @param[in] block 自分自身に対応するスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] stmt_list 子のステートメントリスト
   virtual
@@ -598,7 +598,7 @@ public:
 
   /// @brief 名前付き fork ブロックを生成する．
   /// @param[in] block 自分自身に対応するスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] stmt_list 子のステートメントリスト
   virtual
@@ -610,7 +610,7 @@ public:
 
   /// @brief while 文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] stmt 本体のステートメント
@@ -624,7 +624,7 @@ public:
 
   /// @brief repeat 文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] stmt 本体のステートメント
@@ -638,7 +638,7 @@ public:
 
   /// @brief wait 文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] stmt 本体のステートメント
@@ -652,7 +652,7 @@ public:
 
   /// @brief for 文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] init_stmt 初期化式
@@ -670,7 +670,7 @@ public:
 
   /// @brief forever 文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] stmt 本体のステートメント
   virtual
@@ -682,12 +682,12 @@ public:
 
   /// @brief if 文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] cond 条件式
   /// @param[in] stmt 本体のステートメント
   /// @param[in] else_stmt else節のステートメント
-  /// @note else_stmt は NULL もありうる．
+  /// @note else_stmt は nullptr もありうる．
   virtual
   ElbStmt*
   new_IfStmt(const VlNamedObj* parent,
@@ -699,7 +699,7 @@ public:
 
   /// @brief case 文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] expr 条件式
   /// @param[in] caseitem_list caseitem のリスト
@@ -712,7 +712,7 @@ public:
 
   /// @brief イベント文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] named_event 対象のイベント
   virtual
@@ -722,9 +722,9 @@ public:
 		const PtStmt* pt_stmt,
 		ElbExpr* named_event) = 0;
 
-  /// @brief NULL ステートメントを生成する．
+  /// @brief nullptr ステートメントを生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   virtual
   ElbStmt*
@@ -734,7 +734,7 @@ public:
 
   /// @brief タスクコール文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] task 対象のタスク
   /// @param[in] arg_array 引数の配列
@@ -748,7 +748,7 @@ public:
 
   /// @brief システムタスクコール文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] user_systf システムタスク
   /// @param[in] arg_array 引数の配列
@@ -762,7 +762,7 @@ public:
 
   /// @brief disable 文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] target 対象のスコープ
   virtual
@@ -774,7 +774,7 @@ public:
 
   /// @brief コントロール文を生成する．
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] control コントロール
   /// @param[in] stmt 本体のステートメント

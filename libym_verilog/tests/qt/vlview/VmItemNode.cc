@@ -634,7 +634,7 @@ functype2str(tVpiFuncType type)
   case kVpiSizedSignedFunc: return "vpiSizedSignedFunc";
   default: ASSERT_NOT_REACHED;
   }
-  return NULL;
+  return nullptr;
 }
 
 END_NONAMESPACE
@@ -850,7 +850,7 @@ VmPrimitiveNode::data(int column,
       return "vpiPrimitive";
     }
     else if ( column == 1 ) {
-      const char* nm = NULL;
+      const char* nm = nullptr;
       switch ( mPrimitive->type() ) {
       case kVpiGate:   nm = "vpiGate"; break;
       case kVpiSwitch: nm = "vpiSwitch"; break;

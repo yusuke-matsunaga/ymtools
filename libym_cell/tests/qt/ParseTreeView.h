@@ -28,7 +28,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のウィジェット
-  ParseTreeView(QWidget* parent = NULL);
+  ParseTreeView(QWidget* parent = nullptr);
 
   /// @brief デストラクタ
   ~ParseTreeView();

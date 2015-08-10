@@ -229,7 +229,7 @@ MvnDumper::operator()(ostream& s,
   ymuint n = mgr.max_module_id();
   for (ymuint i = 0; i < n; ++ i) {
     const MvnModule* module = mgr.module(i);
-    if ( module == NULL ) continue;
+    if ( module == nullptr ) continue;
 
     s << "Module#" << module->id() << "(" << module->name() << ")" << endl;
     const MvnNode* pnode = module->parent();

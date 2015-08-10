@@ -268,7 +268,7 @@ mincov_test(int argc,
 	}
 	++ rownum;
       }
-      sm_row* solution = sm_minimum_cover(A, NULL, 0, depth);
+      sm_row* solution = sm_minimum_cover(A, nullptr, 0, depth);
       sm_element* pe;
       sm_foreach_row_element(solution, pe) {
 	cout << " " << pe->col_num;

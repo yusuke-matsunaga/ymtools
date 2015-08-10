@@ -19,13 +19,13 @@ BEGIN_NAMESPACE_YM
 AigTemplate::AigTemplate()
 {
 }
-  
+
 // コピーコンストラクタ
 AigTemplate::AigTemplate(const AigTemplate& src)
 {
   set_copy(src, hash_map<size_t, size_t>());
 }
-  
+
 // コピーコンストラクタ
 AigTemplate::AigTemplate(const AigTemplate& src,
 			 const hash_map<size_t, size_t>& vmap)
@@ -58,7 +58,7 @@ AigTemplate::clear()
     delete *p;
   }
   mNodes.clear();
-  mRoot = NULL;
+  mRoot = nullptr;
 }
 
 // AIG を作る．
@@ -68,7 +68,7 @@ AigTemplate::make_aig(AigMgr& mgr,
 {
   return make_aig_sub(mRoot, mgr, inputs);
 }
-  
+
 // make_aig() の下請け関数
 AigHandle
 AigTemplate::make_aig_sub(AtNode* node,
@@ -88,13 +88,13 @@ AigTemplate::make_aig_sub(AtNode* node,
     }
     return ans;
   }
-  
+
   // ここまで来たら mType は AND/OR/XOR のいずれか
   AigHandle input0 = make_aig_sub(node->mInputs[0], mgr, inputs);
   if ( node->mInv1 ) {
     input0 = ~input0;
   }
-  
+
   AigHandle input1 = make_aig_sub(node->mInputs[1], mgr, inputs);
   if ( node->mInv2 ) {
     input1 = ~input1;
@@ -109,18 +109,18 @@ AigTemplate::make_aig_sub(AtNode* node,
   if ( node->mType == kAtXor ) {
     return mgr.make_xor(input0, input1);
   }
-  
+
   ASSERT_NOT_REACHED;
   return mgr.make_zero();
 }
-  
+
 // 内容がセットされていたら true を返す．
 bool
 AigTemplate::set() const
 {
   return !mNodes.empty();
 }
-    
+
 // コストを返す．
 int
 AigTemplate::cost() const
@@ -138,7 +138,7 @@ AigTemplate::cost() const
   }
   return ans;
 }
-  
+
 // 値の評価を行う．
 ymulong
 AigTemplate::eval(const vector<ymulong>& ivals) const
@@ -152,7 +152,7 @@ AigTemplate::eval(const vector<ymulong>& ivals) const
     case kAtConst0:
       node->mVal = 0UL;
       break;
-      
+
     case kAtConst1:
       node->mVal = 1UL;
       break;
@@ -223,7 +223,7 @@ AigTemplate::dump_code(ostream& s,
       s << "    size_t " << var_name << " = " << target
 	<< ".make_const0();" << endl;
       break;
-      
+
     case kAtConst1:
       s << "    size_t " << var_name << " = " << target
 	<< ".make_const1();" << endl;
@@ -464,7 +464,7 @@ AigTemplate::set_copy(const AigTemplate& src,
   clear();
   mRoot = set_copy_sub(src.mRoot, vmap);
 }
-  
+
 // 双対形をセットする．
 void
 AigTemplate::set_dual(const AigTemplate& src)
@@ -472,7 +472,7 @@ AigTemplate::set_dual(const AigTemplate& src)
   clear();
   mRoot = set_dual_sub(src.mRoot);
 }
-  
+
 // compose を行う．
 void
 AigTemplate::set_compose(const AigTemplate& src1,
@@ -518,7 +518,7 @@ AigTemplate::dup_node_sub(AtNode* node,
   AtNode* node1 = dup_node_sub(node->mInputs[1], vmap);
   return get_anode(node->mType, node0, node->mInv1, node1, node->mInv2);
 }
- 
+
 // set_copy の下請け関数
 AtNode*
 AigTemplate::set_copy_sub(AtNode* node,
@@ -571,10 +571,10 @@ AigTemplate::set_copy_sub(AtNode* node,
       return get_anode(kAtXor, node0, !node->mInv1, node1, node->mInv2);
     }
     ASSERT_NOT_REACHED;
-    return NULL;
+    return nullptr;
   }
 }
-  
+
 // set_dual の下請け関数
 AtNode*
 AigTemplate::set_dual_sub(AtNode* node)
@@ -600,7 +600,7 @@ AigTemplate::set_dual_sub(AtNode* node)
     return get_anode(kAtXor, node0, !node->mInv1, node1, node->mInv2);
   }
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // set_compose の下請け関数
@@ -609,12 +609,12 @@ AigTemplate::set_compose_sub(AtNode* node,
 			     const vector<AtNode*>& nmap)
 {
   ASSERT_COND( node->mType != kAtLiteral );
-  
+
   if ( node->mType == kAtConst0 || node->mType == kAtConst1 ) {
     return get_cnode(node->mType);
   }
-  
-  AtNode* node0 = NULL;
+
+  AtNode* node0 = nullptr;
   bool inv1 = node->mInv1;
   AtNode* inode0 = node->mInputs[0];
   if ( inode0->mType == kAtLiteral ) {
@@ -626,7 +626,7 @@ AigTemplate::set_compose_sub(AtNode* node,
   else {
     node0 = set_compose_sub(inode0, nmap);
   }
-  AtNode* node1 = NULL;
+  AtNode* node1 = nullptr;
   bool inv2 = node->mInv2;
   AtNode* inode1 = node->mInputs[1];
   if ( inode1->mType == kAtLiteral ) {
@@ -658,7 +658,7 @@ AigTemplate::get_cnode(tAtType type)
   node->mType = type;
   return node;
 }
-  
+
 // リテラルノードを作る．
 AtNode*
 AigTemplate::get_lnode(ymuint32 id,

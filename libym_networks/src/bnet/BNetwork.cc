@@ -73,25 +73,25 @@ BNetwork::operator=(const BNetwork& src)
 }
 
 // nameという名前をもつノードを取り出す．
-// 該当する節点が無い場合には NULL を返す．
+// 該当する節点が無い場合には nullptr を返す．
 BNode*
 BNetwork::find_node(const char* name) const
 {
   BNode::tId id = mNameMap->find_id(name);
   if ( id == 0 ) {
-    return NULL;
+    return nullptr;
   }
   return mNodeVector[id];
 }
 
 // nameという名前をもつ外部出力節点を取り出す．
-// 該当する節点が無い場合には NULL を返す．
+// 該当する節点が無い場合には nullptr を返す．
 BNode*
 BNetwork::find_ponode(const char* name) const
 {
   BNode::tId id = mPoMap->find_id(name);
   if (id == 0 ) {
-    return NULL;
+    return nullptr;
   }
   return mNodeVector[id];
 }
@@ -148,7 +148,7 @@ BNetwork::change_name_rule(const char* prefix,
        p != mNodeList.end(); ++ p) {
     BNode* node = *p;
     const char* name = node_name(node);
-    if ( !node->is_output() && name != NULL ) {
+    if ( !node->is_output() && name != nullptr ) {
       mNameMgr.add(name);
     }
   }
@@ -226,7 +226,7 @@ BNetwork::copy(const BNetwork& src)
 
   // 対応付けのための連想配列
   size_t n = src.max_node_id();
-  vector<BNode*> node_assoc(n, NULL);
+  vector<BNode*> node_assoc(n, nullptr);
 
   set_model_name(src.model_name());
 
@@ -288,11 +288,11 @@ BNetwork::copy(const BNetwork& src)
        p != src.outputs_end(); ++p) {
     BNode* src_node = *p;
     BNode* dst_node = node_assoc[src_node->id()];
-    ASSERT_COND(dst_node != NULL );
+    ASSERT_COND(dst_node != nullptr );
 
     BNode* src_fanin = src_node->fanin(0);
     BNode* dst_fanin = node_assoc[src_fanin->id()];
-    ASSERT_COND(dst_fanin != NULL );
+    ASSERT_COND(dst_fanin != nullptr );
     bool stat = manip.change_output(dst_node, dst_fanin);
     ASSERT_COND(stat );
   }
@@ -303,7 +303,7 @@ BNetwork::copy(const BNetwork& src)
        p != src.logic_nodes_end(); ++p) {
     BNode* src_node = *p;
     BNode* dst_node = node_assoc[src_node->id()];
-    ASSERT_COND(dst_node != NULL );
+    ASSERT_COND(dst_node != nullptr );
 
     size_t n = src_node->fanin_num();
     fanins.clear();
@@ -311,7 +311,7 @@ BNetwork::copy(const BNetwork& src)
     for (size_t i = 0; i < n; i ++) {
       BNode* src_fanin = src_node->fanin(i);
       BNode* new_fanin = node_assoc[src_fanin->id()];
-      ASSERT_COND( new_fanin != NULL );
+      ASSERT_COND( new_fanin != nullptr );
       fanins[i] = new_fanin;
     }
     bool stat = manip.change_logic(dst_node, src_node->func(), fanins, false);
@@ -323,11 +323,11 @@ BNetwork::copy(const BNetwork& src)
        p != src.latch_nodes_end(); ++p) {
     BNode* src_node = *p;
     BNode* dst_node = node_assoc[src_node->id()];
-    ASSERT_COND(dst_node != NULL );
+    ASSERT_COND(dst_node != nullptr );
 
     BNode* src_fanin = src_node->fanin(0);
     BNode* dst_fanin = node_assoc[src_fanin->id()];
-    ASSERT_COND(dst_fanin != NULL );
+    ASSERT_COND(dst_fanin != nullptr );
     bool stat = manip.change_latch(dst_node, dst_fanin, src_node->reset_value());
     ASSERT_COND(stat );
   }
@@ -478,7 +478,7 @@ BNetwork::delete_unused_input()
 }
 
 // 型と名前を指定してノードを作る．
-// エラーが起きた場合には NULL を返す．
+// エラーが起きた場合には nullptr を返す．
 BNode*
 BNetwork::new_node(BNode::tType type,
 		   const char* name)
@@ -488,7 +488,7 @@ BNetwork::new_node(BNode::tType type,
   if ( id == -1 ) {
     // 使用可能な ID 番号がない．！
     BNET_ERROR("no available ids");
-    return NULL;
+    return nullptr;
   }
   mItvlMgr.erase(id);
 
@@ -496,15 +496,15 @@ BNetwork::new_node(BNode::tType type,
   while ( mNodeVector.size() <= iid ) {
     BNode* node = BNodeMgr::the_obj().alloc_node();
     if ( !node ) {
-      // なんらかのエラーが起きたので NULL を返す．
+      // なんらかのエラーが起きたので nullptr を返す．
       BNET_ERROR("Could not make a new node.");
-      return NULL;
+      return nullptr;
     }
     node->mId = mNodeVector.size();
     node->mParent = this;
     mNodeVector.push_back(node);
     // 名前はダミー
-    mNodeName.push_back(NULL);
+    mNodeName.push_back(nullptr);
   }
   BNode* node = mNodeVector[iid];
 
@@ -518,7 +518,7 @@ BNetwork::new_node(BNode::tType type,
     // 失敗，たぶん，名前が重複していた．
     mItvlMgr.add(id);
     BNET_ERROR("Could not register a new node.");
-    return NULL;
+    return nullptr;
   }
 
   // PSet に登録する．
@@ -669,13 +669,13 @@ BNetwork::set_node_type(BNode* node,
 }
 
 // ノードに名前を設定して登録する．
-// name が NULL の場合には名前を自動生成する．
+// name が nullptr の場合には名前を自動生成する．
 // 名前が重複していた場合には false を返す．
 bool
 BNetwork::set_node_name(BNode* node,
 			const char* name)
 {
-  if ( name == NULL || name[0] == '\0' ) {
+  if ( name == nullptr || name[0] == '\0' ) {
     // 名前を適当につける．
     name = mNameMgr.new_name(true).c_str();
   }
@@ -737,7 +737,7 @@ BNetwork::rename_node(BNode* node,
     return false;
   }
 
-  if ( name != NULL &&
+  if ( name != nullptr &&
        ((node->is_output() && find_ponode(name)) ||
 	(!node->is_output() && find_node(name))) ) {
     // name はもうすでに使われている．
@@ -768,8 +768,8 @@ BNetwork::set_node_fanins(BNode* node,
   for (ymuint i = 0; i < old_ni; i ++) {
     BNodeEdge* edge = &edge_array[i];
     BNode* from = edge->from();
-    change_edge_fanin(edge, from, NULL);
-    edge->mFrom = NULL;
+    change_edge_fanin(edge, from, nullptr);
+    edge->mFrom = nullptr;
   }
 
   // 新しいファンイン用の配列を確保する．
@@ -787,8 +787,8 @@ BNetwork::set_node_fanins(BNode* node,
     BNodeEdge* edge = &edge_array[i];
     edge->mTo = node;
     edge->mPos = i;
-    edge->mFrom = NULL;
-    change_edge_fanin(edge, NULL, fanins[i]);
+    edge->mFrom = nullptr;
+    change_edge_fanin(edge, nullptr, fanins[i]);
   }
 
   // ネットワークの構造が変わっているのでその印を付ける．

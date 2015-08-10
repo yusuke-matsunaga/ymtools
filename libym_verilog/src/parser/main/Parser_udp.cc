@@ -66,7 +66,7 @@ Parser::new_Udp1995(const FileRegion& file_region,
   PtIOHeadArray iohead_array = get_module_io_array();
   PtDeclHeadArray decl_array = get_module_decl_array();
 
-  const PtIOItem* out_item = NULL;
+  const PtIOItem* out_item = nullptr;
   bool is_seq = false;
 
   bool sane = true;
@@ -276,7 +276,7 @@ Parser::new_Udp(const FileRegion& file_region,
 		PtiPortArray port_array,
 		PtIOHeadArray iohead_array)
 {
-  const PtUdp* udp = NULL;
+  const PtUdp* udp = nullptr;
   if ( is_seq ) {
     // 初期値の設定がある．
     if ( init_name ) {
@@ -310,7 +310,7 @@ Parser::new_Udp(const FileRegion& file_region,
     }
 
     // このあと elaboration で注意が必要なのは init_value.
-    // 場合によってはこれが NULLで outhead->top()->init_value()
+    // 場合によってはこれが nullptrで outhead->top()->init_value()
     // が空でない場合がある．
     udp = mFactory.new_SeqUdp(file_region,
 			      udp_name,

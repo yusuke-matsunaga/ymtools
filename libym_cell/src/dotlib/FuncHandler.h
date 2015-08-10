@@ -41,7 +41,7 @@ protected:
 
   /// @brief 値を読み込む処理
   /// @return 値を表す DotlibNode を返す．
-  /// @note エラーが起きたら NULL を返す．
+  /// @note エラーが起きたら nullptr を返す．
   /// @note ここでは function 属性用の論理式のパースを行う．
   virtual
   DotlibNodeImpl*

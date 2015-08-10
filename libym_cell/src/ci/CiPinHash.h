@@ -44,7 +44,7 @@ public:
   /// @param[in] cell セル
   /// @param[in] name 名前
   /// @return cell の name というピンを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   CiPin*
   get(const CiCell* cell,
       ShString name) const;

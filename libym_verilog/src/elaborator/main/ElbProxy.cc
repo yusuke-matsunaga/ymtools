@@ -100,7 +100,7 @@ ElbProxy::phase1_decl(const VlNamedObj* parent,
 // @param[in] task 親のタスク
 // @param[in] function 親の function
 // @param[in] pt_head_array IO宣言ヘッダの配列
-// @note module, task, function は1つのみが値を持つ．残りは NULL．
+// @note module, task, function は1つのみが値を持つ．残りは nullptr．
 void
 ElbProxy::instantiate_iodecl(ElbModule* module,
 			     ElbTaskFunc* taskfunc,
@@ -170,7 +170,7 @@ ElbProxy::instantiate_stmt(const VlNamedObj* parent,
 // @param[in] env 生成時の環境
 // @param[in] pt_expr 式を表すパース木
 // @return 生成された ElbExpr のポインタを返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ElbProxy::instantiate_expr(const VlNamedObj* parent,
 			   const ElbEnv& env,
@@ -183,7 +183,7 @@ ElbProxy::instantiate_expr(const VlNamedObj* parent,
 // @param[in] parent 親のスコープ
 // @param[in] pt_expr 式を表すパース木
 // @return 生成された ElbExpr のポインタを返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ElbProxy::instantiate_constant_expr(const VlNamedObj* parent,
 				    const PtExpr* pt_expr)
@@ -196,7 +196,7 @@ ElbProxy::instantiate_constant_expr(const VlNamedObj* parent,
 // @param[in] env 生成時の環境
 // @param[in] pt_expr 式を表すパース木
 // @return 生成された ElbExpr のポインタを返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ElbProxy::instantiate_event_expr(const VlNamedObj* parent,
 				 const ElbEnv& env,
@@ -210,7 +210,7 @@ ElbProxy::instantiate_event_expr(const VlNamedObj* parent,
 // @param[in] env 生成時の環境
 // @param[in] pt_expr 式を表すパース木
 // @return 生成された ElbExpr のポインタを返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ElbProxy::instantiate_arg(const VlNamedObj* parent,
 			  const ElbEnv& env,
@@ -224,7 +224,7 @@ ElbProxy::instantiate_arg(const VlNamedObj* parent,
 // @param[in] env 生成時の環境
 // @param[in] pt_expr 式を表すパース木
 // @return 生成された ElbExpr のポインタを返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ElbProxy::instantiate_lhs(const VlNamedObj* parent,
 			  const ElbEnv& env,
@@ -239,7 +239,7 @@ ElbProxy::instantiate_lhs(const VlNamedObj* parent,
 // @param[in] pt_expr 式を表すパース木
 // @param[in] lhs 左辺式
 // @return 生成された ElbExpr のポインタを返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ElbProxy::instantiate_rhs(const VlNamedObj* parent,
 			  const ElbEnv& env,

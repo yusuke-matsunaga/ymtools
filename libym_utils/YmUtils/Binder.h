@@ -95,7 +95,7 @@ public:
 
   /// @brief BindMgr の取得
   /// @retval バインドしている BindMgr　バインドしている場合
-  /// @retval NULL バインドしていない場合
+  /// @retval nullptr バインドしていない場合
   BindMgr*
   mgr() const;
 

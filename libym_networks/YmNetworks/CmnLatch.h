@@ -69,12 +69,12 @@ public:
   enable() const;
 
   /// @brief クリア信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   const CmnNode*
   clear() const;
 
   /// @brief プリセット信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   const CmnNode*
   preset() const;
 
@@ -95,12 +95,12 @@ public:
   _enable();
 
   /// @brief クリア信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   CmnNode*
   _clear();
 
   /// @brief プリセット信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   CmnNode*
   _preset();
 
@@ -204,7 +204,7 @@ CmnLatch::enable() const
 }
 
 // @brief クリア信号のノードを返す．
-// @note NULL の場合もある．
+// @note nullptr の場合もある．
 inline
 const CmnNode*
 CmnLatch::clear() const
@@ -213,7 +213,7 @@ CmnLatch::clear() const
 }
 
 // @brief プリセット信号のノードを返す．
-// @note NULL の場合もある．
+// @note nullptr の場合もある．
 inline
 const CmnNode*
 CmnLatch::preset() const
@@ -254,7 +254,7 @@ CmnLatch::_enable()
 }
 
 // @brief クリア信号のノードを返す．
-// @note NULL の場合もある．
+// @note nullptr の場合もある．
 inline
 CmnNode*
 CmnLatch::_clear()
@@ -263,7 +263,7 @@ CmnLatch::_clear()
 }
 
 // @brief プリセット信号のノードを返す．
-// @note NULL の場合もある．
+// @note nullptr の場合もある．
 inline
 CmnNode*
 CmnLatch::_preset()

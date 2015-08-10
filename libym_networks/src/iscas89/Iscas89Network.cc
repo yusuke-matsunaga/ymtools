@@ -22,7 +22,7 @@ Iscas89Node::Iscas89Node(ymuint32 id) :
   mId(id),
   mType(kUndef),
   mNi(0),
-  mFanins(NULL)
+  mFanins(nullptr)
 {
 }
 
@@ -67,12 +67,12 @@ Iscas89Network::get_node(ymuint32 id)
 {
   ymuint32 n = mNodeArray.size();
   while ( n <= id ) {
-    mNodeArray.push_back(NULL);
+    mNodeArray.push_back(nullptr);
     ++ n;
   }
 
   Iscas89Node* node = mNodeArray[id];
-  if ( node == NULL ) {
+  if ( node == nullptr ) {
     void* p = mAlloc.get_memory(sizeof(Iscas89Node));
     node = new (p) Iscas89Node(id);
     mNodeArray[id] = node;

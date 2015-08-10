@@ -25,8 +25,8 @@ BEGIN_NAMESPACE_YM_VERILOG
 void
 Parser::init_generate()
 {
-  push_declhead_list(NULL);
-  push_item_list(NULL);
+  push_declhead_list(nullptr);
+  push_item_list(nullptr);
 }
 
 // @brief generate block の終了
@@ -73,8 +73,8 @@ Parser::new_GenBlock(const FileRegion& fr,
 void
 Parser::init_genif()
 {
-  push_declhead_list(NULL);
-  push_item_list(NULL);
+  push_declhead_list(nullptr);
+  push_item_list(nullptr);
 }
 
 // @brief generate-if の終了
@@ -92,8 +92,8 @@ Parser::end_genif()
 void
 Parser::init_genelse()
 {
-  push_declhead_list(NULL);
-  push_item_list(NULL);
+  push_declhead_list(nullptr);
+  push_item_list(nullptr);
 }
 
 // @brief generate-if-else の終了

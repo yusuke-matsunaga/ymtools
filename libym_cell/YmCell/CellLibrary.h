@@ -139,14 +139,14 @@ public:
 
   /// @brief 遅延テーブルのテンプレートの取得
   /// @param[in] name テンプレート名
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   virtual
   const CellLutTemplate*
   lu_table_template(const char* name) const = 0;
 
   /// @brief バスタイプの取得
   /// @param[in] name バスタイプ名
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   virtual
   const CellBusType*
   bus_type(const char* name) const = 0;

@@ -302,7 +302,7 @@ VmDeclNode::loc() const
 void
 VmDeclNode::expand() const
 {
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( mDecl->type() ) {
   case kVpiNet:             nm = "vpiNet"; break;
   case kVpiReg:             nm = "vpiReg"; break;
@@ -470,7 +470,7 @@ VmDeclArrayNode::loc() const
 void
 VmDeclArrayNode::expand() const
 {
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( mDecl->type() ) {
   case kVpiNetArray:        nm = "vpiNetArray"; break;
   case kVpiRegArray:        nm = "vpiRegArray"; break;

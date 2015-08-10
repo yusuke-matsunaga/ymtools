@@ -20,7 +20,7 @@ BEGIN_NAMESPACE_YM_DOTLIB
 // @param[in] parent 親のオブジェクト
 ParseTreeModel::ParseTreeModel(QObject* parent) :
   QAbstractItemModel(parent),
-  mRootNode(NULL)
+  mRootNode(nullptr)
 {
 }
 

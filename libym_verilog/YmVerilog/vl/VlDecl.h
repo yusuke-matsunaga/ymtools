@@ -40,7 +40,7 @@ public:
 
   /// @brief 初期値の取得
   /// @retval 初期値
-  /// @retval NULL 設定がない場合
+  /// @retval nullptr 設定がない場合
   virtual
   const VlExpr*
   init_value() const = 0;

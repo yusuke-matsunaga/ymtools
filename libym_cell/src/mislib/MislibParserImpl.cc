@@ -32,7 +32,7 @@ END_NONAMESPACE
 // コンストラクタ
 MislibParserImpl::MislibParserImpl()
 {
-  mScanner = NULL;
+  mScanner = nullptr;
   mUngetToken = END;
 }
 
@@ -116,7 +116,7 @@ MislibParserImpl::read_file(const string& filename,
   bool stat = read_gate();
 
   delete mScanner;
-  mScanner = NULL;
+  mScanner = nullptr;
 
   if ( MsgMgr::error_num() > prev_errnum ) {
     // 異常終了
@@ -149,7 +149,7 @@ MislibParserImpl::read_file(const string& filename,
 
     // 入力ピン名のチェック
     const MislibNode* ipin_top = gate->ipin_top();
-    if ( ipin_top != NULL && ipin_top->name() != NULL ) {
+    if ( ipin_top != nullptr && ipin_top->name() != nullptr ) {
       // 通常の入力ピン定義の場合
       HashMap<ShString, const MislibNode*> ipin_map;
       for (const MislibNode* ipin = ipin_top; ipin; ipin = ipin->next()) {
@@ -274,7 +274,7 @@ MislibParserImpl::read_gate()
 
     // 次は式
     MislibNode* expr = read_expr(SEMI);
-    if ( expr == NULL ) {
+    if ( expr == nullptr ) {
       // エラー
       return false;
     }
@@ -290,11 +290,11 @@ MislibParserImpl::read_gate()
 
     // 次はピンリスト
     MislibNode* pin_list = read_pin_list();
-    if ( pin_list == NULL ) {
+    if ( pin_list == nullptr ) {
       // エラー
       return false;
     }
-    for (const MislibNode* pin = pin_list->top(); pin != NULL; pin = pin->next()) {
+    for (const MislibNode* pin = pin_list->top(); pin != nullptr; pin = pin->next()) {
       loc1 = pin->loc();
     }
 
@@ -305,13 +305,13 @@ MislibParserImpl::read_gate()
 // @brief 式を読み込む．
 // @return 式を表す AST のノードを返す．
 //
-// エラーが起きたら NULL を返す．
+// エラーが起きたら nullptr を返す．
 MislibNode*
 MislibParserImpl::read_expr(MislibToken end_token)
 {
   MislibNode* expr1 = read_product();
-  if ( expr1 == NULL ) {
-    return NULL;
+  if ( expr1 == nullptr ) {
+    return nullptr;
   }
 
   for ( ; ; ) {
@@ -322,13 +322,13 @@ MislibParserImpl::read_expr(MislibToken end_token)
     if ( tok != PLUS && tok != HAT ) {
       // シンタックスエラー
       cout << "Error in read_expr(): PLUS or HAT is expected" << endl;
-      return NULL;
+      return nullptr;
     }
     skip_token();
 
     MislibNode* expr2 = read_product();
-    if ( expr2 == NULL ) {
-      return NULL;
+    if ( expr2 == nullptr ) {
+      return nullptr;
     }
     if ( tok == PLUS ) {
       expr1 = mMislibMgr->new_or(FileRegion(expr1->loc(), expr2->loc()), expr1, expr2);
@@ -342,20 +342,20 @@ MislibParserImpl::read_expr(MislibToken end_token)
 // @brief 積項を読み込む．
 // @return 式を表す AST のノードを返す．
 //
-// エラーが起きたら NULL を返す．
+// エラーが起きたら nullptr を返す．
 MislibNode*
 MislibParserImpl::read_product()
 {
   MislibNode* expr1 = read_literal();
-  if ( expr1 == NULL ) {
-    return NULL;
+  if ( expr1 == nullptr ) {
+    return nullptr;
   }
   while ( peek() == STAR ) {
     skip_token();
 
     MislibNode* expr2 = read_literal();
-    if ( expr2 == NULL ) {
-      return NULL;
+    if ( expr2 == nullptr ) {
+      return nullptr;
     }
     expr1 = mMislibMgr->new_and(FileRegion(expr1->loc(), expr2->loc()), expr1, expr2);
   }
@@ -365,7 +365,7 @@ MislibParserImpl::read_product()
 // @brief リテラルを読み込む．
 // @return 式を表す AST のノードを返す．
 //
-// エラーが起きたら NULL を返す．
+// エラーが起きたら nullptr を返す．
 MislibNode*
 MislibParserImpl::read_literal()
 {
@@ -399,13 +399,13 @@ MislibParserImpl::read_literal()
   }
   // シンタックスエラー
   cout << "Error in read_literal(): STR/CONST0/CONST1/LP/NOT is expected" << endl;
-  return NULL;
+  return nullptr;
 }
 
 // @brief ピンリスト記述を読み込む．
 // @return ピンリストを表す AST のノードを返す．
 //
-// エラーが起きたら NULL を返す．
+// エラーが起きたら nullptr を返す．
 // ピン名の代わりに * の場合があるので注意
 MislibNode*
 MislibParserImpl::read_pin_list()
@@ -427,17 +427,17 @@ MislibParserImpl::read_pin_list()
     // 次は STR か STAR
     FileRegion loc0 = loc;
     tok = scan(node, loc);
-    MislibNode* name = NULL;
+    MislibNode* name = nullptr;
     if ( tok == STR ) {
       name = node;
     }
     else if ( tok == STAR ) {
-      // name は NULL のまま
+      // name は nullptr のまま
     }
     else {
       // シンタックスエラー
 
-      return NULL;
+      return nullptr;
     }
 
     // 次は NONINV/INV/UNKNOWN のいずれか
@@ -445,7 +445,7 @@ MislibParserImpl::read_pin_list()
     if ( tok != NONINV && tok != INV && tok != UNKNOWN ) {
       // シンタックスエラー
 
-      return NULL;
+      return nullptr;
     }
     MislibNode* phase = node;
 
@@ -456,7 +456,7 @@ MislibParserImpl::read_pin_list()
       if ( tok != NUM ) {
 	// シンタックスエラー
 
-	return NULL;
+	return nullptr;
       }
       val[i] = node;
     }
@@ -467,17 +467,17 @@ MislibParserImpl::read_pin_list()
     pin_list->push_back(pin);
   }
 
-  // 名前が NULL (STAR) のピンがある場合はそれが唯一の要素である場合に限る．
+  // 名前が nullptr (STAR) のピンがある場合はそれが唯一の要素である場合に限る．
   ymuint npin = 0;
   bool has_star = false;
-  for (const MislibNode* pin = pin_list->top(); pin != NULL; pin = pin->next(), ++ npin) {
-    if ( pin->name() == NULL ) {
+  for (const MislibNode* pin = pin_list->top(); pin != nullptr; pin = pin->next(), ++ npin) {
+    if ( pin->name() == nullptr ) {
       has_star = true;
     }
   }
   if ( npin > 1 && has_star ) {
     // シンタックスエラー
-    return NULL;
+    return nullptr;
   }
 
   return pin_list;

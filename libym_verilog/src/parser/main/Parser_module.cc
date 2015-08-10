@@ -161,7 +161,7 @@ Parser::new_Module1995(const FileRegion& file_region,
   bool named_port = true;
   for (ymuint i = 0; i < port_array.size(); ++ i) {
     PtiPort* port = port_array[i];
-    if ( port->ext_name() == NULL ) {
+    if ( port->ext_name() == nullptr ) {
       // 1つでも名前を持たないポートがあったら名前での結合はできない．
       named_port = false;
     }

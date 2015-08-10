@@ -37,7 +37,7 @@ protected:
 public:
 
   /// @brief 関連する D-FF を返す．
-  /// @note D-FF に関連していない場合には NULL を返す．
+  /// @note D-FF に関連していない場合には nullptr を返す．
   virtual
   const CmnDff*
   dff() const;

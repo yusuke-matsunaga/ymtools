@@ -330,7 +330,7 @@ private:
 // @brief コンストラクタ
 inline
 ElbStub::ElbStub() :
-  mNextLink(NULL)
+  mNextLink(nullptr)
 {
 }
 
@@ -343,8 +343,8 @@ ElbStub::~ElbStub()
 // @brief コンストラクタ
 inline
 ElbStubList::ElbStubList() :
-  mTop(NULL),
-  mTail(NULL)
+  mTop(nullptr),
+  mTail(nullptr)
 {
 }
 
@@ -374,7 +374,7 @@ inline
 bool
 ElbStubList::empty() const
 {
-  return mTop == NULL;
+  return mTop == nullptr;
 }
 
 // @brief リストの移し替えを行なう．
@@ -385,8 +385,8 @@ ElbStubList::move(ElbStubList& src_list)
 {
   mTop = src_list.mTop;
   mTail = src_list.mTail;
-  src_list.mTop = NULL;
-  src_list.mTail = NULL;
+  src_list.mTop = nullptr;
+  src_list.mTail = nullptr;
 }
 
 // @brief 要素の stub を評価する．
@@ -400,8 +400,8 @@ ElbStubList::eval()
     stub->eval();
     stub = next;
   }
-  mTop = NULL;
-  mTail = NULL;
+  mTop = nullptr;
+  mTail = nullptr;
 }
 
 // @brief 内容を空にする．
@@ -410,8 +410,8 @@ inline
 void
 ElbStubList::clear()
 {
-  mTop = NULL;
-  mTail = NULL;
+  mTop = nullptr;
+  mTail = nullptr;
 }
 
 // @brief コンストラクタ

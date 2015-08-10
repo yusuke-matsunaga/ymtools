@@ -28,7 +28,7 @@ VmNode::add_strength(const QString& label,
 void
 VmNode::add_delay(const VlDelay* value) const
 {
-  if ( value != NULL ) {
+  if ( value != nullptr ) {
     add_child( new VmDelayNode(value) );
   }
 }

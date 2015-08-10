@@ -34,8 +34,8 @@ DotlibFL::set_data(const DotlibNode* fl_node)
 {
   init();
 
-  mClear = NULL;
-  mPreset = NULL;
+  mClear = nullptr;
+  mPreset = nullptr;
 
   mClearPresetVar1 = 0;
   mClearPresetVar2 = 0;
@@ -64,7 +64,7 @@ DotlibFL::set_data(const DotlibNode* fl_node)
   }
 
   // clear_preset_var1 を取り出す．
-  const DotlibNode* tmp_node1 = NULL;
+  const DotlibNode* tmp_node1 = nullptr;
   if ( !get_singleton_or_null("clear_preset_var1", tmp_node1) ) {
     return false;
   }
@@ -95,7 +95,7 @@ DotlibFL::set_data(const DotlibNode* fl_node)
   }
 
   // clear_preset_var2 を取り出す．
-  const DotlibNode* tmp_node2 = NULL;
+  const DotlibNode* tmp_node2 = nullptr;
   if ( !get_singleton_or_null("clear_preset_var2", tmp_node2) ) {
     return false;
   }

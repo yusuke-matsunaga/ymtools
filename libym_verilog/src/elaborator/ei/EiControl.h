@@ -54,13 +54,13 @@ public:
   //////////////////////////////////////////////////////////////////////
 
   /// @brief 遅延式を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlExpr*
   delay() const;
 
   /// @brief 繰り返し式を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlExpr*
   expr() const;
@@ -73,7 +73,7 @@ public:
 
   /// @brief イベント条件式を返す．
   /// @param[in] pos 位置番号 ( 0 <= pos < event_num() )
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlExpr*
   event(ymuint pos) const;

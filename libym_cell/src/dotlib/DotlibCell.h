@@ -57,17 +57,17 @@ public:
   bundle_list() const;
 
   /// @brief ff グループを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   const DotlibNode*
   ff() const;
 
   /// @brief latch グループを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   const DotlibNode*
   latch() const;
 
   /// @brief statetable グループを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   const DotlibNode*
   statetable() const;
 

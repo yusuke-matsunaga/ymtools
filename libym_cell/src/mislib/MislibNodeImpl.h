@@ -82,13 +82,13 @@ public:
   //////////////////////////////////////////////////////////////////////
 
   /// @brief 1番目の子供を取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   child1() const;
 
   /// @brief 2番目の子供を取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   child2() const;
@@ -106,49 +106,49 @@ public:
   //////////////////////////////////////////////////////////////////////
 
   /// @brief ピン名/ゲート名を表すオブジェクトを取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   name() const;
 
   /// @brief 極性情報を表すオブジェクトを取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   phase() const;
 
   /// @brief 入力負荷を表すオブジェクトを取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   input_load() const;
 
   /// @brief 最大駆動負荷を表すオブジェクトを取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   max_load() const;
 
   /// @brief 立ち上がり固定遅延を表すオブジェクトを取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   rise_block_delay() const;
 
   /// @brief 立ち上がり負荷依存遅延を表すオブジェクトを取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   rise_fanout_delay() const;
 
   /// @brief 立ち下がり固定遅延を表すオブジェクトを取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   fall_block_delay() const;
 
   /// @brief 立ち下がり負荷依存遅延を表すオブジェクトを取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   fall_fanout_delay() const;
@@ -160,7 +160,7 @@ public:
   set_next(MislibNodeImpl* pin);
 
   /// @brief 次の要素を取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   next() const;
@@ -178,7 +178,7 @@ public:
   push_back(MislibNodeImpl* pin);
 
   /// @brief 先頭の要素を取り出す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   top() const;
@@ -190,25 +190,25 @@ public:
   //////////////////////////////////////////////////////////////////////
 
   /// @brief 面積を表すオブジェクトを返す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   area() const;
 
   /// @brief 出力ピン名を表すオブジェクトを返す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   opin_name() const;
 
   /// @brief 出力の論理式を表すオブジェクトを返す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   opin_expr() const;
 
   /// @brief 入力ピンの先頭を表すオブジェクトを返す．
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const MislibNode*
   ipin_top() const;

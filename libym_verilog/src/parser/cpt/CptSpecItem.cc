@@ -228,7 +228,7 @@ CptPathDecl::output_pol() const
 }
 
 // 式を取り出す．
-// NULL の場合もありうる．
+// nullptr の場合もありうる．
 const PtExpr*
 CptPathDecl::expr() const
 {
@@ -254,7 +254,7 @@ CptPathDelay::CptPathDelay(const FileRegion& file_region,
 {
   mValues[0] = value;
   for (ymuint i = 1; i < 12; ++ i) {
-    mValues[i] = NULL;
+    mValues[i] = nullptr;
   }
 }
 CptPathDelay::CptPathDelay(const FileRegion& file_region,
@@ -265,7 +265,7 @@ CptPathDelay::CptPathDelay(const FileRegion& file_region,
   mValues[0] = value1;
   mValues[1] = value2;
   for (ymuint i = 2; i < 12; ++ i) {
-    mValues[i] = NULL;
+    mValues[i] = nullptr;
   }
 }
 CptPathDelay::CptPathDelay(const FileRegion& file_region,
@@ -278,7 +278,7 @@ CptPathDelay::CptPathDelay(const FileRegion& file_region,
   mValues[1] = value2;
   mValues[2] = value3;
   for (ymuint i = 3; i < 12; ++ i) {
-    mValues[i] = NULL;
+    mValues[i] = nullptr;
   }
 }
 CptPathDelay::CptPathDelay(const FileRegion& file_region,
@@ -297,7 +297,7 @@ CptPathDelay::CptPathDelay(const FileRegion& file_region,
   mValues[4] = value5;
   mValues[5] = value6;
   for (ymuint i = 6; i < 12; ++ i) {
-    mValues[i] = NULL;
+    mValues[i] = nullptr;
   }
 }
 CptPathDelay::CptPathDelay(const FileRegion& file_region,

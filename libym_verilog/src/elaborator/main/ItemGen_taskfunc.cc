@@ -51,7 +51,7 @@ ItemGen::phase1_tf(const VlNamedObj* parent,
 	 << endl;
   }
 
-  ElbTaskFunc* taskfunc = NULL;
+  ElbTaskFunc* taskfunc = nullptr;
 
   if ( pt_item->type() == kPtItem_Task ) {
     taskfunc = factory().new_Task(parent, pt_item);
@@ -78,7 +78,7 @@ ItemGen::phase1_tf(const VlNamedObj* parent,
     else {
       taskfunc = factory().new_Function(parent,	pt_item);
     }
-    ASSERT_COND( taskfunc != NULL );
+    ASSERT_COND( taskfunc != nullptr );
 
     reg_function(taskfunc);
   }
@@ -136,13 +136,13 @@ ItemGen::phase2_tf(ElbTaskFunc* taskfunc,
   instantiate_decl(taskfunc, pt_item->declhead_array());
 
   // 入出力の生成
-  instantiate_iodecl(NULL, taskfunc, pt_item->iohead_array());
+  instantiate_iodecl(nullptr, taskfunc, pt_item->iohead_array());
 
   if ( taskfunc->type() == kVpiFunction ) {
     // 関数名と同名の変数の生成
     int left_val = taskfunc->left_range_val();
     int right_val = taskfunc->right_range_val();
-    ElbDeclHead* head = NULL;
+    ElbDeclHead* head = nullptr;
     if ( taskfunc->has_range() ) {
       head = factory().new_DeclHead(taskfunc, pt_item,
 				    pt_item->left_range(), pt_item->right_range(),
@@ -189,7 +189,7 @@ ItemGen::phase3_tf(ElbTaskFunc* taskfunc,
   // 本体のステートメントの生成
   ElbTfEnv env(taskfunc);
   const PtStmt* pt_body = pt_item->body();
-  ElbStmt* body = instantiate_stmt(taskfunc, NULL, env, pt_body);
+  ElbStmt* body = instantiate_stmt(taskfunc, nullptr, env, pt_body);
   if ( body ) {
     taskfunc->set_stmt(body);
   }
@@ -223,14 +223,14 @@ ItemGen::instantiate_constant_function(const VlNamedObj* parent,
   const PtExpr* pt_left = pt_function->left_range();
   const PtExpr* pt_right = pt_function->right_range();
 
-  ElbTaskFunc* func = NULL;
-  ElbDeclHead* head = NULL;
+  ElbTaskFunc* func = nullptr;
+  ElbDeclHead* head = nullptr;
   if ( pt_left && pt_right ) {
     int left_val = 0;
     int right_val = 0;
     if ( !evaluate_range(parent, pt_left, pt_right,
 			 left_val, right_val) ) {
-      return NULL;
+      return nullptr;
     }
     func = factory().new_Function(parent, pt_function,
 				  pt_left, pt_right,
@@ -266,7 +266,7 @@ ItemGen::instantiate_constant_function(const VlNamedObj* parent,
   func->set_ovar(decl);
 
   // 入出力の生成
-  instantiate_iodecl(NULL, func, pt_function->iohead_array());
+  instantiate_iodecl(nullptr, func, pt_function->iohead_array());
 
   // 本体のステートメント内部のスコープの生成
   const PtStmt* pt_body = pt_function->body();
@@ -274,7 +274,7 @@ ItemGen::instantiate_constant_function(const VlNamedObj* parent,
 
   // 本体のステートメントの生成
   ElbConstantFunctionEnv env(func);
-  ElbStmt* body = instantiate_stmt(func, NULL, env, pt_body);
+  ElbStmt* body = instantiate_stmt(func, nullptr, env, pt_body);
   if ( body ) {
     func->set_stmt(body);
   }

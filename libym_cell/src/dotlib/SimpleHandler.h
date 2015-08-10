@@ -57,7 +57,7 @@ protected:
 
   /// @brief 値を読み込む処理
   /// @return 値を表す DotlibNode を返す．
-  /// @note エラーが起きたら NULL を返す．
+  /// @note エラーが起きたら nullptr を返す．
   /// @note デフォルトの実装では普通に DotlibParser::read_token() を呼ぶ．
   virtual
   DotlibNodeImpl*

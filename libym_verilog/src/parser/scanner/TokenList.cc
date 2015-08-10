@@ -19,16 +19,16 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief コンストラクタ
 TokenList::TokenList() :
-  mTop(NULL),
-  mEnd(NULL)
+  mTop(nullptr),
+  mEnd(nullptr)
 {
 }
 
 // @brief コピーコンストラクタ
 // @note 実際にはコピーしない．
 TokenList::TokenList(const TokenList& src) :
-  mTop(NULL),
-  mEnd(NULL)
+  mTop(nullptr),
+  mEnd(nullptr)
 {
 }
 

@@ -20,7 +20,7 @@ BEGIN_NAMESPACE_YM_NETWORKS_MVN_VERILOG
 // @note ビット幅は0で初期化される．
 Xmask::Xmask() :
   mBitWidth(0),
-  mBits(NULL)
+  mBits(nullptr)
 {
 }
 
@@ -28,14 +28,14 @@ Xmask::Xmask() :
 // @note この時点では mBits はアロケートされない．
 Xmask::Xmask(ymuint bit_width) :
   mBitWidth(bit_width),
-  mBits(NULL)
+  mBits(nullptr)
 {
 }
 
 // @brief コピーコンストラクタ
 Xmask::Xmask(const Xmask& src) :
   mBitWidth(src.mBitWidth),
-  mBits(NULL)
+  mBits(nullptr)
 {
   if ( src.mBits ) {
     alloc();
@@ -158,7 +158,7 @@ Xmask::to_vector(vector<ymuint32>& vect) const
 void
 Xmask::alloc()
 {
-  if ( mBits == NULL ) {
+  if ( mBits == nullptr ) {
     mBits = new ymuint32[blksize()];
   }
 }
@@ -168,7 +168,7 @@ void
 Xmask::free()
 {
   delete mBits;
-  mBits = NULL;
+  mBits = nullptr;
 }
 
 END_NAMESPACE_YM_NETWORKS_MVN_VERILOG

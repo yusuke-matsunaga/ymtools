@@ -31,7 +31,7 @@ VlDumperImpl::put_primarray_list(const char* label,
        p != primarray_list.end(); ++ p) {
     const VlPrimArray* primarray = *p;
 
-    const char* nm = NULL;
+    const char* nm = nullptr;
     switch ( primarray->type() ) {
     case kVpiGateArray:   nm = "GateArray"; break;
     case kVpiSwitchArray: nm = "SwitchArray"; break;
@@ -62,7 +62,7 @@ VlDumperImpl::put_primitive(const char* label,
 			    const VlMgr& mgr,
 			    const VlPrimitive* prim)
 {
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( prim->type() ) {
   case kVpiGate:   nm = "Gate"; break;
   case kVpiSwitch: nm = "Switch"; break;

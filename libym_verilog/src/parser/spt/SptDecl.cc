@@ -102,7 +102,7 @@ SptIOHead::is_signed() const
 
 // 範囲のMSBの取得
 // @retval 範囲のMSB
-// @retval NULL 範囲を持たないとき
+// @retval nullptr 範囲を持たないとき
 const PtExpr*
 SptIOHead::left_range() const
 {
@@ -111,7 +111,7 @@ SptIOHead::left_range() const
 
 // 範囲のLSBの取得
 // @retval 範囲のLSB
-// @retval NULL 範囲を持たないとき
+// @retval nullptr 範囲を持たないとき
 const PtExpr*
 SptIOHead::right_range() const
 {
@@ -182,7 +182,7 @@ SptIOItem::name() const
 
 // 初期値の取得
 // @retval 初期値
-// @retval NULL 初期値を持たないとき
+// @retval nullptr 初期値を持たないとき
 const PtExpr*
 SptIOItem::init_value() const
 {
@@ -261,7 +261,7 @@ SptDeclHead::is_signed() const
 
 // 範囲のMSBの取得
 // @retval 範囲のMSB
-// @retval NULL 範囲を持たないとき
+// @retval nullptr 範囲を持たないとき
 const PtExpr*
 SptDeclHead::left_range() const
 {
@@ -270,7 +270,7 @@ SptDeclHead::left_range() const
 
 // 範囲のLSBの取得
 // @retval 範囲のLSB
-// @retval NULL 範囲を持たないとき
+// @retval nullptr 範囲を持たないとき
 const PtExpr*
 SptDeclHead::right_range() const
 {
@@ -307,7 +307,7 @@ SptDeclHead::vs_type() const
 
 // strength の取得
 // @retval strength
-// @retval NULL strength の指定なし
+// @retval nullptr strength の指定なし
 const PtStrength*
 SptDeclHead::strength() const
 {
@@ -316,7 +316,7 @@ SptDeclHead::strength() const
 
 // delay の取得
 // @retval delay
-// @retval NULL delay の指定なし
+// @retval nullptr delay の指定なし
 const PtDelay*
 SptDeclHead::delay() const
 {
@@ -357,7 +357,7 @@ SptDeclHead::set_elem(PtDeclItemArray elem_array)
 // @param range_array 範囲の配列
 // @param init_value 初期値
 // range_array と init_value の両方が同時に使われることはない．
-// どちらか一方は必ず NULL である．両方 NULL の場合もあり得る．
+// どちらか一方は必ず nullptr である．両方 nullptr の場合もあり得る．
 SptDeclItem::SptDeclItem(const FileRegion& file_region,
 			 const char* name,
 			 PtRangeArray range_array,
@@ -408,7 +408,7 @@ SptDeclItem::range(ymuint pos) const
 
 // 初期値の取得
 // @retval 初期値
-// @retval NULL 設定がない場合
+// @retval nullptr 設定がない場合
 const PtExpr*
 SptDeclItem::init_value() const
 {
@@ -476,7 +476,7 @@ SptFactory::new_IOHead(const FileRegion& file_region,
   return new (p) SptIOHead(file_region,
 			   type, kVpiAuxNone,
 			   kVpiNone, kVpiVarNone,
-			   sign, NULL, NULL);
+			   sign, nullptr, nullptr);
 }
 
 // @brief IO 宣言のヘッダの生成 (reg 型)
@@ -493,7 +493,7 @@ SptFactory::new_RegIOHead(const FileRegion& file_region,
   return new (p) SptIOHead(file_region,
 			   type, kVpiAuxReg,
 			   kVpiNone, kVpiVarNone,
-			   sign, NULL, NULL);
+			   sign, nullptr, nullptr);
 }
 
 // @brief IO 宣言のヘッダの生成 (ネット型)
@@ -512,7 +512,7 @@ SptFactory::new_NetIOHead(const FileRegion& file_region,
   return new (p) SptIOHead(file_region,
 			   type, kVpiAuxNet,
 			   net_type, kVpiVarNone,
-			   sign, NULL, NULL);
+			   sign, nullptr, nullptr);
 }
 
 // @brief IO 宣言のヘッダの生成 (変数型)
@@ -529,7 +529,7 @@ SptFactory::new_VarIOHead(const FileRegion& file_region,
   return new (p) SptIOHead(file_region,
 			   type, kVpiAuxVar,
 			   kVpiNone, var_type,
-			   false, NULL, NULL);
+			   false, nullptr, nullptr);
 }
 
 // @brief 範囲付きの IO 宣言のヘッダの生成
@@ -606,7 +606,7 @@ SptFactory::new_IOItem(const FileRegion& file_region,
 		       const char* name)
 {
   void* p = alloc().get_memory(sizeof(SptIOItem));
-  return new (p) SptIOItem(file_region, name, NULL);
+  return new (p) SptIOItem(file_region, name, nullptr);
 }
 
 // @brief 初期値付き IO 宣言の要素の生成
@@ -637,9 +637,9 @@ SptFactory::new_ParamH(const FileRegion& file_region)
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_Param,
-			     false, NULL, NULL,
+			     false, nullptr, nullptr,
 			     kVpiVarNone, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 範囲指定型パラメータ宣言のヘッダの生成
@@ -659,7 +659,7 @@ SptFactory::new_ParamH(const FileRegion& file_region,
 			     kPtDecl_Param,
 			     sign, left, right,
 			     kVpiVarNone, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 組み込み型パラメータ宣言のヘッダの生成
@@ -673,9 +673,9 @@ SptFactory::new_ParamH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_Param,
-			     false, NULL, NULL,
+			     false, nullptr, nullptr,
 			     var_type, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief local param 宣言のヘッダの生成 (型指定なし)
@@ -687,9 +687,9 @@ SptFactory::new_LocalParamH(const FileRegion& file_region)
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_LocalParam,
-			     false, NULL, NULL,
+			     false, nullptr, nullptr,
 			     kVpiVarNone, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 範囲指定型 local param 宣言のヘッダの生成
@@ -709,7 +709,7 @@ SptFactory::new_LocalParamH(const FileRegion& file_region,
 			     kPtDecl_LocalParam,
 			     sign, left, right,
 			     kVpiVarNone, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 組み込み型 local param 宣言のヘッダの生成
@@ -723,9 +723,9 @@ SptFactory::new_LocalParamH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_LocalParam,
-			     false, NULL, NULL,
+			     false, nullptr, nullptr,
 			     var_type, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief specparam 宣言のヘッダの生成
@@ -737,9 +737,9 @@ SptFactory::new_SpecParamH(const FileRegion& file_region)
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_SpecParam,
-			     false, NULL, NULL,
+			     false, nullptr, nullptr,
 			     kVpiVarNone, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 範囲指定型 specparam 宣言のヘッダの生成
@@ -757,7 +757,7 @@ SptFactory::new_SpecParamH(const FileRegion& file_region,
 			     kPtDecl_SpecParam,
 			     false, left, right,
 			     kVpiVarNone, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief イベント宣言のヘッダの生成
@@ -769,9 +769,9 @@ SptFactory::new_EventH(const FileRegion& file_region)
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_Event,
-			     false, NULL, NULL,
+			     false, nullptr, nullptr,
 			     kVpiVarNone, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief genvar 宣言のヘッダの生成
@@ -783,9 +783,9 @@ SptFactory::new_GenvarH(const FileRegion& file_region)
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_Genvar,
-			     false, NULL, NULL,
+			     false, nullptr, nullptr,
 			     kVpiVarNone, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 変数宣言のヘッダの生成
@@ -808,9 +808,9 @@ SptFactory::new_VarH(const FileRegion& file_region,
   }
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_Var,
-			     sign, NULL, NULL,
+			     sign, nullptr, nullptr,
 			     var_type, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 1ビット型 reg 宣言のヘッダの生成
@@ -824,9 +824,9 @@ SptFactory::new_RegH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_Reg,
-			     sign, NULL, NULL,
+			     sign, nullptr, nullptr,
 			     kVpiVarNone, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 範囲指定型 reg 宣言のヘッダの生成
@@ -846,7 +846,7 @@ SptFactory::new_RegH(const FileRegion& file_region,
 			     kPtDecl_Reg,
 			     sign, left, right,
 			     kVpiVarNone, kVpiNone, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 1ビット型 net 宣言のヘッダの生成
@@ -862,9 +862,9 @@ SptFactory::new_NetH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_Net,
-			     sign, NULL, NULL,
+			     sign, nullptr, nullptr,
 			     kVpiVarNone, type, kVpiVsNone,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 1ビット型 net 宣言のヘッダの生成 (strength あり)
@@ -882,9 +882,9 @@ SptFactory::new_NetH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_Net,
-			     sign, NULL, NULL,
+			     sign, nullptr, nullptr,
 			     kVpiVarNone, type, kVpiVsNone,
-			     strength, NULL);
+			     strength, nullptr);
 }
 
 // @brief 1ビット型 net 宣言のヘッダの生成 (遅延あり)
@@ -902,9 +902,9 @@ SptFactory::new_NetH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_Net,
-			     sign, NULL, NULL,
+			     sign, nullptr, nullptr,
 			     kVpiVarNone, type, kVpiVsNone,
-			     NULL, delay);
+			     nullptr, delay);
 }
 
 // @brief 1ビット型 net 宣言のヘッダの生成 (strength, 遅延あり)
@@ -924,7 +924,7 @@ SptFactory::new_NetH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptDeclHead));
   return new (p) SptDeclHead(file_region,
 			     kPtDecl_Net,
-			     sign, NULL, NULL,
+			     sign, nullptr, nullptr,
 			     kVpiVarNone, type, kVpiVsNone,
 			     strength, delay);
 }
@@ -951,7 +951,7 @@ SptFactory::new_NetH(const FileRegion& file_region,
 			     kPtDecl_Net,
 			     sign, left, right,
 			     kVpiVarNone, type, vstype,
-			     NULL, NULL);
+			     nullptr, nullptr);
 }
 
 // @brief 範囲指定型 net 宣言のヘッダの生成 (strengthあり)
@@ -977,7 +977,7 @@ SptFactory::new_NetH(const FileRegion& file_region,
 			     kPtDecl_Net,
 			     sign, left, right,
 			     kVpiVarNone, type, vstype,
-			     strength, NULL);
+			     strength, nullptr);
 }
 
 // @brief 範囲指定型 net 宣言のヘッダの生成 (遅延あり)
@@ -1003,7 +1003,7 @@ SptFactory::new_NetH(const FileRegion& file_region,
 			     kPtDecl_Net,
 			     sign, left, right,
 			     kVpiVarNone, type, vstype,
-			     NULL, delay);
+			     nullptr, delay);
 }
 
 // @brief 範囲指定型 net 宣言のヘッダの生成 (strength, 遅延あり)
@@ -1043,7 +1043,7 @@ SptFactory::new_DeclItem(const FileRegion& file_region,
 			 const char* name)
 {
   void* p = alloc().get_memory(sizeof(SptDeclItem));
-  return new (p) SptDeclItem(file_region, name, PtRangeArray(), NULL);
+  return new (p) SptDeclItem(file_region, name, PtRangeArray(), nullptr);
 }
 
 // @brief 初期値付き宣言要素の生成
@@ -1071,7 +1071,7 @@ SptFactory::new_DeclItem(const FileRegion& file_region,
 			 PtRangeArray range_array)
 {
   void* p = alloc().get_memory(sizeof(SptDeclItem));
-  return new (p) SptDeclItem(file_region, name, range_array, NULL);
+  return new (p) SptDeclItem(file_region, name, range_array, nullptr);
 }
 
 // @brief 範囲の生成

@@ -20,7 +20,7 @@ BEGIN_NAMESPACE_YM_CELL
 CiLutTemplate::CiLutTemplate(ShString name) :
   mName(name)
 {
-  mLink = NULL;
+  mLink = nullptr;
 }
 
 // @brief デストラクタ

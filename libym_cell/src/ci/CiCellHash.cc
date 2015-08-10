@@ -22,7 +22,7 @@ BEGIN_NAMESPACE_YM_CELL
 CiCellHash::CiCellHash(Alloc& alloc) :
   mAlloc(alloc),
   mSize(0),
-  mTable(NULL),
+  mTable(nullptr),
   mLimit(0),
   mNum(0)
 {
@@ -66,7 +66,7 @@ CiCellHash::add(CiCell* cell)
 // @brief セルを取り出す．
 // @param[in] name 名前
 // @return name という名前のセルを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 CiCell*
 CiCellHash::get(ShString name) const
 {
@@ -76,7 +76,7 @@ CiCellHash::get(ShString name) const
       return cell;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief テーブルの領域を確保する．
@@ -89,7 +89,7 @@ CiCellHash::alloc_table(ymuint req_size)
   void* p = mAlloc.get_memory(sizeof(CiCell*) * mSize);
   mTable = new (p) CiCell*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

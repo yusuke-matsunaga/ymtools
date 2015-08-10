@@ -139,8 +139,8 @@ inline
 McColHead::McColHead(ymuint pos) :
   mPos(pos),
   mNum(0),
-  mPrev(NULL),
-  mNext(NULL),
+  mPrev(nullptr),
+  mNext(nullptr),
   mDeleted(false)
 {
   mDummy.mUpLink = &mDummy;

@@ -171,7 +171,7 @@ EiGfRoot::elem_by_index(int index)
     return ans;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 

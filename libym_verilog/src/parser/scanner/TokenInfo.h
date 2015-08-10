@@ -107,7 +107,7 @@ operator<<(ostream& s,
 // @brief 空のコンストラクタ
 inline
 TokenInfo::TokenInfo() :
-  mLink(NULL)
+  mLink(nullptr)
 {
 }
 
@@ -116,7 +116,7 @@ TokenInfo::TokenInfo() :
 inline
 TokenInfo::TokenInfo(int pos) :
   mId(- (pos + 1)),
-  mLink(NULL)
+  mLink(nullptr)
 {
 }
 
@@ -131,7 +131,7 @@ TokenInfo::TokenInfo(const FileRegion& loc,
   mLoc(loc),
   mId(id),
   mString(str),
-  mLink(NULL)
+  mLink(nullptr)
 {
 }
 

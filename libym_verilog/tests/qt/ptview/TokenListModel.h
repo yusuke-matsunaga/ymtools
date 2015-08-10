@@ -27,7 +27,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のオブジェクト
-  TokenListModel(QObject* parent = NULL);
+  TokenListModel(QObject* parent = nullptr);
 
   /// @brief デストラクタ
   ~TokenListModel();

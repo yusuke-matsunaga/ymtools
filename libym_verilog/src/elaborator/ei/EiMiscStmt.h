@@ -32,7 +32,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] named_event 対象のイベント
   EiEventStmt(const VlNamedObj* parent,
@@ -91,7 +91,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   EiNullStmt(const VlNamedObj* parent,
 	     ElbProcess* process,
@@ -128,7 +128,7 @@ protected:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] arg_num 引数の数
   /// @param[in] arg_array 引数を納める配列
@@ -200,7 +200,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] task 対象のタスク
   /// @param[in] arg_num 引数の数
@@ -263,7 +263,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] user_systf システムタスク
   /// @param[in] arg_num 引数の数
@@ -327,7 +327,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] target 対象のスコープ
   EiDisableStmt(const VlNamedObj* parent,
@@ -392,7 +392,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] control コントロール
   /// @param[in] stmt 本体のステートメント

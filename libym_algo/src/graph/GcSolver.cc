@@ -114,7 +114,7 @@ GcSolver::GcSolver(const Graph& graph)
     }
   }
   else {
-    mNodeArray = NULL;
+    mNodeArray = nullptr;
   }
 
   for (ymuint i = 0; i < graph.edge_num(); ++ i) {
@@ -253,7 +253,7 @@ GcSolver::coloring(vector<vector<ymuint> >& color_group)
 // @brief コンストラクタ
 GcNode::GcNode()
 {
-  mColorSet = NULL;
+  mColorSet = nullptr;
   mSatDegree = 0;
   mColor = 0;
 }

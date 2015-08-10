@@ -36,7 +36,7 @@ ExprHandler::~ExprHandler()
 
 // @brief 値を読み込む処理
 // @return 値を表す DotlibNode を返す．
-// @note エラーが起きたら NULL を返す．
+// @note エラーが起きたら nullptr を返す．
 // @note ここでは expression のパースを行う．
 DotlibNodeImpl*
 ExprHandler::read_value()
@@ -66,7 +66,7 @@ ExprHandler::read_primary()
 		      "DOTLIB_PARSER",
 		      "Syntax error. "
 		      "Only 'VDD', 'VSS', and 'VCC' are allowed.");
-      return NULL;
+      return nullptr;
     }
     return mgr()->new_string(name, loc);
   }
@@ -79,7 +79,7 @@ ExprHandler::read_primary()
 		  kMsgError,
 		  "DOTLIB_PARSER",
 		  "Syntax error. number is expected.");
-  return NULL;
+  return nullptr;
 }
 
 // @brief prudct を読み込む．
@@ -87,8 +87,8 @@ DotlibNodeImpl*
 ExprHandler::read_product()
 {
   DotlibNodeImpl* opr1 = read_primary();
-  if ( opr1 == NULL ) {
-    return NULL;
+  if ( opr1 == nullptr ) {
+    return nullptr;
   }
 
   for ( ; ; ) {
@@ -96,8 +96,8 @@ ExprHandler::read_product()
     tTokenType type = parser().read_token(loc);
     if ( type == MULT || type == DIV ) {
       DotlibNodeImpl* opr2 = read_primary();
-      if ( opr2 == NULL ) {
-	return NULL;
+      if ( opr2 == nullptr ) {
+	return nullptr;
       }
       if ( type == MULT ) {
 	opr1 = mgr()->new_mult(opr1, opr2);
@@ -123,8 +123,8 @@ ExprHandler::read_expr(tTokenType end_marker)
   // じかに parser().read_token() を呼んではいけない．
 
   DotlibNodeImpl* opr1 = read_product();
-  if ( opr1 == NULL ) {
-    return NULL;
+  if ( opr1 == nullptr ) {
+    return nullptr;
   }
   for ( ; ; ) {
     FileRegion loc;
@@ -134,8 +134,8 @@ ExprHandler::read_expr(tTokenType end_marker)
     }
     if ( type == PLUS || type == MINUS ) {
       DotlibNodeImpl* opr2 = read_product();
-      if ( opr2 == NULL ) {
-	return NULL;
+      if ( opr2 == nullptr ) {
+	return nullptr;
       }
       if ( type == PLUS ) {
 	opr1 = mgr()->new_plus(opr1, opr2);
@@ -150,7 +150,7 @@ ExprHandler::read_expr(tTokenType end_marker)
 		      kMsgError,
 		      "DOTLIB_PARSER",
 		      "Syntax error.");
-      return NULL;
+      return nullptr;
     }
   }
 }

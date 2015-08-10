@@ -37,7 +37,7 @@ void
 ModuleHash::clear()
 {
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
   mNum = 0;
 }
@@ -52,7 +52,7 @@ ModuleHash::add(const VlModule* obj)
   for (Cell* cell = mTable[pos]; cell; cell = cell->mLink) {
     if ( cell->mParent == parent && cell->mName == name ) {
       // 同じモジュールが既に登録されていたらモジュール名での検索はできない．
-      cell->mModule = NULL;
+      cell->mModule = nullptr;
       return;
     }
   }
@@ -94,7 +94,7 @@ ModuleHash::find(const VlNamedObj* parent,
       return cell->mModule;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief このオブジェクトが使用しているメモリ量を返す．
@@ -112,7 +112,7 @@ ModuleHash::alloc_table(ymuint size)
   mLimit = static_cast<ymuint>(mSize * 1.8);
   mTable = new Cell*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

@@ -112,13 +112,13 @@ public:
   const SmartPtr&
   operator=(const SmartPtr& src);
 
-  /// @brief NULL ポインタとの比較
-  /// @return NULL ポインタと等しい時に true を返す．
+  /// @brief nullptr ポインタとの比較
+  /// @return nullptr ポインタと等しい時に true を返す．
   bool
   null() const;
 
   /// @brief null() と同義の演算子
-  /// @return NULL ポインタと等しい時に true を返す．
+  /// @return nullptr ポインタと等しい時に true を返す．
   bool
   operator!() const;
 
@@ -247,8 +247,8 @@ SmartPtr<T>::operator=(const SmartPtr& src)
   return *this;
 }
 
-// @brief NULL ポインタとの比較
-// @return NULL ポインタと等しい時に true を返す．
+// @brief nullptr ポインタとの比較
+// @return nullptr ポインタと等しい時に true を返す．
 template<typename T>
 inline
 bool
@@ -258,7 +258,7 @@ SmartPtr<T>::null() const
 }
 
 // @brief null() と同義の演算子
-// @return NULL ポインタと等しい時に true を返す．
+// @return nullptr ポインタと等しい時に true を返す．
 template<typename T>
 inline
 bool

@@ -138,11 +138,11 @@ CptUdpEntry::input_array() const
 }
 
 // @brief 現状態の値を取り出す．
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtUdpValue*
 CptUdpEntry::current() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 出力の値を取り出す．
@@ -245,7 +245,7 @@ CptFactory::new_CmbUdp(const FileRegion& file_region,
 			name,
 			port_array,
 			iohead_array,
-			false, NULL,
+			false, nullptr,
 			entry_array);
 }
 

@@ -33,7 +33,7 @@ ElbPrimHead::~ElbPrimHead()
 
 // @brief コンストラクタ
 ElbPrimArray::ElbPrimArray() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 
@@ -49,7 +49,7 @@ ElbPrimArray::~ElbPrimArray()
 
 // @brief コンストラクタ
 ElbPrimitive::ElbPrimitive() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 

@@ -34,7 +34,7 @@ END_NONAMESPACE
 // @brief コンストラクタ
 LexPluginDict::LexPluginDict() :
   mTableSize(0),
-  mHashTable(NULL),
+  mHashTable(nullptr),
   mNum(0)
 {
   new_table(32);
@@ -61,7 +61,7 @@ bool
 LexPluginDict::check_name(const char* name)
 {
   LexPlugin* p = find_plugin(name);
-  if ( p == NULL || p->is_macro() ) {
+  if ( p == nullptr || p->is_macro() ) {
     return true;
   }
   return false;
@@ -151,7 +151,7 @@ LexPluginDict::find_plugin(const char* name) const
       return p;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief ハッシュ表を確保する．
@@ -163,7 +163,7 @@ LexPluginDict::new_table(ymuint size)
   mNextLimit = static_cast<ymuint>(mTableSize * 1.8);
   mHashTable = new LexPlugin*[mTableSize];
   for (ymuint i = 0; i < mTableSize; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
 }
 

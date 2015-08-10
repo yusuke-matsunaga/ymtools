@@ -57,7 +57,7 @@ BEGIN_NAMESPACE_YM
 MpInt::MpInt()
 {
   mBlockNum = 0;
-  mBlockArray = NULL;
+  mBlockArray = nullptr;
   alloc_block(1);
   mBlockArray[0] = 0UL;
 }
@@ -67,7 +67,7 @@ MpInt::MpInt()
 MpInt::MpInt(int val)
 {
   mBlockNum = 0;
-  mBlockArray = NULL;
+  mBlockArray = nullptr;
   alloc_block(1);
 
   if ( val < 0 ) {
@@ -85,7 +85,7 @@ MpInt::MpInt(int val)
 MpInt::MpInt(const MpInt& val)
 {
   mBlockNum = 0;
-  mBlockArray = NULL;
+  mBlockArray = nullptr;
   operator=(val);
 }
 
@@ -96,7 +96,7 @@ MpInt::MpInt(const MpInt& val,
 	     bool inv)
 {
   mBlockNum = 0;
-  mBlockArray = NULL;
+  mBlockArray = nullptr;
   operator=(val);
   if ( inv ) {
     complement();

@@ -112,8 +112,8 @@ BtgEdge::BtgEdge(ymuint id,
   mNode1(node1),
   mNode2(node2),
   mWeight(weight),
-  mLink1(NULL),
-  mLink2(NULL)
+  mLink1(nullptr),
+  mLink2(nullptr)
 {
 }
 

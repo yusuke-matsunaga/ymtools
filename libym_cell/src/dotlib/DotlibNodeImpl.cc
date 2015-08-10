@@ -189,7 +189,7 @@ DotlibNodeImpl::opr1() const
   dump(cout);
   cout << endl;
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief 第二オペランドを返す．
@@ -200,7 +200,7 @@ DotlibNodeImpl::opr2() const
   dump(cout);
   cout << endl;
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief リストの要素数を返す．
@@ -223,7 +223,7 @@ DotlibNodeImpl::list_elem(ymuint pos) const
   dump(cout);
   cout << endl;
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief グループの値を得る．
@@ -234,7 +234,7 @@ DotlibNodeImpl::group_value() const
   dump(cout);
   cout << endl;
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief 先頭の属性を得る．
@@ -245,7 +245,7 @@ DotlibNodeImpl::attr_top() const
   dump(cout);
   cout << endl;
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief 要素を追加する．
@@ -787,8 +787,8 @@ DotlibGroup::DotlibGroup(const DotlibNode* value,
 			 const FileRegion& loc) :
   DotlibNodeBase(loc),
   mValue(value),
-  mAttrTop(NULL),
-  mAttrTail(NULL)
+  mAttrTop(nullptr),
+  mAttrTail(nullptr)
 {
 }
 
@@ -849,7 +849,7 @@ DotlibGroup::dump(ostream& s,
 void
 DotlibGroup::add_attr(DotlibAttr* attr)
 {
-  if ( mAttrTop != NULL ) {
+  if ( mAttrTop != nullptr ) {
     mAttrTail->mNext = attr;
     mAttrTail = attr;
   }

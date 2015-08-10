@@ -39,7 +39,7 @@ CfDict::add(const VlNamedObj* scope,
 	    const char* name,
 	    ElbTaskFunc* func)
 {
-  if ( mTable == NULL ) {
+  if ( mTable == nullptr ) {
     alloc_table(1024);
   }
   if ( mNum >= mLimit ) {
@@ -81,7 +81,7 @@ CfDict::find(const VlNamedObj* scope,
       return cell->mFunc;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief 内容をクリアする．
@@ -90,7 +90,7 @@ CfDict::clear()
 {
   mAlloc.destroy();
   delete [] mTable;
-  mTable = NULL;
+  mTable = nullptr;
 }
 
 // @brief このオブジェクトが使用しているメモリ量を返す．
@@ -108,7 +108,7 @@ CfDict::alloc_table(ymuint size)
   mLimit = static_cast<ymuint>(mSize * 1.8);
   mTable = new Cell*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

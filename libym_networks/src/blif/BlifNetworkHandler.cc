@@ -16,7 +16,7 @@ BEGIN_NAMESPACE_YM_NETWORKS_BLIF
 
 // @brief コンストラクタ
 BlifNetworkHandler::BlifNetworkHandler() :
-  mNetwork(NULL)
+  mNetwork(nullptr)
 {
 }
 

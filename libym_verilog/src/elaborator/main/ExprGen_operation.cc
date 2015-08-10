@@ -31,17 +31,17 @@ ExprGen::instantiate_opr(const VlNamedObj* parent,
   tVlOpType op_type = pt_expr->op_type();
   ymuint opr_size = pt_expr->operand_num();
 
-  ElbExpr* opr0 = NULL;
-  ElbExpr* opr1 = NULL;
-  ElbExpr* opr2 = NULL;
-  ElbExpr* expr = NULL;
+  ElbExpr* opr0 = nullptr;
+  ElbExpr* opr1 = nullptr;
+  ElbExpr* opr2 = nullptr;
+  ElbExpr* expr = nullptr;
   bool real_check = false;
   switch ( op_type ) {
   case kVlPosedgeOp:
   case kVlNegedgeOp:
     ASSERT_COND(opr_size == 1 );
     error_illegal_edge_descriptor(pt_expr);
-    return NULL;
+    return nullptr;
 
   case kVlBitNegOp:
   case kVlUnaryAndOp:
@@ -56,11 +56,11 @@ ExprGen::instantiate_opr(const VlNamedObj* parent,
     ASSERT_COND(opr_size == 1 );
     opr0 = instantiate_expr(parent, env, pt_expr->operand(0));
     if ( !opr0 ) {
-      return NULL;
+      return nullptr;
     }
     if ( real_check && opr0->value_type().is_real_type() ) {
       error_illegal_real_type(pt_expr->operand(0));
-      return NULL;
+      return nullptr;
     }
     return factory().new_UnaryOp(pt_expr, op_type, opr0);
 
@@ -92,16 +92,16 @@ ExprGen::instantiate_opr(const VlNamedObj* parent,
     opr0 = instantiate_expr(parent, env, pt_expr->operand(0));
     opr1 = instantiate_expr(parent, env, pt_expr->operand(1));
     if ( !opr0 || !opr1 ) {
-      return NULL;
+      return nullptr;
     }
     if ( real_check ) {
       if ( opr0->value_type().is_real_type() ) {
 	error_illegal_real_type(pt_expr->operand(0));
-	return NULL;
+	return nullptr;
       }
       if ( opr1->value_type().is_real_type() ) {
 	error_illegal_real_type(pt_expr->operand(1));
-	return NULL;
+	return nullptr;
       }
     }
     expr = factory().new_BinaryOp(pt_expr, op_type, opr0, opr1);
@@ -114,7 +114,7 @@ ExprGen::instantiate_opr(const VlNamedObj* parent,
     opr1 = instantiate_expr(parent, env, pt_expr->operand(1));
     opr2 = instantiate_expr(parent, env, pt_expr->operand(2));
     if ( !opr0 || !opr1 || !opr2 ) {
-      return NULL;
+      return nullptr;
     }
     expr = factory().new_TernaryOp(pt_expr, op_type, opr0, opr1, opr2);
     break;
@@ -126,11 +126,11 @@ ExprGen::instantiate_opr(const VlNamedObj* parent,
 	const PtExpr* pt_expr1 = pt_expr->operand(i);
 	ElbExpr* expr1 = instantiate_expr(parent, env, pt_expr1);
 	if ( !expr1 ) {
-	  return NULL;
+	  return nullptr;
 	}
 	if ( expr1->value_type().is_real_type() ) {
 	  error_illegal_real_type(pt_expr1);
-	  return NULL;
+	  return nullptr;
 	}
 	opr_list[i] = expr1;
       }
@@ -146,7 +146,7 @@ ExprGen::instantiate_opr(const VlNamedObj* parent,
       int rep_num;
       bool stat = evaluate_int(parent, pt_expr0, rep_num, true);
       if ( !stat ) {
-	return NULL;
+	return nullptr;
       }
       ElbExpr* rep_expr = instantiate_expr(parent, env, pt_expr0);
       ElbExpr** opr_list = factory().new_ExprList(opr_size - 1);
@@ -154,11 +154,11 @@ ExprGen::instantiate_opr(const VlNamedObj* parent,
 	const PtExpr* pt_expr1 = pt_expr->operand(i);
 	ElbExpr* expr1 = instantiate_expr(parent, env, pt_expr1);
 	if ( !expr1 ) {
-	  return NULL;
+	  return nullptr;
 	}
 	if ( expr1->value_type().is_real_type() ) {
 	  error_illegal_real_type(pt_expr1);
-	  return NULL;
+	  return nullptr;
 	}
 	opr_list[i - 1] = expr1;
       }
@@ -170,7 +170,7 @@ ExprGen::instantiate_opr(const VlNamedObj* parent,
 
   default:
     ASSERT_NOT_REACHED;
-    return NULL;
+    return nullptr;
   }
 
 #if 0

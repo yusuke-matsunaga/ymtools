@@ -39,9 +39,9 @@ public:
   /// @param[in] af alloc 関数
   /// @param[in] ff free 関数
   /// @param[in] op opaque オブジェクト
-  BzEngine(alloc_func af = NULL,
-	   free_func ff = NULL,
-	   void* op = NULL);
+  BzEngine(alloc_func af = nullptr,
+	   free_func ff = nullptr,
+	   void* op = nullptr);
 
   /// @brief デストラクタ
   ~BzEngine();

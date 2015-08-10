@@ -42,7 +42,7 @@ LogicMgr::clear()
   mCellArray.clear();
 
   for (ymuint i = 0; i < mHashSize; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
 }
 
@@ -200,7 +200,7 @@ LogicMgr::expand()
   Cell** old_table = mHashTable;
   alloc_table(mHashSize << 1);
   for (ymuint i = 0; i < old_size; ++ i) {
-    Cell* next = NULL;
+    Cell* next = nullptr;
     for (Cell* cell = old_table[i]; cell; cell = next) {
       next = cell->mLink;
       ymuint pos1 = cell->mTvFunc.hash() % mHashSize;
@@ -218,7 +218,7 @@ LogicMgr::alloc_table(ymuint req_size)
   mHashSize = req_size;
   mHashTable = new Cell*[mHashSize];
   for (ymuint i = 0; i < mHashSize; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
   mNextLimit = static_cast<ymuint>(mHashSize * kHashCapacity);
 }

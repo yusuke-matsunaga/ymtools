@@ -194,7 +194,7 @@ ExprNode::expand() const
 
     switch ( mExpr->const_type() ) {
     case kVpiIntConst:
-      if ( mExpr->const_str() == NULL ) {
+      if ( mExpr->const_str() == nullptr ) {
 	mChildren.push_back( new StrNode( "Const Uint",
 					  int2str(mExpr->const_uint()) ) );
       }

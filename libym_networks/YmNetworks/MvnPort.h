@@ -315,7 +315,7 @@ MvnPortRef::set(MvnNode* node,
 }
 
 // @brief 名前を得る．
-// @note 空(NULL)の場合もある．
+// @note 空(nullptr)の場合もある．
 inline
 string
 MvnPort::name() const

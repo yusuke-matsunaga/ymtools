@@ -44,19 +44,19 @@ public:
   direction() const;
 
   /// @brief 親のモジュールの取得
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbModule*
   module() const;
 
   /// @brief 親のタスクの取得
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbTaskFunc*
   task() const;
 
   /// @brief 親の関数の取得
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbTaskFunc*
   function() const;
@@ -304,7 +304,7 @@ public:
   module() const;
 
   /// @brief 親の UDP の取得
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlUdpDefn*
   udp_defn() const;

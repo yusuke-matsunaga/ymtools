@@ -486,7 +486,7 @@ public:
 
   /// @brief 式の取得
   /// @return 式\n
-  /// NULL の場合もありうる．
+  /// nullptr の場合もありうる．
   virtual
   const PtExpr*
   expr() const = 0;

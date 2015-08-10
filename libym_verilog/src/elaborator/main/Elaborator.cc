@@ -99,7 +99,7 @@ Elaborator::operator()(const PtMgr& pt_mgr)
        p != module_list.end(); ++ p) {
     const PtModule* module = *p;
     const char* name = module->name();
-    if ( mMgr.find_udp(name) != NULL ) {
+    if ( mMgr.find_udp(name) != nullptr ) {
       ostringstream buf;
       buf << "\"" << name
 	  << "\" is duplicately defined as module and as UDP.";
@@ -170,7 +170,7 @@ Elaborator::operator()(const PtMgr& pt_mgr)
 	const VlModule* module = q->mModule;
 	const PtItem* pt_header = q->mPtHeader;
 	const PtDefParam* pt_defparam = q->mPtDefparam;
-	if ( mItemGen->defparam_override(module, pt_header, pt_defparam, NULL) ) {
+	if ( mItemGen->defparam_override(module, pt_header, pt_defparam, nullptr) ) {
 	  // オーバーライドがうまく行ったらこの要素は捨てる．
 	  mDefParamStubList.erase(q);
 	}
@@ -277,7 +277,7 @@ Elaborator::add_phase3stub(ElbStub* stub)
 // @brief 名前からモジュール定義を取り出す．
 // @param[in] name 名前
 // @return name という名のモジュール定義
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 const PtModule*
 Elaborator::find_moduledef(const char* name) const
 {
@@ -286,7 +286,7 @@ Elaborator::find_moduledef(const char* name) const
     return ans;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -315,7 +315,7 @@ Elaborator::reg_constant_function(const VlNamedObj* parent,
 // @brief セルの探索
 // @param[in] name セル名
 // @return name という名のセルを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const Cell*
 Elaborator::find_cell(const char* name) const
 {
@@ -323,7 +323,7 @@ Elaborator::find_cell(const char* name) const
     return mCellLibrary->cell(name);
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 

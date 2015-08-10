@@ -27,7 +27,7 @@ SimScope::SimScope(SimEngine* engine,
   mDisabled = true;
   // 分かりにくいけど親の SimScope
   //mParent = scope->scope()->find_simscope(engine);
-  mEnd = NULL;
+  mEnd = nullptr;
 }
 
 // デストラクタ
@@ -77,7 +77,7 @@ SimScope::check()
 bool
 SimScope::is_disabled() const
 {
-  for (const SimScope* s = this; s != NULL; s = s->mParent) {
+  for (const SimScope* s = this; s != nullptr; s = s->mParent) {
     if ( s->mDisabled ) {
       return true;
     }

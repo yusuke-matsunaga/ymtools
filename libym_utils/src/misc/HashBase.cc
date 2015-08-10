@@ -20,7 +20,7 @@ BEGIN_NAMESPACE_YM
 HashBase::HashBase()
 {
   mHashSize = 0;
-  mHashTable = NULL;
+  mHashTable = nullptr;
   mNum = 0;
   alloc_table(1024);
 }
@@ -37,13 +37,13 @@ void
 DictBase::clear()
 {
   for (ymuint i = 0; i < mHashSize; ++ i) {
-    for (_Cell* cell = mHashTable[i]; cell != NULL; ) {
+    for (_Cell* cell = mHashTable[i]; cell != nullptr; ) {
       _Cell* tmp = cell;
       cell = tmp->mLink;
 
       delete tmp;
     }
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
   mNum = 0;
 }
@@ -63,7 +63,7 @@ DictBase::cell_list(vector<_Cell*>& cell_list) const
   cell_list.clear();
   cell_list.reserve(num());
   for (ymuint i = 0; i < mHashSize; ++ i) {
-    for (_Cell* cell = mHashTable[i]; cell != NULL;
+    for (_Cell* cell = mHashTable[i]; cell != nullptr;
 	 cell = cell->mLink) {
       cell_list.push_back(cell);
     }
@@ -81,11 +81,11 @@ DictBase::alloc_table(ymuint req_size)
   mNextLimit = static_cast<ymuint32>(mHashSize * 1.8);
   mHashTable = new _Cell*[mHashSize];
   for (ymuint32 i = 0; i < mHashSize; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
   for (ymuint32 i = 0; i < old_size; ++ i) {
     for (_Cell* cell = old_table[i];
-	 cell != NULL; ) {
+	 cell != nullptr; ) {
       _Cell* next = cell->mLink;
       _reg_cell(cell);
       cell = next;

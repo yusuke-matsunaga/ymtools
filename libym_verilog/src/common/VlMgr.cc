@@ -106,7 +106,7 @@ VlMgr::udp_list() const
 // @brief 名前から UDP 定義を取出す．
 // @param[in] name 名前
 // @return name という名の UDP を返す．
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 const VlUdpDefn*
 VlMgr::find_udp(const char* name) const
 {
@@ -123,7 +123,7 @@ VlMgr::topmodule_list() const
 // @brief 名前から UserSystf を取出す．
 // @param[in] name 名前
 // @return name という名のユーザー定義関数を返す．
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 const VlUserSystf*
 VlMgr::find_user_systf(const char* name) const
 {
@@ -134,7 +134,7 @@ VlMgr::find_user_systf(const char* name) const
 // @param[in] parent 検索対象のスコープ
 // @param[in] name 名前
 // @return parent というスコープ内の name という要素を返す．
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 const VlNamedObj*
 VlMgr::find_obj(const VlNamedObj* parent,
 		const char* name) const
@@ -143,7 +143,7 @@ VlMgr::find_obj(const VlNamedObj* parent,
   if ( handle ) {
     return handle->obj();
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief スコープに属する internal scope のリストを取り出す．

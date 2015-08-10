@@ -58,61 +58,61 @@ public:
   full_name();
 
   /// @brief 配列要素を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlNamedObj*
   array_elem(int index);
 
   /// @brief ElbDecl を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbDecl*
   decl();
 
   /// @brief ElbDeclArray を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbDeclArray*
   declarray();
 
   /// @brief ElbParameter を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbParameter*
   parameter();
 
   /// @brief ElbTaskFunc を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbTaskFunc*
   taskfunc();
 
   /// @brief ElbModuleArray を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbModuleArray*
   module_array();
 
   /// @brief ElbPrimArray を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbPrimArray*
   prim_array();
 
   /// @brief ElbPrimitive を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbPrimitive*
   primitive();
 
   /// @brief ElbGfRoot を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbGfRoot*
   gfroot();
 
   /// @brief ElbGenvar を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbGenvar*
   genvar();
@@ -620,7 +620,7 @@ public:
   add(ElbGenvar* obj);
 
   /// @brief 名前から該当する要素を検索する．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   ElbObjHandle*
   find(const VlNamedObj* parent,
        const char* name) const;

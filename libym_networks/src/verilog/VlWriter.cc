@@ -422,7 +422,7 @@ VlWriter::put_expr(const Expr& expr,
     put_idstr(name);
   }
   else if ( expr.is_op() ){
-    const char* op_str = NULL;
+    const char* op_str = nullptr;
     if ( expr.is_and() ) {
       op_str = " & ";
     }

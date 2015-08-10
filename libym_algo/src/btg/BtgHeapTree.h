@@ -150,7 +150,7 @@ BtgNode*
 BtgHeapTree::get()
 {
   if ( mNum == 0 ) {
-    return NULL;
+    return nullptr;
   }
 
   BtgNode* node = mArray[0];

@@ -75,7 +75,7 @@ Env::add(const VlDeclArray* decl,
 // @brief 対応するノードを取り出す．
 // @param[in] decl 宣言要素
 // @return 対応するノードを返す．
-// @note 登録されていない場合と配列型の場合には NULL を返す．
+// @note 登録されていない場合と配列型の場合には nullptr を返す．
 MvnNode*
 Env::get(const VlDecl* decl) const
 {
@@ -88,7 +88,7 @@ Env::get(const VlDecl* decl) const
 // @param[in] offset オフセット
 // @return 対応するノードを返す．
 // @note 登録されていない場合と配列型でない場合，
-// オフセットが範囲外の場合には NULL を返す．
+// オフセットが範囲外の場合には nullptr を返す．
 MvnNode*
 Env::get(const VlDeclArray* decl,
 	 ymuint offset) const
@@ -103,7 +103,7 @@ Env::add_by_id(ymuint id,
 	       MvnNode* node)
 {
   while ( mNodeArray.size() <= id ) {
-    mNodeArray.push_back(NULL);
+    mNodeArray.push_back(nullptr);
   }
   mNodeArray[id] = node;
 }
@@ -113,7 +113,7 @@ MvnNode*
 Env::get_from_id(ymuint id) const
 {
   if ( mNodeArray.size() <= id ) {
-    return NULL;
+    return nullptr;
   }
   return mNodeArray[id];
 }
@@ -177,7 +177,7 @@ ProcEnv::add(const VlDecl* decl,
 	     bool block)
 {
   ymuint id = decl_hash().get_id(decl);
-  add_by_id(id, node, NULL, block);
+  add_by_id(id, node, nullptr, block);
 }
 
 // @brief 登録する(配列の場合)
@@ -192,21 +192,21 @@ ProcEnv::add(const VlDeclArray* decl,
 	     bool block)
 {
   ymuint id = decl_hash().get_id(decl, offset);
-  add_by_id(id, node, NULL, block);
+  add_by_id(id, node, nullptr, block);
 }
 
 // @brief 対応するノードを取り出す．
 // @param[in] decl 宣言要素
 // @return 対応するノードを返す．
-// @note 登録されていない場合と配列型の場合には NULL を返す．
+// @note 登録されていない場合と配列型の場合には nullptr を返す．
 MvnNode*
 ProcEnv::get(const VlDecl* decl) const
 {
   ymuint id = decl_hash().get_id(decl);
   AssignInfo ans = get_from_id(id);
-  if ( ans.mRhs != NULL &&
+  if ( ans.mRhs != nullptr &&
        ans.mBlock == true &&
-       ans.mCond == NULL ) {
+       ans.mCond == nullptr ) {
     return ans.mRhs;
   }
   return mGlobalEnv.get_from_id(id);
@@ -217,16 +217,16 @@ ProcEnv::get(const VlDecl* decl) const
 // @param[in] offset オフセット
 // @return 対応するノードを返す．
 // @note 登録されていない場合と配列型でない場合，
-// オフセットが範囲外の場合には NULL を返す．
+// オフセットが範囲外の場合には nullptr を返す．
 MvnNode*
 ProcEnv::get(const VlDeclArray* decl,
 	     ymuint offset) const
 {
   ymuint id = decl_hash().get_id(decl, offset);
   AssignInfo ans = get_from_id(id);
-  if ( ans.mRhs != NULL &&
+  if ( ans.mRhs != nullptr &&
        ans.mBlock == true &&
-       ans.mCond == NULL ) {
+       ans.mCond == nullptr ) {
     return ans.mRhs;
   }
   return mGlobalEnv.get_from_id(id);
@@ -235,13 +235,13 @@ ProcEnv::get(const VlDeclArray* decl,
 // @brief 対応するノードを取り出す．
 // @param[in] decl 宣言要素
 // @return 対応するノードを返す．
-// @note 登録されていない場合と配列型の場合には NULL を返す．
+// @note 登録されていない場合と配列型の場合には nullptr を返す．
 AssignInfo
 ProcEnv::get_info(const VlDecl* decl) const
 {
   ymuint id = decl_hash().get_id(decl);
   AssignInfo ans = get_from_id(id);
-  if ( ans.mRhs == NULL ) {
+  if ( ans.mRhs == nullptr ) {
     MvnNode* node = mGlobalEnv.get(decl);
     return AssignInfo(node);
   }
@@ -253,14 +253,14 @@ ProcEnv::get_info(const VlDecl* decl) const
 // @param[in] offset オフセット
 // @return 対応するノードを返す．
 // @note 登録されていない場合と配列型でない場合，
-// オフセットが範囲外の場合には NULL を返す．
+// オフセットが範囲外の場合には nullptr を返す．
 AssignInfo
 ProcEnv::get_info(const VlDeclArray* decl,
 		  ymuint offset) const
 {
   ymuint id = decl_hash().get_id(decl, offset);
   AssignInfo ans = get_from_id(id);
-  if ( ans.mRhs == NULL ) {
+  if ( ans.mRhs == nullptr ) {
     MvnNode* node = mGlobalEnv.get(decl, offset);
     return AssignInfo(node);
   }
@@ -297,7 +297,7 @@ ProcEnv::get_from_id(ymuint id) const
 // @brief コンストラクタ
 // @param[in] global_env プロセスの外側の Env
 AsyncControl::AsyncControl(const Env& global_env) :
-  mNode(NULL),
+  mNode(nullptr),
   mPol(0),
   mEnv(global_env)
 {

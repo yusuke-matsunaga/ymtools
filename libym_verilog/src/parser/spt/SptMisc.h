@@ -111,7 +111,7 @@ private:
   /// コンストラクタ
   SptConnection(const FileRegion& file_region,
 		const PtExpr* expr,
-		const char* name = NULL);
+		const char* name = nullptr);
 
   /// デストラクタ
   virtual

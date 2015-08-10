@@ -210,7 +210,7 @@ HashMap<Key_Type, Value_Type>::find(const Key_Type& key,
 				    Value_Type& value) const
 {
   Cell* cell = reinterpret_cast<Cell*>(HashBase<Key_Type>::find_cell(key));
-  if ( cell != NULL ) {
+  if ( cell != nullptr ) {
     value = cell->mValue;
     return true;
   }
@@ -227,7 +227,7 @@ Value_Type&
 HashMap<Key_Type, Value_Type>::operator[](const Key_Type& key)
 {
   Cell* cell = reinterpret_cast<Cell*>(HashBase<Key_Type>::find_cell(key));
-  ASSERT_COND( cell != NULL );
+  ASSERT_COND( cell != nullptr );
   return cell->mValue;
 }
 
@@ -239,7 +239,7 @@ const Value_Type&
 HashMap<Key_Type, Value_Type>::operator[](const Key_Type& key) const
 {
   Cell* cell = reinterpret_cast<Cell*>(HashBase<Key_Type>::find_cell(key));
-  ASSERT_COND( cell != NULL );
+  ASSERT_COND( cell != nullptr );
   return cell->mValue;
 }
 

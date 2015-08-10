@@ -64,13 +64,13 @@ main(int argc,
   int dump = 0;
   int bit_expand = 0;
   int all_msg = 0;
-  const char* spath = NULL;
+  const char* spath = nullptr;
   int watch_line = 0;
   int loop = 0;
   int use_cpt = false;
   int profile = 0;
-  const char* liberty_name = NULL;
-  const char* mislib_name = NULL;
+  const char* liberty_name = nullptr;
+  const char* mislib_name = nullptr;
 
   PoptMainApp popt;
 
@@ -170,37 +170,37 @@ main(int argc,
     // docstr
     // argstr
     { "verbose", 'v', POPT_ARG_NONE, &verbose, 0,
-      "enable verbose mode", NULL },
+      "enable verbose mode", nullptr },
 
-    { "rawlex", '1', POPT_ARG_NONE, NULL, 1,
-      "enable rawlex mode", NULL },
+    { "rawlex", '1', POPT_ARG_NONE, nullptr, 1,
+      "enable rawlex mode", nullptr },
 
-    { "lex", '2', POPT_ARG_NONE, NULL, 2,
-      "enable lex mode", NULL },
+    { "lex", '2', POPT_ARG_NONE, nullptr, 2,
+      "enable lex mode", nullptr },
 
-    { "yacc", '3', POPT_ARG_NONE, NULL, 3,
-      "enable yacc mode", NULL },
+    { "yacc", '3', POPT_ARG_NONE, nullptr, 3,
+      "enable yacc mode", nullptr },
 
-    { "elaborate", '4', POPT_ARG_NONE, NULL, 4,
-      "enable elaborate mode", NULL },
+    { "elaborate", '4', POPT_ARG_NONE, nullptr, 4,
+      "enable elaborate mode", nullptr },
 
     { "dump", 'd', POPT_ARG_NONE, &dump, 0,
-      "set dump-flag", NULL },
+      "set dump-flag", nullptr },
 
     { "all-msg", 'a', POPT_ARG_NONE, &all_msg, 0,
-      "display all kind of messages", NULL },
+      "display all kind of messages", nullptr },
 
     { "search-path", 'p', POPT_ARG_STRING, &spath, 0,
       "set search path", "\"path list\"" },
 
     { "loop", 'l', POPT_ARG_INT, &loop, 0,
-      "loop test", NULL },
+      "loop test", nullptr },
 
     { "watch-line", 'w', POPT_ARG_INT, &watch_line, 0,
       "enable line watcher", "line number" },
 
     { "profile", 'q', POPT_ARG_NONE, &profile, 0,
-      "show memory profile", NULL },
+      "show memory profile", nullptr },
 
     { "liberty", 0, POPT_ARG_STRING, &liberty_name, 0,
       "specify liberty library", "\"file name\"" },
@@ -210,11 +210,11 @@ main(int argc,
 
     POPT_AUTOHELP
 
-    { NULL, '\0', 0, NULL, 0, NULL, NULL }
+    { nullptr, '\0', 0, nullptr, 0, nullptr, nullptr }
   };
 
   // オプション解析用のコンテキストを生成する．
-  poptContext popt_context = poptGetContext(NULL, argc, argv, options, 0);
+  poptContext popt_context = poptGetContext(nullptr, argc, argv, options, 0);
   poptSetOtherOptionHelp(popt_context, "<file-name> ...");
 
   // オプション解析を行う．
@@ -237,7 +237,7 @@ main(int argc,
   list<string> filename_list;
   for ( ; ; ) {
     const char* str = poptGetArg(popt_context);
-    if ( str == NULL ) break;
+    if ( str == nullptr ) break;
     filename_list.push_back(string(str));
   }
 
@@ -284,12 +284,12 @@ main(int argc,
 #endif
 #endif
 
-  const CellLibrary* cell_library = NULL;
-  if ( liberty_name != NULL ) {
+  const CellLibrary* cell_library = nullptr;
+  if ( liberty_name != nullptr ) {
     CellDotlibReader read;
     cell_library = read(liberty_name);
   }
-  else if ( mislib_name != NULL ) {
+  else if ( mislib_name != nullptr ) {
     CellMislibReader read;
     cell_library = read(mislib_name);
   }

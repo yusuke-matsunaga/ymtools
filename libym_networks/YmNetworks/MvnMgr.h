@@ -55,14 +55,14 @@ public:
   /// @brief モジュールIDをキーにしてモジュールにアクセスする．
   /// @param[in] id モジュールID ( 0 <= id < max_module_id() )
   /// @return 該当するモジュールを返す．
-  /// @note 該当するモジュールがない場合は NULL を返す．
+  /// @note 該当するモジュールがない場合は nullptr を返す．
   const MvnModule*
   module(ymuint id) const;
 
   /// @brief モジュールIDをキーにしてモジュールにアクセスする．
   /// @param[in] id モジュールID ( 0 <= id < max_module_id() )
   /// @return 該当するモジュールを返す．
-  /// @note 該当するモジュールがない場合は NULL を返す．
+  /// @note 該当するモジュールがない場合は nullptr を返す．
   MvnModule*
   _module(ymuint id);
 
@@ -72,13 +72,13 @@ public:
 
   /// @brief ノードを得る．
   /// @param[in] id ID番号 ( 0 <= id < max_node_id() )
-  /// @note NULL が返されることもある．
+  /// @note nullptr が返されることもある．
   const MvnNode*
   node(ymuint id) const;
 
   /// @brief ノードを得る．
   /// @param[in] id ID番号 ( 0 <= id < max_node_id() )
-  /// @note NULL が還されることもある．
+  /// @note nullptr が返されることもある．
   MvnNode*
   _node(ymuint id);
 

@@ -35,7 +35,7 @@ mislib_parser_test(const string& filename)
 
   const MislibNode* gate_list = mgr.gate_list();
   for (const MislibNode* gate = gate_list->top();
-       gate != NULL; gate = gate->next()) {
+       gate != nullptr; gate = gate->next()) {
     gate->dump(cout);
   }
 

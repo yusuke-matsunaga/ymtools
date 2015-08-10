@@ -29,7 +29,7 @@ VlDumperImpl::put_process(const char* label,
 			  const VlMgr& mgr,
 			  const VlProcess* process)
 {
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( process->type() ) {
   case kVpiInitial: nm = "Initial"; break;
   case kVpiAlways:  nm = "Always"; break;
@@ -62,7 +62,7 @@ VlDumperImpl::put_stmt(const char* label,
 		       const VlMgr& mgr,
 		       const VlStmt* stmt)
 {
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( stmt->type() ) {
   case kVpiBegin:           nm = "Begin"; break;
   case kVpiFork:            nm = "Fork"; break;
@@ -228,7 +228,7 @@ VlDumperImpl::put_control(const char* label,
 			  const VlMgr& mgr,
 			  const VlControl* control)
 {
-  if ( control == NULL ) {
+  if ( control == nullptr ) {
     if ( !nullptr_suppress_mode() ) {
       VlDumpHeader x(this, label, "null-pointer");
     }

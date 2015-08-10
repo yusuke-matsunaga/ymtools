@@ -35,7 +35,7 @@ FuncHandler::~FuncHandler()
 
 // @brief 値を読み込む処理
 // @return 値を表す DotlibNode を返す．
-// @note エラーが起きたら NULL を返す．
+// @note エラーが起きたら nullptr を返す．
 // @note ここでは expression のパースを行う．
 DotlibNodeImpl*
 FuncHandler::read_value()
@@ -48,7 +48,7 @@ FuncHandler::read_value()
 		    kMsgError,
 		    "DOTLIB_PARSER",
 		    "String value is expected.");
-    return NULL;
+    return nullptr;
   }
 
   mScanner.init(parser().cur_string(), loc);
@@ -80,7 +80,7 @@ FuncHandler::read_primary()
 		      kMsgError,
 		      "DOTLIB_PARSER",
 		      "Syntax error. 0 or 1 is expected.");
-      return NULL;
+      return nullptr;
     }
     return mgr()->new_int(v, loc);
   }
@@ -90,7 +90,7 @@ FuncHandler::read_primary()
 		  kMsgError,
 		  "DOTLIB_PARSER",
 		  "Syntax error. number is expected.");
-  return NULL;
+  return nullptr;
 }
 
 // @brief プライム付きの primary を読み込む．
@@ -101,16 +101,16 @@ FuncHandler::read_primary2()
   tTokenType type = read_token(loc);
   if ( type == NOT ) {
     DotlibNodeImpl* opr = read_primary();
-    if ( opr == NULL ) {
-      return NULL;
+    if ( opr == nullptr ) {
+      return nullptr;
     }
     return mgr()->new_not(opr, FileRegion(loc, opr->loc()));
   }
   unget_token(type, loc);
 
   DotlibNodeImpl* node = read_primary();
-  if ( node == NULL ) {
-    return NULL;
+  if ( node == nullptr ) {
+    return nullptr;
   }
 
   type = read_token(loc);
@@ -127,8 +127,8 @@ DotlibNodeImpl*
 FuncHandler::read_product()
 {
   DotlibNodeImpl* opr1 = read_primary2();
-  if ( opr1 == NULL ) {
-    return NULL;
+  if ( opr1 == nullptr ) {
+    return nullptr;
   }
 
   for ( ; ; ) {
@@ -136,16 +136,16 @@ FuncHandler::read_product()
     tTokenType type = read_token(loc);
     if ( type == AND ) {
       DotlibNodeImpl* opr2 = read_primary2();
-      if ( opr2 == NULL ) {
-	return NULL;
+      if ( opr2 == nullptr ) {
+	return nullptr;
       }
       opr1 = mgr()->new_and(opr1, opr2);
     }
     else if ( type == NOT || type == LP || type == SYMBOL ) {
       unget_token(type, loc);
       DotlibNodeImpl* opr2 = read_primary2();
-      if ( opr2 == NULL ) {
-	return NULL;
+      if ( opr2 == nullptr ) {
+	return nullptr;
       }
       opr1 = mgr()->new_and(opr1, opr2);
     }
@@ -162,8 +162,8 @@ DotlibNodeImpl*
 FuncHandler::read_expr(tTokenType end_marker)
 {
   DotlibNodeImpl* opr1 = read_product();
-  if ( opr1 == NULL ) {
-    return NULL;
+  if ( opr1 == nullptr ) {
+    return nullptr;
   }
   for ( ; ; ) {
     FileRegion loc;
@@ -173,8 +173,8 @@ FuncHandler::read_expr(tTokenType end_marker)
     }
     if ( type == OR || type == XOR ) {
       DotlibNodeImpl* opr2 = read_product();
-      if ( opr2 == NULL ) {
-	return NULL;
+      if ( opr2 == nullptr ) {
+	return nullptr;
       }
       if ( type == XOR ) {
 	opr1 = mgr()->new_xor(opr1, opr2);
@@ -189,7 +189,7 @@ FuncHandler::read_expr(tTokenType end_marker)
 		      kMsgError,
 		      "DOTLIB_PARSER",
 		      "Syntax error.");
-      return NULL;
+      return nullptr;
     }
   }
 }

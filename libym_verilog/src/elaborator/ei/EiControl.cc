@@ -92,19 +92,19 @@ EiControl::file_region() const
 }
 
 // @brief 遅延式を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 EiControl::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 繰り返し式を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 EiControl::expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief イベント条件式の数を返す．
@@ -117,11 +117,11 @@ EiControl::event_num() const
 
 // @brief イベント条件式を返す．
 // @param[in] pos 位置番号 ( 0 <= pos < event_num() )
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 EiControl::event(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 

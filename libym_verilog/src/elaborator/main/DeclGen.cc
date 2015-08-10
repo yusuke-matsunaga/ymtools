@@ -86,17 +86,17 @@ DeclGen::phase1_decl(const VlNamedObj* parent,
 // @param[in] module 親のモジュール
 // @param[in] taskfunc 親のタスク/関数
 // @param[in] pt_head_array IO宣言ヘッダの配列
-// @note module, taskfunc は1つのみが値を持つ．残りは NULL
+// @note module, taskfunc は1つのみが値を持つ．残りは nullptr
 void
 DeclGen::instantiate_iodecl(ElbModule* module,
 			    ElbTaskFunc* taskfunc,
 			    PtIOHeadArray pt_head_array)
 {
   // module と taskfunc は排他的
-  ASSERT_COND( module != NULL || taskfunc != NULL );
-  ASSERT_COND( module == NULL || taskfunc == NULL );
+  ASSERT_COND( module != nullptr || taskfunc != nullptr );
+  ASSERT_COND( module == nullptr || taskfunc == nullptr );
 
-  VlNamedObj* namedobj = NULL;
+  VlNamedObj* namedobj = nullptr;
   if ( module ) {
     namedobj = module;
   }
@@ -115,7 +115,7 @@ DeclGen::instantiate_iodecl(ElbModule* module,
     bool sign = pt_head->is_signed();
     const PtExpr* pt_left = pt_head->left_range();
     const PtExpr* pt_right = pt_head->right_range();
-    bool has_range = (pt_left != NULL) && (pt_right != NULL);
+    bool has_range = (pt_left != nullptr) && (pt_right != nullptr);
 
     // 範囲指定を持っている場合には範囲を計算する．
     int left_val = 0;
@@ -130,7 +130,7 @@ DeclGen::instantiate_iodecl(ElbModule* module,
 
     // ヘッダ情報の生成
     // ちなみに IOHead は範囲の情報を持たない．
-    ElbIOHead* head = NULL;
+    ElbIOHead* head = nullptr;
     if ( module ) {
       head = factory().new_ModIOHead(module, pt_head);
     }
@@ -142,14 +142,14 @@ DeclGen::instantiate_iodecl(ElbModule* module,
 	head = factory().new_FunctionIOHead(taskfunc, pt_head);
       }
     }
-    ASSERT_COND( head != NULL );
+    ASSERT_COND( head != nullptr );
 
     for (ymuint j = 0; j < pt_head->item_num(); ++ j) {
       const PtIOItem* pt_item = pt_head->item(j);
 
       // IO定義と変数/ネット定義が一致しているか調べる．
       ElbObjHandle* handle = find_obj(namedobj, pt_item->name());
-      ElbDecl* decl = NULL;
+      ElbDecl* decl = nullptr;
       if ( handle ) {
 	// 同名の要素が見つかった．
 	if ( def_aux_type != kVpiAuxNone ) {
@@ -169,7 +169,7 @@ DeclGen::instantiate_iodecl(ElbModule* module,
 	if ( decl ) {
 	  // 対象が宣言要素だった場合．
 	  tVpiObjType type = decl->type();
-	  if ( (module == NULL || type != kVpiNet) &&
+	  if ( (module == nullptr || type != kVpiNet) &&
 	       type != kVpiReg &&
 	       type != kVpiIntegerVar &&
 	       type != kVpiTimeVar) {
@@ -177,8 +177,8 @@ DeclGen::instantiate_iodecl(ElbModule* module,
 	    // - module かつネットは OK
 	    // - reg/integer/time は OK
 	    // ということになる．
-	    // それ以外は NULL にしておく．
-	    decl = NULL;
+	    // それ以外は nullptr にしておく．
+	    decl = nullptr;
 	  }
 	}
 	if ( !decl ) {
@@ -195,7 +195,7 @@ DeclGen::instantiate_iodecl(ElbModule* module,
 	  }
 	  else {
 	    // 不適切な型だった場合．
-	    // 上の decl = NULL にした時もここに来る．
+	    // 上の decl = nullptr にした時もここに来る．
 	    ostringstream buf;
 	    buf << handle->full_name()
 		<< ": Should be a ";
@@ -212,7 +212,7 @@ DeclGen::instantiate_iodecl(ElbModule* module,
 	  continue;
 	}
 
-	// ここに来たら decl != NULL
+	// ここに来たら decl != nullptr
 
 	// decl と型が一致しているか調べる．
 	// IEEE 1364-2001 12.3.3 Port declarations
@@ -302,7 +302,7 @@ DeclGen::instantiate_iodecl(ElbModule* module,
 	}
 
 	// ヘッダを生成する．
-	ElbDeclHead* head = NULL;
+	ElbDeclHead* head = nullptr;
 	if ( module ) {
 	  if ( has_range ) {
 	    head = factory().new_DeclHead(module, pt_head, aux_type,
@@ -323,11 +323,11 @@ DeclGen::instantiate_iodecl(ElbModule* module,
 	    head = factory().new_DeclHead(taskfunc, pt_head, aux_type);
 	  }
 	}
-	ASSERT_COND( head != NULL );
+	ASSERT_COND( head != nullptr );
 
 	// 初期値を生成する．
 	const PtExpr* pt_init = pt_item->init_value();
-	ElbExpr* init = NULL;
+	ElbExpr* init = nullptr;
 	if ( module ) {
 	  if ( pt_init ) {
 	    // 初期値を持つ場合
@@ -346,12 +346,12 @@ DeclGen::instantiate_iodecl(ElbModule* module,
 	    // これは verilog_grammer.yy の list_of_variable_port_identifiers
 	    // に対応するので必ず constant_expression である．
 	    init = instantiate_constant_expr(module, pt_init);
-	    // エラーの場合には init = NULL となるが処理は続ける．
+	    // エラーの場合には init = nullptr となるが処理は続ける．
 	  }
 	}
 	else {
 	  // task/function の IO 宣言には初期値はない．
-	  ASSERT_COND( pt_init == NULL );
+	  ASSERT_COND( pt_init == nullptr );
 	}
 
 	decl = factory().new_Decl(head, pt_item, init);
@@ -446,7 +446,7 @@ DeclGen::instantiate_param_head(const VlNamedObj* parent,
 {
   const VlModule* module = parent->parent_module();
 
-  ElbParamHead* param_head = NULL;
+  ElbParamHead* param_head = nullptr;
 
   const PtExpr* pt_left = pt_head->left_range();
   const PtExpr* pt_right = pt_head->right_range();
@@ -516,9 +516,9 @@ DeclGen::instantiate_net_head(const VlNamedObj* parent,
   const PtExpr* pt_right = pt_head->right_range();
   const PtDelay* pt_delay = pt_head->delay();
 
-  bool has_delay = (pt_delay != NULL);
+  bool has_delay = (pt_delay != nullptr);
 
-  ElbDeclHead* net_head = NULL;
+  ElbDeclHead* net_head = nullptr;
   if ( pt_left && pt_right ) {
     int left_val = 0;
     int right_val = 0;
@@ -656,7 +656,7 @@ DeclGen::instantiate_reg_head(const VlNamedObj* parent,
   const PtExpr* pt_left = pt_head->left_range();
   const PtExpr* pt_right = pt_head->right_range();
 
-  ElbDeclHead* reg_head = NULL;
+  ElbDeclHead* reg_head = nullptr;
   if ( pt_left && pt_right ) {
     int left_val = 0;
     int right_val = 0;
@@ -671,7 +671,7 @@ DeclGen::instantiate_reg_head(const VlNamedObj* parent,
   else {
     reg_head = factory().new_DeclHead(parent, pt_head);
   }
-  ASSERT_COND( reg_head != NULL );
+  ASSERT_COND( reg_head != nullptr );
 
   for (ymuint i = 0; i < pt_head->item_num(); ++ i) {
     const PtDeclItem* pt_item = pt_head->item(i);
@@ -711,12 +711,12 @@ DeclGen::instantiate_reg_head(const VlNamedObj* parent,
     }
     else {
       // 単独の要素
-      ElbExpr* init = NULL;
+      ElbExpr* init = nullptr;
       if ( pt_init ) {
 	// 初期値を持つ場合
 	// 初期値は constant_expression なので今作る．
 	init = instantiate_constant_expr(parent, pt_init);
-	// エラーの時には init = NULL となるがそれでも処理は続ける．
+	// エラーの時には init = nullptr となるがそれでも処理は続ける．
 	// もちろんエラーは記録されている．
       }
 
@@ -790,12 +790,12 @@ DeclGen::instantiate_var_head(const VlNamedObj* parent,
     }
     else {
       // 単独の変数
-      ElbExpr* init = NULL;
+      ElbExpr* init = nullptr;
       if ( pt_init ) {
 	// 初期値を持つ場合
 	// 初期値は constant_expression なので今作る．
 	init = instantiate_constant_expr(parent, pt_init);
-	// エラーの時には init = NULL となるがそれでも処理は続ける．
+	// エラーの時には init = nullptr となるがそれでも処理は続ける．
 	// もちろんエラーは記録されている．
       }
 

@@ -63,7 +63,7 @@ public:
   /// @brief 名前から UDP 定義を取出す．
   /// @param[in] name 名前
   /// @return name という名の UDP を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const ElbUdpDefn*
   find_udp(const char* name) const;
 
@@ -74,7 +74,7 @@ public:
   /// @brief 名前から UserSystf を取出す．
   /// @param[in] name 名前
   /// @return name という名のユーザー定義関数を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const ElbUserSystf*
   find_user_systf(const char* name) const;
 
@@ -207,18 +207,18 @@ public:
   /// @param[in] parent 検索対象のスコープ
   /// @param[in] name 名前
   /// @return parent というスコープ内の name という要素を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   ElbObjHandle*
   find_obj(const VlNamedObj* parent,
 	   const char* name) const;
 
   /// @brief スコープと階層名から要素を取り出す．
   /// @param[in] base_scope 起点となるスコープ
-  /// @param[in] nb_array 階層名の上部 (NULL の場合も有りうる)
+  /// @param[in] nb_array 階層名の上部 (nullptr の場合も有りうる)
   /// @param[in] name 末尾の名前
   /// @param[in] ulimit 探索する名前空間の上限
   /// @return 見付かったオブジェクトを返す．
-  /// 見付からなかったら NULL を返す．
+  /// 見付からなかったら nullptr を返す．
   ElbObjHandle*
   find_obj_up(const VlNamedObj* base_scope,
 	      PtNameBranchArray nb_array,

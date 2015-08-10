@@ -18,11 +18,11 @@ BEGIN_NAMESPACE_YM_NETWORKS_BNET
 
 // コンストラクタ
 // 節点のタイプは中間節点用が設定される．
-// ファンインはNULLにしておく．
+// ファンインはnullptrにしておく．
 BNode::BNode() :
   mFlags(0),
-  mFaninEdgeArray(NULL),
-  mParent(NULL)
+  mFaninEdgeArray(nullptr),
+  mParent(nullptr)
 {
   flags_set_type(kLO);
 }

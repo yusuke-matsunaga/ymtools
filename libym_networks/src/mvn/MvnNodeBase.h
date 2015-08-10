@@ -80,7 +80,7 @@ public:
 
   /// @brief 非同期セットの値を表す定数ノードを得る．
   /// @param[in] pos 位置 ( 0 <= pos < input_num() - 2 )
-  /// @note デフォルトの実装では NULL を返す．
+  /// @note デフォルトの実装では nullptr を返す．
   virtual
   const MvnNode*
   control_val(ymuint pos) const;
@@ -124,7 +124,7 @@ public:
 
   /// @brief セルを得る．
   /// @note type() が kCell の時のみ意味を持つ．
-  /// @note デフォルトの実装では NULL を返す．
+  /// @note デフォルトの実装では nullptr を返す．
   virtual
   const Cell*
   cell() const;
@@ -139,7 +139,7 @@ public:
   /// @brief 多出力セルノードの場合の代表ノードを返す．
   /// @note type() が kCell の時のみ意味を持つ．
   /// @note 1出力セルノードの時には自分自身を返す．
-  /// @note デフォルトの実装では NULL を返す．
+  /// @note デフォルトの実装では nullptr を返す．
   virtual
   const MvnNode*
   cell_node() const;

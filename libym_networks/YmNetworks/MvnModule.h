@@ -37,7 +37,7 @@ public:
   name() const;
 
   /// @brief 親のノードを得る．
-  /// @note トップレベルモジュールの場合には NULL を返す．
+  /// @note トップレベルモジュールの場合には nullptr を返す．
   MvnNode*
   parent() const;
 
@@ -168,7 +168,7 @@ MvnModule::name() const
 }
 
 // @brief 親のノードを得る．
-// @note トップレベルモジュールの場合には NULL を返す．
+// @note トップレベルモジュールの場合には nullptr を返す．
 inline
 MvnNode*
 MvnModule::parent() const

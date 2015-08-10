@@ -41,7 +41,7 @@ public:
   /// @brief コンストラクタ
   /// @param[in] clause 節へのポインタ
   explicit
-  SatReason(SatClause* clause = NULL);
+  SatReason(SatClause* clause = nullptr);
 
   /// @brief コンストラクタ
   /// @param[in] lit リテラル

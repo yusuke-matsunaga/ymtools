@@ -101,19 +101,19 @@ public:
   is_sysfunccall() const = 0;
 
   /// @brief 宣言要素もしくは配列型宣言要素への参照を返す．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlDeclBase*
   decl_base() const = 0;
 
   /// @brief 宣言要素への参照の場合，対象のオブジェクトを返す．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlDecl*
   decl_obj() const = 0;
 
   /// @brief 宣言要素の配列への参照の場合，対象のオブジェクトを返す．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlDeclArray*
   declarray_obj() const = 0;
@@ -126,7 +126,7 @@ public:
 
   /// @brief 配列型宣言要素への参照の場合，配列のインデックスを返す．
   /// @param[in] pos 位置番号 ( 0 <= pos < declarray_dimension() )
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlExpr*
   declarray_index(ymuint pos) const = 0;
@@ -138,7 +138,7 @@ public:
   declarray_offset() const = 0;
 
   /// @brief スコープへの参照の場合，対象のオブジェクトを返す．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   /// @note スコープへの参照が式で用いられるのはシステム関数/タスクの引数だけ
   virtual
   const VlNamedObj*
@@ -152,14 +152,14 @@ public:
 
   /// @brief 親の式を返す．
   /// @note 式に対するビット選択/範囲選択の時，意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlExpr*
   parent_expr() const = 0;
 
   /// @brief インデックス式を返す．
   /// @note ビット選択の時，意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlExpr*
   index() const = 0;
@@ -183,7 +183,7 @@ public:
 
   /// @brief 範囲の MSB の式を返す．
   /// @note 範囲選択の時，意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlExpr*
   left_range() const = 0;
@@ -196,7 +196,7 @@ public:
 
   /// @brief 範囲の LSB の式を返す．
   /// @note 範囲選択の時，意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlExpr*
   right_range() const = 0;
@@ -209,7 +209,7 @@ public:
 
   /// @brief 範囲のベースを表す式を返す．
   /// @note 可変範囲選択の時，意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlExpr*
   base() const = 0;
@@ -238,7 +238,7 @@ public:
   /// @brief オペランドを返す．
   /// @param[in] pos 位置番号 ( 0 <= pos < operand_num() )
   /// @note kVpiOperation の時，意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlExpr*
   operand(ymuint pos) const = 0;
@@ -266,14 +266,14 @@ public:
 
   /// @brief 対象の関数を返す．
   /// @note kVpiFuncCall の時，意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlTaskFunc*
   function() const = 0;
 
   /// @brief 対象のシステム関数を返す．
   /// @note kVpiSysFuncCall の時，意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlUserSystf*
   user_systf() const = 0;
@@ -287,7 +287,7 @@ public:
   /// @brief 引数を返す．
   /// @param[in] pos 位置番号 ( 0 <= pos < argument_num() )
   /// @note kVpiFuncCall/kVpiSysFuncCall の時，意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const VlExpr*
   argument(ymuint pos) const = 0;

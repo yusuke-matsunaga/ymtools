@@ -55,7 +55,7 @@ public:
   /// @param[in] module 親のモジュール
   /// @param[in] taskfunc 親のタスク/関数
   /// @param[in] pt_head_array IO宣言ヘッダの配列
-  /// @note module, taskfunc は1つのみが値を持つ．残りは NULL．
+  /// @note module, taskfunc は1つのみが値を持つ．残りは nullptr．
   void
   instantiate_iodecl(ElbModule* module,
 		     ElbTaskFunc* taskfunc,

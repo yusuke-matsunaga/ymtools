@@ -63,28 +63,28 @@ private:
   /// @brief 式を読み込む．
   /// @return 式を表す AST のノードを返す．
   ///
-  /// エラーが起きたら NULL を返す．
+  /// エラーが起きたら nullptr を返す．
   MislibNode*
   read_expr(MislibToken end_token);
 
   /// @brief 積項を読み込む．
   /// @return 式を表す AST のノードを返す．
   ///
-  /// エラーが起きたら NULL を返す．
+  /// エラーが起きたら nullptr を返す．
   MislibNode*
   read_product();
 
   /// @brief リテラルを読み込む．
   /// @return 式を表す AST のノードを返す．
   ///
-  /// エラーが起きたら NULL を返す．
+  /// エラーが起きたら nullptr を返す．
   MislibNode*
   read_literal();
 
   /// @brief ピンリスト記述を読み込む．
   /// @return ピンリストを表す AST のノードを返す．
   ///
-  /// エラーが起きたら NULL を返す．
+  /// エラーが起きたら nullptr を返す．
   /// ピン名の代わりに * の場合があるので注意
   MislibNode*
   read_pin_list();

@@ -32,14 +32,14 @@ VlDumperImpl::put_expr(const char* label,
 		       const VlMgr& mgr,
 		       const VlExpr* expr)
 {
-  if ( expr == NULL ) {
+  if ( expr == nullptr ) {
     if ( !nullptr_suppress_mode() ) {
       VlDumpHeader x(this, label, "null-pointer");
     }
     return;
   }
 
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( expr->type() ) {
   case kVpiOperation:              nm = "Operation"; break;
   case kVpiConstant:               nm = "Constant"; break;
@@ -101,7 +101,7 @@ VlDumperImpl::put_expr(const char* label,
     }
     else if ( expr->is_partselect() ) {
       put_primary(mgr, expr);
-      const char* rm_str = NULL;
+      const char* rm_str = nullptr;
       switch ( expr->range_mode() ) {
       case kVpiConstRange: rm_str = "constant_range"; break;
       case kVpiPlusRange:  rm_str = "plus_range"; break;
@@ -183,7 +183,7 @@ VlDumperImpl::put_delay(const char* label,
 			const VlMgr& mgr,
 			const VlDelay* delay)
 {
-  if ( delay == NULL ) {
+  if ( delay == nullptr ) {
     if ( !nullptr_suppress_mode() ) {
       VlDumpHeader x(this, label, "null-pointer");
     }
@@ -202,7 +202,7 @@ VlDumperImpl::put_range(const char* label,
 			const VlMgr& mgr,
 			const VlRange* range)
 {
-  if ( range == NULL ) {
+  if ( range == nullptr ) {
     if ( !nullptr_suppress_mode() ) {
       VlDumpHeader x(this, label, "null-pointer");
     }

@@ -48,14 +48,14 @@ TEST_F( FragAllocTest, Alloc1 )
 {
   void* p = mAlloc.get_memory(16);
 
-  EXPECT_TRUE( p != NULL );
+  EXPECT_TRUE( p != nullptr );
 }
 
 TEST_F( FragAllocTest, BigAlloc )
 {
   void* p = mAlloc.get_memory(16 * 1024);
 
-  EXPECT_TRUE( p != NULL );
+  EXPECT_TRUE( p != nullptr );
 }
 
 TEST_F( FragAllocTest, RepeatAlloc )

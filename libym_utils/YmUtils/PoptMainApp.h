@@ -80,7 +80,7 @@ public:
   opt_desc() const;
 
   /// @brief オプションの引数の記述を返す．
-  /// @note デフォルトの実装では NULL を返す．
+  /// @note デフォルトの実装では nullptr を返す．
   virtual
   const char*
   arg_desc() const;
@@ -535,7 +535,7 @@ public:
   /// @brief コンストラクタ
   /// @param[in] name 名前 (alias 用)
   /// @param[in] auto_help --help オプションを有効にするフラグ
-  PoptMainApp(const char* name = NULL,
+  PoptMainApp(const char* name = nullptr,
 	      bool auto_help = true);
 
   /// @brief デストラクタ
@@ -593,8 +593,8 @@ public:
   /// @brief usage を出力して終了する．
   void
   usage(int exitcode,
-	const char* error = NULL,
-	const char* addl = NULL);
+	const char* error = nullptr,
+	const char* addl = nullptr);
 
   /// @brief PoptMainApp 用の strerror() 関数
   /// @param[in] error エラーコード

@@ -24,7 +24,7 @@ MvnModule::MvnModule(const char* name,
 		     ymuint no,
 		     ymuint nio) :
   mName(name),
-  mParent(NULL),
+  mParent(nullptr),
   mPortArray(np),
   mInputArray(ni),
   mOutputArray(no),

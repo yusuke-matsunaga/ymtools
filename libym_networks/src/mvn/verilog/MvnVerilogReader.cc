@@ -54,7 +54,7 @@ bool
 MvnVerilogReader::gen_network(MvnMgr& mgr,
 			      MvnVlMap& node_map)
 {
-  return mImpl->gen_network(mgr, NULL, node_map);
+  return mImpl->gen_network(mgr, nullptr, node_map);
 }
 
 // @brief 今まで読み込んだ情報からネットワークを生成する．

@@ -148,42 +148,42 @@ CiTiming::fall_delay_intercept() const
 const CellLut*
 CiTiming::rise_transition() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 立ち下がり遷移遅延テーブルの取得
 const CellLut*
 CiTiming::fall_transition() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 立ち上がり伝搬遅延テーブルの取得
 const CellLut*
 CiTiming::rise_propagation() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 立ち下がり伝搬遅延テーブルの取得
 const CellLut*
 CiTiming::fall_propagation() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 立ち上がりセル遅延テーブルの取得
 const CellLut*
 CiTiming::cell_rise() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 立ち下がりセル遅延テーブルの取得
 const CellLut*
 CiTiming::cell_fall() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 共通な情報をダンプする．

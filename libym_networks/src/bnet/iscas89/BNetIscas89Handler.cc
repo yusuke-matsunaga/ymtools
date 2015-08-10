@@ -16,8 +16,8 @@ BEGIN_NAMESPACE_YM_ISCAS89
 
 // @brief コンストラクタ
 BNetIscas89Handler::BNetIscas89Handler() :
-  mNetwork(NULL),
-  mManip(NULL)
+  mNetwork(nullptr),
+  mManip(nullptr)
 {
 }
 
@@ -38,7 +38,7 @@ BNetIscas89Handler::set_network(BNetwork* network)
 bool
 BNetIscas89Handler::init()
 {
-  ASSERT_COND( mManip == NULL );
+  ASSERT_COND( mManip == nullptr );
 
   mManip = new BNetManip(mNetwork);
   mNetwork->clear();
@@ -161,7 +161,7 @@ BNetIscas89Handler::normal_exit()
     mManip->change_output(onode, node);
   }
   delete mManip;
-  mManip = NULL;
+  mManip = nullptr;
 }
 
 // @brief エラー終了時の処理
@@ -170,7 +170,7 @@ BNetIscas89Handler::error_exit()
 {
   mNetwork->clear();
   delete mManip;
-  mManip = NULL;
+  mManip = nullptr;
 }
 
 // @brief ノードの取得 & 生成

@@ -15,7 +15,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 BEGIN_NONAMESPACE
 
-VlValueRep* error_rep = NULL;
+VlValueRep* error_rep = nullptr;
 
 END_NONAMESPACE
 
@@ -28,7 +28,7 @@ END_NONAMESPACE
 // @param[in] 値は不定
 VlValue::VlValue()
 {
-  if ( error_rep == NULL ) {
+  if ( error_rep == nullptr ) {
     error_rep = new VlValueError();
     error_rep->inc();
   }

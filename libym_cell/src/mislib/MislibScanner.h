@@ -93,7 +93,7 @@ inline
 double
 MislibScanner::cur_num() const
 {
-  return strtod(cur_string(), static_cast<char**>(NULL));
+  return strtod(cur_string(), static_cast<char**>(nullptr));
 }
 
 END_NAMESPACE_YM_MISLIB

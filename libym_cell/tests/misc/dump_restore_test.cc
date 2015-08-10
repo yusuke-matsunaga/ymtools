@@ -20,7 +20,7 @@ BEGIN_NAMESPACE_YM
 /// @brief genlib 形式のファイルを読み込む．
 /// @param[in] filename ファイル名
 /// @return 生成されたライブラリを返す．
-/// @note エラーが起きたら NULL を返す．
+/// @note エラーが起きたら nullptr を返す．
 const CellLibrary*
 read_mislib(const char* filename)
 {
@@ -31,7 +31,7 @@ read_mislib(const char* filename)
 /// @brief liberty 形式のファイルを読み込む．
 /// @param[in] filename ファイル名
 /// @return 生成されたライブラリを返す．
-/// @note エラーが起きたら NULL を返す．
+/// @note エラーが起きたら nullptr を返す．
 const CellLibrary*
 read_dotlib(const char* filename)
 {
@@ -62,14 +62,14 @@ main(int argc,
 
   const char* filename = argv[base];
 
-  const CellLibrary* library = NULL;
+  const CellLibrary* library = nullptr;
   if ( dotlib ) {
     library = read_dotlib(filename);
   }
   else {
     library = read_mislib(filename);
   }
-  if ( library == NULL ) {
+  if ( library == nullptr ) {
     cerr << filename << ": Error in reading library" << endl;
     return 1;
   }

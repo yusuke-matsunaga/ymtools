@@ -28,7 +28,7 @@ END_NONAMESPACE
 CompTbl2::CompTbl2(BddMgrImpl* mgr,
 		   const char* name) :
   CompTbl(mgr, name),
-  mTable(NULL),
+  mTable(nullptr),
   mUsedNum(0)
 {
   resize(kInitSize);
@@ -85,7 +85,7 @@ CompTbl2::resize(ymuint64 new_size)
 
   // 新しいメモリ領域を確保する．
   Cell* new_table = (Cell*)allocate(new_size * sizeof(Cell));
-  if ( new_table == NULL ) {
+  if ( new_table == nullptr ) {
     return false;
   }
 

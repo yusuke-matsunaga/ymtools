@@ -21,7 +21,7 @@ void
 Parser::push_declhead_list(PtDeclHeadList* new_declhead)
 {
   mDeclHeadListStack.push_back(mCurDeclHeadList);
-  if ( new_declhead == NULL ) {
+  if ( new_declhead == nullptr ) {
     new_declhead = new PtDeclHeadList(mCellAlloc);
   }
   mCurDeclHeadList = new_declhead;
@@ -47,7 +47,7 @@ void
 Parser::push_item_list(PtItemList* new_item)
 {
   mItemListStack.push_back(mCurItemList);
-  if ( new_item == NULL ) {
+  if ( new_item == nullptr ) {
     new_item = new PtItemList(mCellAlloc);
   }
   mCurItemList = new_item;

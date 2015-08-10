@@ -100,8 +100,8 @@ private:
 inline
 BtgNode::BtgNode()
 {
-  mEdgeTop = NULL;
-  mCurEdge = NULL;
+  mEdgeTop = nullptr;
+  mCurEdge = nullptr;
 }
 
 // @brief デストラクタ

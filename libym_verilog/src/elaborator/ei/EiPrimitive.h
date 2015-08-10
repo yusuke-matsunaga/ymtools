@@ -63,7 +63,7 @@ public:
   def_name() const;
 
   /// @brief UDP 定義を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const ElbUdpDefn*
   udp_defn() const;
@@ -84,7 +84,7 @@ public:
   drive1() const;
 
   /// @brief 遅延式を得る．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbDelay*
   delay() const;

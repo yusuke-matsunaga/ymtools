@@ -44,7 +44,7 @@ END_NONAMESPACE
 // @brief コンストラクタ
 ElbEnv::ElbEnv() :
   mFlags(0U),
-  mCf(NULL)
+  mCf(nullptr)
 {
 }
 

@@ -19,8 +19,8 @@ BEGIN_NAMESPACE_YM_MISLIB
 // コンストラクタ
 MislibList::MislibList() :
   MislibNodeImpl(FileRegion()),
-  mTop(NULL),
-  mEnd(NULL)
+  mTop(nullptr),
+  mEnd(nullptr)
 {
 }
 

@@ -94,21 +94,21 @@ EiIOHead::direction() const
 ElbModule*
 EiIOHead::module() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 親のタスクの取得
 ElbTaskFunc*
 EiIOHead::task() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 親の関数の取得
 ElbTaskFunc*
 EiIOHead::function() const
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -319,11 +319,11 @@ EiIODecl::module() const
 }
 
 // @brief 親の UDP の取得
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlUdpDefn*
 EiIODecl::udp_defn() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 親のタスクの取得

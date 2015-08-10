@@ -33,7 +33,7 @@ END_NONAMESPACE
 // @brief コンストラクタ
 CiPinHash::CiPinHash() :
   mSize(0),
-  mTable(NULL),
+  mTable(nullptr),
   mLimit(0),
   mNum(0)
 {
@@ -78,7 +78,7 @@ CiPinHash::add(CiPin* pin)
 // @param[in] cell セル
 // @param[in] name 名前
 // @return cell の name というピンを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 CiPin*
 CiPinHash::get(const CiCell* cell,
 	       ShString name) const
@@ -89,7 +89,7 @@ CiPinHash::get(const CiCell* cell,
       return pin;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief テーブルの領域を確保する．
@@ -101,7 +101,7 @@ CiPinHash::alloc_table(ymuint req_size)
   mLimit = static_cast<ymuint>(mSize * 1.8);
   mTable = new CiPin*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

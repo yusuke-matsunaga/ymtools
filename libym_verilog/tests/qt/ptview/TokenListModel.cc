@@ -135,7 +135,7 @@ TokenListModel::data(const QModelIndex& index,
 	break;
 
       default:
-	if ( dic.str(token.mId) == NULL ) {
+	if ( dic.str(token.mId) == nullptr ) {
 	  str = "???";
 	}
 	else {

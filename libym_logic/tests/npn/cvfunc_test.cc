@@ -65,7 +65,7 @@ void
 check0(size_t ni)
 {
   size_t ni_pow = 1 << ni;
-  
+
   TvFunc zero = TvFunc::const_zero(ni);
   for (size_t i = 0; i < ni_pow; ++ i) {
     if ( zero.value(i) != 0 ) {
@@ -75,7 +75,7 @@ check0(size_t ni)
       break;
     }
   }
-  
+
   TvFunc one = TvFunc::const_one(ni);
   for (size_t i = 0; i < ni_pow; ++ i) {
     if ( one.value(i) != 1 ) {
@@ -85,7 +85,7 @@ check0(size_t ni)
       break;
     }
   }
-  
+
   for (size_t i = 0; i < ni; ++ i) {
     TvFunc pl = TvFunc::posi_literal(ni, i);
     bool error = false;
@@ -625,7 +625,7 @@ check_walsh_w0(const TvFunc& func,
   }
   else {
     size_t ibits0 = (1 << ni) - 1;
-    
+
     // 全ての 0 のパタン
     check_sub(func, 0);
     // 全ての 1 のパタン
@@ -639,7 +639,7 @@ check_walsh_w0(const TvFunc& func,
 	check_sub(func, ibits ^ ibits0);
       }
     }
-    
+
     for (size_t i = 0; i < nc; ++ i) {
       size_t ibits = random_num() & ((1 << ni) - 1);
       check_sub(func, ibits);
@@ -679,7 +679,7 @@ check(size_t ni,
   if ( nerr ) return;
 
   check_walsh_w0(func, nc);
-  
+
 }
 
 END_NAMESPACE_YM_NPN
@@ -798,33 +798,33 @@ main(int argc,
     // docstr
     // argstr
     { "verbose", 'v', POPT_ARG_NONE, &verbose, 0,
-      "enable verbose mode", NULL },
+      "enable verbose mode", nullptr },
 
-    { "gen", 'g', POPT_ARG_NONE, NULL, 1,
-      "generate all NPN equivalent functions mode", NULL },
-    
-    { "rgen", 'r', POPT_ARG_NONE, NULL, 2,
-      "randomly generate NPN equivalent functions mode", NULL },
+    { "gen", 'g', POPT_ARG_NONE, nullptr, 1,
+      "generate all NPN equivalent functions mode", nullptr },
+
+    { "rgen", 'r', POPT_ARG_NONE, nullptr, 2,
+      "randomly generate NPN equivalent functions mode", nullptr },
 
     { "ni", 'i', POPT_ARG_INT, &ni, 0,
-      "number of inputs", NULL },
-    
+      "number of inputs", nullptr },
+
     { "rnum", 'n', POPT_ARG_INT, &rnum, 0,
-      "number of functions to be generated", NULL },
+      "number of functions to be generated", nullptr },
 
     { "rseed", 's', POPT_ARG_INT, &rseed, 0,
-      "random seed", NULL },
+      "random seed", nullptr },
 
     { "bnum", 'b', POPT_ARG_INT, &bnum, 0,
-      "number of bit-patterns to be tested", NULL },
-    
+      "number of bit-patterns to be tested", nullptr },
+
     POPT_AUTOHELP
 
-    { NULL, '\0', 0, NULL, 0, NULL, NULL }
+    { nullptr, '\0', 0, nullptr, 0, nullptr, nullptr }
   };
 
   // オプション解析用のコンテキストを生成する．
-  poptContext popt_context = poptGetContext(NULL, argc, argv, options, 0);
+  poptContext popt_context = poptGetContext(nullptr, argc, argv, options, 0);
   poptSetOtherOptionHelp(popt_context, "[OPTIONS]* <file-name> ...");
 
   // オプション解析を行う．
@@ -949,7 +949,7 @@ main(int argc,
   catch ( nsYm::AssertError x ) {
     cerr << x << endl;
   }
-  
+
 #endif
   return 0;
 }

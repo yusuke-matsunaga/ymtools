@@ -79,7 +79,7 @@ ItemGen::phase1_muheader(const VlNamedObj* parent,
     for (ymuint i = 0; i < pt_head->size(); ++ i) {
       const PtInst* pt_inst = pt_head->inst(i);
       const char* name = pt_inst->name();
-      if ( name == NULL ) {
+      if ( name == nullptr ) {
 	// 名無しのモジュールインスタンスはない
 	MsgMgr::put_msg(__FILE__, __LINE__,
 			fr,
@@ -124,7 +124,7 @@ ItemGen::phase1_muheader(const VlNamedObj* parent,
 	PtConnectionArray pa_array = pt_head->paramassign_array();
 	ymuint n = pa_array.size();
 	bool named_con = false;
-	if ( n > 0 && pa_array[0]->name() != NULL ) {
+	if ( n > 0 && pa_array[0]->name() != nullptr ) {
 	  named_con = true;
 	}
 	ElbParamCon param_con(pt_head->file_region(), n, named_con);
@@ -151,7 +151,7 @@ ItemGen::phase1_muheader(const VlNamedObj* parent,
     PtConnectionArray pa_array = pt_head->paramassign_array();
     ymuint param_size = pa_array.size();
     const PtDelay* pt_delay = pt_head->delay();
-    if ( param_size > 0 && pa_array[0]->name() != NULL ) {
+    if ( param_size > 0 && pa_array[0]->name() != nullptr ) {
       MsgMgr::put_msg(__FILE__, __LINE__,
 		      fr,
 		      kMsgError,
@@ -254,7 +254,7 @@ ItemGen::phase1_module_array(const VlNamedObj* parent,
   PtConnectionArray pa_array = pt_head->paramassign_array();
   ymuint param_num = pa_array.size();
   bool named_con = false;
-  if ( param_num > 0 && pa_array[0]->name() != NULL ) {
+  if ( param_num > 0 && pa_array[0]->name() != nullptr ) {
     named_con = true;
   }
   ElbParamCon param_con(pt_head->file_region(), param_num, named_con);
@@ -315,9 +315,9 @@ ItemGen::link_module_array(ElbModuleArray* module_array,
   // () を取らない形を用意しておけば良かったのに．
   if ( port_num == 0 && n == 1 ) {
     const PtConnection* con = pt_inst->port(0);
-    if ( /* con->attr_top() == NULL &&*/
-	 con->name() == NULL &&
-	 con->expr() == NULL ) {
+    if ( /* con->attr_top() == nullptr &&*/
+	 con->name() == nullptr &&
+	 con->expr() == nullptr ) {
       // この要素は無視する．
       return;
     }
@@ -335,7 +335,7 @@ ItemGen::link_module_array(ElbModuleArray* module_array,
   // どうやら実際のポート数よりも少ないのはいいらしい
 
   // YACC の文法から一つでも named_con なら全部そう
-  bool conn_by_name = (pt_inst->port(0)->name() != NULL);
+  bool conn_by_name = (pt_inst->port(0)->name() != nullptr);
   HashMap<string, ymuint> port_index;
   if ( conn_by_name ) {
     // ポート名とインデックスの辞書を作る．
@@ -343,7 +343,7 @@ ItemGen::link_module_array(ElbModuleArray* module_array,
     for (ymuint index = 0; index < n; ++ index) {
       const PtPort* pt_port = pt_module->port(index);
       const char* name = pt_port->ext_name();
-      if ( name != NULL ) {
+      if ( name != nullptr ) {
 	port_index.add(name, index);
       }
     }
@@ -363,7 +363,7 @@ ItemGen::link_module_array(ElbModuleArray* module_array,
     if ( conn_by_name ) {
       // 名前による割り当ての場合はポート名で探す．
       const char* port_name = pt_con->name();
-      ASSERT_COND(port_name != NULL );
+      ASSERT_COND(port_name != nullptr );
       if ( !port_index.find(port_name, index) ) {
 	ostringstream buf;
 	buf << port_name << " : does not exist in the port list.";
@@ -380,12 +380,12 @@ ItemGen::link_module_array(ElbModuleArray* module_array,
       // 順序に割り当ての場合は単純に i
       index = i;
       // 前にも書いたように YACC の文法で規定されているのでこれは常に真
-      ASSERT_COND ( pt_con->name() == NULL );
+      ASSERT_COND ( pt_con->name() == nullptr );
     }
 
     // 割り当てるポートを取り出す．
     const VlPort* port = module0->port(index);
-    if ( port == NULL ) {
+    if ( port == nullptr ) {
       // このポートはダミー
       continue;
     }
@@ -427,7 +427,7 @@ ItemGen::link_module_array(ElbModuleArray* module_array,
 	// tmp を 分割する．
 	for (ymuint i = 0; i < module_size; ++ i) {
 	  ElbModule* module1 = module_array->_module(i);
-	  ElbExpr* tmp1 = NULL;
+	  ElbExpr* tmp1 = nullptr;
 	  if ( port_size == 1 ) {
 	    tmp1 = factory().new_BitSelect(pt_expr, tmp, i);
 	  }
@@ -530,9 +530,9 @@ ItemGen::link_module(ElbModule* module,
   // () を取らない形を用意しておけば良かったのに．
   if ( port_num == 0 && n == 1 ) {
     const PtConnection* pt_con = pt_inst->port(0);
-    if ( /* pt_con->attr_top() == NULL &&*/
-	 pt_con->name() == NULL &&
-	 pt_con->expr() == NULL ) {
+    if ( /* pt_con->attr_top() == nullptr &&*/
+	 pt_con->name() == nullptr &&
+	 pt_con->expr() == nullptr ) {
       // この要素は無視する．
       return;
     }
@@ -550,7 +550,7 @@ ItemGen::link_module(ElbModule* module,
   // どうやら実際のポート数よりも少ないのはいいらしい
 
   // YACC の文法から一つでも named_con なら全部そう
-  bool conn_by_name = (pt_inst->port(0)->name() != NULL);
+  bool conn_by_name = (pt_inst->port(0)->name() != nullptr);
   HashMap<string, ymuint> port_index;
   if ( conn_by_name ) {
     // ポート名とインデックスの辞書を作る．
@@ -558,7 +558,7 @@ ItemGen::link_module(ElbModule* module,
     for (ymuint index = 0; index < n; ++ index) {
       const PtPort* pt_port = pt_module->port(index);
       const char* name = pt_port->ext_name();
-      if ( name != NULL ) {
+      if ( name != nullptr ) {
 	port_index.add(name, index);
       }
     }
@@ -578,7 +578,7 @@ ItemGen::link_module(ElbModule* module,
     if ( conn_by_name ) {
       // 名前による割り当ての場合はポート名で探す．
       const char* port_name = pt_con->name();
-      ASSERT_COND( port_name != NULL );
+      ASSERT_COND( port_name != nullptr );
       if ( !port_index.find(port_name, index) ) {
 	ostringstream buf;
 	buf << port_name << " : does not exist in the port list.";
@@ -595,7 +595,7 @@ ItemGen::link_module(ElbModule* module,
       // 順序による割り当ての場合は単純に i
       index = i;
       // 前にも書いたように YACC の文法から下の仮定は常になりたつはず．
-      ASSERT_COND( pt_con->name() == NULL );
+      ASSERT_COND( pt_con->name() == nullptr );
     }
 
     const VlPort* port = module->port(index);

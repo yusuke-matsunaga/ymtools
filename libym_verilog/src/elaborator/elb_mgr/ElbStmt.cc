@@ -18,7 +18,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief コンストラクタ
 ElbStmt::ElbStmt() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 
@@ -29,29 +29,29 @@ ElbStmt::~ElbStmt()
 
 // @brief 対象のスコープの取得
 // @note kDisable/kParBlock/kSeqBlock で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlNamedObj*
 ElbStmt::scope() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief task の実体を返す．
 // @note kEnable で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlTaskFunc*
 ElbStmt::task() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief user systf クラスへのポインタを返す．
 // @note kSysEnable で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlUserSystf*
 ElbStmt::user_systf() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 引数の数の取得
@@ -66,55 +66,55 @@ ElbStmt::arg_num() const
 // @brief 引数の取得
 // @param[in] pos 位置 (0 <= pos < arg_num())
 // @note kEnable/kSysEnable で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 ElbStmt::arg(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief control の取得
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlControl*
 ElbStmt::control() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 本体のステートメントの取得
 // @note kDc/kEc/kWait/kForever/kRepeat/kWhile/kFor/kIf で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlStmt*
 ElbStmt::body_stmt() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 式の取得
 // @note kWait/kRepeat/kWhile/kFor/kIf/kCase/kCaseX/kCaseZ で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 ElbStmt::expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 左辺式の取得
 // @note kAssign/kForce/kPcAssign/kRelease/kDeassign で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 ElbStmt::lhs() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 右辺式の取得
 // @note kAssign/kForce/kPcAssign で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 ElbStmt::rhs() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 代入のブロッキング/ノンブロッキングの区別の取得
@@ -127,20 +127,20 @@ ElbStmt::is_blocking() const
 
 // @brief イベントプライマリの取得
 // @note kEvent で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlExpr*
 ElbStmt::named_event() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 条件が成り立たなかったとき実行されるステートメントの取得
 // @note kIf で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlStmt*
 ElbStmt::else_stmt() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief case type の取得
@@ -166,29 +166,29 @@ ElbStmt::caseitem_num() const
 // @brief case item の取得
 // @param[in] pos 位置番号 (0 <= pos < caseitem_num())
 // @note kCase/kCaseX/kCaseZ で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlCaseItem*
 ElbStmt::caseitem(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 初期化代入文の取得
 // @note kFor で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlStmt*
 ElbStmt::init_stmt() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 繰り返し代入文の取得
 // @note kFor で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const VlStmt*
 ElbStmt::inc_stmt() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 子供のステートメントの数の取得
@@ -224,11 +224,11 @@ ElbStmt::set_caseitem(ymuint pos,
 }
 
 // @brief 子供ののステートメントの取得
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbStmt*
 ElbStmt::_child_stmt(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 END_NAMESPACE_YM_VERILOG

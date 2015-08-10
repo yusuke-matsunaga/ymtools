@@ -61,19 +61,19 @@ MislibNodeImpl::num() const
 }
 
 // 1番目の子供を取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::child1() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 2番目の子供を取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::child2() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 対応する論理式を生成する．
@@ -87,67 +87,67 @@ MislibNodeImpl::to_expr(const HashMap<ShString, ymuint>& name_map) const
 }
 
 // ピン名を表すオブジェクトを取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::name() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 極性情報を表すオブジェクトを取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::phase() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 入力負荷を表すオブジェクトを取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::input_load() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 最大駆動負荷を表すオブジェクトを取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::max_load() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 立ち上がり固定遅延を表すオブジェクトを取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::rise_block_delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 立ち上がり負荷依存遅延を表すオブジェクトを取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::rise_fanout_delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 立ち下がり固定遅延を表すオブジェクトを取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::fall_block_delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 立ち下がり負荷依存遅延を表すオブジェクトを取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::fall_fanout_delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 次のピンを設定する．
@@ -158,11 +158,11 @@ MislibNodeImpl::set_next(MislibNodeImpl* pin)
 }
 
 // 次のピンを取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::next() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 末尾に要素を追加する．
@@ -173,43 +173,43 @@ MislibNodeImpl::push_back(MislibNodeImpl* pin)
 }
 
 // 先頭の要素を取り出す．
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::top() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 面積を表すオブジェクトを返す．
-// @note デフォルトでは NULL を返す．
+// @note デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::area() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 出力ピン名を表すオブジェクトを返す．
-// @note デフォルトでは NULL を返す．
+// @note デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::opin_name() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 出力の論理式を表すオブジェクトを返す．
-// @note デフォルトでは NULL を返す．
+// @note デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::opin_expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 入力ピンの先頭を表すオブジェクトを返す．
-// @note デフォルトでは NULL を返す．
+// @note デフォルトでは nullptr を返す．
 const MislibNode*
 MislibNodeImpl::ipin_top() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 位置を出力する．

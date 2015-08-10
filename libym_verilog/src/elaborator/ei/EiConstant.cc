@@ -31,7 +31,7 @@ EiFactory::new_Constant(const PtExpr* pt_expr)
   ymuint base = 0;
   switch ( const_type ) {
   case kVpiIntConst:
-    if ( pt_expr->const_str() == NULL ) {
+    if ( pt_expr->const_str() == nullptr ) {
       void* p = mAlloc.get_memory(sizeof(EiIntConst));
       return new (p) EiIntConst(pt_expr, pt_expr->const_uint());
     }
@@ -140,11 +140,11 @@ EiConstant::_set_reqsize(const VlValueType& type)
 // @brief オペランドを返す．
 // @param[in] pos 位置番号
 // @note 演算子の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbExpr*
 EiConstant::_operand(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 

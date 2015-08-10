@@ -234,20 +234,20 @@ EiImpNet::charge() const
 
 // @brief delay の取得
 // @retval delay
-// @retval NULL delay の指定なし
+// @retval nullptr delay の指定なし
 const VlDelay*
 EiImpNet::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 初期値の取得
 // @retval 初期値
-// @retval NULL 設定がない場合
+// @retval nullptr 設定がない場合
 const VlExpr*
 EiImpNet::init_value() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 符号付きに補正する．

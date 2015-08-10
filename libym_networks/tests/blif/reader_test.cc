@@ -31,12 +31,12 @@ reader_test(int argc,
     StreamMsgHandler* msg_handler = new StreamMsgHandler(&cerr);
     MsgMgr::reg_handler(msg_handler);
 
-    const CellLibrary* library = NULL;
+    const CellLibrary* library = nullptr;
 
     if ( argc == 3 ) {
       CellMislibReader read;
       library = read(argv[2]);
-      if ( library == NULL ) {
+      if ( library == nullptr ) {
 	return 2;
       }
     }

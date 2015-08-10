@@ -50,22 +50,22 @@ CptDeclHead::is_signed() const
 
 // @brief 範囲のMSBの取得
 // @retval 範囲のMSB 範囲を持つとき
-// @retval NULL 範囲を持たないとき
-// @note このクラスでは NULL を返す．
+// @retval nullptr 範囲を持たないとき
+// @note このクラスでは nullptr を返す．
 const PtExpr*
 CptDeclHead::left_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲のLSBの取得
 // @retval 範囲のLSB 範囲を持つとき
-// @retval NULL 範囲を持たないとき
-// @note このクラスでは NULL を返す．
+// @retval nullptr 範囲を持たないとき
+// @note このクラスでは nullptr を返す．
 const PtExpr*
 CptDeclHead::right_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief データ型の取得
@@ -101,22 +101,22 @@ CptDeclHead::vs_type() const
 
 // @brief strength の取得
 // @retval strength
-// @retval NULL strength の指定なし
-// @note このクラスでは NULL を返す．
+// @retval nullptr strength の指定なし
+// @note このクラスでは nullptr を返す．
 const PtStrength*
 CptDeclHead::strength() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief delay の取得
 // @retval delay
-// @retval NULL delay の指定なし
-// @note このクラスでは NULL を返す．
+// @retval nullptr delay の指定なし
+// @note このクラスでは nullptr を返す．
 const PtDelay*
 CptDeclHead::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 要素数の取得
@@ -1047,15 +1047,15 @@ CptDeclItemBase::dimension_list_size() const
 const PtRange*
 CptDeclItemBase::range(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 初期値の取得
-// @return ここでは常に NULL を返す．
+// @return ここでは常に nullptr を返す．
 const PtExpr*
 CptDeclItemBase::init_value() const
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -1161,7 +1161,7 @@ CptDeclItemI::file_region() const
 
 // 初期値の取得
 // @retval 初期値
-// @retval NULL 設定がない場合
+// @retval nullptr 設定がない場合
 const PtExpr*
 CptDeclItemI::init_value() const
 {

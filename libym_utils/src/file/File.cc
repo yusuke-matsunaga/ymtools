@@ -436,7 +436,7 @@ cur_work_dir()
 #else
   char* tmp = getcwd(buff, sizeof(buff));
 #endif
-  if ( tmp == NULL ) {
+  if ( tmp == nullptr ) {
     // なんか知らないけどエラー
     return PathName();
   }

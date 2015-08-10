@@ -59,25 +59,25 @@ public:
 
   /// @brief 入力ノードを得る．
   /// @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-  /// @note 出力ポートの場合には NULL を返す．
+  /// @note 出力ポートの場合には nullptr を返す．
   const BdnNode*
   input(ymuint pos) const;
 
   /// @brief 出力ノードを得る．
   /// @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-  /// @note 入力ポートの場合には NULL を返す．
+  /// @note 入力ポートの場合には nullptr を返す．
   const BdnNode*
   output(ymuint pos) const;
 
   /// @brief 入力ノードを得る．
   /// @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-  /// @note 出力ポートの場合には NULL を返す．
+  /// @note 出力ポートの場合には nullptr を返す．
   BdnNode*
   _input(ymuint pos);
 
   /// @brief 出力ノードを得る．
   /// @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-  /// @note 入力ポートの場合には NULL を返す．
+  /// @note 入力ポートの場合には nullptr を返す．
   BdnNode*
   _output(ymuint pos);
 
@@ -138,7 +138,7 @@ BdnPort::bit_width() const
 
 // @brief 入力ノードを得る．
 // @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-// @note 出力ポートの場合には NULL を返す．
+// @note 出力ポートの場合には nullptr を返す．
 inline
 const BdnNode*
 BdnPort::input(ymuint pos) const
@@ -148,7 +148,7 @@ BdnPort::input(ymuint pos) const
 
 // @brief 出力ノードを得る．
 // @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-// @note 入力ポートの場合には NULL を返す．
+// @note 入力ポートの場合には nullptr を返す．
 inline
 const BdnNode*
 BdnPort::output(ymuint pos) const
@@ -158,7 +158,7 @@ BdnPort::output(ymuint pos) const
 
 // @brief 入力ノードを得る．
 // @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-// @note 出力ポートの場合には NULL を返す．
+// @note 出力ポートの場合には nullptr を返す．
 inline
 BdnNode*
 BdnPort::_input(ymuint pos)
@@ -168,7 +168,7 @@ BdnPort::_input(ymuint pos)
 
 // @brief 出力ノードを得る．
 // @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-// @note 入力ポートの場合には NULL を返す．
+// @note 入力ポートの場合には nullptr を返す．
 inline
 BdnNode*
 BdnPort::_output(ymuint pos)

@@ -35,7 +35,7 @@ MislibGate::MislibGate(const FileRegion& loc,
   mOpinName(opin_name),
   mOpinExpr(opin_expr),
   mIpinTop(ipin_top),
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 
@@ -124,7 +124,7 @@ MislibGate::dump(ostream& s) const
   s << "</OPIN_EXPR>" << endl;
 
   s << "<IPIN_LIST>" << endl;
-  for (const MislibNode* pin = ipin_top(); pin != NULL; pin = pin->next()) {
+  for (const MislibNode* pin = ipin_top(); pin != nullptr; pin = pin->next()) {
     pin->dump(s);
   }
   s << "</IPIN_LIST>" << endl;

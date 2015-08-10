@@ -238,8 +238,8 @@ ReadFuncCmd::usage()
 int
 ReadFuncCmd::cmd_proc(TclObjVector& objv)
 {
-  istream* is = NULL;
-  ifstream* ifs = NULL;
+  istream* is = nullptr;
+  ifstream* ifs = nullptr;
 
   // オプションの解析
   TclObjVector::iterator end = objv.end();
@@ -249,7 +249,7 @@ ReadFuncCmd::cmd_proc(TclObjVector& objv)
     TclObj obj = *rpos;
     string arg = obj;
     if ( arg == "-f" || arg == "--file" ) {
-      if ( is != NULL ) {
+      if ( is != nullptr ) {
 	set_result("-f|--file: appear more than once");
 	return TCL_ERROR;
       }
@@ -291,7 +291,7 @@ ReadFuncCmd::cmd_proc(TclObjVector& objv)
   // 実行すべきコマンドの取り出し
   const TclObj& cmd = objv[2];
 
-  if ( is == NULL ) {
+  if ( is == nullptr ) {
     is = &cin;
   }
 

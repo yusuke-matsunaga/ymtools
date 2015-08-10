@@ -71,7 +71,7 @@ ElbMgr::clear()
   mObjDict.clear();
   mModInstDict.clear();
   mAttrHash.clear();
-  mTopLevel = NULL;
+  mTopLevel = nullptr;
 }
 
 // @brief UDP 定義のリストを返す．
@@ -84,7 +84,7 @@ ElbMgr::udp_list() const
 // @brief 名前から UDP 定義を取出す．
 // @param[in] name 名前
 // @return name という名の UDP を返す．
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 const ElbUdpDefn*
 ElbMgr::find_udp(const char* name) const
 {
@@ -93,7 +93,7 @@ ElbMgr::find_udp(const char* name) const
     return ans;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -125,7 +125,7 @@ ElbMgr::topmodule_list() const
 // @brief 名前から UserSystf を取出す．
 // @param[in] name 名前
 // @return name という名のユーザー定義関数を返す．
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 const ElbUserSystf*
 ElbMgr::find_user_systf(const char* name) const
 {
@@ -134,7 +134,7 @@ ElbMgr::find_user_systf(const char* name) const
     return ans;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -282,7 +282,7 @@ ElbMgr::reg_module(ElbModule* obj)
 void
 ElbMgr::reg_primarray(ElbPrimArray* obj)
 {
-  if ( obj->name() != NULL ) {
+  if ( obj->name() != nullptr ) {
     if ( debug & debug_objdict ) {
       dout << "reg_primarray( " << obj->name() << " @ "
 	   << obj->parent()->full_name()
@@ -300,7 +300,7 @@ ElbMgr::reg_primarray(ElbPrimArray* obj)
 void
 ElbMgr::reg_primitive(ElbPrimitive* obj)
 {
-  if ( obj->name() != NULL ) {
+  if ( obj->name() != nullptr ) {
     if ( debug & debug_objdict ) {
       dout << "reg_primitive( " << obj->name() << " @ "
 	   << obj->parent()->full_name()
@@ -407,7 +407,7 @@ ElbMgr::reg_attr(const VlObj* obj,
 // @param[in] parent 検索対象のスコープ
 // @param[in] name 名前
 // @return parent というスコープ内の name という要素を返す．
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 ElbObjHandle*
 ElbMgr::find_obj(const VlNamedObj* scope,
 		 const char* name) const
@@ -422,13 +422,13 @@ ElbMgr::find_obj(const VlNamedObj* scope,
 
   ElbObjHandle* handle = mObjDict.find(scope, name);
 
-  if ( handle == NULL ) {
+  if ( handle == nullptr ) {
     if ( debug & debug_find_scope ) {
       dout << "--> Not Found"
 	   << endl << endl;
     }
-    // なければ NULL を返す。
-    return NULL;
+    // なければ nullptr を返す。
+    return nullptr;
   }
 
   if ( debug & debug_find_scope ) {
@@ -441,11 +441,11 @@ ElbMgr::find_obj(const VlNamedObj* scope,
 
 // @brief 名前によるオブジェクトの探索
 // @param[in] base_scope 起点となるスコープ
-// @param[in] nb_array 階層名の上部 (NULL の場合も有りうる)
+// @param[in] nb_array 階層名の上部 (nullptr の場合も有りうる)
 // @param[in] name 末尾の名前
 // @param[in] ulimit 探索する名前空間の上限
 // @return 見付かったオブジェクトを返す．
-// 見付からなかったら NULL を返す．
+// 見付からなかったら nullptr を返す．
 ElbObjHandle*
 ElbMgr::find_obj_up(const VlNamedObj* base_scope,
 		    PtNameBranchArray nb_array,
@@ -454,8 +454,8 @@ ElbMgr::find_obj_up(const VlNamedObj* base_scope,
 {
   // まず nb の部分の解決を行う．
   base_scope = find_scope_up(base_scope, nb_array, ulimit);
-  if ( base_scope == NULL ) {
-    return NULL;
+  if ( base_scope == nullptr ) {
+    return nullptr;
   }
 
   if ( debug & debug_find_scope ) {
@@ -479,11 +479,11 @@ ElbMgr::find_obj_up(const VlNamedObj* base_scope,
       if ( debug & debug_find_scope ) {
 	dout << "--> Not found: reaches to ulimit" << endl << endl;
       }
-      return NULL;
+      return nullptr;
     }
   }
   // ダミー
-  return NULL;
+  return nullptr;
 }
 
 // base_scope を起点として (name_branch, "" ) という名前のスコープを探す．
@@ -495,7 +495,7 @@ ElbMgr::find_scope_up(const VlNamedObj* base_scope,
 {
   if ( debug & debug_find_scope ) {
     dout << "find_scope_up( "
-	 << expand_full_name(nb_array, NULL)
+	 << expand_full_name(nb_array, nullptr)
 	 << " ) @"
 	 << base_scope->full_name() << endl;
   }
@@ -505,7 +505,7 @@ ElbMgr::find_scope_up(const VlNamedObj* base_scope,
   for (ymuint i = 0; i < n; ) {
     const PtNameBranch* name_branch = nb_array[i];
     const char* top_name = name_branch->name();
-    const VlNamedObj* top_scope = NULL;
+    const VlNamedObj* top_scope = nullptr;
     // まず普通に探す．
     ElbObjHandle* handle = find_obj(cur_scope, top_name);
     if ( handle ) {
@@ -520,16 +520,16 @@ ElbMgr::find_scope_up(const VlNamedObj* base_scope,
       // モジュール定義名として探す．
       top_scope = mModInstDict.find(cur_scope, top_name);
     }
-    if ( top_scope == NULL) {
+    if ( top_scope == nullptr) {
       // cur_scope が上限もしくは cur_scope の親がいなければ
       // upward search できない．
-      if ( cur_scope == ulimit || cur_scope->parent() == NULL ) {
+      if ( cur_scope == ulimit || cur_scope->parent() == nullptr ) {
 
 	if ( debug & debug_find_scope ) {
 	  dout << "--> Not Found" << endl << endl;
 	}
 
-	return NULL;
+	return nullptr;
       }
 
       if ( debug & debug_find_scope ) {

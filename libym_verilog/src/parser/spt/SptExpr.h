@@ -59,15 +59,15 @@ public:
   op_type() const;
 
   /// @brief 階層ブランチの取得
-  /// system function call の場合は常に NULL
-  /// @note このクラスでは NULL を返す．
+  /// system function call の場合は常に nullptr
+  /// @note このクラスでは nullptr を返す．
   virtual
   PtNameBranchArray
   namebranch_array() const;
 
   /// @brief 末尾の名前の取得
   /// @return 末尾の名前
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const char*
   name() const;
@@ -114,14 +114,14 @@ public:
 
   /// @brief 範囲の左側の式の取得
   /// @return 範囲の左側の式
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   left_range() const;
 
   /// @brief 範囲の右側の式の取得
   /// @return 範囲の右側の式
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   right_range() const;
@@ -151,7 +151,7 @@ public:
   /// @brief 整数型および文字列型の定数の文字列表現の取得
   /// @return 値の文字列表現\n
   /// 整数型時のサイズと基数は含まない．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const char*
   const_str() const;
@@ -215,8 +215,8 @@ private:
   SptOpr1(const FileRegion& file_region,
 	  tVlOpType op_type,
 	  const PtExpr* opr1,
-	  const PtExpr* opr2 = NULL,
-	  const PtExpr* opr3 = NULL);
+	  const PtExpr* opr2 = nullptr,
+	  const PtExpr* opr3 = nullptr);
 
   /// デストラクタ
   virtual
@@ -420,8 +420,8 @@ private:
 	     bool const_index,
 	     PtExprArray index_array = PtExprArray(),
 	     tVpiRangeMode mode = kVpiNoRange,
-	     const PtExpr* left = NULL,
-	     const PtExpr* right = NULL);
+	     const PtExpr* left = nullptr,
+	     const PtExpr* right = nullptr);
 
   /// デストラクタ
   virtual

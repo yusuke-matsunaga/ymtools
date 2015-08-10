@@ -22,7 +22,7 @@ IdCell::IdCell(ymuint32 id,
 	       const char* str) :
   mId(id),
   mFlags(0U),
-  mLink(NULL)
+  mLink(nullptr)
 {
   const char* s = str;
   char* d = mStr;
@@ -59,7 +59,7 @@ void
 BlifIdHash::clear()
 {
   for (ymuint32 i = 0; i < mTableSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
   mCellArray.clear();
   mAlloc.destroy();
@@ -99,7 +99,7 @@ BlifIdHash::find(const char* str,
   }
 
   if ( !create ) {
-    return NULL;
+    return nullptr;
   }
 
   if ( mCellArray.size() >= mNextLimit ) {
@@ -140,7 +140,7 @@ BlifIdHash::alloc_table(ymuint32 new_size)
   mTableSize = new_size;
   mNextLimit = static_cast<ymuint32>(mTableSize * 1.8);
   for (ymuint32 i = 0; i < new_size; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

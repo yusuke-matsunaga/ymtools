@@ -294,7 +294,7 @@ FuncGroup::add(const TvFunc& of, const TvFunc& nf)
 FuncGroupList::FuncGroupList()
 {
   mSize = 0;
-  mTable = NULL;
+  mTable = nullptr;
   mNum = 0;
   resize(512);
 }
@@ -336,7 +336,7 @@ FuncGroupList::reg(size_t ni, const vector<int>& buff)
 	 << " signature: " << sig << endl;
   }
   size_t h = sig.hash() % mSize;
-  FuncGroup* fg = NULL;
+  FuncGroup* fg = nullptr;
   for (fg = mTable[h]; fg; fg = fg->mLink) {
     if ( fg->mSignature == sig ) {
       if ( verbose ) {
@@ -356,7 +356,7 @@ FuncGroupList::reg(size_t ni, const vector<int>& buff)
       return;
     }
   }
-  if ( fg == NULL ) {
+  if ( fg == nullptr ) {
     if ( verbose ) {
       cout << " new group" << endl;
     }
@@ -399,7 +399,7 @@ FuncGroupList::resize(size_t size)
   mTable = new FuncGroupPtr[size];
   mSize = size;
   for (size_t i = 0; i < size; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 
   if ( old_size ) {

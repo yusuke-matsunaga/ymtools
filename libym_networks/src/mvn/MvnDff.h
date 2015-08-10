@@ -73,7 +73,7 @@ public:
 
   /// @brief 非同期セットの値を表す定数ノードを得る．
   /// @param[in] pos 位置 ( 0 <= pos < input_num() - 2 )
-  /// @note デフォルトの実装では NULL を返す．
+  /// @note デフォルトの実装では nullptr を返す．
   virtual
   const MvnNode*
   control_val(ymuint pos) const;

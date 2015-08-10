@@ -36,9 +36,9 @@ EiFactory::new_DeclHead(const VlNamedObj* parent,
 			int right_val,
 			bool delay)
 {
-  ASSERT_COND( left != NULL && right != NULL );
+  ASSERT_COND( left != nullptr && right != nullptr );
 
-  EiDeclHead* head = NULL;
+  EiDeclHead* head = nullptr;
   if ( delay ) {
     void* p = mAlloc.get_memory(sizeof(EiDeclHeadPtVD));
     head = new (p) EiDeclHeadPtVD(parent, pt_head,
@@ -63,7 +63,7 @@ EiFactory::new_DeclHead(const VlNamedObj* parent,
 			const PtDeclHead* pt_head,
 			bool delay)
 {
-  EiDeclHead* head = NULL;
+  EiDeclHead* head = nullptr;
   if ( delay ) {
     void* p = mAlloc.get_memory(sizeof(EiDeclHeadPtD));
     head = new (p) EiDeclHeadPtD(parent, pt_head);
@@ -92,7 +92,7 @@ EiFactory::new_DeclHead(const VlNamedObj* parent,
 			int left_val,
 			int right_val)
 {
-  ASSERT_COND( left != NULL && right != NULL );
+  ASSERT_COND( left != nullptr && right != nullptr );
 
   void* p = mAlloc.get_memory(sizeof(EiDeclHeadPt2V));
   EiDeclHead* head = new (p) EiDeclHeadPt2V(parent, pt_head, aux_type,
@@ -130,7 +130,7 @@ EiFactory::new_DeclHead(const VlNamedObj* parent,
 			int left_val,
 			int right_val)
 {
-  ASSERT_COND( left != NULL && right != NULL );
+  ASSERT_COND( left != nullptr && right != nullptr );
 
   void* p = mAlloc.get_memory(sizeof(EiDeclHeadPt3V));
   EiDeclHead* head = new (p) EiDeclHeadPt3V(parent, pt_item,
@@ -498,7 +498,7 @@ EiDeclHeadPtD::~EiDeclHeadPtD()
 
 // @brief 遅延式の取得
 // @retval delay
-// @retval NULL delay の指定なし
+// @retval nullptr delay の指定なし
 ElbDelay*
 EiDeclHeadPtD::delay() const
 {
@@ -631,7 +631,7 @@ EiDeclHeadPtVD::EiDeclHeadPtVD(const VlNamedObj* parent,
 			       int left_val,
 			       int right_val) :
   EiDeclHeadPtV(parent, pt_header, left, right, left_val, right_val),
-  mDelay(NULL)
+  mDelay(nullptr)
 {
 }
 
@@ -642,7 +642,7 @@ EiDeclHeadPtVD::~EiDeclHeadPtVD()
 
 // @brief delay の取得
 // @retval delay
-// @retval NULL delay の指定なし
+// @retval nullptr delay の指定なし
 ElbDelay*
 EiDeclHeadPtVD::delay() const
 {

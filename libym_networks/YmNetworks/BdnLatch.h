@@ -72,22 +72,22 @@ public:
   _enable();
 
   /// @brief クリア信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   const BdnNode*
   clear() const;
 
   /// @brief クリア信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   BdnNode*
   _clear();
 
   /// @brief プリセット信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   const BdnNode*
   preset() const;
 
   /// @brief プリセット信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   BdnNode*
   _preset();
 

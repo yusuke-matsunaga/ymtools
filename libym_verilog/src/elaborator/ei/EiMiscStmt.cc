@@ -27,7 +27,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief イベント文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] named_event 対象のイベント
 ElbStmt*
@@ -43,9 +43,9 @@ EiFactory::new_EventStmt(const VlNamedObj* parent,
   return stmt;
 }
 
-// @brief NULL ステートメントを生成する．
+// @brief nullptr ステートメントを生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 ElbStmt*
 EiFactory::new_NullStmt(const VlNamedObj* parent,
@@ -60,7 +60,7 @@ EiFactory::new_NullStmt(const VlNamedObj* parent,
 
 // @brief タスクコール文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] task 対象のタスク
 // @param[in] arg_array 引数の配列
@@ -81,7 +81,7 @@ EiFactory::new_TaskCall(const VlNamedObj* parent,
 
 // @brief システムタスクコール文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] user_systf システムタスク
 // @param[in] arg_array 引数の配列
@@ -102,7 +102,7 @@ EiFactory::new_SysTaskCall(const VlNamedObj* parent,
 
 // @brief disable 文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] target 対象のスコープ
 ElbStmt*
@@ -120,7 +120,7 @@ EiFactory::new_DisableStmt(const VlNamedObj* parent,
 
 // @brief コントロール文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] control コントロール
 // @param[in] stmt 本体のステートメント
@@ -145,7 +145,7 @@ EiFactory::new_CtrlStmt(const VlNamedObj* parent,
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] named_event 対象のイベント
 EiEventStmt::EiEventStmt(const VlNamedObj* parent,
@@ -183,7 +183,7 @@ EiEventStmt::named_event() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 EiNullStmt::EiNullStmt(const VlNamedObj* parent,
 		       ElbProcess* process,
@@ -211,7 +211,7 @@ EiNullStmt::type() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] arg_num 引数の数
 // @param[in] arg_array 引数を納める配列
@@ -262,7 +262,7 @@ EiTcBase::set_argument(ymuint pos,
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] task 対象のタスク
 // @param[in] arg_num 引数の数
@@ -304,7 +304,7 @@ EiTaskCall::task() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] user_systf システムタスク
 // @param[in] arg_num 引数の数
@@ -346,7 +346,7 @@ EiSysTaskCall::user_systf() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] target 対象のスコープ
 EiDisableStmt::EiDisableStmt(const VlNamedObj* parent,
@@ -388,7 +388,7 @@ EiDisableStmt::scope() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] control コントロール
 // @param[in] stmt 本体のステートメント

@@ -112,7 +112,7 @@ BNetDecomp::operator()(BNetwork& network,
   }
 
   delete mManip;
-  mManip = NULL;
+  mManip = nullptr;
 }
 
 // @brief 単純分解を行う．(ランダム型: type2)
@@ -150,7 +150,7 @@ BNetDecomp::operator()(BNetwork& network,
   }
 
   delete mManip;
-  mManip = NULL;
+  mManip = nullptr;
 }
 
 // decomp_type1 で用いられるサブルーティン
@@ -244,7 +244,7 @@ BNetDecomp::decomp_type1_sub(BNode* orig_node,
       ASSERT_NOT_REACHED;
     }
 
-    BNode* node = NULL;
+    BNode* node = nullptr;
 
     if ( work.empty() ) {
       node = root_node;
@@ -319,8 +319,8 @@ BNetDecomp::decomp_type2_sub(BNode* orig_node,
 
 // tmp_fanins[b: b+ni-1] を入力とする type_expr の
 // max_fanin 分木を network 上のノードとして作る．
-// root_node が NULL でない場合には root_node を根のノードとする．
-// root_node が NULL の場合には新しいノードを作る．
+// root_node が nullptr でない場合には root_node を根のノードとする．
+// root_node が nullptr の場合には新しいノードを作る．
 // いずれの場合でも根のノードを返す．
 BNode*
 BNetDecomp::build_tree(ymuint b,
@@ -362,7 +362,7 @@ BNetDecomp::build_tree(ymuint b,
     }
     else {
       fanins[i] = build_tree(b1, ni1, tmp_fanins, max_fanin,
-			     type_expr, NULL, no_xor);
+			     type_expr, nullptr, no_xor);
       inv = false;
     }
     literals[i] = Expr::make_literal(VarId(i), inv);
@@ -397,7 +397,7 @@ BNetDecomp::build_tree(ymuint b,
   else {
     ASSERT_NOT_REACHED;
   }
-  if ( root_node == NULL ) {
+  if ( root_node == nullptr ) {
     root_node = mManip->new_logic();
   }
   bool stat = mManip->change_logic(root_node, expr, fanins);

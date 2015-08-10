@@ -72,7 +72,7 @@ private:
   alloc_block(ymuint64 p);
 
   // サイズ 2^p のブロックがあれば返す．
-  // なければ NULL を返す．
+  // なければ nullptr を返す．
   char*
   get_block(ymuint64 p);
 

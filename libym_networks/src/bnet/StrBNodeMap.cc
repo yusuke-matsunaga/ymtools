@@ -31,7 +31,7 @@ END_NONAMESPACE
 // @brief コンストラクタ
 StrBNodeMap::StrBNodeMap() :
   mAlloc(4096),
-  mAvail(NULL),
+  mAvail(nullptr),
   mNum(0)
 {
   new_table(1024);
@@ -109,7 +109,7 @@ void
 StrBNodeMap::clear()
 {
   for (size_t i = 0; i < mTableSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
   mNum = 0;
 }
@@ -135,7 +135,7 @@ StrBNodeMap::new_table(size_t req_size)
   mNextLimit = static_cast<size_t>(mTableSize * 1.8);
   mTable = new Cell*[mTableSize];
   for (size_t i = 0; i < mTableSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

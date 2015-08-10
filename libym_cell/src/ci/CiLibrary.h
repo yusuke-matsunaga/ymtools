@@ -149,14 +149,14 @@ public:
 
   /// @brief ルックアップテーブルのテンプレートの取得
   /// @param[in] name テンプレート名
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   virtual
   const CellLutTemplate*
   lu_table_template(const char* name) const;
 
   /// @brief バスタイプの取得
   /// @param[in] name バスタイプ名
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   virtual
   const CellBusType*
   bus_type(const char* name) const;

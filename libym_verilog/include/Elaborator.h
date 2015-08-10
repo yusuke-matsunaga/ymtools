@@ -58,7 +58,7 @@ public:
   /// @param[in] cell_library セルライブラリ
   Elaborator(ElbMgr& elb_mgr,
 	     ElbFactory& elb_factory,
-	     const CellLibrary* cell_library = NULL);
+	     const CellLibrary* cell_library = nullptr);
 
   /// @brief デストラクタ
   ~Elaborator();
@@ -109,7 +109,7 @@ private:
   /// @brief 名前からモジュール定義を取り出す．
   /// @param[in] name 名前
   /// @return name という名のモジュール定義
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const PtModule*
   find_moduledef(const char* name) const;
 
@@ -117,7 +117,7 @@ private:
   /// @param[in] parent 検索対象のスコープ
   /// @param[in] name 名前
   /// @return parent というスコープ内の name という関数を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const ElbTaskFunc*
   find_constant_function(const VlNamedObj* parent,
 			 const char* name) const;
@@ -125,7 +125,7 @@ private:
   /// @brief セルの探索
   /// @param[in] name セル名
   /// @return name という名のセルを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   const Cell*
   find_cell(const char* name) const;
 

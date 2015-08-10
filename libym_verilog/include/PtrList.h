@@ -182,7 +182,7 @@ private:
 template <typename T>
 inline
 PtrListIterator<T>::PtrListIterator() :
-  mCell(NULL)
+  mCell(nullptr)
 {
 }
 
@@ -219,7 +219,7 @@ PtrListIterator<T>::operator*() const
     return mCell->mPtr;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -241,7 +241,7 @@ inline
 bool
 PtrListIterator<T>::is_valid() const
 {
-  return mCell != NULL;
+  return mCell != nullptr;
 }
 
 
@@ -257,8 +257,8 @@ template <typename T1,
 inline
 PtrList<T1, T2>::PtrList(Alloc& alloc) :
   mAlloc(alloc),
-  mTop(NULL),
-  mEnd(NULL),
+  mTop(nullptr),
+  mEnd(nullptr),
   mNum(0)
 {
 }
@@ -284,8 +284,8 @@ PtrList<T1, T2>::clear()
     mAlloc.put_memory(sizeof(Cell), static_cast<void*>(cell));
     cell = next;
   }
-  mTop = NULL;
-  mEnd = NULL;
+  mTop = nullptr;
+  mEnd = nullptr;
   mNum = 0;
 }
 
@@ -300,7 +300,7 @@ PtrList<T1, T2>::push_back(T1* elem)
   void* p = mAlloc.get_memory(sizeof(Cell));
   Cell* cell = new (p) Cell;
   cell->mPtr = elem;
-  cell->mLink = NULL;
+  cell->mLink = nullptr;
   if ( mEnd ) {
     mEnd->mLink = cell;
   }
@@ -353,7 +353,7 @@ PtrList<T1, T2>::front() const
     return mTop->mPtr;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -368,7 +368,7 @@ PtrList<T1, T2>::back() const
     return mEnd->mPtr;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 

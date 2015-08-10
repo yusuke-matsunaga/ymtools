@@ -49,7 +49,7 @@ GroupHandler::read_attr(const ShString& attr_name,
 {
   FileRegion dummy_loc;
   DotlibNodeImpl* value = parse_complex(false, dummy_loc);
-  if ( value == NULL ) {
+  if ( value == nullptr ) {
     return false;
   }
 
@@ -87,7 +87,7 @@ GroupHandler::read_attr(const ShString& attr_name,
     }
     ShString name(parser().cur_string());
     DotlibHandler* handler = find_handler(name);
-    if ( handler == NULL ) {
+    if ( handler == nullptr ) {
       ostringstream buf;
       buf << name << ": unknown keyword.";
       MsgMgr::put_msg(__FILE__, __LINE__,
@@ -153,7 +153,7 @@ GroupHandler::reg_handler(const ShString& attr_name,
 
 // @brief ハンドラを取り出す．
 // @param[in] attr_name 属性名
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 DotlibHandler*
 GroupHandler::find_handler(const ShString& attr_name)
 {
@@ -162,7 +162,7 @@ GroupHandler::find_handler(const ShString& attr_name)
     return ans;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -199,7 +199,7 @@ GroupHandler::end_group(const ShString& attr_name,
   else {
     parent()->add_attr(attr_name, mNode, loc);
   }
-  mNode = NULL;
+  mNode = nullptr;
   return true;
 }
 

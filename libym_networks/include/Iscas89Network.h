@@ -129,7 +129,7 @@ public:
 
   /// @brief ID番号からノードを得る．
   /// @param[in] id ID番号 ( 0 <= id < max_node_id() )
-  /// @note 使われていない ID の場合には NULL が返される．
+  /// @note 使われていない ID の場合には nullptr が返される．
   const Iscas89Node*
   node(ymuint32 id) const;
 
@@ -308,7 +308,7 @@ Iscas89Network::max_node_id() const
 
 // @brief ID番号からノードを得る．
 // @param[in] id ID番号 ( 0 <= id < max_node_id() )
-// @note 使われていない ID の場合には NULL が返される．
+// @note 使われていない ID の場合には nullptr が返される．
 inline
 const Iscas89Node*
 Iscas89Network::node(ymuint32 id) const

@@ -35,7 +35,7 @@ Node::set(ymuint pos)
   mRowPos = pos;
   mDeleted = false;
   mNum = 0;
-  mNext = NULL;
+  mNext = nullptr;
 }
 
 struct Lt
@@ -74,12 +74,12 @@ LbMIS1::operator()(const McMatrix& matrix)
   void* p = alloc.get_memory(sizeof(Node*) * rs);
   Node** node_array = new (p) Node*[rs];
   for (ymuint i = 0; i < rs; ++ i) {
-    node_array[i] = NULL;
+    node_array[i] = nullptr;
   }
   void* q = alloc.get_memory(sizeof(Node) * rn);
   Node* node_chunk = new (q) Node[rn];
-  Node* top = NULL;
-  Node* last = NULL;
+  Node* top = nullptr;
+  Node* last = nullptr;
   ymuint idx = 0;
   for (const McRowHead* row1 = matrix.row_front();
        !matrix.is_row_end(row1); row1 = row1->next()) {
@@ -88,8 +88,8 @@ LbMIS1::operator()(const McMatrix& matrix)
     ++ idx;
     node->set(row_pos);
     node_array[row_pos] = node;
-    if ( last == NULL ) {
-      ASSERT_COND( top == NULL );
+    if ( last == nullptr ) {
+      ASSERT_COND( top == nullptr );
       top = node;
     }
     else {
@@ -149,11 +149,11 @@ LbMIS1::operator()(const McMatrix& matrix)
   ymuint32 cost = 0;
   for ( ; ; ) {
     Node** pprev = &top;
-    Node* best_node = NULL;
+    Node* best_node = nullptr;
     ymuint best_num = UINT_MAX;
     for ( ; ; ) {
       Node* node = *pprev;
-      if ( node == NULL ) {
+      if ( node == nullptr ) {
 	break;
       }
       if ( node->mDeleted ) {
@@ -168,7 +168,7 @@ LbMIS1::operator()(const McMatrix& matrix)
 	pprev = &node->mNext;
       }
     }
-    if ( best_node == NULL ) {
+    if ( best_node == nullptr ) {
       break;
     }
 

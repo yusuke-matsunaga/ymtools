@@ -28,7 +28,7 @@ PoptMainApp::PoptMainApp(const char* name,
   mAutoHelp = auto_help;
   mDone = false;
   mCon = 0;
-  mHelpText = NULL;
+  mHelpText = nullptr;
 }
 
 // @brief デストラクタ
@@ -95,30 +95,30 @@ PoptMainApp::parse_options(int argc,
   }
   if ( mAutoHelp ) {
     poptOption& option = option_table[n];
-    option.longName = NULL;
+    option.longName = nullptr;
     option.shortName = '\0';
     option.argInfo = POPT_ARG_INCLUDE_TABLE;
     option.arg = poptHelpOptions;
     option.val = 0;
     option.descrip = "Help options:";
-    option.argDescrip = NULL;
+    option.argDescrip = nullptr;
     ++ n;
   }
   { // end-markder
     poptOption& option = option_table[n];
-    option.longName = NULL;
+    option.longName = nullptr;
     option.shortName = '\0';
     option.argInfo = 0;
-    option.arg = NULL;
+    option.arg = nullptr;
     option.val = 0;
-    option.descrip = NULL;
-    option.argDescrip = NULL;
+    option.descrip = nullptr;
+    option.argDescrip = nullptr;
   }
 
   // poptContext を作る．
   mCon = poptGetContext(mName, argc, argv, option_table, flags);
 
-  if ( mHelpText != NULL ) {
+  if ( mHelpText != nullptr ) {
     poptSetOtherOptionHelp(reinterpret_cast<poptContext>(mCon), mHelpText);
   }
 
@@ -166,7 +166,7 @@ PoptMainApp::get_args(vector<string>& args)
   args.clear();
   for ( ; ; ) {
     const char* arg = poptGetArg(reinterpret_cast<poptContext>(mCon));
-    if ( arg == NULL ) {
+    if ( arg == nullptr ) {
       break;
     }
     args.push_back(string(arg));
@@ -311,11 +311,11 @@ Popt::opt_desc() const
 }
 
 // @brief オプションの引数の記述を返す．
-// @note デフォルトの実装では NULL を返す．
+// @note デフォルトの実装では nullptr を返す．
 const char*
 Popt::arg_desc() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief このオブジェクトが解析中に呼ばれていたら true を返す．
@@ -372,7 +372,7 @@ PoptNone::arg_info()
 void*
 PoptNone::arg()
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -401,7 +401,7 @@ PoptArg::~PoptArg()
 }
 
 // @brief オプションの引数の記述を返す．
-// @note デフォルトの実装では NULL を返す．
+// @note デフォルトの実装では nullptr を返す．
 const char*
 PoptArg::arg_desc() const
 {

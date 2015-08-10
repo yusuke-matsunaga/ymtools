@@ -37,7 +37,7 @@ protected:
 public:
 
   /// @brief 関連するラッチを返す．
-  /// @note ラッチに関連していない場合には NULL を返す．
+  /// @note ラッチに関連していない場合には nullptr を返す．
   virtual
   const CmnLatch*
   latch() const;

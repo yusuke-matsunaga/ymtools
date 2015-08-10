@@ -36,16 +36,16 @@ DotlibLibrary::set_data(const DotlibNode* lib_node)
 
   mTechnology = kCellTechCmos;
   mDelayModel = kCellDelayGenericCmos;
-  mBusNamingStyle = NULL;
-  mComment = NULL;
-  mDate = NULL;
-  mRevision = NULL;
+  mBusNamingStyle = nullptr;
+  mComment = nullptr;
+  mDate = nullptr;
+  mRevision = nullptr;
   mCapacitiveLoadUnit = 0.0;
-  mCurrentUnit = NULL;
-  mLeakagePowerUnit = NULL;
-  mPullingResistanceUnit = NULL;
-  mTimeUnit = NULL;
-  mVoltageUnit = NULL;
+  mCurrentUnit = nullptr;
+  mLeakagePowerUnit = nullptr;
+  mPullingResistanceUnit = nullptr;
+  mTimeUnit = nullptr;
+  mVoltageUnit = nullptr;
 
   mLutTemplateList.clear();
   mCellList.clear();
@@ -70,7 +70,7 @@ DotlibLibrary::set_data(const DotlibNode* lib_node)
   }
 
   // 'technology' を取り出す．
-  const DotlibNode* tech_node = NULL;
+  const DotlibNode* tech_node = nullptr;
   if ( !get_singleton_or_null("technology", tech_node) ) {
     return false;
   }
@@ -93,12 +93,12 @@ DotlibLibrary::set_data(const DotlibNode* lib_node)
   }
 
   // 'delay_model' を取り出す．
-  const DotlibNode* dm_node = NULL;
+  const DotlibNode* dm_node = nullptr;
   if ( !get_singleton_or_null("delay_model", dm_node) ) {
     return false;
   }
   tCellDelayModel delay_model = kCellDelayGenericCmos;
-  if ( dm_node != NULL ) {
+  if ( dm_node != nullptr ) {
     ShString value = dm_node->string_value();
     if ( value == "generic_cmos" ) {
       delay_model = kCellDelayGenericCmos;
@@ -167,7 +167,7 @@ DotlibLibrary::set_data(const DotlibNode* lib_node)
   }
 
   // 'capacitive_load_unit' を取り出す．
-  const DotlibNode* clu = NULL;
+  const DotlibNode* clu = nullptr;
   if ( !get_singleton_or_null("capacitive_load_unit", clu) ) {
     return false;
   }

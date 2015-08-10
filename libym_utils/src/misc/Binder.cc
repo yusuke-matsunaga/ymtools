@@ -20,7 +20,7 @@ BEGIN_NAMESPACE_YM
 // この時点では特定の BindMgr には結び付いていない．
 Binder::Binder()
 {
-  mMgr = NULL;
+  mMgr = nullptr;
 }
 
 // デストラクタ
@@ -35,7 +35,7 @@ Binder::~Binder()
 // バインドしている BindMgr の取得
 //
 // バインドしている BindMgrを返す．
-// バインドしていない場合には NULL を返す．
+// バインドしていない場合には nullptr を返す．
 BindMgr*
 Binder::mgr() const
 {
@@ -83,7 +83,7 @@ BindMgr::_unreg_binder(Binder* binder)
 {
   if ( binder->mgr() == this ) {
     mList.erase(binder->mItForList);
-    binder->mMgr = NULL;
+    binder->mMgr = nullptr;
   }
 }
 
@@ -94,7 +94,7 @@ BindMgr::_unreg_all_binders()
   for (list<Binder*>::iterator p = mList.begin();
        p != mList.end(); ++ p) {
     Binder* binder = *p;
-    binder->mMgr = NULL;
+    binder->mMgr = nullptr;
   }
   mList.clear();
 }

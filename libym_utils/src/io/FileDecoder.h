@@ -26,7 +26,7 @@ public:
   /// @brief FileDecoder のインスタンスを作る関数
   /// @param[in] type FileDecoder の型
   /// @return 作成したインスタンスを返す．
-  /// @note type が不正な値の場合は NULL を返す．
+  /// @note type が不正な値の場合は nullptr を返す．
   static
   FileDecoder*
   new_decoder(CodecType type);

@@ -31,12 +31,12 @@ CptControl::~CptControl()
 
 // @brief  遅延式の取得
 // @retval 遅延を表す式 delay control の場合
-// @retval NULL 上記以外
-// デフォルトでは NULL を返す．
+// @retval nullptr 上記以外
+// デフォルトでは nullptr を返す．
 const PtExpr*
 CptControl::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief イベントリストのサイズの取得
@@ -54,17 +54,17 @@ CptControl::event_num() const
 const PtExpr*
 CptControl::event(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 繰り返し数の取得
 // @retval 繰り返し数を表す式 repeat control の場合
-// @retval NULL 上記以外
-// デフォルトでは NULL を返す．
+// @retval nullptr 上記以外
+// デフォルトでは nullptr を返す．
 const PtExpr*
 CptControl::rep_expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -245,11 +245,11 @@ CptConnection::file_region() const
 // @brief 名前の取得
 // @retval 名前 named connection の場合
 // @retval "" ordered connection の場合
-// デフォルトでは NULL を返す．
+// デフォルトでは nullptr を返す．
 const char*
 CptConnection::name() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // 式を取出す
@@ -373,8 +373,8 @@ CptDelay::CptDelay(const FileRegion& file_region,
   mFileRegion(file_region)
 {
   mValue[0] = value1;
-  mValue[1] = NULL;
-  mValue[2] = NULL;
+  mValue[1] = nullptr;
+  mValue[2] = nullptr;
 }
 
 // 二つの値をとるコンストラクタ
@@ -385,7 +385,7 @@ CptDelay::CptDelay(const FileRegion& file_region,
 {
   mValue[0] = value1;
   mValue[1] = value2;
-  mValue[2] = NULL;
+  mValue[2] = nullptr;
 }
 
 // 三つの値をとるコンストラクタ
@@ -419,7 +419,7 @@ CptDelay::value(ymuint pos) const
   if ( pos < 3 ) {
     return mValue[pos];
   }
-  return NULL;
+  return nullptr;
 }
 
 
@@ -562,7 +562,7 @@ CptAttrSpec::name() const
   return mName;
 }
 
-// 式を取り出す．NULL の場合もある．
+// 式を取り出す．nullptr の場合もある．
 const PtExpr*
 CptAttrSpec::expr() const
 {

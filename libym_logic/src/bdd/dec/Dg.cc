@@ -21,7 +21,7 @@ BEGIN_NAMESPACE_YM_DEC
 Dg::Dg()
 {
   mRoot = kDgEdge0;
-  mMgr = NULL;
+  mMgr = nullptr;
 }
 
 // @brief 根を指定するコンストラクタ

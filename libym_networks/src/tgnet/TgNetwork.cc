@@ -159,7 +159,7 @@ void
 TgNetwork::set_to_input(TgNode* node)
 {
   ymuint32 lid = mInputArray.size();
-  node->set_type(lid, TgNode::kInputType, 0, NULL);
+  node->set_type(lid, TgNode::kInputType, 0, nullptr);
   mInputArray.push_back(node);
 }
 
@@ -241,7 +241,7 @@ TgNetwork::set_to_ff(TgNode* ffin,
   ffin->set_type(lid, TgNode::kOutputType, 1, p);
   ffin->mAltNode = ffout;
   mFFInArray.push_back(ffin);
-  ffout->set_type(lid, TgNode::kInputType, 0, NULL);
+  ffout->set_type(lid, TgNode::kInputType, 0, nullptr);
   ffout->mAltNode = ffin;
   mFFOutArray.push_back(ffout);
 }
@@ -463,11 +463,11 @@ dump(ostream& s,
 TgNode::TgNode(ymuint32 gid) :
   mTypeId(kUndefType),
   mGid(gid),
-  mName(NULL),
-  mFanins(NULL),
+  mName(nullptr),
+  mFanins(nullptr),
   mFanoutNum(0),
-  mFanouts(NULL),
-  mAltNode(NULL)
+  mFanouts(nullptr),
+  mAltNode(nullptr)
 {
 }
 
@@ -494,10 +494,10 @@ TgNode::set_type(ymuint32 lid,
     mFanins = static_cast<TgNode**>(p);
   }
   else {
-    mFanins = NULL;
+    mFanins = nullptr;
   }
   for (ymuint i = 0; i < ni; ++ i) {
-    mFanins[i] = NULL;
+    mFanins[i] = nullptr;
   }
   mFanoutNum = 0;
 }

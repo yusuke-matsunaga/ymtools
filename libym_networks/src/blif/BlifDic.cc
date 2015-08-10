@@ -80,7 +80,7 @@ BlifDic::BlifDic()
   mTableSize = n;
   mHashTable = new Cell*[mTableSize];
   for (ymuint i = 0; i < n; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
   mCellBlock = new Cell[n];
   for (ymuint i = 0; i < n; ++ i) {

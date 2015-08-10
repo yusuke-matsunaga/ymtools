@@ -21,7 +21,7 @@ IdCell::IdCell(ymuint32 id,
 	       const char* str) :
   mId(id),
   mFlags(0U),
-  mLink(NULL)
+  mLink(nullptr)
 {
   const char* s = str;
   char* d = mStr;
@@ -58,7 +58,7 @@ void
 Iscas89IdHash::clear()
 {
   for (size_t i = 0; i < mTableSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
   mCellArray.clear();
   mAlloc.destroy();
@@ -98,7 +98,7 @@ Iscas89IdHash::find(const char* str,
   }
 
   if ( !create ) {
-    return NULL;
+    return nullptr;
   }
 
   if ( mCellArray.size() >= mNextLimit ) {
@@ -139,7 +139,7 @@ Iscas89IdHash::alloc_table(size_t new_size)
   mTableSize = new_size;
   mNextLimit = static_cast<size_t>(mTableSize * 1.8);
   for (size_t i = 0; i < new_size; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

@@ -88,11 +88,11 @@ CmnNode::output_type() const
 
 // @brief 関連するポートを返す．
 // @note kPRIMARY_INPUT および kPRIMARY_OUTPUT の時のみ意味を持つ．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const CmnPort*
 CmnNode::port() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ポート中のビット位置を返す．
@@ -105,27 +105,27 @@ CmnNode::port_bitpos() const
 }
 
 // @brief 入出力ノードの場合に相方のノードを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const CmnNode*
 CmnNode::alt_node() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 関連する D-FF を返す．
-// @note D-FF に関連していない場合には NULL を返す．
+// @note D-FF に関連していない場合には nullptr を返す．
 const CmnDff*
 CmnNode::dff() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 関連するラッチを返す．
-// @note ラッチに関連していない場合には NULL を返す．
+// @note ラッチに関連していない場合には nullptr を返す．
 const CmnLatch*
 CmnNode::latch() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 入力数を得る．
@@ -138,34 +138,34 @@ CmnNode::fanin_num() const
 // @brief ファンインのノードを得る．
 // @param[in] pos 入力番号
 // @return pos 番めのファンインのノード
-// @note 該当するファンインがなければ NULL を返す．
+// @note 該当するファンインがなければ nullptr を返す．
 const CmnNode*
 CmnNode::fanin(ymuint pos) const
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief ファンインの枝を得る．
 // @param[in] pos 入力番号
 // @return pos 番目の入力の枝
-// @note 該当するファンインの枝がなければ NULL を返す．
+// @note 該当するファンインの枝がなければ nullptr を返す．
 const CmnEdge*
 CmnNode::fanin_edge(ymuint pos) const
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief ファンインの枝を得る．
 // @param[in] pos 入力番号
 // @return pos 番目の入力の枝
-// @note 該当するファンインの枝がなければ NULL を返す．
+// @note 該当するファンインの枝がなければ nullptr を返す．
 CmnEdge*
 CmnNode::_fanin_edge(ymuint pos)
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief セルを得る．
@@ -173,7 +173,7 @@ const Cell*
 CmnNode::cell() const
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 
@@ -234,7 +234,7 @@ CmnNodePI::input_type() const
 
 // @brief 関連するポートを返す．
 // @note kPRIMARY_INPUT および kPRIMARY_OUTPUT の時のみ意味を持つ．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const CmnPort*
 CmnNodePI::port() const
 {
@@ -251,7 +251,7 @@ CmnNodePI::port_bitpos() const
 }
 
 // @brief 入出力ノードの場合に相方のノードを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const CmnNode*
 CmnNodePI::alt_node() const
 {
@@ -276,7 +276,7 @@ CmnNodeDffOut::~CmnNodeDffOut()
 }
 
 // @brief 関連する D-FF を返す．
-// @note D-FF に関連していない場合には NULL を返す．
+// @note D-FF に関連していない場合には nullptr を返す．
 const CmnDff*
 CmnNodeDffOut::dff() const
 {
@@ -349,7 +349,7 @@ CmnNodeLatchOut::~CmnNodeLatchOut()
 }
 
 // @brief 関連するラッチを返す．
-// @note ラッチに関連していない場合には NULL を返す．
+// @note ラッチに関連していない場合には nullptr を返す．
 const CmnLatch*
 CmnNodeLatchOut::latch() const
 {
@@ -444,7 +444,7 @@ CmnNodeOutput::fanin_num() const
 // @brief ファンインのノードを得る．
 // @param[in] pos 入力番号
 // @return pos 番めのファンインのノード
-// @note 該当するファンインがなければ NULL を返す．
+// @note 該当するファンインがなければ nullptr を返す．
 const CmnNode*
 CmnNodeOutput::fanin(ymuint pos) const
 {
@@ -455,7 +455,7 @@ CmnNodeOutput::fanin(ymuint pos) const
 // @brief ファンインの枝を得る．
 // @param[in] pos 入力番号
 // @return pos 番目の入力の枝
-// @note 該当するファンインの枝がなければ NULL を返す．
+// @note 該当するファンインの枝がなければ nullptr を返す．
 const CmnEdge*
 CmnNodeOutput::fanin_edge(ymuint pos) const
 {
@@ -466,7 +466,7 @@ CmnNodeOutput::fanin_edge(ymuint pos) const
 // @brief ファンインの枝を得る．
 // @param[in] pos 入力番号
 // @return pos 番目の入力の枝
-// @note 該当するファンインの枝がなければ NULL を返す．
+// @note 該当するファンインの枝がなければ nullptr を返す．
 CmnEdge*
 CmnNodeOutput::_fanin_edge(ymuint pos)
 {
@@ -503,7 +503,7 @@ CmnNodePO::output_type() const
 
 // @brief 関連するポートを返す．
 // @note kPRIMARY_INPUT および kPRIMARY_OUTPUT の時のみ意味を持つ．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const CmnPort*
 CmnNodePO::port() const
 {
@@ -520,7 +520,7 @@ CmnNodePO::port_bitpos() const
 }
 
 // @brief 入出力ノードの場合に相方のノードを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const CmnNode*
 CmnNodePO::alt_node() const
 {
@@ -545,7 +545,7 @@ CmnNodeDffIn::~CmnNodeDffIn()
 }
 
 // @brief 関連する D-FF を返す．
-// @note D-FF に関連していない場合には NULL を返す．
+// @note D-FF に関連していない場合には nullptr を返す．
 const CmnDff*
 CmnNodeDffIn::dff() const
 {
@@ -666,7 +666,7 @@ CmnNodeLatchIn::~CmnNodeLatchIn()
 }
 
 // @brief 関連する ラッチを返す．
-// @note ラッチに関連していない場合には NULL を返す．
+// @note ラッチに関連していない場合には nullptr を返す．
 const CmnLatch*
 CmnNodeLatchIn::latch() const
 {
@@ -816,7 +816,7 @@ CmnNodeLogic::fanin_num() const
 // @brief ファンインのノードを得る．
 // @param[in] pos 入力番号
 // @return pos 番めのファンインのノード
-// @note 該当するファンインがなければ NULL を返す．
+// @note 該当するファンインがなければ nullptr を返す．
 const CmnNode*
 CmnNodeLogic::fanin(ymuint pos) const
 {
@@ -826,7 +826,7 @@ CmnNodeLogic::fanin(ymuint pos) const
 // @brief ファンインの枝を得る．
 // @param[in] pos 入力番号
 // @return pos 番目の入力の枝
-// @note 該当するファンインの枝がなければ NULL を返す．
+// @note 該当するファンインの枝がなければ nullptr を返す．
 const CmnEdge*
 CmnNodeLogic::fanin_edge(ymuint pos) const
 {
@@ -836,7 +836,7 @@ CmnNodeLogic::fanin_edge(ymuint pos) const
 // @brief ファンインの枝を得る．
 // @param[in] pos 入力番号
 // @return pos 番目の入力の枝
-// @note 該当するファンインの枝がなければ NULL を返す．
+// @note 該当するファンインの枝がなければ nullptr を返す．
 CmnEdge*
 CmnNodeLogic::_fanin_edge(ymuint pos)
 {

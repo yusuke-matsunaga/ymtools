@@ -42,7 +42,7 @@ UnaryOpDumper::operator()(ostream& s,
 
   const MvnInputPin* ipin = node->input(0);
   const MvnOutputPin* src_pin = ipin->src_pin();
-  ASSERT_COND( src_pin != NULL );
+  ASSERT_COND( src_pin != nullptr );
 
   s << mOprStr << net_name(src_pin);
 }
@@ -81,11 +81,11 @@ BinaryOpDumper::operator()(ostream& s,
 
   const MvnInputPin* ipin0 = node->input(0);
   const MvnOutputPin* src_pin0 = ipin0->src_pin();
-  ASSERT_COND( src_pin0 != NULL );
+  ASSERT_COND( src_pin0 != nullptr );
 
   const MvnInputPin* ipin1 = node->input(1);
   const MvnOutputPin* src_pin1 = ipin1->src_pin();
-  ASSERT_COND( src_pin1 != NULL );
+  ASSERT_COND( src_pin1 != nullptr );
 
   const char* lp = "";
   const char* rp = "";
@@ -132,15 +132,15 @@ TernaryOpDumper::operator()(ostream& s,
 
   const MvnInputPin* ipin0 = node->input(0);
   const MvnOutputPin* src_pin0 = ipin0->src_pin();
-  ASSERT_COND( src_pin0 != NULL );
+  ASSERT_COND( src_pin0 != nullptr );
 
   const MvnInputPin* ipin1 = node->input(1);
   const MvnOutputPin* src_pin1 = ipin1->src_pin();
-  ASSERT_COND( src_pin1 != NULL );
+  ASSERT_COND( src_pin1 != nullptr );
 
   const MvnInputPin* ipin2 = node->input(2);
   const MvnOutputPin* src_pin2 = ipin2->src_pin();
-  ASSERT_COND( src_pin2 != NULL );
+  ASSERT_COND( src_pin2 != nullptr );
 
   s << net_name(src_pin0) << " " << mOprStr1 << " "
     << net_name(src_pin1) << " " << mOprStr2 << " "
@@ -178,13 +178,13 @@ NaryOpDumper::operator()(ostream& s,
 
   const MvnInputPin* ipin0 = node->input(0);
   const MvnOutputPin* src_pin0 = ipin0->src_pin();
-  ASSERT_COND( src_pin0 != NULL );
+  ASSERT_COND( src_pin0 != nullptr );
 
   s << net_name(src_pin0);
   for (ymuint i = 1; i < ni; ++ i) {
     const MvnInputPin* ipin1 = node->input(i);
     const MvnOutputPin* src_pin1 = ipin1->src_pin();
-    ASSERT_COND( src_pin1 != NULL );
+    ASSERT_COND( src_pin1 != nullptr );
     s << " " << mOprStr << " " << net_name(src_pin1);
   }
 }
@@ -220,7 +220,7 @@ ConcatDumper::operator()(ostream& s,
   for (ymuint i = 0; i < ni; ++ i) {
     const MvnInputPin* ipin = node->input(i);
     const MvnOutputPin* opin = ipin->src_pin();
-    ASSERT_COND( opin != NULL );
+    ASSERT_COND( opin != nullptr );
 
     s << comma << net_name(opin);
     comma = ", ";

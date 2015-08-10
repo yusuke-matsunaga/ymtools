@@ -103,10 +103,10 @@ BddMgrClassic::BddMgrClassic(const string& name,
   BddMgrImpl(name)
 {
   // メモリ管理用のメンバを初期化
-  mFreeTop = NULL;
+  mFreeTop = nullptr;
   mFreeNum = 0;
-  mTopBlk = NULL;
-  mCurBlk = NULL;
+  mTopBlk = nullptr;
+  mCurBlk = nullptr;
   mCurIdx = 1;
   mOverflow = false;
 
@@ -120,7 +120,7 @@ BddMgrClassic::BddMgrClassic(const string& name,
   mTableSize = 0;
   mTableSize_1 = 0;
   mNextLimit = 0;
-  mNodeTable = NULL;
+  mNodeTable = nullptr;
   resize(INIT_SIZE);
 
   // 変数テーブルの初期化
@@ -128,11 +128,11 @@ BddMgrClassic::BddMgrClassic(const string& name,
   mVarHashTable = alloc_vartable(mVarTableSize);
   ASSERT_COND(mVarHashTable );
   mVarNum = 0;
-  mVarTop = NULL;
+  mVarTop = nullptr;
   mMaxLevel = 0;
 
   // 演算結果テーブルの初期化
-  mTblTop = NULL;
+  mTblTop = nullptr;
 
   mCmpTable = new CompTbl1(this, "compose_table");
   ASSERT_COND(mCmpTable );
@@ -203,8 +203,8 @@ bool
 BddMgrClassic::new_var(VarId varid)
 {
   Var* var = var_of(varid);
-  if ( var == NULL ) {
-    return alloc_var(varid) != NULL;
+  if ( var == nullptr ) {
+    return alloc_var(varid) != nullptr;
   }
   else {
     return true;
@@ -221,7 +221,7 @@ BddMgrClassic::alloc_var(VarId varid)
     ymuint64 new_size = mVarTableSize << 1;
     Var** new_hash = alloc_vartable(new_size);
     if ( !new_hash ) {
-      return NULL;
+      return nullptr;
     }
     mVarTableSize = new_size;
     mVarHashTable = new_hash;
@@ -334,7 +334,7 @@ BddMgrClassic::_gc(bool shrink_nodetable)
 	// どこからも参照されていないノードは節点テーブルから除く
 	// この時点ではフリーリストを作る必要は無い．
 	*prev = temp->mLink;
-	temp->mLink = NULL;
+	temp->mLink = nullptr;
       }
       else {
 	prev = &(temp->mLink);
@@ -348,7 +348,7 @@ BddMgrClassic::_gc(bool shrink_nodetable)
   // そのメモリブロックを本当に解放する．
   // その時には，このブロックに含まれるノードはフリーリストから除かなければ
   // ならない．
-  mFreeTop = NULL;
+  mFreeTop = nullptr;
   BddNode** prev = &mFreeTop;
   BddNode** prev_blk = &mTopBlk;
   ymuint64 delete_num = 0;
@@ -368,11 +368,11 @@ BddMgrClassic::_gc(bool shrink_nodetable)
     if ( scan_nodechunk(mCurBlk, mCurIdx, prev) ) {
       dealloc_nodechunk(mCurBlk);
       delete_num += mCurIdx - 1;
-      mCurBlk = NULL;
+      mCurBlk = nullptr;
     }
   }
-  *prev_blk = NULL;
-  *prev = NULL;
+  *prev_blk = nullptr;
+  *prev = nullptr;
 
   // 内部 statistics の更新
   ymuint64 free_num = mGarbageNum;
@@ -587,7 +587,7 @@ BddMgrClassic::var_at(ymuint level) const
     }
   }
   // 見つからなかった．
-  return NULL;
+  return nullptr;
 }
 
 // varid の変数を取出す．
@@ -647,7 +647,7 @@ BddMgrClassic::alloc_node()
       mCurBlk = alloc_nodechunk();
       if ( !mCurBlk ) {
 	// メモリアロケーションに失敗した
-	return NULL;
+	return nullptr;
       }
       mCurIdx = 1;
     }
@@ -659,7 +659,7 @@ BddMgrClassic::alloc_node()
       // メモリブロックのリストへ繋げる．
       mCurBlk->mLink = mTopBlk;
       mTopBlk = mCurBlk;
-      mCurBlk = NULL;
+      mCurBlk = nullptr;
     }
   }
   ++ mGarbageNum;  // この時点では誰も指していない．

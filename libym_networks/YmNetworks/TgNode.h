@@ -259,7 +259,7 @@ private:
 // コンストラクタ
 inline
 TgEdge::TgEdge() :
-  mTo(NULL),
+  mTo(nullptr),
   mIpos(0)
 {
 }
@@ -354,7 +354,7 @@ inline
 bool
 TgNode::is_ffin() const
 {
-  return is_output() && mAltNode != NULL;
+  return is_output() && mAltNode != nullptr;
 }
 
 // @brief ffout タイプの時 true を返す．
@@ -362,7 +362,7 @@ inline
 bool
 TgNode::is_ffout() const
 {
-  return is_input() && mAltNode != NULL;
+  return is_input() && mAltNode != nullptr;
 }
 
 // @brief ノード全体での通し番号を得る．

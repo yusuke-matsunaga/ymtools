@@ -47,7 +47,7 @@ ExprGen::~ExprGen()
 // @param[in] env 生成時の環境
 // @param[in] pt_expr 式を表すパース木
 // @return 生成された ElbExpr のポインタを返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ExprGen::instantiate_expr(const VlNamedObj* parent,
 			  const ElbEnv& env,
@@ -72,11 +72,11 @@ ExprGen::instantiate_expr(const VlNamedObj* parent,
   case kPtSysFuncCallExpr:
     if ( env.inside_constant_function() ) {
       error_illegal_sysfunccall_in_cf(pt_expr);
-      return NULL;
+      return nullptr;
     }
     if ( env.is_constant() ) {
       error_illegal_sysfunccall_in_ce(pt_expr);
-      return NULL;
+      return nullptr;
     }
     return instantiate_sysfunccall(parent, env, pt_expr);
 
@@ -87,14 +87,14 @@ ExprGen::instantiate_expr(const VlNamedObj* parent,
     ASSERT_NOT_REACHED;
   }
 
-  return NULL;
+  return nullptr;
 }
 
 // @brief PtExpr から定数式の ElbExpr を生成する
 // @param[in] parent 親のスコープ
 // @param[in] pt_expr 式を表すパース木
 // @return 生成された ElbExpr のポインタを返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ExprGen::instantiate_constant_expr(const VlNamedObj* parent,
 				   const PtExpr* pt_expr)
@@ -107,7 +107,7 @@ ExprGen::instantiate_constant_expr(const VlNamedObj* parent,
 // @param[in] parent 親のスコープ
 // @param[in] env 生成時の環境
 // @param[in] pt_expr 式を表すパース木
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ExprGen::instantiate_event_expr(const VlNamedObj* parent,
 				const ElbEnv& env,
@@ -128,7 +128,7 @@ ExprGen::instantiate_event_expr(const VlNamedObj* parent,
 	ASSERT_COND(pt_expr->operand_num() == 1 );
 	ElbExpr* opr0 = instantiate_expr(parent, env, pt_expr->operand(0));
 	if ( !opr0 ) {
-	  return NULL;
+	  return nullptr;
 	}
 	ElbExpr* expr = factory().new_UnaryOp(pt_expr,
 					      pt_expr->op_type(), opr0);
@@ -159,17 +159,17 @@ ExprGen::instantiate_event_expr(const VlNamedObj* parent,
   case kPtConstExpr:
     // イベント式の根元には定数は使えない．
     error_illegal_constant_in_event_expression(pt_expr);
-    return NULL;
+    return nullptr;
 
   case kPtFuncCallExpr:
     // イベント式の根元には関数呼び出しは使えない．
     error_illegal_funccall_in_event_expression(pt_expr);
-    return NULL;
+    return nullptr;
 
   case kPtSysFuncCallExpr:
     // イベント式の根元にはシステム関数呼び出しは使えない．
     error_illegal_sysfunccall_in_event_expression(pt_expr);
-    return NULL;
+    return nullptr;
 
   default:
     break;
@@ -177,7 +177,7 @@ ExprGen::instantiate_event_expr(const VlNamedObj* parent,
 
   ASSERT_NOT_REACHED;
 
-  return NULL;
+  return nullptr;
 }
 
 // @brief PtExpr からシステム関数の引数を生成する．
@@ -185,7 +185,7 @@ ExprGen::instantiate_event_expr(const VlNamedObj* parent,
 // @param[in] env 生成時の環境
 // @param[in] pt_expr 式を表すパース木
 // @return 生成された ElbExpr のポインタを返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ExprGen::instantiate_arg(const VlNamedObj* parent,
 			 const ElbEnv& env,
@@ -210,7 +210,7 @@ ExprGen::instantiate_arg(const VlNamedObj* parent,
 // @param[in] env 生成時の環境
 // @param[in] pt_expr 式を表すパース木
 // @return 生成された ElbExpr のポインタを返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ExprGen::instantiate_lhs(const VlNamedObj* parent,
 			 const ElbEnv& env,
@@ -229,7 +229,7 @@ ExprGen::instantiate_lhs(const VlNamedObj* parent,
 	vector<ElbExpr*> tmp_array;
 	ElbExpr* expr1 = instantiate_lhs_sub(parent, env, pt_expr1, tmp_array);
 	if ( !expr1 ) {
-	  return NULL;
+	  return nullptr;
 	}
 	opr_list[pos] = expr1;
 	elem_array.insert(elem_array.end(), tmp_array.begin(), tmp_array.end());
@@ -254,7 +254,7 @@ ExprGen::instantiate_lhs(const VlNamedObj* parent,
     }
     // それ以外の演算子はエラー
     error_illegal_operator_in_lhs(pt_expr);
-    return NULL;
+    return nullptr;
 
 
   case kPtPrimaryExpr:
@@ -262,22 +262,22 @@ ExprGen::instantiate_lhs(const VlNamedObj* parent,
 
   case kPtConstExpr:
     error_illegal_constant_in_lhs(pt_expr);
-    return NULL;
+    return nullptr;
 
   case kPtFuncCallExpr:
     error_illegal_funccall_in_lhs(pt_expr);
-    return NULL;
+    return nullptr;
 
   case kPtSysFuncCallExpr:
     error_illegal_sysfunccall_in_lhs(pt_expr);
-    return NULL;
+    return nullptr;
 
   default:
     break;
   }
 
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief PtExpr から左辺式を生成する
@@ -286,7 +286,7 @@ ExprGen::instantiate_lhs(const VlNamedObj* parent,
 // @param[in] pt_expr 式を表すパース木
 // @param[out] elem_array 生成した左辺式の要素を格納するベクタ
 // @return 生成した式を返す．
-// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
 ElbExpr*
 ExprGen::instantiate_lhs_sub(const VlNamedObj* parent,
 			     const ElbEnv& env,
@@ -306,7 +306,7 @@ ExprGen::instantiate_lhs_sub(const VlNamedObj* parent,
 	vector<ElbExpr*> tmp_array;
 	ElbExpr* expr1 = instantiate_lhs_sub(parent, env, pt_expr1, tmp_array);
 	if ( !expr1 ) {
-	  return NULL;
+	  return nullptr;
 	}
 	opr_list[pos] = expr1;
 	elem_array.insert(elem_array.end(), tmp_array.begin(), tmp_array.end());
@@ -325,7 +325,7 @@ ExprGen::instantiate_lhs_sub(const VlNamedObj* parent,
     }
     // それ以外の演算子はエラー
     error_illegal_operator_in_lhs(pt_expr);
-    return NULL;
+    return nullptr;
 
 
   case kPtPrimaryExpr:
@@ -337,22 +337,22 @@ ExprGen::instantiate_lhs_sub(const VlNamedObj* parent,
 
   case kPtConstExpr:
     error_illegal_constant_in_lhs(pt_expr);
-    return NULL;
+    return nullptr;
 
   case kPtFuncCallExpr:
     error_illegal_funccall_in_lhs(pt_expr);
-    return NULL;
+    return nullptr;
 
   case kPtSysFuncCallExpr:
     error_illegal_sysfunccall_in_lhs(pt_expr);
-    return NULL;
+    return nullptr;
 
   default:
     break;
   }
 
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief PtExpr を評価し int 値を返す．
@@ -499,7 +499,7 @@ ExprGen::evaluate_const(const VlNamedObj* parent,
   ymuint base = 0;
   switch ( pt_expr->const_type() ) {
   case kVpiIntConst:
-    if ( pt_expr->const_str() == NULL ) {
+    if ( pt_expr->const_str() == nullptr ) {
       return VlValue(static_cast<int>(pt_expr->const_uint()));
     }
     break;
@@ -554,7 +554,7 @@ ExprGen::instantiate_delay(const VlNamedObj* parent,
   const PtExpr* expr_array[3];
   for ( ; n < 3; ++ n) {
     const PtExpr* expr = pt_delay->value(n);
-    if ( expr == NULL ) break;
+    if ( expr == nullptr ) break;
     expr_array[n] = expr;
   }
   ASSERT_COND(n > 0 );
@@ -602,7 +602,7 @@ ExprGen::instantiate_delay_sub(const VlNamedObj* parent,
     const PtExpr* pt_expr = expr_array[i];
     ElbExpr* expr = instantiate_expr(parent, env, pt_expr);
     if ( !expr ) {
-      return NULL;
+      return nullptr;
     }
     expr_list[i] = expr;
   }

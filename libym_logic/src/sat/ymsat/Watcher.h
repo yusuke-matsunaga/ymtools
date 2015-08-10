@@ -155,7 +155,7 @@ inline
 WatcherList::WatcherList() :
   mSize(0),
   mNum(0),
-  mArray(NULL)
+  mArray(nullptr)
 {
 }
 
@@ -232,7 +232,7 @@ WatcherList::move(WatcherList& from)
   mArray = from.mArray;
   from.mSize = 0;
   from.mNum = 0;
-  from.mArray = NULL;
+  from.mArray = nullptr;
 }
 
 // @brief 配列を拡張する．

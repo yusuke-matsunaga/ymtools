@@ -28,7 +28,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のウィジェット
-  VlView(QWidget* parent = NULL);
+  VlView(QWidget* parent = nullptr);
 
   /// @brief デストラクタ
   ~VlView();

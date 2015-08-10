@@ -60,10 +60,10 @@ END_NONAMESPACE
 
 // @brief コンストラクタ
 CiGroup::CiGroup() :
-  mRepClass(NULL),
+  mRepClass(nullptr),
   mPinInfo(0U),
   mCellNum(0),
-  mCellList(NULL)
+  mCellList(nullptr)
 {
 }
 
@@ -384,7 +384,7 @@ CiGroup::alloc_array(Alloc& alloc)
     mCellList = new (p) const Cell*[mCellNum];
   }
   else {
-    mCellList = NULL;
+    mCellList = nullptr;
   }
 }
 

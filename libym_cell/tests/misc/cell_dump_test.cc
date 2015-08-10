@@ -21,7 +21,7 @@ bool
 dump_load_test(const char* in_filename,
 	       bool dotlib)
 {
-  const CellLibrary* library = NULL;
+  const CellLibrary* library = nullptr;
   if ( dotlib ) {
     CellDotlibReader read;
     library = read(in_filename);
@@ -31,7 +31,7 @@ dump_load_test(const char* in_filename,
     library = read(in_filename);
   }
 
-  if ( library == NULL ) {
+  if ( library == nullptr ) {
     cerr << in_filename << ": Error in reading library" << endl;
     return false;
   }
@@ -47,7 +47,7 @@ dump_load_test(const char* in_filename,
     library->dump(bo);
   }
 
-  CellLibrary* library2 = NULL;
+  CellLibrary* library2 = nullptr;
   {
     FileIDO bi;
     if ( !bi.open(data_filename) ) {

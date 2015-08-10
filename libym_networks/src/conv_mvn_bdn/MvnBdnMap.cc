@@ -72,7 +72,7 @@ MvnBdnMap::get(const MvnNode* mvnode,
   ASSERT_COND( mArray.size() > mvnode->id() );
   const vector<BdnNodeHandle>& array = mArray[mvnode->id()];
   if ( array.empty() ) {
-    return BdnNodeHandle(NULL, false);
+    return BdnNodeHandle(nullptr, false);
   }
   ASSERT_COND( array.size() == mvnode->bit_width() );
   return array[index];
@@ -109,7 +109,7 @@ dump_mvnode_map(ostream& s,
   ymuint n = mvmgr.max_node_id();
   for (ymuint i = 0; i < n; ++ i) {
     const MvnNode* node = mvmgr.node(i);
-    if ( node == NULL ) continue;
+    if ( node == nullptr ) continue;
     ymuint bw = node->bit_width();
     if ( bw == 1 ) {
       BdnNodeHandle nodehandle = mvnode_map.get(node);

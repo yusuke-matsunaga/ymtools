@@ -35,7 +35,7 @@ void
 DeclHash::clear()
 {
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
   mNum = 0;
   mNextId = 0;
@@ -131,7 +131,7 @@ DeclHash::find_cell(const VlObj* decl) const
       return cell;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief テーブルの領域を確保する．
@@ -143,7 +143,7 @@ DeclHash::alloc_table(ymuint size)
   mLimit = static_cast<ymuint32>(mSize * 1.8);
   mTable = new Cell*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

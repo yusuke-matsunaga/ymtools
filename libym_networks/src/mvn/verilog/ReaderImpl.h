@@ -308,7 +308,7 @@ private:
   /// @param[in] bit_width ビット幅
   /// @note rhs_node から [offset: offset + bit_width - 1] の選択するノードを返す．
   /// @note 全範囲を選択する場合には rhs_node を返す．
-  /// @note 範囲が合わなかったら NULL を返す．
+  /// @note 範囲が合わなかったら nullptr を返す．
   MvnNode*
   splice_rhs(MvnModule* parent_module,
 	     MvnNode* rhs_node,

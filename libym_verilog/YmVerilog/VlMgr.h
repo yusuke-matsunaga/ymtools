@@ -82,7 +82,7 @@ public:
   /// @param[in] cell_library セルライブラリ
   /// @param[in] エラー数を返す．
   ymuint
-  elaborate(const CellLibrary* cell_library = NULL);
+  elaborate(const CellLibrary* cell_library = nullptr);
 
   /// @brief UDP 定義のリストを返す．
   const list<const VlUdpDefn*>&
@@ -91,7 +91,7 @@ public:
   /// @brief 名前から UDP 定義を取出す．
   /// @param[in] name 名前
   /// @return name という名の UDP を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const VlUdpDefn*
   find_udp(const char* name) const;
 
@@ -102,7 +102,7 @@ public:
   /// @brief 名前から UserSystf を取出す．
   /// @param[in] name 名前
   /// @return name という名のユーザー定義関数を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const VlUserSystf*
   find_user_systf(const char* name) const;
 
@@ -110,7 +110,7 @@ public:
   /// @param[in] parent 検索対象のスコープ
   /// @param[in] name 名前
   /// @return scope というスコープ内の name という要素を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const VlNamedObj*
   find_obj(const VlNamedObj* parent,
 	   const char* name) const;

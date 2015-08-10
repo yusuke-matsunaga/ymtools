@@ -38,7 +38,7 @@ bool
 FileIDO::open(const char* filename,
 	      const FileLoc& parent_loc)
 {
-  if ( mDecoder == NULL ) {
+  if ( mDecoder == nullptr ) {
     return false;
   }
 
@@ -64,7 +64,7 @@ FileIDO::open(const string& filename,
 void
 FileIDO::close()
 {
-  if ( mDecoder != NULL ) {
+  if ( mDecoder != nullptr ) {
     mDecoder->close();
   }
 }
@@ -73,7 +73,7 @@ FileIDO::close()
 bool
 FileIDO::is_ready() const
 {
-  if ( mDecoder == NULL ) {
+  if ( mDecoder == nullptr ) {
     return false;
   }
 
@@ -105,7 +105,7 @@ ymint64
 FileIDO::read(ymuint8* buff,
 	      ymuint64 n)
 {
-  if ( mDecoder == NULL ) {
+  if ( mDecoder == nullptr ) {
     return -1;
   }
 

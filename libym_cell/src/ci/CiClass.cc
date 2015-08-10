@@ -22,9 +22,9 @@ BEGIN_NAMESPACE_YM_CELL
 // @brief コンストラクタ
 CiClass::CiClass() :
   mIdmapNum(0),
-  mIdmapList(NULL),
+  mIdmapList(nullptr),
   mGroupNum(0),
-  mGroupList(NULL)
+  mGroupList(nullptr)
 {
 }
 
@@ -156,7 +156,7 @@ CiClass::alloc_array(Alloc& alloc)
     mIdmapList = new (p) NpnMapM[mIdmapNum];
   }
   else {
-    mIdmapList = NULL;
+    mIdmapList = nullptr;
   }
 
   if ( mGroupNum > 0 ) {
@@ -164,7 +164,7 @@ CiClass::alloc_array(Alloc& alloc)
     mGroupList = new (p) const CellGroup*[mGroupNum];
   }
   else {
-    mGroupList = NULL;
+    mGroupList = nullptr;
   }
 }
 

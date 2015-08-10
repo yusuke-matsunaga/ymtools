@@ -40,7 +40,7 @@ void
 VmNode1::add_stmt(const QString& label,
 		  const VlStmt* stmt) const
 {
-  ASSERT_COND( stmt != NULL );
+  ASSERT_COND( stmt != nullptr );
   add_child( new VmStmtNode(vl_mgr(), label, stmt) );
 }
 

@@ -213,7 +213,7 @@ EiModuleHead::is_protected() const
 bool
 EiModuleHead::is_top_module() const
 {
-  return mPtInst == NULL;
+  return mPtInst == nullptr;
 }
 
 // @brief time unit を返す．
@@ -290,8 +290,8 @@ EiModuleHead::cell() const
 
 // @brief コンストラクタ
 EiModule::EiModule() :
-  mPortList(NULL),
-  mIODeclList(NULL)
+  mPortList(nullptr),
+  mIODeclList(nullptr)
 {
 }
 
@@ -641,7 +641,7 @@ EiModule2::index() const
 const VlModuleArray*
 EiModule2::module_array() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ヘッダ情報を返す．
@@ -770,7 +770,7 @@ EiModuleArray::elem_by_index(int index) const
   else {
     // index が範囲外だった．
     ASSERT_NOT_REACHED;
-    return NULL;
+    return nullptr;
   }
 }
 

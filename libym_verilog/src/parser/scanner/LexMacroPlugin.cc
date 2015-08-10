@@ -314,7 +314,7 @@ LpMacro::parse()
   }
 
   // マクロ置換用のデータを作る．
-  TokenList* param_array = NULL;
+  TokenList* param_array = nullptr;
   if ( mNumParam > 0 ) {
     param_array = new TokenList[mNumParam];
     if ( !expect('(') ) {

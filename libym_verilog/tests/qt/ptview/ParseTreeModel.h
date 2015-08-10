@@ -30,7 +30,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のオブジェクト
-  ParseTreeModel(QObject* parent = NULL);
+  ParseTreeModel(QObject* parent = nullptr);
 
   /// @brief デストラクタ
   ~ParseTreeModel();

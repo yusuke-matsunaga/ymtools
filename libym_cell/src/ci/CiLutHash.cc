@@ -22,7 +22,7 @@ BEGIN_NAMESPACE_YM_CELL
 CiLutHash::CiLutHash(Alloc& alloc) :
   mAlloc(alloc),
   mSize(0),
-  mTable(NULL),
+  mTable(nullptr),
   mLimit(0),
   mNum(0)
 {
@@ -66,7 +66,7 @@ CiLutHash::add(CiLutTemplate* templ)
 // @brief テンプレートを取り出す．
 // @param[in] name 名前
 // @return name という名前のテンプレートを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 CiLutTemplate*
 CiLutHash::get(ShString name) const
 {
@@ -76,7 +76,7 @@ CiLutHash::get(ShString name) const
       return templ;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief テーブルの領域を確保する．
@@ -89,7 +89,7 @@ CiLutHash::alloc_table(ymuint req_size)
   void* p = mAlloc.get_memory(sizeof(CiLutTemplate*) * mSize);
   mTable = new (p) CiLutTemplate*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

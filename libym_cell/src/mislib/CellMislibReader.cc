@@ -76,7 +76,7 @@ dfs(const MislibNode* node,
 // @param[in] lib_name ライブラリ名
 // @param[in] gate_list パース木のルート
 // @return 生成したライブラリを返す．
-// @note 生成が失敗したら NULL を返す．
+// @note 生成が失敗したら nullptr を返す．
 const CellLibrary*
 gen_library(const string& lib_name,
 	    const MislibNode* gate_list)
@@ -105,8 +105,8 @@ gen_library(const string& lib_name,
     vector<ShString> ipin_name_list;
     NameMap ipin_name_map;
     bool wildcard_pin = false;
-    if ( ipin_top != NULL ) {
-      if ( ipin_top->name() != NULL ) {
+    if ( ipin_top != nullptr ) {
+      if ( ipin_top->name() != nullptr ) {
 	// 通常の入力ピン定義がある場合
 	// ipin_list の順に入力ピンを作る．
 	for (const MislibNode* pin = ipin_top; pin; pin = pin->next()) {
@@ -305,7 +305,7 @@ CellMislibReader::~CellMislibReader()
 // @brief mislib ファイルを読み込む
 // @param[in] filename ファイル名
 // @return 読み込んで作成したセルライブラリを返す．
-// @note エラーが起きたら NULL を返す．
+// @note エラーが起きたら nullptr を返す．
 const CellLibrary*
 CellMislibReader::operator()(const string& filename)
 {
@@ -314,7 +314,7 @@ CellMislibReader::operator()(const string& filename)
   MislibMgr mgr;
   MislibParser parser;
   if ( !parser.read_file(filename, mgr) ) {
-    return NULL;
+    return nullptr;
   }
   return gen_library(filename, mgr.gate_list());
 }
@@ -322,7 +322,7 @@ CellMislibReader::operator()(const string& filename)
 // @brief mislib ファイルを読み込む
 // @param[in] filename ファイル名
 // @return 読み込んで作成したセルライブラリを返す．
-// @note エラーが起きたら NULL を返す．
+// @note エラーが起きたら nullptr を返す．
 const CellLibrary*
 CellMislibReader::operator()(const char* filename)
 {
@@ -331,7 +331,7 @@ CellMislibReader::operator()(const char* filename)
   MislibMgr mgr;
   MislibParser parser;
   if ( !parser.read_file(filename, mgr) ) {
-    return NULL;
+    return nullptr;
   }
   return gen_library(filename, mgr.gate_list());
 }

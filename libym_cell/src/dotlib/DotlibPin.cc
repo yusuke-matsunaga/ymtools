@@ -35,10 +35,10 @@ DotlibPin::set_data(const DotlibNode* pin_node)
 {
   init();
 
-  mFunction = NULL;
-  mThreeState = NULL;
-  mInternalNode = NULL;
-  mPinFuncType = NULL;
+  mFunction = nullptr;
+  mThreeState = nullptr;
+  mInternalNode = nullptr;
+  mPinFuncType = nullptr;
 
   mTimingList.clear();
 
@@ -106,7 +106,7 @@ DotlibPin::set_data(const DotlibNode* pin_node)
   }
 
   // 'capacitance' を取り出す．
-  const DotlibNode* cap_node = NULL;
+  const DotlibNode* cap_node = nullptr;
   if ( !get_singleton_or_null("capacitance", cap_node) ) {
     return false;
   }
@@ -119,8 +119,8 @@ DotlibPin::set_data(const DotlibNode* pin_node)
     mCapacitance = 0.0;
   }
 
-  const DotlibNode* rcap_node = NULL;
-  const DotlibNode* fcap_node = NULL;
+  const DotlibNode* rcap_node = nullptr;
+  const DotlibNode* fcap_node = nullptr;
   if ( !get_singleton_or_null("rise_capacitance", rcap_node) ) {
     return false;
   }
@@ -141,7 +141,7 @@ DotlibPin::set_data(const DotlibNode* pin_node)
   }
 
   // 'max_fanout' を取り出す．
-  const DotlibNode* max_fo_node = NULL;
+  const DotlibNode* max_fo_node = nullptr;
   if ( !get_singleton_or_null("max_fanout", max_fo_node) ) {
     return false;
   }
@@ -154,7 +154,7 @@ DotlibPin::set_data(const DotlibNode* pin_node)
     mMaxFanout = 0.0;
   }
   // 'min_fanout' を取り出す．
-  const DotlibNode* min_fo_node = NULL;
+  const DotlibNode* min_fo_node = nullptr;
   if ( !get_singleton_or_null("min_fanout", min_fo_node) ) {
     return false;
   }
@@ -168,7 +168,7 @@ DotlibPin::set_data(const DotlibNode* pin_node)
   }
 
   // 'max_capacitance' を取り出す．
-  const DotlibNode* max_cap_node = NULL;
+  const DotlibNode* max_cap_node = nullptr;
   if ( !get_singleton_or_null("max_capacitance", max_cap_node) ) {
     return false;
   }
@@ -181,7 +181,7 @@ DotlibPin::set_data(const DotlibNode* pin_node)
     mMaxCapacitance = 0.0;
   }
   // 'min_capacitance' を取り出す．
-  const DotlibNode* min_cap_node = NULL;
+  const DotlibNode* min_cap_node = nullptr;
   if ( !get_singleton_or_null("min_capacitance", min_cap_node) ) {
     return false;
   }
@@ -195,7 +195,7 @@ DotlibPin::set_data(const DotlibNode* pin_node)
   }
 
   // 'max_transition' を取り出す．
-  const DotlibNode* max_trans_node = NULL;
+  const DotlibNode* max_trans_node = nullptr;
   if ( !get_singleton_or_null("max_transition", max_trans_node) ) {
     return false;
   }
@@ -208,7 +208,7 @@ DotlibPin::set_data(const DotlibNode* pin_node)
     mMaxTransition = 0.0;
   }
   // 'min_transition' を取り出す．
-  const DotlibNode* min_trans_node = NULL;
+  const DotlibNode* min_trans_node = nullptr;
   if ( !get_singleton_or_null("min_transition", min_trans_node) ) {
     return false;
   }

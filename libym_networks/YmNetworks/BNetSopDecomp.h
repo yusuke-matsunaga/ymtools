@@ -68,8 +68,8 @@ private:
 
   // tmp_fanins[b: b + ni - 1] を入力とする XOR をあらわす
   // SOP 2分木を network 上のノードとして作る．
-  // root_node が NULL でない場合には root_node を根のノードとする．
-  // root_node が NULL の場合には新しいノードを作る．
+  // root_node が nullptr でない場合には root_node を根のノードとする．
+  // root_node が nullptr の場合には新しいノードを作る．
   // いずれの場合でも根のノードを返す．
   BNode*
   build_xorsop_tree(ymuint b,

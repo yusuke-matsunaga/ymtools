@@ -124,7 +124,7 @@ BdnNode::scan_po()
 
 // @brief 関連するポートを返す．
 // @note kINPUT および kOUTPUT の時に意味を持つ．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const BdnPort*
 BdnNode::port() const
 {
@@ -154,11 +154,11 @@ BdnNode::alt_node() const
       return port->input(pos);
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief 関連する D-FF を返す．
-// @note D-FF に関連していない場合には NULL を返す．
+// @note D-FF に関連していない場合には nullptr を返す．
 const BdnDff*
 BdnNode::dff() const
 {
@@ -166,7 +166,7 @@ BdnNode::dff() const
 }
 
 // @brief 関連するラッチを返す．
-// @note ラッチに関連していない場合には NULL を返す．
+// @note ラッチに関連していない場合には nullptr を返す．
 const BdnLatch*
 BdnNode::latch() const
 {
@@ -240,11 +240,11 @@ BdnNode::fanin1_handle()
 
 // @brief 関連するポートを返す．
 // @note kINPUT および kOUTPUT の時に意味を持つ．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const BdnPort*
 BdnAuxData::port() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ポート中の位置を返す．
@@ -257,19 +257,19 @@ BdnAuxData::port_bitpos() const
 }
 
 // @brief 関連する D-FF を返す．
-// @note D-FF に関連していない場合には NULL を返す．
+// @note D-FF に関連していない場合には nullptr を返す．
 const BdnDff*
 BdnAuxData::dff() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 関連するラッチを返す．
-// @note ラッチに関連していない場合には NULL を返す．
+// @note ラッチに関連していない場合には nullptr を返す．
 const BdnLatch*
 BdnAuxData::latch() const
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -294,7 +294,7 @@ BdnPortData::~BdnPortData()
 
 // @brief 関連するポートを返す．
 // @note kINPUT および kOUTPUT の時に意味を持つ．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const BdnPort*
 BdnPortData::port() const
 {
@@ -328,7 +328,7 @@ BdnDffData::~BdnDffData()
 }
 
 // @brief 関連する D-FF を返す．
-// @note D-FF に関連していない場合には NULL を返す．
+// @note D-FF に関連していない場合には nullptr を返す．
 const BdnDff*
 BdnDffData::dff() const
 {
@@ -353,7 +353,7 @@ BdnLatchData::~BdnLatchData()
 }
 
 // @brief 関連するラッチを返す．
-// @note ラッチに関連していない場合には NULL を返す．
+// @note ラッチに関連していない場合には nullptr を返す．
 const BdnLatch*
 BdnLatchData::latch() const
 {

@@ -57,7 +57,7 @@ ItemGen::instantiate_gateheader(const VlNamedObj* parent,
 				const PtItem* pt_head)
 {
   const PtDelay* pt_delay = pt_head->delay();
-  bool has_delay = (pt_delay != NULL);
+  bool has_delay = (pt_delay != nullptr);
 
   ElbPrimHead* prim_head = factory().new_PrimHead(parent, pt_head, has_delay);
   if ( has_delay ) {
@@ -180,7 +180,7 @@ ItemGen::instantiate_udpheader(const VlNamedObj* parent,
   for (ymuint i = 0; i < pt_head->size(); ++ i) {
     const PtInst* pt_inst = pt_head->inst(i);
     if ( pt_inst->port_num() > 0 &&
-	 pt_inst->port(0)->name() != NULL ) {
+	 pt_inst->port(0)->name() != nullptr ) {
       MsgMgr::put_msg(__FILE__, __LINE__,
 		      pt_inst->file_region(),
 		      kMsgError,
@@ -264,13 +264,13 @@ ItemGen::instantiate_cell(const VlNamedObj* parent,
     const PtInst* pt_inst = pt_head->inst(i);
     ymuint port_num = pt_inst->port_num();
     if ( port_num > 0 &&
-	 pt_inst->port(0)->name() != NULL ) {
+	 pt_inst->port(0)->name() != nullptr ) {
       // 名前による結合
       for (ymuint j = 0; j < port_num; ++ j) {
 	const PtConnection* pt_con = pt_inst->port(j);
 	const char* pin_name = pt_con->name();
 	const CellPin* pin = cell->pin(pin_name);
-	if ( pin == NULL ) {
+	if ( pin == nullptr ) {
 	  ostringstream buf;
 	  buf << pin_name << ": No such pin.";
 	  MsgMgr::put_msg(__FILE__, __LINE__,
@@ -364,7 +364,7 @@ ItemGen::link_udp_delay(ElbPrimHead* prim_head,
   const VlNamedObj* parent = prim_head->parent();
   ymuint param_size = pt_head->paramassign_array().size();
   const PtDelay* pt_delay = pt_head->delay();
-  ElbDelay* delay = NULL;
+  ElbDelay* delay = nullptr;
   if ( pt_delay ) {
     delay = instantiate_delay(parent, pt_delay);
   }
@@ -406,7 +406,7 @@ ItemGen::link_prim_array(ElbPrimArray* prim_array,
     }
 
     const VlPrimTerm* term = prim->prim_term(index);
-    ElbExpr* tmp = NULL;
+    ElbExpr* tmp = nullptr;
     if ( term->direction() == kVlInput ) {
       // 入力に接続するのは通常の右辺式
       tmp = instantiate_expr(parent, env1, pt_expr);
@@ -485,7 +485,7 @@ ItemGen::link_primitive(ElbPrimitive* primitive,
     }
 
     const VlPrimTerm* term = primitive->prim_term(index);
-    ElbExpr* tmp = NULL;
+    ElbExpr* tmp = nullptr;
     if ( term->direction() == kVlInput ) {
       // 入力に接続するのは通常の右辺式
       tmp = instantiate_expr(parent, env1, pt_expr);
@@ -544,7 +544,7 @@ ItemGen::link_cell_array(ElbPrimArray* prim_array,
   const VlPrimitive* prim = prim_array->elem_by_offset(0);
 
   // YACC の文法から一つでも named_con なら全部そう
-  bool conn_by_name = (pt_inst->port(0)->name() != NULL);
+  bool conn_by_name = (pt_inst->port(0)->name() != nullptr);
 
   const Cell* cell = prim->cell();
 
@@ -555,7 +555,7 @@ ItemGen::link_cell_array(ElbPrimArray* prim_array,
     ymuint index;
     if ( conn_by_name ) {
       const CellPin* pin = cell->pin(pt_con->name());
-      if ( pin == NULL ) {
+      if ( pin == nullptr ) {
 	ostringstream buf;
 	buf << pt_con->name() << ": No such pin.";
 	MsgMgr::put_msg(__FILE__, __LINE__,
@@ -582,7 +582,7 @@ ItemGen::link_cell_array(ElbPrimArray* prim_array,
     }
 
     const VlPrimTerm* term = prim->prim_term(index);
-    ElbExpr* tmp = NULL;
+    ElbExpr* tmp = nullptr;
     if ( term->direction() == kVlInput ) {
       // 入力に接続するのは通常の右辺式
       tmp = instantiate_expr(parent, env1, pt_expr);
@@ -651,7 +651,7 @@ ItemGen::link_cell(ElbPrimitive* primitive,
   const VlNamedObj* parent = primitive->parent();
 
   // YACC の文法から一つでも named_con なら全部そう
-  bool conn_by_name = (pt_inst->port(0)->name() != NULL);
+  bool conn_by_name = (pt_inst->port(0)->name() != nullptr);
 
   const Cell* cell = primitive->cell();
 
@@ -662,7 +662,7 @@ ItemGen::link_cell(ElbPrimitive* primitive,
     ymuint index;
     if ( conn_by_name ) {
       const CellPin* pin = cell->pin(pt_con->name());
-      if ( pin == NULL ) {
+      if ( pin == nullptr ) {
 	ostringstream buf;
 	buf << pt_con->name() << ": No such pin.";
 	MsgMgr::put_msg(__FILE__, __LINE__,
@@ -684,7 +684,7 @@ ItemGen::link_cell(ElbPrimitive* primitive,
     }
 
     const VlPrimTerm* term = primitive->prim_term(index);
-    ElbExpr* tmp = NULL;
+    ElbExpr* tmp = nullptr;
     if ( term->direction() == kVlInput ) {
       // 入力に接続するのは通常の右辺式
       tmp = instantiate_expr(parent, env1, pt_expr);

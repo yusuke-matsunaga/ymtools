@@ -36,9 +36,9 @@ DotlibFF::set_data(const DotlibNode* ff_node)
     return false;
   }
 
-  mNextState = NULL;
-  mClockedOn = NULL;
-  mClockedOnAlso = NULL;
+  mNextState = nullptr;
+  mClockedOn = nullptr;
+  mClockedOnAlso = nullptr;
 
   // next_state を取り出す．
   if ( !get_singleton("next_state", ff_node->loc(), mNextState) ) {

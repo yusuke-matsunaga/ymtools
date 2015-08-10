@@ -106,7 +106,7 @@ bool
 ZddEdge::noref() const
 {
   ZddNode* node = get_node();
-  if ( node != NULL ) {
+  if ( node != nullptr ) {
     return node->noref();
   }
   else {
@@ -119,7 +119,7 @@ ZddEdge::noref() const
 // クラス ZddMgrImpl
 //////////////////////////////////////////////////////////////////////
 
-ZddMgrImpl* ZddMgrImpl::mDefaultMgr = NULL;
+ZddMgrImpl* ZddMgrImpl::mDefaultMgr = nullptr;
 
 // デフォルトマネージャを返すクラスメソッド
 ZddMgrImpl*
@@ -158,7 +158,7 @@ ZddMgrImpl::ZddMgrImpl(const string& name,
   mLogFp = mNullStream;
 
   // ZDD リストの初期化
-  mTopZdd = NULL;
+  mTopZdd = nullptr;
 
   // ユーザー設定可能パラメータのデフォルト値を設定
   mGcThreshold = DEFAULT_GC_THRESHOLD;
@@ -170,10 +170,10 @@ ZddMgrImpl::ZddMgrImpl(const string& name,
   mGcEnable = 0;
 
   // メモリ管理用のメンバを初期化
-  mFreeTop = NULL;
+  mFreeTop = nullptr;
   mFreeNum = 0;
-  mTopBlk = NULL;
-  mCurBlk = NULL;
+  mTopBlk = nullptr;
+  mCurBlk = nullptr;
   mCurIdx = 1;
   mOverflow = false;
 
@@ -187,7 +187,7 @@ ZddMgrImpl::ZddMgrImpl(const string& name,
   mTableSize = 0;
   mTableSize_1 = 0;
   mNextLimit = 0;
-  mNodeTable = NULL;
+  mNodeTable = nullptr;
   resize(INIT_SIZE);
 
   // 変数テーブルの初期化
@@ -195,7 +195,7 @@ ZddMgrImpl::ZddMgrImpl(const string& name,
   mVarHashTable = alloc_vartable(mVarTableSize);
   ASSERT_COND(mVarHashTable );
   mVarNum = 0;
-  mVarTop = NULL;
+  mVarTop = nullptr;
 
   // 演算クラスの生成
   mCapOp = new CapOp(this);
@@ -221,7 +221,7 @@ ZddMgrImpl::~ZddMgrImpl()
   // と言っても Zdd のオブジェクトを削除するわけには行かないので
   // デフォルトマネージャのエラーZDDにすり替える．
   if ( mTopZdd ) {
-    Zdd* last = NULL;
+    Zdd* last = nullptr;
     for (Zdd* bdd = mTopZdd; bdd; bdd = bdd->mNext) {
       bdd->mRoot = ZddEdge::make_error();
       bdd->mMgr = mDefaultMgr;
@@ -229,7 +229,7 @@ ZddMgrImpl::~ZddMgrImpl()
     }
     Zdd* first = mDefaultMgr->mTopZdd;
     mDefaultMgr->mTopZdd = mTopZdd;
-    mTopZdd->mPrev = NULL;
+    mTopZdd->mPrev = nullptr;
     last->mNext = first;
     if ( first ) {
       first->mPrev = last;
@@ -299,7 +299,7 @@ ZddMgrImpl::logstream() const
 bool
 ZddMgrImpl::new_var(VarId varid)
 {
-  return alloc_var(varid) != NULL;
+  return alloc_var(varid) != nullptr;
 }
 
 // 変数を確保する．
@@ -312,7 +312,7 @@ ZddMgrImpl::alloc_var(VarId varid)
     ymuint64 new_size = mVarTableSize << 1;
     ZddVar** new_hash = alloc_vartable(new_size);
     if ( !new_hash ) {
-      return NULL;
+      return nullptr;
     }
     mVarTableSize = new_size;
     mVarHashTable = new_hash;
@@ -537,7 +537,7 @@ ZddMgrImpl::gc(bool shrink_nodetable)
 	// どこからも参照されていないノードは節点テーブルから除く
 	// この時点ではフリーリストを作る必要は無い．
 	*prev = temp->mLink;
-	temp->mLink = NULL;
+	temp->mLink = nullptr;
       }
       else {
 	prev = &(temp->mLink);
@@ -551,7 +551,7 @@ ZddMgrImpl::gc(bool shrink_nodetable)
   // そのメモリブロックを本当に解放する．
   // その時には，このブロックに含まれるノードはフリーリストから除かなければ
   // ならない．
-  mFreeTop = NULL;
+  mFreeTop = nullptr;
   ZddNode** prev = &mFreeTop;
   ZddNode** prev_blk = &mTopBlk;
   ymuint64 delete_num = 0;
@@ -571,11 +571,11 @@ ZddMgrImpl::gc(bool shrink_nodetable)
     if ( scan_nodechunk(mCurBlk, mCurIdx, prev) ) {
       dealloc_nodechunk(mCurBlk);
       delete_num += mCurIdx - 1;
-      mCurBlk = NULL;
+      mCurBlk = nullptr;
     }
   }
-  *prev_blk = NULL;
-  *prev = NULL;
+  *prev_blk = nullptr;
+  *prev = nullptr;
 
   // 内部 statistics の更新
   ymuint64 free_num = mGarbageNum;
@@ -848,7 +848,7 @@ ZddMgrImpl::var_of(VarId varid) const
     }
   }
   // 見つからなかった．
-  return NULL;
+  return nullptr;
 }
 
 // Var を登録する．
@@ -904,7 +904,7 @@ ZddMgrImpl::alloc_node()
       mCurBlk = alloc_nodechunk();
       if ( !mCurBlk ) {
 	// メモリアロケーションに失敗した
-	return NULL;
+	return nullptr;
       }
       mCurIdx = 1;
     }
@@ -916,7 +916,7 @@ ZddMgrImpl::alloc_node()
       // メモリブロックのリストへ繋げる．
       mCurBlk->mLink = mTopBlk;
       mTopBlk = mCurBlk;
-      mCurBlk = NULL;
+      mCurBlk = nullptr;
     }
   }
   ++ mGarbageNum;  // この時点では誰も指していない．

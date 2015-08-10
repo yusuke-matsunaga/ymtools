@@ -32,7 +32,7 @@ protected:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   /// @param[in] rhs 右辺の式
@@ -102,7 +102,7 @@ protected:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   /// @param[in] rhs 右辺の式
@@ -135,7 +135,7 @@ public:
   // VlStmt の仮想関数
   //////////////////////////////////////////////////////////////////////
 
-  /// @brief control を返す．NULL の場合もありうる．
+  /// @brief control を返す．nullptr の場合もありうる．
   virtual
   const VlControl*
   control() const;
@@ -166,7 +166,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   /// @param[in] rhs 右辺の式
@@ -212,7 +212,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   /// @param[in] rhs 右辺の式
@@ -254,7 +254,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   /// @param[in] rhs 右辺の式
@@ -293,7 +293,7 @@ protected:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   EiDeassignBase(const VlNamedObj* parent,
@@ -342,7 +342,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   EiDeassignStmt(const VlNamedObj* parent,
@@ -382,7 +382,7 @@ private:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のスコープ
-  /// @param[in] process 親のプロセス (or NULL)
+  /// @param[in] process 親のプロセス (or nullptr)
   /// @param[in] pt_stmt パース木のステートメント定義
   /// @param[in] lhs 左辺の式
   EiReleaseStmt(const VlNamedObj* parent,

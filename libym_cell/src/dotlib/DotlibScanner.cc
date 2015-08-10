@@ -30,7 +30,7 @@ DotlibScanner::~DotlibScanner()
 int
 DotlibScanner::cur_int() const
 {
-  return strtol(cur_string(), NULL, 10);
+  return strtol(cur_string(), nullptr, 10);
 }
 
 // @brief 直前の read_token() に対応する実数値を返す．
@@ -38,7 +38,7 @@ DotlibScanner::cur_int() const
 double
 DotlibScanner::cur_float() const
 {
-  return strtod(cur_string(), NULL);
+  return strtod(cur_string(), nullptr);
 }
 
 // @brief トークンを一つとってくる．

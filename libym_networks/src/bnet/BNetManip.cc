@@ -83,7 +83,7 @@ BNetManip::eliminate_node(BNode* node)
 
 // 外部入力節点を追加する．
 // 通常は新たに生成された節点を返すが，名前が重複していた場合には
-// 節点を作らずに NULL を返す(エラーとなる)．
+// 節点を作らずに nullptr を返す(エラーとなる)．
 BNode*
 BNetManip::new_input(const char* name)
 {
@@ -94,7 +94,7 @@ BNetManip::new_input(const char* name)
 // そのときに作られた外部出力節点を返す．
 // 初期状態では入力数0になっている．
 // その後，ChgOutput() を呼ぶことで適切に入力がセットされる．
-// 同一の名前を持つ節点が既に存在すればエラーとなる(NULLを返す)．
+// 同一の名前を持つ節点が既に存在すればエラーとなる(nullptrを返す)．
 BNode*
 BNetManip::new_output(const char* name)
 {
@@ -104,7 +104,7 @@ BNetManip::new_output(const char* name)
 // 中間節点を追加する．
 // そのときに作られた中間出力節点を返す．
 // 入力数無しの定数0節点の状態で初期化される．
-// 名前が重複していたらエラーとなり，NULLを返す．
+// 名前が重複していたらエラーとなり，nullptrを返す．
 BNode*
 BNetManip::new_logic(const char* name)
 {
@@ -114,7 +114,7 @@ BNetManip::new_logic(const char* name)
 // latch 節点を追加する．
 // そのときに作られた中間節点を返す．
 // ファンインが未接続で，初期値0の状態でえ初期化される．
-// 名前が重複していたらエラーとなり，NULLを返す．
+// 名前が重複していたらエラーとなり，nullptrを返す．
 BNode*
 BNetManip::new_latch(const char* name)
 {
@@ -146,12 +146,12 @@ BNetManip::replace_node(BNode* old_node,
 			BNode* new_node)
 {
   if ( !old_node ) {
-    // old_node が NULL ! こんなのは論外
+    // old_node が nullptr ! こんなのは論外
     return false;
   }
 
   if ( !new_node ) {
-    // new_node が NULL ! こんなのは論外
+    // new_node が nullptr ! こんなのは論外
     return false;
   }
 
@@ -227,12 +227,12 @@ BNetManip::change_output(BNode* onode,
 			 BNode* node)
 {
   if ( !onode ) {
-    // onode が NULL ! こんなのは論外
+    // onode が nullptr ! こんなのは論外
     return false;
   }
 
   if ( !node ) {
-    // node が NULL ! こんなのも論外
+    // node が nullptr ! こんなのも論外
     return false;
   }
 
@@ -280,7 +280,7 @@ BNetManip::change_logic(BNode* node,
 			bool tfo_check)
 {
   if ( !node ) {
-    // node が NULL ! こんなのは論外
+    // node が nullptr ! こんなのは論外
     return false;
   }
 
@@ -385,8 +385,8 @@ BNetManip::change_logic(BNode* node,
   for (ymuint i = 0; i < new_ni; i ++) {
     BNode* inode = mTmpNodes[i];
     if ( !inode ) {
-      // inode が NULL だとエラーになる．
-      BNET_ERROR("inode is NULL");
+      // inode が nullptr だとエラーになる．
+      BNET_ERROR("inode is nullptr");
       ans = false;
       break;
     }
@@ -495,14 +495,14 @@ BNetManip::change_latch(BNode* node,
 			int reset_value)
 {
   if ( !node ) {
-    // node が NULL ! こんなのは論外
-    BNET_ERROR("node is NULL");
+    // node が nullptr ! こんなのは論外
+    BNET_ERROR("node is nullptr");
     return false;
   }
 
   if ( !fanin ) {
-    // fanin が NULL !
-    BNET_ERROR("fanin is NULL");
+    // fanin が nullptr !
+    BNET_ERROR("fanin is nullptr");
     return false;
   }
 
@@ -704,7 +704,7 @@ BNetManip::make_const(int cval,
   BNode* node = new_logic(dst_name);
   if ( !node ) {
     // なんらかのエラーが起きた．
-    return NULL;
+    return nullptr;
   }
 
   // ノードの内容を設定する．
@@ -712,7 +712,7 @@ BNetManip::make_const(int cval,
   if ( !stat ) {
     // なんらかのエラーが起きたのでノードを削除する．
     delete_node(node);
-    return NULL;
+    return nullptr;
   }
 
   // できたノードを返す．
@@ -728,7 +728,7 @@ BNetManip::make_buffer(BNode* src_node,
   BNode* node = new_logic(dst_name);
   if ( !node ) {
     // なんらかのエラーが起きた．
-    return NULL;
+    return nullptr;
   }
 
   // ノードの内容を設定する．
@@ -736,7 +736,7 @@ BNetManip::make_buffer(BNode* src_node,
   if ( !stat ) {
     // なんらかのエラーが起きたのでノードを削除する．
     delete_node(node);
-    return NULL;
+    return nullptr;
   }
 
   // できたノードを返す．
@@ -752,7 +752,7 @@ BNetManip::make_inverter(BNode* src_node,
   BNode* node = new_logic(dst_name);
   if ( !node ) {
     // なんらかのエラーが起きた．
-    return NULL;
+    return nullptr;
   }
 
   // ノードの内容を設定する．
@@ -760,7 +760,7 @@ BNetManip::make_inverter(BNode* src_node,
   if ( !stat ) {
     // なんらかのエラーが起きたのでノードを削除する．
     delete_node(node);
-    return NULL;
+    return nullptr;
   }
 
   // できたノードを返す．
@@ -776,7 +776,7 @@ BNetManip::make_and(const BNodeVector& fanins,
   BNode* node = new_logic(dst_name);
   if ( !node ) {
     // なんらかのエラーが起きた．
-    return NULL;
+    return nullptr;
   }
 
   // ノードの内容を設定する．
@@ -784,7 +784,7 @@ BNetManip::make_and(const BNodeVector& fanins,
   if ( !stat ) {
     // なんらかのエラーが起きたのでノードを削除する．
     delete_node(node);
-    return NULL;
+    return nullptr;
   }
 
   // できたノードを返す．
@@ -800,7 +800,7 @@ BNetManip::make_nand(const BNodeVector& fanins,
   BNode* node = new_logic(dst_name);
   if ( !node ) {
     // なんらかのエラーが起きた．
-    return NULL;
+    return nullptr;
   }
 
   // ノードの内容を設定する．
@@ -808,7 +808,7 @@ BNetManip::make_nand(const BNodeVector& fanins,
   if ( !stat ) {
     // なんらかのエラーが起きたのでノードを削除する．
     delete_node(node);
-    return NULL;
+    return nullptr;
   }
 
   // できたノードを返す．
@@ -824,7 +824,7 @@ BNetManip::make_or(const BNodeVector& fanins,
   BNode* node = new_logic(dst_name);
   if ( !node ) {
     // なんらかのエラーが起きた．
-    return NULL;
+    return nullptr;
   }
 
   // ノードの内容を設定する．
@@ -832,7 +832,7 @@ BNetManip::make_or(const BNodeVector& fanins,
   if ( !stat ) {
     // なんらかのエラーが起きたのでノードを削除する．
     delete_node(node);
-    return NULL;
+    return nullptr;
   }
 
   // できたノードを返す．
@@ -848,7 +848,7 @@ BNetManip::make_nor(const BNodeVector& fanins,
   BNode* node = new_logic(dst_name);
   if ( !node ) {
     // なんらかのエラーが起きた．
-    return NULL;
+    return nullptr;
   }
 
   // ノードの内容を設定する．
@@ -856,7 +856,7 @@ BNetManip::make_nor(const BNodeVector& fanins,
   if ( !stat ) {
     // なんらかのエラーが起きたのでノードを削除する．
     delete_node(node);
-    return NULL;
+    return nullptr;
   }
 
   // できたノードを返す．
@@ -872,7 +872,7 @@ BNetManip::make_xor(const BNodeVector& fanins,
   BNode* node = new_logic(dst_name);
   if ( !node ) {
     // なんらかのエラーが起きた．
-    return NULL;
+    return nullptr;
   }
 
   // ノードの内容を設定する．
@@ -880,7 +880,7 @@ BNetManip::make_xor(const BNodeVector& fanins,
   if ( !stat ) {
     // なんらかのエラーが起きたのでノードを削除する．
     delete_node(node);
-    return NULL;
+    return nullptr;
   }
 
   // できたノードを返す．
@@ -896,7 +896,7 @@ BNetManip::make_xnor(const BNodeVector& fanins,
   BNode* node = new_logic(dst_name);
   if ( !node ) {
     // なんらかのエラーが起きた．
-    return NULL;
+    return nullptr;
   }
 
   // ノードの内容を設定する．
@@ -904,7 +904,7 @@ BNetManip::make_xnor(const BNodeVector& fanins,
   if ( !stat ) {
     // なんらかのエラーが起きたのでノードを削除する．
     delete_node(node);
-    return NULL;
+    return nullptr;
   }
 
   // できたノードを返す．

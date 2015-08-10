@@ -23,9 +23,9 @@ BEGIN_NAMESPACE_YM_BTG
 BtgMatchImpl::BtgMatchImpl()
 {
   mNode1Num = 0;
-  mNode1Array = NULL;
+  mNode1Array = nullptr;
   mNode2Num = 0;
-  mNode2Array = NULL;
+  mNode2Array = nullptr;
 }
 
 // @brief デストラクタ
@@ -71,10 +71,10 @@ void
 BtgMatchImpl::clear()
 {
   for (ymuint i = 0; i < mNode1Num; ++ i) {
-    mNode1Array[i].mEdgeTop = NULL;
+    mNode1Array[i].mEdgeTop = nullptr;
   }
   for (ymuint i = 0; i < mNode2Num; ++ i) {
-    mNode2Array[i].mEdgeTop = NULL;
+    mNode2Array[i].mEdgeTop = nullptr;
   }
   for (vector<BtgEdge*>::iterator p = mEdgeList.begin();
        p != mEdgeList.end(); ++ p) {
@@ -120,7 +120,7 @@ find_alt_path(BtgNode* v1,
   for (BtgEdge* edge = v1->edge_top(); edge; edge = edge->link1()) {
     BtgNode* v2 = edge->node2();
     BtgEdge* edge1 = v2->cur_edge();
-    if ( edge1 == NULL ) {
+    if ( edge1 == nullptr ) {
       // 見つけた．
       v1->set_cur_edge(edge);
       v2->set_cur_edge(edge);
@@ -192,7 +192,7 @@ BtgMatchImpl::calc_match(vector<ymuint>& edge_list)
     for (ymuint i = 0; i < mNode1Num; ++ i) {
       BtgNode* v1 = &mNode1Array[i];
       BtgEdge* edge = v1->cur_edge();
-      if ( edge == NULL ) {
+      if ( edge == nullptr ) {
 	return 0;
       }
       ASSERT_COND( edge->node2()->cur_edge() == edge );
@@ -215,7 +215,7 @@ BtgMatchImpl::calc_match(vector<ymuint>& edge_list)
     for (ymuint i = 0; i < mNode2Num; ++ i) {
       BtgNode* v2 = &mNode2Array[i];
       BtgEdge* edge = v2->cur_edge();
-      if ( edge == NULL ) {
+      if ( edge == nullptr ) {
 	return 0;
       }
       ASSERT_COND( edge->node1()->cur_edge() == edge );
@@ -241,7 +241,7 @@ BtgMatchImpl::calc_match1()
     queue.reserve(mNode1Num);
 
     // たどる元の枝を保持する配列
-    vector<BtgEdge*> parent(mNode2Num, NULL);
+    vector<BtgEdge*> parent(mNode2Num, nullptr);
 
     // v1 をキューに積む．
     queue.push_back(v1);
@@ -256,17 +256,17 @@ BtgMatchImpl::calc_match1()
       // v1 に隣接している節点でマッチしていないものを探す．
       bool found = false;
       for (BtgEdge* edge = v1->edge_top();
-	   edge != NULL; edge = edge->link1()) {
+	   edge != nullptr; edge = edge->link1()) {
 	BtgNode* v2 = edge->node2();
 	BtgEdge* cur_edge = v2->cur_edge();
-	if ( cur_edge == NULL ) {
+	if ( cur_edge == nullptr ) {
 	  // 見つけた．
 	  // 後ろ向きにたどる．
 	  for ( ; ; ) {
 	    BtgEdge* old_edge = v1->cur_edge();
 	    v1->set_cur_edge(edge);
 	    v2->set_cur_edge(edge);
-	    if ( old_edge == NULL ) {
+	    if ( old_edge == nullptr ) {
 	      break;
 	    }
 	    v2 = old_edge->node2();
@@ -283,7 +283,7 @@ BtgMatchImpl::calc_match1()
 	for (BtgEdge* edge = v1->edge_top(); edge; edge = edge->link1()) {
 	  BtgNode* v2 = edge->node2();
 	  BtgEdge* cur_edge = v2->cur_edge();
-	  ASSERT_COND( cur_edge != NULL );
+	  ASSERT_COND( cur_edge != nullptr );
 
 	  BtgNode* v3 = cur_edge->node1();
 	  if ( !qmark[v3->id()] ) {
@@ -315,7 +315,7 @@ BtgMatchImpl::calc_match2()
     queue.reserve(mNode2Num);
 
     // たどる元の枝を保持する配列
-    vector<BtgEdge*> parent(mNode1Num, NULL);
+    vector<BtgEdge*> parent(mNode1Num, nullptr);
 
     // v1 をキューに積む．
     queue.push_back(v2);
@@ -330,17 +330,17 @@ BtgMatchImpl::calc_match2()
       // v2 に隣接している節点でマッチしていないものを探す．
       bool found = false;
       for (BtgEdge* edge = v2->edge_top();
-	   edge != NULL; edge = edge->link2()) {
+	   edge != nullptr; edge = edge->link2()) {
 	BtgNode* v1 = edge->node1();
 	BtgEdge* cur_edge = v1->cur_edge();
-	if ( cur_edge == NULL ) {
+	if ( cur_edge == nullptr ) {
 	  // 見つけた．
 	  // 後ろ向きにたどる．
 	  for ( ; ; ) {
 	    BtgEdge* old_edge = v2->cur_edge();
 	    v1->set_cur_edge(edge);
 	    v2->set_cur_edge(edge);
-	    if ( old_edge == NULL ) {
+	    if ( old_edge == nullptr ) {
 	      break;
 	    }
 	    v1 = old_edge->node1();
@@ -357,7 +357,7 @@ BtgMatchImpl::calc_match2()
 	for (BtgEdge* edge = v2->edge_top(); edge; edge = edge->link2()) {
 	  BtgNode* v1 = edge->node1();
 	  BtgEdge* cur_edge = v1->cur_edge();
-	  ASSERT_COND( cur_edge != NULL );
+	  ASSERT_COND( cur_edge != nullptr );
 
 	  BtgNode* v3 = cur_edge->node2();
 	  if ( !qmark[v3->id()] ) {
@@ -385,7 +385,7 @@ BtgMatchImpl::calc_wmatch1()
 
   for ( ; ; ) {
     ymint max_weight = 0;
-    BtgNode* max_v2 = NULL;
+    BtgNode* max_v2 = nullptr;
 
     queue.clear();
     for (ymuint j = 0; j < mNode1Num; ++ j) {
@@ -393,11 +393,11 @@ BtgMatchImpl::calc_wmatch1()
     }
 
     // たどる元の枝を保持する配列
-    vector<BtgEdge*> parent(mNode2Num, NULL);
+    vector<BtgEdge*> parent(mNode2Num, nullptr);
 
     for (ymuint i = 0; i < mNode1Num; ++ i) {
       BtgNode* v1 = &mNode1Array[i];
-      if ( v1->cur_edge() == NULL ) {
+      if ( v1->cur_edge() == nullptr ) {
 	// v1 をキューに積む．
 	v1->mWeight = 0;
 	queue.put(v1);
@@ -410,11 +410,11 @@ BtgMatchImpl::calc_wmatch1()
 
       // v1 に隣接している節点でマッチしていないものを探す．
       for (BtgEdge* edge = v1->edge_top();
-	   edge != NULL; edge = edge->link1()) {
+	   edge != nullptr; edge = edge->link1()) {
 	BtgNode* v2 = edge->node2();
 	v2->mWeight = v1->weight() + edge->weight();
 	BtgEdge* cur_edge = v2->cur_edge();
-	if ( cur_edge == NULL ) {
+	if ( cur_edge == nullptr ) {
 	  // 見つけた．
 	  if ( max_weight < v2->weight() ) {
 	    max_weight = v2->weight();
@@ -454,7 +454,7 @@ BtgMatchImpl::calc_wmatch1()
       BtgEdge* old_edge = v1->cur_edge();
       v1->set_cur_edge(edge);
       v2->set_cur_edge(edge);
-      if ( old_edge == NULL ) {
+      if ( old_edge == nullptr ) {
 	break;
       }
       v2 = old_edge->node2();
@@ -471,7 +471,7 @@ BtgMatchImpl::calc_wmatch2()
 
   for ( ; ; ) {
     ymint max_weight = 0;
-    BtgNode* max_v1 = NULL;
+    BtgNode* max_v1 = nullptr;
 
     queue.clear();
     for (ymuint j = 0; j < mNode2Num; ++ j) {
@@ -479,12 +479,12 @@ BtgMatchImpl::calc_wmatch2()
     }
 
     // たどる元の枝を保持する配列
-    vector<BtgEdge*> parent(mNode1Num, NULL);
+    vector<BtgEdge*> parent(mNode1Num, nullptr);
 
     for (ymuint i = 0; i < mNode2Num; ++ i) {
       BtgNode* v2 = &mNode2Array[i];
 
-      if ( v2->cur_edge() == NULL ) {
+      if ( v2->cur_edge() == nullptr ) {
 	// v2 をキューに積む．
 	v2->mWeight = 0;
 	queue.put(v2);
@@ -497,11 +497,11 @@ BtgMatchImpl::calc_wmatch2()
 
       // v2 に隣接している節点でマッチしていないものを探す．
       for (BtgEdge* edge = v2->edge_top();
-	   edge != NULL; edge = edge->link2()) {
+	   edge != nullptr; edge = edge->link2()) {
 	BtgNode* v1 = edge->node1();
 	v1->mWeight = v2->weight() + edge->weight();
 	BtgEdge* cur_edge = v1->cur_edge();
-	if ( cur_edge == NULL ) {
+	if ( cur_edge == nullptr ) {
 	  // 見つけた．
 	  if ( max_weight < v1->weight() ) {
 	    max_weight = v1->weight();
@@ -541,7 +541,7 @@ BtgMatchImpl::calc_wmatch2()
       BtgEdge* old_edge = v2->cur_edge();
       v2->set_cur_edge(edge);
       v1->set_cur_edge(edge);
-      if ( old_edge == NULL ) {
+      if ( old_edge == nullptr ) {
 	break;
       }
       v1 = old_edge->node1();

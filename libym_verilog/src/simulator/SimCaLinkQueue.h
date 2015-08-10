@@ -33,7 +33,7 @@ public:
   void push(SimCaLink* ca);
 
   // continuous assignment を取り出す．
-  // 要素が無い場合には NULL を返す．
+  // 要素が無い場合には nullptr を返す．
   SimCaLink* pop();
 
   // 登録されている内容をクリアする．
@@ -75,13 +75,13 @@ SimCaLinkQueue::push(SimCaLink* ca)
 }
 
 // continuous assignment を取り出す．
-// 要素が無い場合には NULL を返す．
+// 要素が無い場合には nullptr を返す．
 inline
 SimCaLink*
 SimCaLinkQueue::pop()
 {
   if ( mQueue.empty() ) {
-    return NULL;
+    return nullptr;
   }
   else {
     SimCaLink* ca = mQueue.front();

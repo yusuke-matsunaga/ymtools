@@ -58,7 +58,7 @@ StmtGen::phase1_stmt(const VlNamedObj* parent,
 		     const PtStmt* pt_stmt,
 		     bool cf)
 {
-  ASSERT_COND(pt_stmt != NULL );
+  ASSERT_COND(pt_stmt != nullptr );
 
   switch ( pt_stmt->type() ) {
   case kPtDisableStmt:
@@ -137,7 +137,7 @@ StmtGen::phase1_stmt(const VlNamedObj* parent,
 
 // @brief ステートメントの実体化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -146,9 +146,9 @@ StmtGen::instantiate_stmt(const VlNamedObj* parent,
 			  const ElbEnv& env,
 			  const PtStmt* pt_stmt)
 {
-  ASSERT_COND(pt_stmt != NULL );
+  ASSERT_COND(pt_stmt != nullptr );
 
-  ElbStmt* stmt = NULL;
+  ElbStmt* stmt = nullptr;
   switch ( pt_stmt->type() ) {
   case kPtDisableStmt:
     stmt = instantiate_disable(parent, process,
@@ -166,7 +166,7 @@ StmtGen::instantiate_stmt(const VlNamedObj* parent,
   case kPtSysEnableStmt:
     if ( env.inside_constant_function() ) {
       // 無視する．
-      // といっても NULL を返すとまずいので NULL_STMT を返す．
+      // といっても nullptr を返すとまずいので NULL_STMT を返す．
       stmt = instantiate_nullstmt(parent, process,
 				  pt_stmt);
     }
@@ -333,7 +333,7 @@ StmtGen::instantiate_stmt(const VlNamedObj* parent,
 		    "ELAB",
 		    buf.str());
   }
-  return NULL;
+  return nullptr;
 }
 
 
@@ -343,7 +343,7 @@ StmtGen::instantiate_stmt(const VlNamedObj* parent,
 
 // @brief disable statement の実体化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
 StmtGen::instantiate_disable(const VlNamedObj* parent,
@@ -354,11 +354,11 @@ StmtGen::instantiate_disable(const VlNamedObj* parent,
   PtNameBranchArray nb_array = pt_stmt->namebranch_array();
   const char* name = pt_stmt->name();
 
-  ElbObjHandle* handle = NULL;
+  ElbObjHandle* handle = nullptr;
 
   // disable はモジュール境界を越えない？ 要チェック ##TODO##TODO##
   // 仕様書には何も書いていないのでたぶん越えられる．
-  handle = find_obj_up(parent, nb_array, name, NULL);
+  handle = find_obj_up(parent, nb_array, name, nullptr);
   if ( !handle ) {
     ostringstream buf;
     buf << expand_full_name(nb_array, name) << " : Not found.";
@@ -367,7 +367,7 @@ StmtGen::instantiate_disable(const VlNamedObj* parent,
 		    kMsgError,
 		    "ELAB",
 		    buf.str());
-    return NULL;
+    return nullptr;
   }
 
   tVpiObjType type = handle->type();
@@ -382,7 +382,7 @@ StmtGen::instantiate_disable(const VlNamedObj* parent,
 		    kMsgError,
 		    "ELAB",
 		    buf.str());
-    return NULL;
+    return nullptr;
   }
   const VlNamedObj* scope = handle->obj();
   ElbStmt* stmt = factory().new_DisableStmt(parent, process, pt_stmt,
@@ -393,7 +393,7 @@ StmtGen::instantiate_disable(const VlNamedObj* parent,
 
 // @brief enable の実体化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -408,7 +408,7 @@ StmtGen::instantiate_enable(const VlNamedObj* parent,
 
   // タスクを探し出して設定する．
   // タスク名の探索はモジュール境界を越える．
-  ElbObjHandle* cell = find_obj_up(parent, nb_array, name, NULL);
+  ElbObjHandle* cell = find_obj_up(parent, nb_array, name, nullptr);
   if ( !cell ) {
     ostringstream buf;
     buf << expand_full_name(nb_array, name) << " : Not found.";
@@ -417,7 +417,7 @@ StmtGen::instantiate_enable(const VlNamedObj* parent,
 		    kMsgError,
 		    "ELAB",
 		    buf.str());
-    return NULL;
+    return nullptr;
   }
   if ( cell->type() != kVpiTask ) {
     ostringstream buf;
@@ -429,7 +429,7 @@ StmtGen::instantiate_enable(const VlNamedObj* parent,
 		    buf.str());
   }
   ElbTaskFunc* task = cell->taskfunc();
-  ASSERT_COND( task != NULL );
+  ASSERT_COND( task != nullptr );
 
   // 引数を生成する．
   ElbExpr** arg_list = factory().new_ExprList(pt_stmt->arg_num());
@@ -438,7 +438,7 @@ StmtGen::instantiate_enable(const VlNamedObj* parent,
     ElbExpr* expr = instantiate_expr(parent, env, pt_expr);
     if ( !expr ) {
       // エラーが起った．
-      return NULL;
+      return nullptr;
     }
     arg_list[i] = expr;
   }
@@ -452,7 +452,7 @@ StmtGen::instantiate_enable(const VlNamedObj* parent,
 
 // @brief system enable 文の実体化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -467,7 +467,7 @@ StmtGen::instantiate_sysenable(const VlNamedObj* parent,
 
   // UserSystf を取り出す．
   const ElbUserSystf* user_systf = find_user_systf(name);
-  if ( user_systf == NULL ) {
+  if ( user_systf == nullptr ) {
     ostringstream buf;
     buf << name << " : No such system task.";
     MsgMgr::put_msg(__FILE__, __LINE__,
@@ -475,20 +475,20 @@ StmtGen::instantiate_sysenable(const VlNamedObj* parent,
 		    kMsgError,
 		    "ELAB",
 		    buf.str());
-    return NULL;
+    return nullptr;
   }
 
   // 引数を生成する．
   ElbExpr** arg_list = factory().new_ExprList(pt_stmt->arg_num());
   for (ymuint i = 0; i < pt_stmt->arg_num(); ++ i) {
     const PtExpr* pt_expr = pt_stmt->arg(i);
-    ElbExpr* arg = NULL;
+    ElbExpr* arg = nullptr;
     // 空の引数があるのでエラーと区別する．
     if ( pt_expr ) {
       arg = instantiate_arg(parent, env, pt_expr);
       if ( !arg ) {
 	// エラーが起こった
-	return NULL;
+	return nullptr;
       }
     }
     arg_list[i] = arg;
@@ -503,7 +503,7 @@ StmtGen::instantiate_sysenable(const VlNamedObj* parent,
 
 // @brief delay / event control statement の実体化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -516,7 +516,7 @@ StmtGen::instantiate_ctrlstmt(const VlNamedObj* parent,
 				   pt_stmt->body());
   ElbControl* control = instantiate_control(parent, env, pt_stmt->control());
   if ( !body || !control ) {
-    return NULL;
+    return nullptr;
   }
 
   // delay / event control ステートメントの生成
@@ -540,7 +540,7 @@ StmtGen::instantiate_control(const VlNamedObj* parent,
     if ( delay ) {
       return factory().new_DelayControl(pt_control, delay);
     }
-    return NULL;
+    return nullptr;
   }
 
   // イベントリストの生成を行う．
@@ -550,7 +550,7 @@ StmtGen::instantiate_control(const VlNamedObj* parent,
     const PtExpr* pt_expr = pt_control->event(i);
     ElbExpr* expr = instantiate_event_expr(parent, env, pt_expr);
     if ( !expr ) {
-      return NULL;
+      return nullptr;
     }
     event_list[i] = expr;
   }
@@ -561,14 +561,14 @@ StmtGen::instantiate_control(const VlNamedObj* parent,
 
   ElbExpr* rep = instantiate_expr(parent, env, pt_control->rep_expr());
   if ( !rep ) {
-    return NULL;
+    return nullptr;
   }
   return factory().new_RepeatControl(pt_control, rep, event_num, event_list);
 }
 
 // @brief event statement の実体化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
 StmtGen::instantiate_eventstmt(const VlNamedObj* parent,
@@ -578,7 +578,7 @@ StmtGen::instantiate_eventstmt(const VlNamedObj* parent,
   const PtExpr* pt_expr = pt_stmt->primary();
   ElbExpr* named_event = instantiate_namedevent(parent, pt_expr);
   if ( !named_event ) {
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_EventStmt(parent, process, pt_stmt,
@@ -589,7 +589,7 @@ StmtGen::instantiate_eventstmt(const VlNamedObj* parent,
 
 // @brief null statement の実体化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
 StmtGen::instantiate_nullstmt(const VlNamedObj* parent,

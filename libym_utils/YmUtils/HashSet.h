@@ -163,7 +163,7 @@ bool
 HashSet<Key_Type>::find(const Key_Type& key) const
 {
   Cell* cell = reinterpret_cast<Cell*>(HashBase<Key_Type>::find_cell(key));
-  if ( cell != NULL ) {
+  if ( cell != nullptr ) {
     return true;
   }
   else {

@@ -18,13 +18,13 @@ BEGIN_NAMESPACE_YM_EXPR
 //////////////////////////////////////////////////////////////////////
 
 // 唯一のオブジェクト
-static ExprMgr* mTheObj = NULL;
+static ExprMgr* mTheObj = nullptr;
 
 // @brief 唯一のインスタンスを返す．
 ExprMgr&
 ExprMgr::the_obj()
 {
-  if ( mTheObj == NULL ) {
+  if ( mTheObj == nullptr ) {
     mTheObj = new ExprMgr;
   }
   return *mTheObj;
@@ -50,7 +50,7 @@ void
 ExprMgr::clear_memory()
 {
   delete mTheObj;
-  mTheObj = NULL;
+  mTheObj = nullptr;
 }
 
 // 恒偽関数を作る．
@@ -450,7 +450,7 @@ ExprMgr::compose(const ExprNode* node,
   }
 
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // comp_map にしたがってリテラルを式に置き換える．
@@ -508,7 +508,7 @@ ExprMgr::compose(const ExprNode* node,
   }
 
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // 変数番号をマッピングし直す
@@ -565,7 +565,7 @@ ExprMgr::remap_var(const ExprNode* node,
   }
 
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // 簡単化を行う．
@@ -608,7 +608,7 @@ ExprMgr::simplify(const ExprNode* node)
   // ここに来ることはない．
   ASSERT_NOT_REACHED;
 
-  return NULL;
+  return nullptr;
 }
 
 // @brief 使用されているメモリ量を返す．

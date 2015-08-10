@@ -118,12 +118,12 @@ McMatrix::McMatrix(ymuint32 row_size,
   mCellAlloc(sizeof(McCell), 1024),
   mRowSize(0),
   mColSize(0),
-  mRowArray(NULL),
+  mRowArray(nullptr),
   mRowHead(0),
-  mColArray(NULL),
+  mColArray(nullptr),
   mColHead(0),
   mCostArray(cost_array),
-  mDelStack(NULL)
+  mDelStack(nullptr)
 {
   mRowNum = 0;
   mColNum = 0;
@@ -136,11 +136,11 @@ McMatrix::McMatrix(const McMatrix& src) :
   mCellAlloc(sizeof(McCell), 1024),
   mRowSize(0),
   mColSize(0),
-  mRowArray(NULL),
+  mRowArray(nullptr),
   mRowHead(0),
-  mColArray(NULL),
+  mColArray(nullptr),
   mColHead(0),
-  mDelStack(NULL)
+  mDelStack(nullptr)
 {
   mRowNum = 0;
   mColNum = 0;
@@ -158,11 +158,11 @@ McMatrix::McMatrix(McMatrix& src,
   mCellAlloc(sizeof(McCell), 1024),
   mRowSize(0),
   mColSize(0),
-  mRowArray(NULL),
+  mRowArray(nullptr),
   mRowHead(0),
-  mColArray(NULL),
+  mColArray(nullptr),
   mColHead(0),
-  mDelStack(NULL)
+  mDelStack(nullptr)
 {
   mRowNum = 0;
   mColNum = 0;
@@ -234,19 +234,19 @@ McMatrix::clear()
 
   for (ymuint i = 0; i < row_size(); ++ i) {
     delete mRowArray[i];
-    mRowArray[i] = NULL;
+    mRowArray[i] = nullptr;
   }
   for (ymuint i = 0; i < col_size(); ++ i) {
     delete mColArray[i];
-    mColArray[i] = NULL;
+    mColArray[i] = nullptr;
   }
 
   delete [] mRowArray;
   delete [] mColArray;
   delete [] mDelStack;
 
-  mRowArray = NULL;
-  mColArray = NULL;
+  mRowArray = nullptr;
+  mColArray = nullptr;
 
   mRowNum = 0;
   mColNum = 0;
@@ -254,7 +254,7 @@ McMatrix::clear()
   mRowHead.mNext = mRowHead.mPrev = &mRowHead;
   mColHead.mNext = mColHead.mPrev = &mColHead;
 
-  mDelStack = NULL;
+  mDelStack = nullptr;
   mStackTop = 0;
 }
 
@@ -272,11 +272,11 @@ McMatrix::resize(ymuint32 row_size,
     mColSize = col_size;
     mRowArray = new McRowHead*[mRowSize];
     for (ymuint i = 0; i < mRowSize; ++ i) {
-      mRowArray[i] = NULL;
+      mRowArray[i] = nullptr;
     }
     mColArray = new McColHead*[mColSize];
     for (ymuint i = 0; i < mColSize; ++ i) {
-      mColArray[i] = NULL;
+      mColArray[i] = nullptr;
     }
 
     mRowHead.mNext = &mRowHead;
@@ -323,14 +323,14 @@ McMatrix::merge(McMatrix& matrix1,
   McRowHead* row2 = matrix2.mRowHead.mNext;
   while ( row1 != &matrix1.mRowHead && row2 != &matrix2.mRowHead ) {
     if ( row1->pos() < row2->pos() ) {
-      matrix1.mRowArray[row1->pos()] = NULL;
+      matrix1.mRowArray[row1->pos()] = nullptr;
       prev_row->mNext = row1;
       row1->mPrev = prev_row;
       prev_row = row1;
       row1 = row1->mNext;
     }
     else if ( row1->pos() > row2->pos() ) {
-      matrix2.mRowArray[row2->pos()] = NULL;
+      matrix2.mRowArray[row2->pos()] = nullptr;
       prev_row->mNext = row2;
       row2->mPrev = prev_row;
       prev_row = row2;
@@ -341,13 +341,13 @@ McMatrix::merge(McMatrix& matrix1,
     }
   }
   for ( ; row1 != &matrix1.mRowHead; row1 = row1->mNext) {
-    matrix1.mRowArray[row1->pos()] = NULL;
+    matrix1.mRowArray[row1->pos()] = nullptr;
     prev_row->mNext = row1;
     row1->mPrev = prev_row;
     prev_row = row1;
   }
   for ( ; row2 != &matrix2.mRowHead; row2 = row2->mNext) {
-    matrix2.mRowArray[row2->pos()] = NULL;
+    matrix2.mRowArray[row2->pos()] = nullptr;
     prev_row->mNext = row2;
     row2->mPrev = prev_row;
     prev_row = row2;
@@ -360,14 +360,14 @@ McMatrix::merge(McMatrix& matrix1,
   McColHead* col2 = matrix2.mColHead.mNext;
   while ( col1 != &matrix1.mColHead && col2 != &matrix2.mColHead ) {
     if ( col1->pos() < col2->pos() ) {
-      matrix1.mColArray[col1->pos()] = NULL;
+      matrix1.mColArray[col1->pos()] = nullptr;
       prev_col->mNext = col1;
       col1->mPrev = prev_col;
       prev_col = col1;
       col1 = col1->mNext;
     }
     else if ( col1->pos() > col2->pos() ) {
-      matrix2.mColArray[col2->pos()] = NULL;
+      matrix2.mColArray[col2->pos()] = nullptr;
       prev_col->mNext = col2;
       col2->mPrev = prev_col;
       prev_col = col2;
@@ -378,13 +378,13 @@ McMatrix::merge(McMatrix& matrix1,
     }
   }
   for ( ; col1 != &matrix1.mColHead; col1 = col1->mNext) {
-    matrix1.mColArray[col1->pos()] = NULL;
+    matrix1.mColArray[col1->pos()] = nullptr;
     prev_col->mNext = col1;
     col1->mPrev = prev_col;
     prev_col = col1;
   }
   for ( ; col2 != &matrix2.mColHead; col2 = col2->mNext) {
-    matrix2.mColArray[col2->pos()] = NULL;
+    matrix2.mColArray[col2->pos()] = nullptr;
     prev_col->mNext = col2;
     col2->mPrev = prev_col;
     prev_col = col2;
@@ -583,7 +583,7 @@ McMatrix::insert_elem(ymuint32 row_pos,
   if ( !stat1 ) {
     // 列番号が重複しているので無視する．
     free_cell(cell);
-    return NULL;
+    return nullptr;
   }
 
   McColHead* col1 = col(col_pos);
@@ -886,7 +886,7 @@ McMatrix::row_dominance()
 
     // row1 の行に要素を持つ列で要素数が最小のものを求める．
     ymuint32 min_num = row_size() + 1;
-    const McColHead* min_col = NULL;
+    const McColHead* min_col = nullptr;
     for (const McCell* cell = row1->front();
 	 !row1->is_end(cell); cell = cell->row_next()) {
       ymuint32 col_pos = cell->col_pos();
@@ -985,7 +985,7 @@ McMatrix::col_dominance()
 
     // col1 の列に要素を持つ行で要素数が最小のものを求める．
     ymuint32 min_num = col_size() + 1;
-    const McRowHead* min_row = NULL;
+    const McRowHead* min_row = nullptr;
     for (const McCell* cell = col1->front();
 	 !col1->is_end(cell); cell = cell->col_next()) {
       ymuint32 row_pos = cell->row_pos();

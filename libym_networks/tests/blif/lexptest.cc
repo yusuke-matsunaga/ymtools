@@ -154,7 +154,7 @@ private:
 ExprTestHandler::ExprTestHandler()
 {
   mCount = 0;
-  mPage = NULL;
+  mPage = nullptr;
 }
 
 // @brief デストラクタ
@@ -275,7 +275,7 @@ ExprTestHandler::names(ymuint32 onode_id,
     }
   }
 
-  if ( mPage == NULL || mCount >= 1024 ) {
+  if ( mPage == nullptr || mCount >= 1024 ) {
     mPage = new Expr[1024];
     mCount = 0;
     mPageList.push_back(mPage);
@@ -366,7 +366,7 @@ main(int argc,
 	StreamMsgHandler* msg_handler = new StreamMsgHandler(&cerr);
 	MsgMgr::reg_handler(msg_handler);
 
-	if ( !parser.read(filename, NULL) ) {
+	if ( !parser.read(filename, nullptr) ) {
 	  cerr << "Error in reading " << argv[1] << endl;
 	  return 4;
 	}

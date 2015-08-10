@@ -42,13 +42,13 @@ public:
 
   /// @brief 入力側のノードを得る．(const 版)
   /// @retval 入力側のノード 通常の枝の場合
-  /// @retval NULL 定数0に接続している枝の場合
+  /// @retval nullptr 定数0に接続している枝の場合
   const CmnNode*
   from() const;
 
   /// @brief 入力側のノードを得る．
   /// @retval 入力側のノード 通常の枝の場合
-  /// @retval NULL 定数0に接続している枝の場合
+  /// @retval nullptr 定数0に接続している枝の場合
   CmnNode*
   from();
 
@@ -123,8 +123,8 @@ private:
 // コンストラクタ
 inline
 CmnEdge::CmnEdge() :
-  mFrom(NULL),
-  mTo(NULL),
+  mFrom(nullptr),
+  mTo(nullptr),
   mToPos(0)
 {
 }

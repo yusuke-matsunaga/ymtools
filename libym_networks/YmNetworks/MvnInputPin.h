@@ -133,7 +133,7 @@ MvnInputPin::init(MvnNode* node,
   mNode = node;
   mPos = pos;
   mBitWidth = 1;
-  mSrcNode = NULL;
+  mSrcNode = nullptr;
 }
 
 END_NAMESPACE_YM_NETWORKS_MVN

@@ -347,7 +347,7 @@ VmModuleNode::expand() const
   // vpiDefFile
 
   const VlModuleArray* module_array = mModule->module_array();
-  bool is_array = (module_array != NULL);
+  bool is_array = (module_array != nullptr);
   add_bool("vpiArray", is_array);
   if ( is_array ) {
     add_str("vpiModuleArray", module_array->full_name());

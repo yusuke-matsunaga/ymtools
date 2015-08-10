@@ -34,7 +34,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 //////////////////////////////////////////////////////////////////////
 
 // 唯一のオブジェクト
-SimEngine* SimEngine::mTheObj = NULL;
+SimEngine* SimEngine::mTheObj = nullptr;
 
 // 唯一のオブジェクトを取り出すクラスメソッド
 // いわゆる singleton パターン
@@ -58,7 +58,7 @@ SimEngine::SimEngine() :
   mCurInactiveQptr = &mCurEqSet->mInactiveQueue;
   mCurNonblockingQptr = &mCurEqSet->mNonblockingQueue;
   mEqSetMgr = new SimEqSetMgr;
-  mAvailEqSet = NULL;
+  mAvailEqSet = nullptr;
 }
 
 // デストラクタ
@@ -140,7 +140,7 @@ SimEngine::run()
       ca->clear_changed();
       ca->start()->exec();
     }
-    
+
   }
 }
 
@@ -401,7 +401,7 @@ SimEngine::new_deassignnode(VpiScope* scope,
 			    VpiExpr* lhs)
 {
   #warning "not yet done"
-  return NULL;
+  return nullptr;
 }
 
 SimForceNode*
@@ -418,7 +418,7 @@ SimEngine::new_releasenode(VpiScope* scope,
 {
 
   #warning "not yet done"
-  return NULL;
+  return nullptr;
 }
 #endif
 
@@ -474,7 +474,7 @@ SimEngine::find_eqset(const VlTime& time)
 
 // コンストラクタ
 SimEqSetMgr::SimEqSetMgr() :
-  mHash(NULL),
+  mHash(nullptr),
   mHashSize(0)
 {
   resize(16);
@@ -519,7 +519,7 @@ SimEqSetMgr::add(SimEqSet* eqset)
 }
 
 // time の時刻を持つ要素を取り出す．
-// なければ NULL を返す．
+// なければ nullptr を返す．
 SimEqSet*
 SimEqSetMgr::find(const VlTime& time) const
 {
@@ -529,7 +529,7 @@ SimEqSetMgr::find(const VlTime& time) const
       return eqset;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // 最小の時刻を持つ要素を取り出す．
@@ -583,7 +583,7 @@ SimEqSetMgr::get_min()
 	else if ( val_p->time() > val_r->time() &&
 		  val_r->time() < val_l->time() ) {
 	  // 右の子どもと取り替える．次は右の子で同じ処理をする
-	  SimEqSet* tmp = val_p;	
+	  SimEqSet* tmp = val_p;
 	  val_p = val_r;
 	  val_r = tmp;
 	  parent = right;
@@ -621,7 +621,7 @@ SimEqSetMgr::resize(ymuint32 size)
   mHashSize = size;
   mHash = new SimEqSet*[mHashSize];
   for (ymuint32 i = 0; i < mHashSize; ++ i) {
-    mHash[i] = NULL;
+    mHash[i] = nullptr;
   }
 
   for (ymuint32 i = 0; i < old_size; ++ i) {

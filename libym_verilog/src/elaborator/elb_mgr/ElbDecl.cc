@@ -91,12 +91,12 @@ ElbDeclHead::charge() const
 
 // @brief delay の取得
 // @retval delay
-// @retval NULL delay の指定なし
-// @note このクラスでは NULL を返す．
+// @retval nullptr delay の指定なし
+// @note このクラスでは nullptr を返す．
 ElbDelay*
 ElbDeclHead::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 遅延式の設定
@@ -113,7 +113,7 @@ ElbDeclHead::set_delay(ElbDelay* delay)
 
 // @brief コンストラクタ
 ElbDecl::ElbDecl() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 
@@ -153,7 +153,7 @@ ElbDecl::set_init(ElbExpr* expr)
 
 // @brief コンストラクタ
 ElbDeclArray::ElbDeclArray() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 

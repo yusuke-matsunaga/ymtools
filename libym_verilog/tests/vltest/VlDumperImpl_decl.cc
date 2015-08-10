@@ -29,14 +29,14 @@ VlDumperImpl::put_iodecl(const char* label,
 			 const VlMgr& mgr,
 			 const VlIODecl* iodecl)
 {
-  if ( iodecl == NULL ) {
+  if ( iodecl == nullptr ) {
     if ( !nullptr_suppress_mode() ) {
       VlDumpHeader x(this, label, "null-pointer");
     }
     return;
   }
 
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( iodecl->direction() ) {
   case kVlInput:  nm = "Input"; break;
   case kVlOutput: nm = "Output"; break;
@@ -89,14 +89,14 @@ VlDumperImpl::put_decl(const char* label,
 		       const VlMgr& mgr,
 		       const VlDecl* decl)
 {
-  if ( decl == NULL ) {
+  if ( decl == nullptr ) {
     if ( !nullptr_suppress_mode() ) {
       VlDumpHeader x(this, label, "null-pointer");
     }
     return;
   }
 
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( decl->type() ) {
   case kVpiNet:             nm = "Net"; break;
   case kVpiReg:             nm = "Reg"; break;
@@ -241,14 +241,14 @@ VlDumperImpl::put_declarray(const char* label,
 			    const VlMgr& mgr,
 			    const VlDeclArray* decl)
 {
-  if ( decl == NULL ) {
+  if ( decl == nullptr ) {
     if ( !nullptr_suppress_mode() ) {
       VlDumpHeader x(this, label, "null-pointer");
     }
     return;
   }
 
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( decl->type() ) {
   case kVpiNetArray:        nm = "NetArray"; break;
   case kVpiRegArray:        nm = "RegArray"; break;
@@ -732,7 +732,7 @@ VlDumperImpl::put_variables(const char* label,
   VlDecl* var = dynamic_cast<const VlDecl*>(obj);
   ASSERT_COND( var  );
 
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( var->type() ) {
   case vpiIntegerVar: nm = "integer var"; break;
   case vpiTimeVar:    nm = "time var"; break;

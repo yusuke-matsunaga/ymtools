@@ -104,7 +104,7 @@ END_NONAMESPACE
 // クラス CNFddMgrImpl
 //////////////////////////////////////////////////////////////////////
 
-CNFddMgrImpl* CNFddMgrImpl::mDefaultMgr = NULL;
+CNFddMgrImpl* CNFddMgrImpl::mDefaultMgr = nullptr;
 
 // デフォルトマネージャを返すクラスメソッド
 CNFddMgrImpl*
@@ -143,7 +143,7 @@ CNFddMgrImpl::CNFddMgrImpl(const string& name,
   mLogFp = mNullStream;
 
   // CNFDD リストの初期化
-  mTopCNFdd = NULL;
+  mTopCNFdd = nullptr;
 
   // ユーザー設定可能パラメータのデフォルト値を設定
   mGcThreshold = DEFAULT_GC_THRESHOLD;
@@ -155,10 +155,10 @@ CNFddMgrImpl::CNFddMgrImpl(const string& name,
   mGcEnable = 0;
 
   // メモリ管理用のメンバを初期化
-  mFreeTop = NULL;
+  mFreeTop = nullptr;
   mFreeNum = 0;
-  mTopBlk = NULL;
-  mCurBlk = NULL;
+  mTopBlk = nullptr;
+  mCurBlk = nullptr;
   mCurIdx = 1;
   mOverflow = false;
 
@@ -172,7 +172,7 @@ CNFddMgrImpl::CNFddMgrImpl(const string& name,
   mTableSize = 0;
   mTableSize_1 = 0;
   mNextLimit = 0;
-  mNodeTable = NULL;
+  mNodeTable = nullptr;
   resize(INIT_SIZE);
 
   // 変数テーブルの初期化
@@ -180,7 +180,7 @@ CNFddMgrImpl::CNFddMgrImpl(const string& name,
   mVarHashTable = alloc_vartable(mVarTableSize);
   ASSERT_COND(mVarHashTable );
   mVarNum = 0;
-  mVarTop = NULL;
+  mVarTop = nullptr;
 
   // 演算結果テーブルの初期化
   mOpList.clear();
@@ -210,7 +210,7 @@ CNFddMgrImpl::~CNFddMgrImpl()
   // と言っても CNFdd のオブジェクトを削除するわけには行かないので
   // デフォルトマネージャのエラーCNFDDにすり替える．
   if ( mTopCNFdd ) {
-    CNFdd* last = NULL;
+    CNFdd* last = nullptr;
     for (CNFdd* bdd = mTopCNFdd; bdd; bdd = bdd->mNext) {
       bdd->mRoot = CNFddEdge::make_error();
       bdd->mMgr = mDefaultMgr;
@@ -218,7 +218,7 @@ CNFddMgrImpl::~CNFddMgrImpl()
     }
     CNFdd* first = mDefaultMgr->mTopCNFdd;
     mDefaultMgr->mTopCNFdd = mTopCNFdd;
-    mTopCNFdd->mPrev = NULL;
+    mTopCNFdd->mPrev = nullptr;
     last->mNext = first;
     if ( first ) {
       first->mPrev = last;
@@ -289,7 +289,7 @@ CNFddMgrImpl::logstream() const
 bool
 CNFddMgrImpl::new_var(VarId varid)
 {
-  return alloc_var(varid) != NULL;
+  return alloc_var(varid) != nullptr;
 }
 
 // 変数を確保する．
@@ -302,7 +302,7 @@ CNFddMgrImpl::alloc_var(VarId varid)
     ymuint64 new_size = mVarTableSize << 1;
     CNFddVar** new_hash = alloc_vartable(new_size);
     if ( !new_hash ) {
-      return NULL;
+      return nullptr;
     }
     mVarTableSize = new_size;
     mVarHashTable = new_hash;
@@ -535,7 +535,7 @@ CNFddMgrImpl::gc(bool shrink_nodetable)
 	// どこからも参照されていないノードは節点テーブルから除く
 	// この時点ではフリーリストを作る必要は無い．
 	*prev = temp->mLink;
-	temp->mLink = NULL;
+	temp->mLink = nullptr;
       }
       else {
 	prev = &(temp->mLink);
@@ -549,7 +549,7 @@ CNFddMgrImpl::gc(bool shrink_nodetable)
   // そのメモリブロックを本当に解放する．
   // その時には，このブロックに含まれるノードはフリーリストから除かなければ
   // ならない．
-  mFreeTop = NULL;
+  mFreeTop = nullptr;
   CNFddNode** prev = &mFreeTop;
   CNFddNode** prev_blk = &mTopBlk;
   ymuint64 delete_num = 0;
@@ -569,11 +569,11 @@ CNFddMgrImpl::gc(bool shrink_nodetable)
     if ( scan_nodechunk(mCurBlk, mCurIdx, prev) ) {
       dealloc_nodechunk(mCurBlk);
       delete_num += mCurIdx - 1;
-      mCurBlk = NULL;
+      mCurBlk = nullptr;
     }
   }
-  *prev_blk = NULL;
-  *prev = NULL;
+  *prev_blk = nullptr;
+  *prev = nullptr;
 
   // 内部 statistics の更新
   ymuint64 free_num = mGarbageNum;
@@ -856,7 +856,7 @@ CNFddMgrImpl::var_of(VarId varid) const
     }
   }
   // 見つからなかった．
-  return NULL;
+  return nullptr;
 }
 
 // Var を登録する．
@@ -914,7 +914,7 @@ CNFddMgrImpl::alloc_node()
       mCurBlk = alloc_nodechunk();
       if ( !mCurBlk ) {
 	// メモリアロケーションに失敗した
-	return NULL;
+	return nullptr;
       }
       mCurIdx = 1;
     }
@@ -926,7 +926,7 @@ CNFddMgrImpl::alloc_node()
       // メモリブロックのリストへ繋げる．
       mCurBlk->mLink = mTopBlk;
       mTopBlk = mCurBlk;
-      mCurBlk = NULL;
+      mCurBlk = nullptr;
     }
   }
   ++ mGarbageNum;  // この時点では誰も指していない．
@@ -1101,7 +1101,7 @@ bool
 CNFddEdge::noref() const
 {
   CNFddNode* node = get_node();
-  if ( node != NULL ) {
+  if ( node != nullptr ) {
     return node->noref();
   }
   else {

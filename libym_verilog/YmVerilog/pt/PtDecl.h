@@ -68,14 +68,14 @@ public:
 
   /// @brief 範囲のMSBの取得
   /// @retval 範囲のMSB
-  /// @retval NULL 範囲を持たないとき
+  /// @retval nullptr 範囲を持たないとき
   virtual
   const PtExpr*
   left_range() const = 0;
 
   /// @brief 範囲のLSBの取得
   /// @retval 範囲のLSB
-  /// @retval NULL 範囲を持たないとき
+  /// @retval nullptr 範囲を持たないとき
   virtual
   const PtExpr*
   right_range() const = 0;
@@ -117,7 +117,7 @@ public:
 
   /// @brief 初期値の取得
   /// @retval 初期値
-  /// @retval NULL 初期値を持たないとき
+  /// @retval nullptr 初期値を持たないとき
   virtual
   const PtExpr*
   init_value() const = 0;
@@ -161,14 +161,14 @@ public:
 
   /// @brief 範囲のMSBの取得
   /// @retval 範囲のMSB 範囲を持つとき
-  /// @retval NULL 範囲を持たないとき
+  /// @retval nullptr 範囲を持たないとき
   virtual
   const PtExpr*
   left_range() const = 0;
 
   /// @brief 範囲のLSBの取得
   /// @retval 範囲のLSB 範囲を持つとき
-  /// @retval NULL 範囲を持たないとき
+  /// @retval nullptr 範囲を持たないとき
   virtual
   const PtExpr*
   right_range() const = 0;
@@ -197,14 +197,14 @@ public:
 
   /// @brief strength の取得
   /// @retval strength
-  /// @retval NULL strength の指定なし
+  /// @retval nullptr strength の指定なし
   virtual
   const PtStrength*
   strength() const = 0;
 
   /// @brief delay の取得
   /// @retval delay
-  /// @retval NULL delay の指定なし
+  /// @retval nullptr delay の指定なし
   virtual
   const PtDelay*
   delay() const = 0;
@@ -258,7 +258,7 @@ public:
 
   /// @brief 初期値の取得
   /// @retval 初期値
-  /// @retval NULL 設定がない場合
+  /// @retval nullptr 設定がない場合
   virtual
   const PtExpr*
   init_value() const = 0;

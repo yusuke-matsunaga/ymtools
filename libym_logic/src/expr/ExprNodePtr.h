@@ -26,7 +26,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] ptr Cポインタ
-  ExprNodePtr(const ExprNode* ptr = NULL);
+  ExprNodePtr(const ExprNode* ptr = nullptr);
 
   /// @brief コピーコンストラクタ
   /// @param[in] src コピー元のオブジェクト

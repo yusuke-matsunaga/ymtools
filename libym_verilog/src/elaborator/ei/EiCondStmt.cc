@@ -24,7 +24,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief while 文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] stmt 本体のステートメント
@@ -44,7 +44,7 @@ EiFactory::new_WhileStmt(const VlNamedObj* parent,
 
 // @brief repeat 文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] stmt 本体のステートメント
@@ -64,7 +64,7 @@ EiFactory::new_RepeatStmt(const VlNamedObj* parent,
 
 // @brief wait 文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] stmt 本体のステートメント
@@ -84,7 +84,7 @@ EiFactory::new_WaitStmt(const VlNamedObj* parent,
 
 // @brief for 文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] init_stmt 初期化式
@@ -108,7 +108,7 @@ EiFactory::new_ForStmt(const VlNamedObj* parent,
 
 // @brief forever 文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] stmt 本体のステートメント
 ElbStmt*
@@ -126,12 +126,12 @@ EiFactory::new_ForeverStmt(const VlNamedObj* parent,
 
 // @brief if 文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] stmt 本体のステートメント
 // @param[in] else_stmt else節のステートメント
-// @note else_stmt は NULL もありうる．
+// @note else_stmt は nullptr もありうる．
 ElbStmt*
 EiFactory::new_IfStmt(const VlNamedObj* parent,
 		      ElbProcess* process,
@@ -156,7 +156,7 @@ EiFactory::new_IfStmt(const VlNamedObj* parent,
 
 // @brief case 文を生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] expr 条件式
 ElbStmt*
@@ -185,7 +185,7 @@ EiFactory::new_CaseStmt(const VlNamedObj* parent,
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] stmt 本体のステートメント
@@ -232,7 +232,7 @@ EiLoopStmt::_body_stmt() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] stmt 本体のステートメント
@@ -264,7 +264,7 @@ EiWhileStmt::type() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] stmt 本体のステートメント
@@ -296,7 +296,7 @@ EiRepeatStmt::type() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] stmt 本体のステートメント
@@ -328,7 +328,7 @@ EiWaitStmt::type() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] init_stmt 初期化式
@@ -380,7 +380,7 @@ EiForStmt::inc_stmt() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] stmt 本体のステートメント
 EiForeverStmt::EiForeverStmt(const VlNamedObj* parent,
@@ -418,7 +418,7 @@ EiForeverStmt::body_stmt() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] stmt 本体のステートメント
@@ -473,7 +473,7 @@ EiIfStmt::_body_stmt() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] cond 条件式
 // @param[in] stmt 本体のステートメント
@@ -516,8 +516,8 @@ EiIfElseStmt::else_stmt() const
 // @brief コンストラクタ
 EiCaseItem::EiCaseItem() :
   mExprNum(0),
-  mExprList(NULL),
-  mBodyStmt(NULL)
+  mExprList(nullptr),
+  mBodyStmt(nullptr)
 {
 }
 
@@ -569,7 +569,7 @@ EiCaseItem::body_stmt() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] expr 条件式
 // @param[in] caseitem_list caseitem のリストの要素数

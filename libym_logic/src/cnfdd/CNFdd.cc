@@ -31,7 +31,7 @@ CNFdd::set(CNFddMgrImpl* mgr,
     top->mPrev = this;
   }
   mMgr->mTopCNFdd = this;
-  mPrev = NULL;
+  mPrev = nullptr;
 }
 
 // @brief (mMgr, mRoot) への参照をなくす時に呼ばれる関数

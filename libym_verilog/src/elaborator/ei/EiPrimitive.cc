@@ -34,7 +34,7 @@ EiFactory::new_PrimHead(const VlNamedObj* parent,
 			const PtItem* pt_header,
 			bool has_delay)
 {
-  EiPrimHead* head = NULL;
+  EiPrimHead* head = nullptr;
   if ( has_delay ) {
     void* p = mAlloc.get_memory(sizeof(EiPrimHeadD));
     head = new (p) EiPrimHeadD(parent, pt_header);
@@ -57,7 +57,7 @@ EiFactory::new_UdpHead(const VlNamedObj* parent,
 		       const ElbUdpDefn* udp,
 		       bool has_delay)
 {
-  EiPrimHead* head = NULL;
+  EiPrimHead* head = nullptr;
   if ( has_delay ) {
     void* p = mAlloc.get_memory(sizeof(EiPrimHeadUD));
     head = new (p) EiPrimHeadUD(parent, pt_header, udp);
@@ -78,7 +78,7 @@ EiFactory::new_CellHead(const VlNamedObj* parent,
 			const PtItem* pt_header,
 			const Cell* cell)
 {
-  EiPrimHead* head = NULL;
+  EiPrimHead* head = nullptr;
   void* p = mAlloc.get_memory(sizeof(EiPrimHeadC));
   head = new (p) EiPrimHeadC(parent, pt_header, cell);
   return head;
@@ -171,7 +171,7 @@ EiPrimHead::prim_type() const
 const char*
 EiPrimHead::def_name() const
 {
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( prim_type() ) {
   case kVpiAndPrim:      nm = "and"; break;
   case kVpiNandPrim:     nm = "nand"; break;
@@ -209,18 +209,18 @@ EiPrimHead::def_name() const
 }
 
 // @brief UDP 定義を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 const ElbUdpDefn*
 EiPrimHead::udp_defn() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief セルを返す．
 const Cell*
 EiPrimHead::cell() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 0 の強さを得る．
@@ -244,11 +244,11 @@ EiPrimHead::drive1() const
 }
 
 // @brief 遅延式を得る．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbDelay*
 EiPrimHead::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 遅延式を設定する．
@@ -583,7 +583,7 @@ EiPrimArray::elem_by_index(int index) const
   else {
     // 範囲外
     ASSERT_NOT_REACHED;
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -605,7 +605,7 @@ EiPrimArray::_primitive_by_index(int index) const
   else {
     // 範囲外
     ASSERT_NOT_REACHED;
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -631,7 +631,7 @@ EiPrimArray::pt_inst() const
 // @brief コンストラクタ
 EiPrimitive::EiPrimitive() :
   mPortNum(0),
-  mPortArray(NULL)
+  mPortArray(nullptr)
 {
 }
 
@@ -738,7 +738,7 @@ EiPrimitive::init_port(EiPrimTerm* term_array)
   mPortArray = term_array;
 
   const Cell* cell = this->cell();
-  if ( cell == NULL ) {
+  if ( cell == nullptr ) {
     ymuint output_num;
     ymuint inout_num;
     ymuint input_num;

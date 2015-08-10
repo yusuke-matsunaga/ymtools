@@ -257,33 +257,33 @@ main(int argc,
     // docstr
     // argstr
     { "verbose", 'v', POPT_ARG_NONE, &verbose, 0,
-      "enable verbose mode", NULL },
+      "enable verbose mode", nullptr },
 
-    { "gen", 'g', POPT_ARG_NONE, NULL, 1,
-      "generate all NPN equivalent functions mode", NULL },
+    { "gen", 'g', POPT_ARG_NONE, nullptr, 1,
+      "generate all NPN equivalent functions mode", nullptr },
 
-    { "rgen", 'r', POPT_ARG_NONE, NULL, 2,
-      "randomly generate NPN equivalent functions mode", NULL },
+    { "rgen", 'r', POPT_ARG_NONE, nullptr, 2,
+      "randomly generate NPN equivalent functions mode", nullptr },
 
     { "ni", 'i', POPT_ARG_INT, &ni, 0,
-      "number of inputs", NULL },
+      "number of inputs", nullptr },
 
     { "rnum", 'n', POPT_ARG_INT, &rnum, 0,
-      "number of functions to be generated", NULL },
+      "number of functions to be generated", nullptr },
 
     { "rseed", 's', POPT_ARG_INT, &rseed, 0,
-      "random seed", NULL },
+      "random seed", nullptr },
 
     { "bnum", 'b', POPT_ARG_INT, &bnum, 0,
-      "number of bit-patterns to be tested", NULL },
+      "number of bit-patterns to be tested", nullptr },
 
     POPT_AUTOHELP
 
-    { NULL, '\0', 0, NULL, 0, NULL, NULL }
+    { nullptr, '\0', 0, nullptr, 0, nullptr, nullptr }
   };
 
   // オプション解析用のコンテキストを生成する．
-  poptContext popt_context = poptGetContext(NULL, argc, argv, options, 0);
+  poptContext popt_context = poptGetContext(nullptr, argc, argv, options, 0);
   poptSetOtherOptionHelp(popt_context, "[OPTIONS]* <file-name> ...");
 
   // オプション解析を行う．

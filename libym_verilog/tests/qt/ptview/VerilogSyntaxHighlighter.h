@@ -28,7 +28,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親の TextEdit
-  VerilogSyntaxHighlighter(QTextEdit* parent = NULL);
+  VerilogSyntaxHighlighter(QTextEdit* parent = nullptr);
 
   /// @brief デストラクタ
   ~VerilogSyntaxHighlighter();

@@ -52,7 +52,7 @@ public:
 
   /// @brief 階層ブランチの取得
   /// @note kDisable/kEnable/kSysEnable で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   PtNameBranchArray
   namebranch_array() const;
@@ -60,7 +60,7 @@ public:
   /// @brief 名前の取得
   /// @return 名前
   /// @note kDisable/kEnable/kSysEnable/kParBlock/kSeqBlock で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const char*
   name() const;
@@ -82,7 +82,7 @@ public:
   /// @brief コントロールの取得
   /// @return ディレイ/イベントコントロール
   /// @note kDc/kEc で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtControl*
   control() const;
@@ -90,7 +90,7 @@ public:
   /// @brief 本体のステートメントの取得
   /// @return 本体のステートメント
   /// @note kDc/kEc/kWait/kForever/kRepeat/kWhile/kFor/kIf で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtStmt*
   body() const;
@@ -98,7 +98,7 @@ public:
   /// @brief 式の取得
   /// @return 式
   /// @note kWait/kRepeat/kWhile/kFor/kIf/kCase/kCaseX/kCaseZ で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   expr() const;
@@ -106,7 +106,7 @@ public:
   /// @brief 左辺式の取得
   /// @return 左辺式
   /// @note kAssign/kForce/kPcAssign/kRelease/kDeassign で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   lhs() const;
@@ -114,7 +114,7 @@ public:
   /// @brief 右辺式の取得
   /// @return 右辺式
   /// @note kAssign/kForce/kPcAssign で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   rhs() const;
@@ -122,7 +122,7 @@ public:
   /// @brief イベントプライマリの取得
   /// @return イベントプライマリ
   /// @note kEvent で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   primary() const;
@@ -130,7 +130,7 @@ public:
   /// @brief 条件が成り立たなかったとき実行されるステートメントの取得
   /// @return 条件が成り立たなかったとき実行されるステートメント
   /// @note kIf で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtStmt*
   else_body() const;
@@ -145,7 +145,7 @@ public:
 
   /// @brief case item の取得
   /// @note kCase/kCaseX/kCaseZ で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtCaseItem*
   caseitem(ymuint pos) const;
@@ -153,7 +153,7 @@ public:
   /// @brief 初期化代入文の取得
   /// @return 初期化代入文
   /// @note kFor で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtStmt*
   init_stmt() const;
@@ -161,7 +161,7 @@ public:
   /// @brief 繰り返し代入文の取得
   /// @return 繰り返し代入文
   /// @note kFor で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtStmt*
   next_stmt() const;

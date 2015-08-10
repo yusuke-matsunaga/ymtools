@@ -182,7 +182,7 @@ inline
 Aig
 AigMgrImpl::make_zero()
 {
-  return Aig(pack(NULL, false));
+  return Aig(pack(nullptr, false));
 }
 
 // @brief 定数1関数をつくる．
@@ -190,7 +190,7 @@ inline
 Aig
 AigMgrImpl::make_one()
 {
-  return Aig(pack(NULL, true));
+  return Aig(pack(nullptr, true));
 }
 
 // @brief AigNode* と bool をパックする．

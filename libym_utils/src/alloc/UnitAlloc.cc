@@ -21,7 +21,7 @@ UnitAlloc::UnitAlloc(ymuint64 unit_size,
 		     ymuint64 block_size) :
   mUnitSize(unit_size),
   mBlockSize(block_size),
-  mAvailTop(NULL)
+  mAvailTop(nullptr)
 {
   if ( mUnitSize < sizeof(Block) ) {
     mUnitSize = sizeof(Block);
@@ -44,7 +44,7 @@ UnitAlloc::_get_memory(ymuint64 n)
     return alloc(n);
   }
 
-  if ( mAvailTop == NULL ) {
+  if ( mAvailTop == nullptr ) {
     void* chunk = alloc(mUnitSize * mBlockSize);
     mAllocList.push_back(chunk);
 
@@ -54,7 +54,7 @@ UnitAlloc::_get_memory(ymuint64 n)
       b->mLink = mAvailTop;
       mAvailTop = b;
     }
-    ASSERT_COND( mAvailTop != NULL );
+    ASSERT_COND( mAvailTop != nullptr );
   }
   Block* b = mAvailTop;
   mAvailTop = b->mLink;
@@ -86,7 +86,7 @@ UnitAlloc::_destroy()
     free(mUnitSize * mBlockSize, chunk);
   }
   mAllocList.clear();
-  mAvailTop = NULL;
+  mAvailTop = nullptr;
 }
 
 END_NAMESPACE_YM

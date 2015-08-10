@@ -181,7 +181,7 @@ bool
 ItvlMgrImpl::add_cell(ItvlCell* cell,
 		      ItvlCell*& ptr)
 {
-  if ( ptr == NULL ) {
+  if ( ptr == nullptr ) {
     ptr = cell;
     ptr->mBalance = 0;
     return true;
@@ -458,7 +458,7 @@ bool
 ItvlMgrImpl::remove_cell(ItvlCell* cell,
 			 ItvlCell*& ptr)
 {
-  if ( ptr == NULL ) {
+  if ( ptr == nullptr ) {
     // セルが存在しない?
     // 本当はエラーだけど無視しちゃう．
     return false;
@@ -515,7 +515,7 @@ ItvlMgrImpl::erase(int d)
 {
   // d を含む区間を探す．
   ItvlCell* cell = find(d, mRoot);
-  if ( cell == NULL ) {
+  if ( cell == nullptr ) {
     // もともと入っていない？
     // ほんとはおかしいけど，無視しておこう．
     return;
@@ -690,7 +690,7 @@ ItvlMgrImpl::check_cell(ItvlCell* cell,
 			int& l,
 			int& r) const
 {
-  if ( cell == NULL ) {
+  if ( cell == nullptr ) {
     return 0;
   }
   int l1, r1;
@@ -852,7 +852,7 @@ ItvlMgrImpl::restore_cell(IDO& s)
     return cell;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 

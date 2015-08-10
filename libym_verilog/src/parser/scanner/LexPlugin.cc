@@ -26,7 +26,7 @@ LexPlugin::LexPlugin(RawLex& lex,
 		     const char* name) :
   mLex(lex),
   mName(name),
-  mLink(NULL)
+  mLink(nullptr)
 {
   mLex.add_plugin(name, this);
 }

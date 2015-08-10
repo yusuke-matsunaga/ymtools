@@ -62,14 +62,14 @@ private:
 
   // 親の SimEngine
   SimEngine* mEngine;
-  
+
   // 本当のスコープ
   const VpiScope* mScope;
 
   // disable されていたら true となるフラグ
   bool mDisabled;
 
-  // 親のスコープ (NULLもありうる)
+  // 親のスコープ (nullptrもありうる)
   SimScope* mParent;
 
   // 出口のノード

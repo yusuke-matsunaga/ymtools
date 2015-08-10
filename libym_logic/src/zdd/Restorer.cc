@@ -96,9 +96,9 @@ Restorer::read()
       // 内部のノードの記述
       char* p = strtok(buff, ": \t");
       ymuint vid = atoi(p);
-      p = strtok(NULL, ": \t");
+      p = strtok(nullptr, ": \t");
       ZddEdge e0 = find_edge(p);
-      p = strtok(NULL, ": \t");
+      p = strtok(nullptr, ": \t");
       ZddEdge e1 = find_edge(p);
       ZddEdge ans = mMgr->make_zdd(vid, e0, e1);
       mEdgeVector.push_back(ans);

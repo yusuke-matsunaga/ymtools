@@ -45,11 +45,11 @@ CptExpr::namebranch_array() const
 
 // @brief 末尾の名前の取得
 // @return 末尾の名前
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const char*
 CptExpr::name() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief オペランドの数の取得
@@ -66,7 +66,7 @@ CptExpr::operand_num() const
 const PtExpr*
 CptExpr::operand(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 定数インデックスのチェック
@@ -92,7 +92,7 @@ CptExpr::index_num() const
 const PtExpr*
 CptExpr::index(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲指定モードの取得
@@ -106,20 +106,20 @@ CptExpr::range_mode() const
 
 // @brief 範囲の左側の式の取得
 // @return 範囲の左側の式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptExpr::left_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲の右側の式の取得
 // @return 範囲の右側の式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptExpr::right_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 定数の種類の取得
@@ -153,11 +153,11 @@ CptExpr::const_uint() const
 // @brief 整数型および文字列型の定数の文字列表現の取得
 // @return 値の文字列表現\n
 // 整数型のサイズと基数は含まない．
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const char*
 CptExpr::const_str() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 実数型の値の取得
@@ -304,7 +304,7 @@ CptOpr1::operand(ymuint pos) const
     return mOpr;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -355,7 +355,7 @@ CptOpr2::operand(ymuint pos) const
     return mOpr[pos];
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -409,7 +409,7 @@ CptOpr3::operand(ymuint pos) const
     return mOpr[pos];
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -555,7 +555,7 @@ CptMinTypMax::operand(ymuint idx) const
     return mValue[idx];
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 

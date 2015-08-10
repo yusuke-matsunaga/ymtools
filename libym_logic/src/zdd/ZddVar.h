@@ -75,7 +75,7 @@ ZddVar::ZddVar(VarId id) :
   mId(id),
   mLevel(id.val()),
   mMark(0),
-  mLink(NULL)
+  mLink(nullptr)
 {
 }
 

@@ -40,7 +40,7 @@ public:
   /// @brief C文字列からの変換用コンストラクタ
   /// @param[in] str 文字列
   /// @note デフォルトの空コンストラクタでもある．
-  StrBuff(const char* str = NULL);
+  StrBuff(const char* str = nullptr);
 
   /// @brief コピーコンストラクタ (StrBuff)
   /// @param[in] src コピー元のオブジェクト (StrBuff)

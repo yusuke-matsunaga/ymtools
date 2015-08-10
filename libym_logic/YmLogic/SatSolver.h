@@ -33,7 +33,7 @@ public:
   /// @param[in] rec_out ログを記録するストリームへのポインタ
   SatSolver(const string& type = string(),
 	    const string& option = string(),
-	    ostream* rec_out = NULL);
+	    ostream* rec_out = nullptr);
 
   /// @brief デストラクタ
   ~SatSolver();
@@ -44,7 +44,7 @@ public:
   // 外部インターフェイス
   //
   // 内部状態を変更させるメソッド群
-  // rec_outp が NULL でない時はログに記録する．
+  // rec_outp が nullptr でない時はログに記録する．
   //////////////////////////////////////////////////////////////////////
 
   /// @brief 変数を追加する．
@@ -176,7 +176,7 @@ private:
   /// @brief リテラルをログに出力する．
   /// @param[in] lit リテラル
   ///
-  /// この関数は mRecOut != NULL を仮定している．
+  /// この関数は mRecOut != nullptr を仮定している．
   void
   put_lit(Literal lit) const;
 
@@ -190,7 +190,7 @@ private:
   SatSolverImpl* mImpl;
 
   // ログ出力用のストリーム
-  // 記録しない時は NULL
+  // 記録しない時は nullptr
   ostream* mRecOut;
 
 };

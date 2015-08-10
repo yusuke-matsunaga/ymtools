@@ -51,21 +51,21 @@ VlDumper::file_loc_mode() const
   return mImpl->file_loc_mode();
 }
 
-// @brief NULL ポインタの出力を抑止する．
+// @brief nullptr ポインタの出力を抑止する．
 void
 VlDumper::enable_nullptr_suppress_mode()
 {
   mImpl->enable_nullptr_suppress_mode();
 }
 
-// @brief NULL ポインタの出力を行う．
+// @brief nullptr ポインタの出力を行う．
 void
 VlDumper::disable_nullptr_suppress_mode()
 {
   mImpl->disable_nullptr_suppress_mode();
 }
 
-// @brief NULL ポインタの出力抑止モードの状態を得る．
+// @brief nullptr ポインタの出力抑止モードの状態を得る．
 bool
 VlDumper::nullptr_suppress_mode() const
 {

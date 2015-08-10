@@ -19,7 +19,7 @@ BEGIN_NAMESPACE_YM_CELL
 // @brief コンストラクタ
 CiBundle::CiBundle() :
   mPinNum(0),
-  mPinList(NULL)
+  mPinList(nullptr)
 {
 }
 

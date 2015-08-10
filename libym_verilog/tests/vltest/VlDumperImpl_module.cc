@@ -60,7 +60,7 @@ VlDumperImpl::put_module(const char* label,
   put("vpiFullName", module->full_name() );
   put("vpiDefFile",  module->def_file_region() );
 
-  bool array = (module->module_array() != NULL);
+  bool array = (module->module_array() != nullptr);
   put("vpiArray", array);
   if ( array ) {
     put("vpiModuleArray", module->module_array()->full_name() );
@@ -174,7 +174,7 @@ VlDumperImpl::put_port(const char* label,
   put("vpiDirection", port->direction() );
   put("vpiExplicitName", port->is_explicit_name() );
   put("vpiPortIndex", port->port_index() );
-  if ( port->name() != NULL ) {
+  if ( port->name() != nullptr ) {
     put("vpiName", port->name() );
   }
 #if 0

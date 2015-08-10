@@ -241,7 +241,7 @@ public:
   output_pol() const;
 
   /// @brief 式を取り出す．
-  /// @note NULL の場合もありうる．
+  /// @note nullptr の場合もありうる．
   virtual
   const PtExpr*
   expr() const;

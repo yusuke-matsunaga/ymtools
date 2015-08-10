@@ -63,7 +63,7 @@ public:
   /// @retval true 値の読み出しが成功した．
   /// @retval false エラーが起こった．
   ///
-  /// 空の時は node に NULL を入れて true を返す．
+  /// 空の時は node に nullptr を入れて true を返す．
   bool
   get_singleton_or_null(const char* name,
 			const DotlibNode*& node) const;

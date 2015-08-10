@@ -53,7 +53,7 @@ BNodeMgr::free_node(BNode* node)
 const char*
 BNodeMgr::alloc_name(const char* src)
 {
-  if ( src == NULL ) {
+  if ( src == nullptr ) {
     static char dummy[1] = { '\0' };
     src = dummy;
   }
@@ -78,7 +78,7 @@ BNodeEdge*
 BNodeMgr::alloc_edgearray(size_t n)
 {
   if ( n == 0 ) {
-    return NULL;
+    return nullptr;
   }
   void* p = mEdgeAlloc.get_memory(sizeof(BNodeEdge) * n);
   return new (p) BNodeEdge[n];

@@ -35,7 +35,7 @@ public:
 
   /// @brief 入力側のノードを得る．
   /// @retval 入力側のノード 通常の枝の場合
-  /// @retval NULL 定数0に接続している枝の場合
+  /// @retval nullptr 定数0に接続している枝の場合
   const BdnNode*
   from() const;
 
@@ -46,7 +46,7 @@ public:
 
   /// @brief 入力側のノードを得る．
   /// @retval 入力側のノード 通常の枝の場合
-  /// @retval NULL 定数0に接続している枝の場合
+  /// @retval nullptr 定数0に接続している枝の場合
   BdnNode*
   from();
 
@@ -256,7 +256,7 @@ public:
 
   /// @brief 関連するポートを返す．
   /// @note kPRIMARY_INPUT および kPRIMARY_OUTPUT の時のみ意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   const BdnPort*
   port() const;
 
@@ -267,17 +267,17 @@ public:
   port_bitpos() const;
 
   /// @brief 入出力ノードの場合に相方のノードを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   const BdnNode*
   alt_node() const;
 
   /// @brief 関連する D-FF を返す．
-  /// @note D-FF に関連していない場合には NULL を返す．
+  /// @note D-FF に関連していない場合には nullptr を返す．
   const BdnDff*
   dff() const;
 
   /// @brief 関連するラッチを返す．
-  /// @note ラッチに関連していない場合には NULL を返す．
+  /// @note ラッチに関連していない場合には nullptr を返す．
   const BdnLatch*
   latch() const;
 
@@ -325,14 +325,14 @@ public:
   /// @brief ファンインのノードを得る．
   /// @param[in] pos 入力番号(0 or 1)
   /// @return pos 番めのファンインのノード
-  /// @note 該当するファンインがなければ NULL を返す．
+  /// @note 該当するファンインがなければ nullptr を返す．
   const BdnNode*
   fanin(ymuint pos) const;
 
   /// @brief ファンインのノードを得る．
   /// @param[in] pos 入力番号(0 or 1)
   /// @return pos 番めのファンインのノード
-  /// @note 該当するファンインがなければ NULL を返す．
+  /// @note 該当するファンインがなければ nullptr を返す．
   BdnNode*
   fanin(ymuint pos);
 
@@ -377,13 +377,13 @@ public:
 
   /// @brief ファンイン1のノードを得る．
   /// @return 1番めのファンインのノード
-  /// @note 該当するファンインがなければ NULL を返す．
+  /// @note 該当するファンインがなければ nullptr を返す．
   const BdnNode*
   fanin1() const;
 
   /// @brief ファンイン1のノードを得る．
   /// @return 1番めのファンインのノード
-  /// @note 該当するファンインがなければ NULL を返す．
+  /// @note 該当するファンインがなければ nullptr を返す．
   BdnNode*
   fanin1();
 
@@ -510,7 +510,7 @@ private:
 // コンストラクタ
 inline
 BdnEdge::BdnEdge() :
-  mFrom(NULL),
+  mFrom(nullptr),
   mToPos(0UL)
 {
 }
@@ -755,7 +755,7 @@ BdnNode::fanin0_inv() const
 
 // @brief ファンイン1のノードを得る．
 // @return 1番めのファンインのノード
-// @note 該当するファンインがなければ NULL を返す．
+// @note 該当するファンインがなければ nullptr を返す．
 inline
 const BdnNode*
 BdnNode::fanin1() const
@@ -765,7 +765,7 @@ BdnNode::fanin1() const
 
 // @brief ファンイン1のノードを得る．
 // @return 1番めのファンインのノード
-// @note 該当するファンインがなければ NULL を返す．
+// @note 該当するファンインがなければ nullptr を返す．
 inline
 BdnNode*
 BdnNode::fanin1()

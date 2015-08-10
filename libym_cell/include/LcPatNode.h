@@ -133,8 +133,8 @@ inline
 LcPatNode::LcPatNode() :
   mType(0U)
 {
-  mFanin[0] = NULL;
-  mFanin[1] = NULL;
+  mFanin[0] = nullptr;
+  mFanin[1] = nullptr;
 }
 
 // @brief デストラクタ

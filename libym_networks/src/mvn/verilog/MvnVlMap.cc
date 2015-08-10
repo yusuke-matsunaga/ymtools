@@ -49,7 +49,7 @@ MvnVlMap::operator=(const MvnVlMap& src)
   if ( &src != this) {
     clear();
     ymuint n = src.mArray.size();
-    mArray.resize(n, NULL);
+    mArray.resize(n, nullptr);
     for (ymuint i = 0; i < n; ++ i) {
       const MapRec* src_rec = src.mArray[i];
       if ( src_rec ) {
@@ -119,7 +119,7 @@ bool
 MvnVlMap::is_single_elem(ymuint id) const
 {
   MapRec* rec = get(id);
-  if ( rec == NULL ) {
+  if ( rec == nullptr ) {
     return false;
   }
   return rec->is_single_elem();
@@ -131,7 +131,7 @@ bool
 MvnVlMap::is_array_elem(ymuint id) const
 {
   MapRec* rec = get(id);
-  if ( rec == NULL ) {
+  if ( rec == nullptr ) {
     return false;
   }
   return rec->is_array_elem();
@@ -139,26 +139,26 @@ MvnVlMap::is_array_elem(ymuint id) const
 
 // @brief id に対応する宣言要素を返す．(単一要素版)
 // @param[in] id MvNode の ID番号
-// @note is_single_elem(id) == false の時は NULL が返される．
+// @note is_single_elem(id) == false の時は nullptr が返される．
 const VlDecl*
 MvnVlMap::get_single_elem(ymuint id) const
 {
   MapRec* rec = get(id);
-  if ( rec == NULL ) {
-    return NULL;
+  if ( rec == nullptr ) {
+    return nullptr;
   }
   return rec->get_single_elem();
 }
 
 // @brief id に対応する宣言要素を返す．(配列要素版)
 // @param[in] id MvNode の ID番号
-// @note is_array_elem(id) == false の時は NULL が返される．
+// @note is_array_elem(id) == false の時は nullptr が返される．
 const VlDeclArray*
 MvnVlMap::get_array_elem(ymuint id) const
 {
   MapRec* rec = get(id);
-  if ( rec == NULL ) {
-    return NULL;
+  if ( rec == nullptr ) {
+    return nullptr;
   }
   return rec->get_array_elem();
 }
@@ -170,7 +170,7 @@ ymuint
 MvnVlMap::get_array_offset(ymuint id) const
 {
   MapRec* rec = get(id);
-  if ( rec == NULL ) {
+  if ( rec == nullptr ) {
     return 0;
   }
   return rec->get_array_offset();
@@ -184,19 +184,19 @@ MvnVlMap::put(ymuint id,
 	      MapRec* elem)
 {
   if ( mArray.size() <= id ) {
-    mArray.resize(id + 1, NULL);
+    mArray.resize(id + 1, nullptr);
   }
   mArray[id] = elem;
 }
 
 // @brief 要素を取り出す．
 // @param[in] id ID番号
-// @note id が範囲外の時は NULL が返される．
+// @note id が範囲外の時は nullptr が返される．
 MapRec*
 MvnVlMap::get(ymuint id) const
 {
   if ( mArray.size() <= id ) {
-    return NULL;
+    return nullptr;
   }
   return mArray[id];
 }
@@ -233,7 +233,7 @@ SingleMapRec::is_array_elem() const
 }
 
 // @brief 宣言要素を返す．(単一要素版)
-// @note is_single_elem() == false の時は NULL が返される．
+// @note is_single_elem() == false の時は nullptr が返される．
 const VlDecl*
 SingleMapRec::get_single_elem() const
 {
@@ -241,11 +241,11 @@ SingleMapRec::get_single_elem() const
 }
 
 // @brief 宣言要素を返す．(配列要素版)
-// @note is_array_elem(id) == false の時は NULL が返される．
+// @note is_array_elem(id) == false の時は nullptr が返される．
 const VlDeclArray*
 SingleMapRec::get_array_elem() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 宣言要素のオフセットを返す．(配列要素版)
@@ -291,15 +291,15 @@ ArrayMapRec::is_array_elem() const
 }
 
 // @brief 宣言要素を返す．(単一要素版)
-// @note is_single_elem() == false の時は NULL が返される．
+// @note is_single_elem() == false の時は nullptr が返される．
 const VlDecl*
 ArrayMapRec::get_single_elem() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 宣言要素を返す．(配列要素版)
-// @note is_array_elem(id) == false の時は NULL が返される．
+// @note is_array_elem(id) == false の時は nullptr が返される．
 const VlDeclArray*
 ArrayMapRec::get_array_elem() const
 {

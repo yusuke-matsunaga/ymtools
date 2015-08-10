@@ -59,20 +59,20 @@ SptItem::prim_type() const
 
 // @brief strength の取得
 // @return 信号強度
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtStrength*
 SptItem::strength() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief delay の取得
 // @return 遅延
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtDelay*
 SptItem::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief パラメータ割り当てリストの取得
@@ -96,7 +96,7 @@ SptItem::size() const
 const PtDefParam*
 SptItem::defparam(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief continuous assign 要素の取得
@@ -104,7 +104,7 @@ SptItem::defparam(ymuint pos) const
 const PtContAssign*
 SptItem::contassign(ymuint) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief module/UDP/gate instance 要素の取得
@@ -112,16 +112,16 @@ SptItem::contassign(ymuint) const
 const PtInst*
 SptItem::inst(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 名前の取得
 // @return 名前
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const char*
 SptItem::name() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief automatic 情報の取得
@@ -164,11 +164,11 @@ SptItem::item_array() const
 
 // @brief 本体のステートメントの取得
 // @return 本体のステートメント
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtStmt*
 SptItem::body() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 符号の取得
@@ -183,20 +183,20 @@ SptItem::is_signed() const
 
 // @brief 範囲の左側の式の取得
 // @return 範囲の左側の式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 SptItem::left_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 範囲の右側の式の取得
 // @return 範囲の右側の式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 SptItem::right_range() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 戻値のデータ型の取得
@@ -259,20 +259,20 @@ SptItem::terminal(ymuint pos) const
 
 // @brief パス記述の取得
 // @return パス記述
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtPathDecl*
 SptItem::path_decl() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 条件式の取得
 // @return 条件式
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 SptItem::expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 条件が成り立ったときに生成される宣言ヘッダ配列の取得
@@ -305,38 +305,38 @@ SptItem::else_item_array() const
 
 // @brief case item の取得
 // @return 先頭の case item
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtGenCaseItem*
 SptItem::caseitem(ymuint /* pos */) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 繰り返し制御用の変数名の取得
 // @return 繰り返し制御用の変数名
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const char*
 SptItem::loop_var() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 初期化文の右辺の取得
 // @return 初期化文の右辺
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 SptItem::init_expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 増加文の右辺の取得
 // @return 増加文の右辺
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 SptItem::next_expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -1005,7 +1005,7 @@ SptFactory::new_ContAssignH(const FileRegion& file_region,
 			    PtContAssignArray elem_array)
 {
   void* p = alloc().get_memory(sizeof(SptContAssignH));
-  return new (p) SptContAssignH(file_region, NULL, NULL, elem_array);
+  return new (p) SptContAssignH(file_region, nullptr, nullptr, elem_array);
 }
 
 // @brief continuous assign 文のヘッダの生成 (strengthつき)
@@ -1019,7 +1019,7 @@ SptFactory::new_ContAssignH(const FileRegion& file_region,
 			    PtContAssignArray elem_array)
 {
   void* p = alloc().get_memory(sizeof(SptContAssignH));
-  return new (p) SptContAssignH(file_region, strength, NULL, elem_array);
+  return new (p) SptContAssignH(file_region, strength, nullptr, elem_array);
 }
 
 // @brief continuous assign 文のヘッダの生成 (遅延付き)
@@ -1033,7 +1033,7 @@ SptFactory::new_ContAssignH(const FileRegion& file_region,
 			    PtContAssignArray elem_array)
 {
   void* p = alloc().get_memory(sizeof(SptContAssignH));
-  return new (p) SptContAssignH(file_region, NULL, delay, elem_array);
+  return new (p) SptContAssignH(file_region, nullptr, delay, elem_array);
 }
 
 // @brief continuous assign 文のヘッダの生成 (strength, 遅延付き)
@@ -1116,7 +1116,7 @@ SptFactory::new_Task(const FileRegion& file_region,
   return new (p) SptTf(file_region,
 		       kPtItem_Task,
 		       name, automatic,
-		       false, NULL, NULL,
+		       false, nullptr, nullptr,
 		       kVpiVarNone,
 		       iohead_array,
 		       declhead_array,
@@ -1147,7 +1147,7 @@ SptFactory::new_Function(const FileRegion& file_region,
   return new (p) SptTf(file_region,
 		       kPtItem_Func,
 		       name, automatic,
-		       sign, NULL, NULL,
+		       sign, nullptr, nullptr,
 		       kVpiVarNone,
 		       iohead_array,
 		       declhead_array,
@@ -1215,7 +1215,7 @@ SptFactory::new_TypedFunc(const FileRegion& file_region,
   return new (p) SptTf(file_region,
 		       kPtItem_Func,
 		       name, automatic,
-		       sign, NULL, NULL,
+		       sign, nullptr, nullptr,
 		       func_type,
 		       iohead_array,
 		       declhead_array,
@@ -1235,7 +1235,7 @@ SptFactory::new_GateH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptGateH));
   return new (p) SptGateH(file_region,
 			  type,
-			  NULL, NULL,
+			  nullptr, nullptr,
 			  elem_array);
 }
 
@@ -1254,7 +1254,7 @@ SptFactory::new_GateH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptGateH));
   return new (p) SptGateH(file_region,
 			  type,
-			  strength, NULL,
+			  strength, nullptr,
 			  elem_array);
 }
 
@@ -1273,7 +1273,7 @@ SptFactory::new_GateH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptGateH));
   return new (p) SptGateH(file_region,
 			  type,
-			  NULL, delay,
+			  nullptr, delay,
 			  elem_array);
 }
 
@@ -1311,7 +1311,7 @@ SptFactory::new_MuH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptMuH));
   return new (p) SptMuH(file_region, def_name,
 			PtConnectionArray(),
-			NULL, NULL,
+			nullptr, nullptr,
 			elem_array);
 }
 
@@ -1330,7 +1330,7 @@ SptFactory::new_MuH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptMuH));
   return new (p) SptMuH(file_region, def_name,
 			PtConnectionArray(),
-			strength, NULL,
+			strength, nullptr,
 			elem_array);
 }
 
@@ -1349,7 +1349,7 @@ SptFactory::new_MuH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptMuH));
   return new (p) SptMuH(file_region, def_name,
 			PtConnectionArray(),
-			NULL, delay,
+			nullptr, delay,
 			elem_array);
 }
 
@@ -1389,7 +1389,7 @@ SptFactory::new_MuH(const FileRegion& file_region,
   void* p = alloc().get_memory(sizeof(SptMuH));
   return new (p) SptMuH(file_region, def_name,
 			con_array,
-			NULL, NULL,
+			nullptr, nullptr,
 			elem_array);
 }
 
@@ -1402,7 +1402,7 @@ SptFactory::new_Inst(const FileRegion& file_region,
 		     PtConnectionArray con_array)
 {
   void* p = alloc().get_memory(sizeof(SptInst));
-  return new (p) SptInst(file_region, NULL, NULL, NULL, con_array);
+  return new (p) SptInst(file_region, nullptr, nullptr, nullptr, con_array);
 }
 
 // @brief 名前付き module instance/UDP/gate instance の要素の生成
@@ -1416,7 +1416,7 @@ SptFactory::new_InstN(const FileRegion& file_region,
 		      PtConnectionArray con_array)
 {
   void* p = alloc().get_memory(sizeof(SptInst));
-  return new (p) SptInst(file_region, name, NULL, NULL, con_array);
+  return new (p) SptInst(file_region, name, nullptr, nullptr, con_array);
 }
 
 // @brief 名前と範囲付き module instance/UDP/gate instance の要素の生成

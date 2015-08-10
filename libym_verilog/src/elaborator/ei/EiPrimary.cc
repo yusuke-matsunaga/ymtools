@@ -146,11 +146,11 @@ EiPrimaryBase::_set_reqsize(const VlValueType& type)
 // @brief オペランドを返す．
 // @param[in] pos 位置番号
 // @note 演算子の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbExpr*
 EiPrimaryBase::_operand(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -196,7 +196,7 @@ EiPrimary::is_const() const
 }
 
 // @brief 宣言要素もしくは配列型宣言要素への参照を返す．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlDeclBase*
 EiPrimary::decl_base() const
 {
@@ -282,7 +282,7 @@ EiDeclPrimary::is_primary() const
 }
 
 // @brief 宣言要素もしくは配列型宣言要素への参照を返す．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlDeclBase*
 EiDeclPrimary::decl_base() const
 {
@@ -337,11 +337,11 @@ EiDeclPrimary::_set_reqsize(const VlValueType& type)
 // @brief オペランドを返す．
 // @param[in] pos 位置番号
 // @note 演算子の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbExpr*
 EiDeclPrimary::_operand(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief パース木の定義要素を返す．
@@ -403,7 +403,7 @@ EiParamPrimary::constant_value() const
 }
 
 // @brief 宣言要素もしくは配列型宣言要素への参照を返す．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlDeclBase*
 EiParamPrimary::decl_base() const
 {
@@ -468,7 +468,7 @@ EiArrayElemPrimary::is_const() const
 }
 
 // @brief 宣言要素もしくは配列型宣言要素への参照を返す．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlDeclBase*
 EiArrayElemPrimary::decl_base() const
 {
@@ -493,7 +493,7 @@ EiArrayElemPrimary::declarray_dimension() const
 
 // @brief 配列型宣言要素への参照の場合，配列のインデックスを返す．
 // @param[in] pos 位置番号 ( 0 <= pos < declarray_dimension() )
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlExpr*
 EiArrayElemPrimary::declarray_index(ymuint pos) const
 {
@@ -577,7 +577,7 @@ EiConstArrayElemPrimary::is_constant_select() const
 }
 
 // @brief 宣言要素もしくは配列型宣言要素への参照を返す．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlDeclBase*
 EiConstArrayElemPrimary::decl_base() const
 {
@@ -602,11 +602,11 @@ EiConstArrayElemPrimary::declarray_dimension() const
 
 // @brief 配列型宣言要素への参照の場合，配列のインデックスを返す．
 // @param[in] pos 位置番号 ( 0 <= pos < declarray_dimension() )
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlExpr*
 EiConstArrayElemPrimary::declarray_index(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 配列型宣言要素への参照のオフセットを返す．

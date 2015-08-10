@@ -20,7 +20,7 @@ BEGIN_NAMESPACE_YM
 // @brief コンストラクタ
 GpMgr::GpMgr() :
   mAlloc(1024),
-  mHashTable(NULL),
+  mHashTable(nullptr),
   mHashSize(0)
 {
   alloc_table(1024);
@@ -31,21 +31,21 @@ GpMgr::~GpMgr()
 {
   // ノードのメモリは mAlloc のデストラクタで無事開放される．
 }
-  
+
 // @brief 定数0ノードを生成する．
 GpHandle
 GpMgr::make_const0()
 {
-  return GpHandle(NULL, false);
+  return GpHandle(nullptr, false);
 }
 
 // @brief 定数1ノードを生成する．
 GpHandle
 GpMgr::make_const1()
 {
-  return GpHandle(NULL, true);
+  return GpHandle(nullptr, true);
 }
-  
+
 // @brief 入力ノードを生成する．
 // @param[in] input_id 入力番号
 // @note すでに同じ入力番号のノードが存在していたらそれを返す．
@@ -93,7 +93,7 @@ GpMgr::make_and(GpHandle fanin0,
     // 上でハンドルの一致は調べているのでここに来たら逆極性
     return make_const0();
   }
-  
+
   // 順番の正規化
   if ( fanin0.node()->id() < fanin1.node()->id() ) {
     GpHandle tmp = fanin0;
@@ -118,7 +118,7 @@ GpMgr::make_and(GpHandle fanin0,
   node->mLevel = fanin0.node()->level() + fanin1.node()->level() + 1;
   node->mSize = count_size(node);
   node->mPat = fv;
-  
+
   // ハッシュ表に登録する．
   if ( mAndList.size() >= mNextLimit ) {
     alloc_table(mHashSize * 2);
@@ -170,7 +170,7 @@ GpMgr::count_size(GpNode* node)
   vector<bool> marks(mNodeList.size(), false);
   return cs_sub(node, marks);
 }
-  
+
 // @brief ハッシュ関数
 ymuint32
 GpMgr::hash_func(GpHandle fanin0,
@@ -192,14 +192,14 @@ GpMgr::alloc_table(ymuint req_size)
   while ( mHashSize < req_size ) {
     mHashSize <<= 1;
   }
-  
+
   mHashTable = new GpNode*[mHashSize];
   for (ymuint i = 0; i < mHashSize; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
   if ( old_size > 0 ) {
     for (ymuint i = 0; i < old_size; ++ i) {
-      GpNode* next = NULL;
+      GpNode* next = nullptr;
       for (GpNode* node = old_table[i]; node; node = next) {
 	next = node->mSlink;
 	ymuint pos = hash_func(node->mFanin[0], node->mFanin[1]);
@@ -222,7 +222,7 @@ GpMgr::alloc_table(ymuint req_size)
 // 入力ノードを表す
 GpNode::GpNode(ymuint id) :
   mId(id),
-  mSlink(NULL)
+  mSlink(nullptr)
 {
 }
 

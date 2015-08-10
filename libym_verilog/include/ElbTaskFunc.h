@@ -117,7 +117,7 @@ private:
 // @brief コンストラクタ
 inline
 ElbTaskFunc::ElbTaskFunc() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 

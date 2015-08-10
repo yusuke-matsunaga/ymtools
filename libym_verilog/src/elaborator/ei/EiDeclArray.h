@@ -193,7 +193,7 @@ public:
 
   /// @brief delay の取得
   /// @retval delay
-  /// @retval NULL delay の指定なし
+  /// @retval nullptr delay の指定なし
   virtual
   const VlDelay*
   delay() const;

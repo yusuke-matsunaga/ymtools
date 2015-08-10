@@ -509,28 +509,28 @@ main(int argc,
     // docstr
     // argstr
     { "verbose", 'v', POPT_ARG_NONE, &verbose, 0,
-      "enable verbose mode", NULL },
+      "enable verbose mode", nullptr },
 
     { "algorithm", 'a', POPT_ARG_INT, &algorithm, 0,
       "specify algorithm", "[0-3]"},
 
-    { "gen", 'g', POPT_ARG_NONE, NULL, 1,
-      "generate all NPN equivalent functions mode", NULL },
+    { "gen", 'g', POPT_ARG_NONE, nullptr, 1,
+      "generate all NPN equivalent functions mode", nullptr },
 
     { "dump", 'd', POPT_ARG_NONE, &dump, 0,
-      "dump rep. functions", NULL },
+      "dump rep. functions", nullptr },
 
-    { "rgen", 'r', POPT_ARG_NONE, NULL, 2,
-      "randomly generate NPN equivalent functions mode", NULL },
+    { "rgen", 'r', POPT_ARG_NONE, nullptr, 2,
+      "randomly generate NPN equivalent functions mode", nullptr },
 
-    { "verify", 'c', POPT_ARG_NONE, NULL, 3,
-      "verify mode", NULL },
+    { "verify", 'c', POPT_ARG_NONE, nullptr, 3,
+      "verify mode", nullptr },
 
-    { "func", 'f', POPT_ARG_NONE, NULL, 4,
-      "read function mode", NULL },
+    { "func", 'f', POPT_ARG_NONE, nullptr, 4,
+      "read function mode", nullptr },
 
-    { "rgen_walsh", 'w', POPT_ARG_NONE, NULL, 5,
-      "randomly generate NPN equivalent functions mode", NULL },
+    { "rgen_walsh", 'w', POPT_ARG_NONE, nullptr, 5,
+      "randomly generate NPN equivalent functions mode", nullptr },
 
     { "step1", '1', POPT_ARG_INT, &step1mode, 0,
       "step1 submode", "(0/1)" },
@@ -545,30 +545,30 @@ main(int argc,
       "step4 submode", "(0/1)" },
 
     { "table", 't', POPT_ARG_NONE, &table, 0,
-      "table look-up mode", NULL },
+      "table look-up mode", nullptr },
 
     { "finish", 'f', POPT_ARG_INT, &finish, 0,
-      "finish", NULL },
+      "finish", nullptr },
 
     { "ni", 'i', POPT_ARG_INT, &ni, 0,
-      "number of inputs", NULL },
+      "number of inputs", nullptr },
 
     { "rnum", 'n', POPT_ARG_INT, &rnum, 0,
-      "number of functions to be generated", NULL },
+      "number of functions to be generated", nullptr },
 
     { "rseed", 's', POPT_ARG_INT, &rseed, 0,
-      "random seed", NULL },
+      "random seed", nullptr },
 
     { "mag", 'm', POPT_ARG_INT, &mag, 0,
-      "magnitude", NULL },
+      "magnitude", nullptr },
 
     POPT_AUTOHELP
 
-    { NULL, '\0', 0, NULL, 0, NULL, NULL }
+    { nullptr, '\0', 0, nullptr, 0, nullptr, nullptr }
   };
 
   // オプション解析用のコンテキストを生成する．
-  poptContext popt_context = poptGetContext(NULL, argc, argv, options, 0);
+  poptContext popt_context = poptGetContext(nullptr, argc, argv, options, 0);
   poptSetOtherOptionHelp(popt_context, "[OPTIONS]* <file-name> ...");
 
   // オプション解析を行う．
@@ -588,8 +588,8 @@ main(int argc,
   }
 
   const char* argname = poptGetArg(popt_context);
-  if ( (mode == 4 && argname == NULL) ||
-       (mode != 4 && argname != NULL) ) {
+  if ( (mode == 4 && argname == nullptr) ||
+       (mode != 4 && argname != nullptr) ) {
     usage(argv[0]);
     exit(1);
   }

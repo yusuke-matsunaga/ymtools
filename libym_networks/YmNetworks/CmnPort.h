@@ -58,25 +58,25 @@ public:
 
   /// @brief 入力ノードを得る．
   /// @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-  /// @note 出力ポートの場合には NULL を返す．
+  /// @note 出力ポートの場合には nullptr を返す．
   const CmnNode*
   input(ymuint pos) const;
 
   /// @brief 出力ノードを得る．
   /// @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-  /// @note 入力ポートの場合には NULL を返す．
+  /// @note 入力ポートの場合には nullptr を返す．
   const CmnNode*
   output(ymuint pos) const;
 
   /// @brief 入力ノードを得る．
   /// @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-  /// @note 出力ポートの場合には NULL を返す．
+  /// @note 出力ポートの場合には nullptr を返す．
   CmnNode*
   _input(ymuint pos);
 
   /// @brief 出力ノードを得る．
   /// @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-  /// @note 入力ポートの場合には NULL を返す．
+  /// @note 入力ポートの場合には nullptr を返す．
   CmnNode*
   _output(ymuint pos);
 
@@ -134,7 +134,7 @@ CmnPort::bit_width() const
 
 // @brief 入力ノードを得る．
 // @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-// @note 出力ポートの場合には NULL を返す．
+// @note 出力ポートの場合には nullptr を返す．
 inline
 const CmnNode*
 CmnPort::input(ymuint pos) const
@@ -144,7 +144,7 @@ CmnPort::input(ymuint pos) const
 
 // @brief 出力ノードを得る．
 // @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-// @note 入力ポートの場合には NULL を返す．
+// @note 入力ポートの場合には nullptr を返す．
 inline
 const CmnNode*
 CmnPort::output(ymuint pos) const
@@ -154,7 +154,7 @@ CmnPort::output(ymuint pos) const
 
 // @brief 入力ノードを得る．
 // @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-// @note 出力ポートの場合には NULL を返す．
+// @note 出力ポートの場合には nullptr を返す．
 inline
 CmnNode*
 CmnPort::_input(ymuint pos)
@@ -164,7 +164,7 @@ CmnPort::_input(ymuint pos)
 
 // @brief 出力ノードを得る．
 // @param[in] pos 位置番号 ( 0 <= pos < bit_width )
-// @note 入力ポートの場合には NULL を返す．
+// @note 入力ポートの場合には nullptr を返す．
 inline
 CmnNode*
 CmnPort::_output(ymuint pos)

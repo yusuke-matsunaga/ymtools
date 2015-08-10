@@ -22,7 +22,7 @@ BEGIN_NAMESPACE_YM_NPN
 NpnMapM::NpnMapM() :
   mInputNum(0),
   mOutputNum(0),
-  mMapArray(NULL)
+  mMapArray(nullptr)
 {
 }
 
@@ -34,7 +34,7 @@ NpnMapM::NpnMapM(ymuint ni,
 		 ymuint no) :
   mInputNum(0),
   mOutputNum(0),
-  mMapArray(NULL)
+  mMapArray(nullptr)
 {
   resize(ni, no);
 }
@@ -44,7 +44,7 @@ NpnMapM::NpnMapM(ymuint ni,
 NpnMapM::NpnMapM(const NpnMapM& src) :
   mInputNum(0),
   mOutputNum(0),
-  mMapArray(NULL)
+  mMapArray(nullptr)
 {
   copy(src);
 }
@@ -79,7 +79,7 @@ NpnMapM::copy(const NpnMapM& src)
 NpnMapM::NpnMapM(const NpnMap& src) :
   mInputNum(0),
   mOutputNum(0),
-  mMapArray(NULL)
+  mMapArray(nullptr)
 {
   resize(src.input_num(), 1);
   for (ymuint i = 0; i < mInputNum; ++ i) {

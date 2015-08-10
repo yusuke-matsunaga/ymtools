@@ -112,7 +112,7 @@ write_names(const BNode* node,
   ymuint ni = node->fanin_num();
   for (ymuint i = 0; i < ni; i ++) {
     BNode* inode = node->fanin(i);
-    ASSERT_COND(inode != NULL );
+    ASSERT_COND(inode != nullptr );
     s << " " << inode->name();
   }
 

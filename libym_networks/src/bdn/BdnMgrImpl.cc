@@ -25,7 +25,7 @@ BEGIN_NAMESPACE_YM_NETWORKS_BDN
 // コンストラクタ
 BdnMgrImpl::BdnMgrImpl() :
   mAlloc(4096),
-  mHashTable(NULL),
+  mHashTable(nullptr),
   mHashSize(0),
   mLevel(0U)
 {
@@ -139,7 +139,7 @@ BdnMgrImpl::copy(const BdnMgr& src)
     ASSERT_COND(input1 );
     bool inv1 = src_node->fanin1_inv();
 
-    BdnNodeHandle tmp_h = set_logic(NULL, src_node->is_xor(),
+    BdnNodeHandle tmp_h = set_logic(nullptr, src_node->is_xor(),
 				    BdnNodeHandle(input0, inv0),
 				    BdnNodeHandle(input1, inv1));
     ASSERT_COND(tmp_h.inv() == false );
@@ -153,7 +153,7 @@ BdnMgrImpl::copy(const BdnMgr& src)
        p != src_output_list.end(); ++ p) {
     const BdnNode* src_onode = *p;
     const BdnNode* src_inode = src_onode->output_fanin();
-    BdnNode* dst_inode = NULL;
+    BdnNode* dst_inode = nullptr;
     if ( src_inode ) {
       dst_inode = nodemap[src_inode->id()];
     }
@@ -300,7 +300,7 @@ rsort_sub(const BdnNode* node,
 	  vector<bool>& marks,
 	  vector<const BdnNode*>& node_list)
 {
-  if ( node == NULL ||
+  if ( node == nullptr ||
        !node->is_logic() ||
        marks[node->id()] ) return;
 
@@ -400,8 +400,8 @@ BdnMgrImpl::new_port(const char* name,
     BdnPortData* aux_data =  new (t) BdnPortData(port, i);
     port->mAuxDataArray[i] = aux_data;
 
-    BdnNode* input = NULL;
-    BdnNode* output = NULL;
+    BdnNode* input = nullptr;
+    BdnNode* output = nullptr;
     ymuint val = iovect[i];
     if ( val & 1U ) {
       input = alloc_node();
@@ -590,7 +590,7 @@ BdnMgrImpl::delete_latch(BdnLatch* latch)
 // @param[in] start 開始位置
 // @param[in] num 要素数
 // @param[in] node_list 入力のノードのリスト
-// @note node が NULL の場合，新しいノードを確保する．
+// @note node が nullptr の場合，新しいノードを確保する．
 BdnNodeHandle
 BdnMgrImpl::make_tree(BdnNode* node,
 		      bool is_xor,
@@ -624,8 +624,8 @@ BdnMgrImpl::make_tree(BdnNode* node,
   }
 
   ymuint nh = num / 2;
-  BdnNodeHandle l = make_tree(NULL, is_xor, iinv, start, nh, node_list);
-  BdnNodeHandle r = make_tree(NULL, is_xor, iinv, start + nh, num - nh, node_list);
+  BdnNodeHandle l = make_tree(nullptr, is_xor, iinv, start, nh, node_list);
+  BdnNodeHandle r = make_tree(nullptr, is_xor, iinv, start + nh, num - nh, node_list);
   return set_logic(node, is_xor, l, r);
 }
 
@@ -686,9 +686,9 @@ BdnMgrImpl::change_output_fanin(BdnNode* node,
   if ( node->is_input() ) {
     // BdnNode::alt_node() と同じコードだが const がつかない．
     const BdnPort* port = node->port();
-    ASSERT_COND( port != NULL );
+    ASSERT_COND( port != nullptr );
     node = port->mOutputArray[node->port_bitpos()];
-    ASSERT_COND( node != NULL );
+    ASSERT_COND( node != nullptr );
   }
   ASSERT_COND( node->is_output() );
 
@@ -755,7 +755,7 @@ BdnMgrImpl::find_logic(bool is_xor,
 // @return ノード＋極性を返す．
 // @note すでに構造的に同じノードがあればそれを返す．
 // @note なければ node に設定する．
-// @note node が NULL の場合，新しいノードを確保する．
+// @note node が nullptr の場合，新しいノードを確保する．
 BdnNodeHandle
 BdnMgrImpl::set_logic(BdnNode* node,
 		      bool is_xor,
@@ -785,7 +785,7 @@ BdnMgrImpl::set_logic(BdnNode* node,
     }
   }
 
-  if ( node == NULL ) {
+  if ( node == nullptr ) {
     // 新しいノードを作る．
     node = alloc_node();
 
@@ -812,7 +812,7 @@ BdnMgrImpl::set_logic(BdnNode* node,
 	break;
       }
     }
-    // エラーチェック(node0 == NULL) はしていない．
+    // エラーチェック(node0 == nullptr) はしていない．
   }
 
   node->set_logic_type(fcode);
@@ -993,7 +993,7 @@ BdnMgrImpl::find_node(ymuint fcode,
     }
   }
   // 見つからなかった．
-  return NULL;
+  return nullptr;
 }
 
 // @brief ノードを作成する．
@@ -1019,7 +1019,7 @@ BdnMgrImpl::alloc_node()
   BdnNode* node = mNodeArray[uid];
 
   node->mFlags = 0U;
-  node->mAuxData = NULL;
+  node->mAuxData = nullptr;
 
   return node;
 }
@@ -1103,11 +1103,11 @@ BdnMgrImpl::alloc_table(ymuint req_size)
   }
   mHashTable = new BdnNode*[mHashSize];
   for (ymuint i = 0; i < mHashSize; ++ i) {
-    mHashTable[i] = NULL;
+    mHashTable[i] = nullptr;
   }
   if ( old_size > 0 ) {
     for (ymuint i = 0; i < old_size; ++ i) {
-      BdnNode* next = NULL;
+      BdnNode* next = nullptr;
       for (BdnNode* node = old_table[i]; node; node = next) {
 	next = node->mLink;
 	ymuint pos = hash_func(node->_fcode(), node->fanin0(), node->fanin1());

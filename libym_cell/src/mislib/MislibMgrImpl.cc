@@ -42,7 +42,7 @@ void
 MislibMgrImpl::clear()
 {
   mAlloc.destroy();
-  mGateList = NULL;
+  mGateList = nullptr;
 }
 
 // @brief ゲートのリストを返す．
@@ -201,7 +201,7 @@ MislibMgrImpl::new_gate(const FileRegion& loc,
   MislibNodeImpl* gate = new (p) MislibGate(loc, pt_name, pt_area,
 					    pt_oname, pt_expr,
 					    pt_ipin_list->top());
-  if ( mGateList == NULL ) {
+  if ( mGateList == nullptr ) {
     mGateList = new_list();
   }
   mGateList->push_back(gate);

@@ -71,8 +71,8 @@ ModuleGen::phase1_topmodule(const VlNamedObj* toplevel,
   // モジュール本体の生成
   ElbModule* module = factory().new_Module(toplevel,
 					   pt_module,
-					   NULL,
-					   NULL);
+					   nullptr,
+					   nullptr);
   reg_module(module);
 
 #if 0
@@ -91,7 +91,7 @@ ModuleGen::phase1_topmodule(const VlNamedObj* toplevel,
 		  buf2.str());
 
   // 中身のうちスコープに関係する要素の生成
-  phase1_module_item(module, pt_module, NULL);
+  phase1_module_item(module, pt_module, nullptr);
 }
 
 // @brief module の中身のうちスコープに関係する要素のインスタンス化をする．
@@ -125,7 +125,7 @@ ModuleGen::phase1_module_item(ElbModule* module,
       for (ymuint i = 0; i < n; ++ i) {
 	const PtConnection* pt_con = param_con->pt_con(i);
 	ElbObjHandle* handle = find_obj(module, pt_con->name());
-	if ( handle == NULL || handle->type() != kVpiParameter ) {
+	if ( handle == nullptr || handle->type() != kVpiParameter ) {
 	  ostringstream buf;
 	  buf << param_con->name(i) << " : No such parameter.";
 	  MsgMgr::put_msg(__FILE__, __LINE__,
@@ -221,7 +221,7 @@ ModuleGen::phase2_module_item(ElbModule* module,
   instantiate_decl(module, pt_module->declhead_array());
 
   // IODecl を実体化する．
-  instantiate_iodecl(module, NULL, pt_module->iohead_array());
+  instantiate_iodecl(module, nullptr, pt_module->iohead_array());
 
   // ポートを実体化する
   instantiate_port(module, pt_module);
@@ -238,7 +238,7 @@ ModuleGen::instantiate_port(ElbModule* module,
     // 内側の接続と向きを作る．
     ymuint n = pt_port->portref_size();
 
-    ElbExpr* low_conn = NULL;
+    ElbExpr* low_conn = nullptr;
     tVlDirection dir = kVlNoDirection;
 
     const PtExpr* pt_portref = pt_port->portref();
@@ -292,7 +292,7 @@ ModuleGen::instantiate_portref(ElbModule* module,
 		    kMsgError,
 		    "ELAB",
 		    buf.str());
-    return NULL;
+    return nullptr;
   }
 
   if ( handle->declarray() ) {
@@ -304,10 +304,10 @@ ModuleGen::instantiate_portref(ElbModule* module,
 		    kMsgError,
 		    "ELAB",
 		    buf.str());
-    return NULL;
+    return nullptr;
   }
   ElbDecl* decl = handle->decl();
-  if ( decl == NULL ) {
+  if ( decl == nullptr ) {
     ostringstream buf;
     buf << name
 	<< ": Illegal type for port connection.";
@@ -316,13 +316,13 @@ ModuleGen::instantiate_portref(ElbModule* module,
 		    kMsgError,
 		    "ELAB",
 		    buf.str());
-    return NULL;
+    return nullptr;
   }
 
   ElbExpr* primary = factory().new_Primary(pt_portref, decl);
 
   // 添字の部分を実体化する．
-  const PtExpr* pt_index = NULL;
+  const PtExpr* pt_index = nullptr;
   if ( pt_portref->index_num() == 0 ) {
     pt_index = pt_portref->index(0);
   }
@@ -332,7 +332,7 @@ ModuleGen::instantiate_portref(ElbModule* module,
     int index_val;
     bool stat = evaluate_int(module, pt_index, index_val, true);
     if ( !stat ) {
-      return NULL;
+      return nullptr;
     }
     ymuint offset;
     bool stat2 = decl->calc_bit_offset(index_val, offset);
@@ -350,7 +350,7 @@ ModuleGen::instantiate_portref(ElbModule* module,
     int left_val = 0;
     int right_val = 0;
     if ( !evaluate_range(module, pt_left, pt_right, left_val, right_val) ) {
-      return NULL;
+      return nullptr;
     }
     ymuint offset;
     bool stat1 = decl->calc_bit_offset(left_val, offset);

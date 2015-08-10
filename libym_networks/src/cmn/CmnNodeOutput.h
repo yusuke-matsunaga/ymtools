@@ -54,7 +54,7 @@ public:
   /// @brief ファンインのノードを得る．
   /// @param[in] pos 入力番号
   /// @return pos 番めのファンインのノード
-  /// @note 該当するファンインがなければ NULL を返す．
+  /// @note 該当するファンインがなければ nullptr を返す．
   virtual
   const CmnNode*
   fanin(ymuint pos) const;
@@ -62,7 +62,7 @@ public:
   /// @brief ファンインの枝を得る．
   /// @param[in] pos 入力番号
   /// @return pos 番目の入力の枝
-  /// @note 該当するファンインの枝がなければ NULL を返す．
+  /// @note 該当するファンインの枝がなければ nullptr を返す．
   virtual
   const CmnEdge*
   fanin_edge(ymuint pos) const;
@@ -70,7 +70,7 @@ public:
   /// @brief ファンインの枝を得る．
   /// @param[in] pos 入力番号
   /// @return pos 番目の入力の枝
-  /// @note 該当するファンインの枝がなければ NULL を返す．
+  /// @note 該当するファンインの枝がなければ nullptr を返す．
   virtual
   CmnEdge*
   _fanin_edge(ymuint pos);

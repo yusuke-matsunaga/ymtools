@@ -50,7 +50,7 @@ SimpleHandler::read_attr(const ShString& attr_name,
   }
 
   DotlibNodeImpl* value = read_value();
-  if ( value == NULL ) {
+  if ( value == nullptr ) {
     return false;
   }
   if ( !expect_nl() ) {
@@ -70,7 +70,7 @@ SimpleHandler::read_attr(const ShString& attr_name,
 
 // @brief 値を読み込む処理
 // @return 値を表す DotlibNode を返す．
-// @note エラーが起きたら NULL を返す．
+// @note エラーが起きたら nullptr を返す．
 // @note デフォルトの実装では普通に DotlibParser::read_token() を呼ぶ．
 DotlibNodeImpl*
 SimpleHandler::read_value()
@@ -125,7 +125,7 @@ StrSimpleHandler::read_value()
 		    kMsgError,
 		    "DOTLIB_PARSER",
 		    "Syntax error. string value is expected.");
-    return NULL;
+    return nullptr;
   }
   return value;
 }
@@ -157,7 +157,7 @@ IntSimpleHandler::read_value()
 		    kMsgError,
 		    "DOTLIB_PARSER",
 		    "Syntax error. int value is expected.");
-    return NULL;
+    return nullptr;
   }
   return value;
 }
@@ -189,7 +189,7 @@ FloatSimpleHandler::read_value()
 		    kMsgError,
 		    "DOTLIB_PARSER",
 		    "Syntax error. float value is expected.");
-    return NULL;
+    return nullptr;
   }
   return value;
 }

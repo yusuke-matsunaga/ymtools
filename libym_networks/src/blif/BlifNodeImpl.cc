@@ -95,7 +95,7 @@ const Cell*
 BlifNodeImpl::cell() const
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief 入力ノードのID番号を返す．

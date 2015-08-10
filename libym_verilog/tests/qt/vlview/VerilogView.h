@@ -28,7 +28,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のウィジェット
-  VerilogView(QWidget* parent = NULL);
+  VerilogView(QWidget* parent = nullptr);
 
   /// @brief デストラクタ
   ~VerilogView();

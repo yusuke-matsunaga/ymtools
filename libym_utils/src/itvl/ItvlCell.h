@@ -83,8 +83,8 @@ ItvlCell::ItvlCell(int start,
 		   int end) :
   mStart(start),
   mEnd(end),
-  mLchd(NULL),
-  mRchd(NULL)
+  mLchd(nullptr),
+  mRchd(nullptr)
 {
 }
 

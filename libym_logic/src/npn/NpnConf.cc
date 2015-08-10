@@ -15,7 +15,7 @@ BEGIN_NAMESPACE_YM_NPN
 
 // コンストラクタ
 NpnConf::NpnConf() :
-  mBaseConf(NULL),
+  mBaseConf(nullptr),
   mOpol(0),
   mGroupNum(0),
   mIorderValid(false)

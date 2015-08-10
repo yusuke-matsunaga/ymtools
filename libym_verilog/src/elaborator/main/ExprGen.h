@@ -50,7 +50,7 @@ public:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された ElbExpr のポインタを返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_expr(const VlNamedObj* parent,
 		   const ElbEnv& env,
@@ -60,7 +60,7 @@ public:
   /// @param[in] parent 親のスコープ
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された ElbExpr のポインタを返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_constant_expr(const VlNamedObj* parent,
 			    const PtExpr* pt_expr);
@@ -69,7 +69,7 @@ public:
   /// @param[in] parent 親のスコープ
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_event_expr(const VlNamedObj* parent,
 			 const ElbEnv& env,
@@ -80,7 +80,7 @@ public:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された ElbExpr のポインタを返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_arg(const VlNamedObj* parent,
 		  const ElbEnv& env,
@@ -91,7 +91,7 @@ public:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された ElbExpr のポインタを返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_lhs(const VlNamedObj* parent,
 		  const ElbEnv& env,
@@ -202,7 +202,7 @@ private:
   /// @param[in] pt_expr 式を表すパース木
   /// @param[out] elem_array 生成した左辺式の要素を格納するベクタ
   /// @return 生成した式を返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_lhs_sub(const VlNamedObj* parent,
 		      const ElbEnv& env,
@@ -214,7 +214,7 @@ private:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された式を返す．
-  /// @note エラーが起きたらエラーメッセージを出力し，NULL を返す．
+  /// @note エラーが起きたらエラーメッセージを出力し，nullptr を返す．
   ElbExpr*
   instantiate_primary(const VlNamedObj* parent,
 		      const ElbEnv& env,
@@ -225,7 +225,7 @@ private:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された式を返す．
-  /// @note エラーが起きたらエラーメッセージを出力し，NULL を返す．
+  /// @note エラーが起きたらエラーメッセージを出力し，nullptr を返す．
   ElbExpr*
   instantiate_opr(const VlNamedObj* parent,
 		  const ElbEnv& env,
@@ -236,7 +236,7 @@ private:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された式を返す．
-  /// @note エラーが起きたらエラーメッセージを出力し，NULL を返す．
+  /// @note エラーが起きたらエラーメッセージを出力し，nullptr を返す．
   ElbExpr*
   instantiate_funccall(const VlNamedObj* parent,
 		       const ElbEnv& env,
@@ -247,7 +247,7 @@ private:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された式を返す．
-  /// @note エラーが起きたらエラーメッセージを出力し，NULL を返す．
+  /// @note エラーが起きたらエラーメッセージを出力し，nullptr を返す．
   ElbExpr*
   instantiate_sysfunccall(const VlNamedObj* parent,
 			  const ElbEnv& env,

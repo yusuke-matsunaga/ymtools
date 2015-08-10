@@ -390,7 +390,7 @@ public:
   basic_zlib_streambuf(istream& s,
 		       ymuint size = kBufSize) :
     mZbuf(&s, size),
-    mBuff(NULL),
+    mBuff(nullptr),
     mSize(size),
     mBuff0(new char_type[size])
   {
@@ -406,7 +406,7 @@ public:
   basic_zlib_streambuf(ostream& s,
 		       ymuint size = kBufSize) :
     mZbuf(&s, size),
-    mBuff(NULL),
+    mBuff(nullptr),
     mSize(size),
     mBuff0(new char_type[size])
   {

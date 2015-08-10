@@ -209,7 +209,7 @@ ReaderImpl::gen_process(MvnModule* parent_module,
 	return false;
       }
     }
-    else if ( expr->decl_base() != NULL ) {
+    else if ( expr->decl_base() != nullptr ) {
       has_normal_event = true;
     }
     else {
@@ -247,7 +247,7 @@ ReaderImpl::gen_process(MvnModule* parent_module,
     vector<AsyncControl*> event_list;
     event_list.reserve(ev_num);
     const VlStmt* stmt1 = stmt->body_stmt();
-    while ( stmt1 != NULL ) {
+    while ( stmt1 != nullptr ) {
       if ( (stmt1->type() == kVpiNamedBegin || stmt1->type() == kVpiBegin) &&
 	   stmt1->child_stmt_num() == 1 ) {
 	stmt1 = stmt1->child_stmt(0);
@@ -261,7 +261,7 @@ ReaderImpl::gen_process(MvnModule* parent_module,
       // 極性(1 が正極性，0 が負極性)
       ymuint pol = 1;
       // 対象のノード
-      MvnNode* node = NULL;
+      MvnNode* node = nullptr;
       if ( !parse_cond(cond, mGlobalEnv, node, pol) ) {
 	break;
       }
@@ -304,7 +304,7 @@ ReaderImpl::gen_process(MvnModule* parent_module,
     }
 
     // クロック信号を調べる．
-    MvnNode* clock_node = NULL;
+    MvnNode* clock_node = nullptr;
     ymuint clock_pol = 0;
     for (ymuint i = 0; i < ev_num; ++ i) {
       if ( !event_map[i] ) {
@@ -313,7 +313,7 @@ ReaderImpl::gen_process(MvnModule* parent_module,
 	break;
       }
     }
-    ASSERT_COND( clock_node != NULL );
+    ASSERT_COND( clock_node != nullptr );
 
     ProcEnv top_env(mGlobalEnv);
     EnvMerger2 merger(mMvnMgr, mGlobalEnv);
@@ -323,10 +323,10 @@ ReaderImpl::gen_process(MvnModule* parent_module,
     for (ymuint i = 0; i < n; ++ i) {
       AssignInfo info1 = top_env.get_from_id(i);
       MvnNode* rhs = info1.mRhs;
-      if ( rhs == NULL ) {
+      if ( rhs == nullptr ) {
 	continue;
       }
-      ASSERT_COND( info1.mCond == NULL );
+      ASSERT_COND( info1.mCond == nullptr );
       MvnNode* node0 = mGlobalEnv.get_from_id(i);
       // FF を挿入
       // このノードに関係しているコントロールを調べる．
@@ -367,11 +367,11 @@ ReaderImpl::gen_process(MvnModule* parent_module,
       AssignInfo info1 = top_env.get_from_id(i);
       MvnNode* rhs = info1.mRhs;
       MvnNode* cond = info1.mCond;
-      if ( rhs == NULL ) {
+      if ( rhs == nullptr ) {
 	continue;
       }
       MvnNode* node0 = mGlobalEnv.get_from_id(i);
-      if ( cond == NULL ) {
+      if ( cond == nullptr ) {
 	// 単純な組み合わせ論理
 	mMvnMgr->connect(rhs, 0, node0, 0);
       }
@@ -524,7 +524,7 @@ ReaderImpl::gen_moduleinst(MvnModule* parent_module,
   for (ymuint i = 0; i < np; ++ i) {
     const VlPort* vl_port = vl_module->port(i);
     const VlExpr* hi = vl_port->high_conn();
-    if ( hi == NULL ) continue;
+    if ( hi == nullptr ) continue;
     const VlExpr* lo = vl_port->low_conn();
     switch ( vl_port->direction() ) {
     case kVlInput:

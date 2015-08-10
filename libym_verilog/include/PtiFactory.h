@@ -196,7 +196,7 @@ public:
   virtual
   PtiPort*
   new_Port(const FileRegion& fr,
-	   const char* ext_name = NULL) = 0;
+	   const char* ext_name = nullptr) = 0;
 
   /// @brief ポートの生成 (ポート参照式があるポート)
   /// @param[in] fr ファイル位置の情報

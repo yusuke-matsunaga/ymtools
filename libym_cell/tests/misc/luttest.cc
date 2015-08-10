@@ -204,7 +204,7 @@ dotlib_reader_test(const string& filename)
   MsgMgr::reg_handler(mh);
 
   const CellLibrary* library = read(filename);
-  if ( library == NULL) {
+  if ( library == nullptr) {
     return 1;
   }
 

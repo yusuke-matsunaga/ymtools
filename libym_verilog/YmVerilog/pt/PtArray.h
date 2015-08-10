@@ -73,7 +73,7 @@ template <typename T>
 inline
 PtArray<T>::PtArray() :
   mNum(0),
-  mArray(NULL)
+  mArray(nullptr)
 {
 }
 

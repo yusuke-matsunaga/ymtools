@@ -35,25 +35,25 @@ EnvMerger::~EnvMerger()
 // @param[in] cond 切り替え条件
 // @param[in] then_cond cond が成り立ったときの代入条件
 // @param[in] else_cond cond が成り立たなかったときの代入条件
-// @note 基本的には ITE(cond, then_cond, else_cond) だが，NULL の場合がある．
+// @note 基本的には ITE(cond, then_cond, else_cond) だが，nullptr の場合がある．
 MvnNode*
 EnvMerger::merge_cond(MvnModule* parent_module,
 		      MvnNode* cond,
 		      MvnNode* then_cond,
 		      MvnNode* else_cond)
 {
-  MvnNode* new_cond = NULL;
+  MvnNode* new_cond = nullptr;
   if ( then_cond == else_cond ) {
     // 両方の条件が等しければ ITE を挿入しない
     new_cond = then_cond;
   }
-  else if ( then_cond == NULL ) {
+  else if ( then_cond == nullptr ) {
     // 代入条件は cond | else_cond
     new_cond = mMvnMgr->new_or(parent_module, 2);
     mMvnMgr->connect(cond, 0, new_cond, 0);
     mMvnMgr->connect(else_cond, 0, new_cond, 1);
   }
-  else if ( else_cond == NULL ) {
+  else if ( else_cond == nullptr ) {
     // 代入条件は ~cond | then_cond
     MvnNode* cond_bar = mMvnMgr->new_not(parent_module, 1);
     mMvnMgr->connect(cond, 0, cond_bar, 0);
@@ -110,11 +110,11 @@ EnvMerger1::operator()(MvnModule* parent_module,
     MvnNode* node2 = info2.mRhs;
     MvnNode* cond2 = info2.mCond;
 
-    MvnNode* new_node = NULL;
-    MvnNode* new_cond = NULL;
+    MvnNode* new_node = nullptr;
+    MvnNode* new_cond = nullptr;
     bool new_block = false;
     if ( node1 == node2 ) {
-      if ( node1 == NULL ) {
+      if ( node1 == nullptr ) {
 	continue;
       }
       // 両方の結果が等しければ ITE を挿入しない．
@@ -128,16 +128,16 @@ EnvMerger1::operator()(MvnModule* parent_module,
       // 条件は ITE になる．
       new_cond = merge_cond(parent_module, cond, cond1, cond2);
     }
-    else if ( node1 == NULL ) {
-      // node1 が NULL
-      // cond1 も NULL
-      ASSERT_COND( node2 != NULL );
+    else if ( node1 == nullptr ) {
+      // node1 が nullptr
+      // cond1 も nullptr
+      ASSERT_COND( node2 != nullptr );
       new_node = node2;
       new_block = info2.mBlock;
 
       MvnNode* cond_bar = mgr()->new_not(parent_module, 1);
       mgr()->connect(cond, 0, cond_bar, 0);
-      if ( cond2 == NULL ) {
+      if ( cond2 == nullptr ) {
 	// 代入条件は ~cond
 	new_cond = cond_bar;
       }
@@ -148,14 +148,14 @@ EnvMerger1::operator()(MvnModule* parent_module,
 	mgr()->connect(cond2, 0, new_cond, 1);
       }
     }
-    else if ( node2 == NULL ) {
-      // node2 が NULL
-      // cond2 も NULL
-      ASSERT_COND( node1 != NULL );
+    else if ( node2 == nullptr ) {
+      // node2 が nullptr
+      // cond2 も nullptr
+      ASSERT_COND( node1 != nullptr );
       new_node = node1;
       new_block = info1.mBlock;
 
-      if ( cond1 == NULL ) {
+      if ( cond1 == nullptr ) {
 	// 代入条件は cond
 	new_cond = cond;
       }
@@ -167,7 +167,7 @@ EnvMerger1::operator()(MvnModule* parent_module,
       }
     }
     else {
-      // node1 も node2 も NULL ではない．
+      // node1 も node2 も nullptr ではない．
       ymuint bw = node1->bit_width();
       new_node = mgr()->new_ite(parent_module, bw);
       mgr()->connect(cond, 0, new_node, 0);
@@ -222,20 +222,20 @@ EnvMerger2::operator()(MvnModule* parent_module,
   for (ymuint i = 0; i < n; ++ i) {
     AssignInfo info0 = env.get_from_id(i);
     MvnNode* node0 = info0.mRhs;
-    ASSERT_COND( info0.mCond == NULL );
+    ASSERT_COND( info0.mCond == nullptr );
 
     AssignInfo info1 = then_env.get_from_id(i);
     MvnNode* node1 = info1.mRhs;
-    ASSERT_COND( info1.mCond == NULL );
+    ASSERT_COND( info1.mCond == nullptr );
 
     AssignInfo info2 = else_env.get_from_id(i);
     MvnNode* node2 = info2.mRhs;
-    ASSERT_COND( info2.mCond == NULL );
+    ASSERT_COND( info2.mCond == nullptr );
 
-    MvnNode* new_node = NULL;
+    MvnNode* new_node = nullptr;
     bool new_block = false;
     if ( node1 == node2 ) {
-      if ( node1 == NULL ) {
+      if ( node1 == nullptr ) {
 	continue;
       }
       // 両方の結果が等しければ ITE を挿入しない．
@@ -247,10 +247,10 @@ EnvMerger2::operator()(MvnModule* parent_module,
       }
       new_block = info1.mBlock;
     }
-    else if ( node1 == NULL ) {
-      // node1 が NULL
-      ASSERT_COND( node2 != NULL );
-      if ( node0 == NULL ) {
+    else if ( node1 == nullptr ) {
+      // node1 が nullptr
+      ASSERT_COND( node2 != nullptr );
+      if ( node0 == nullptr ) {
 	node0 = mGlobalEnv.get_from_id(i);
       }
       ymuint bw = node0->bit_width();
@@ -264,10 +264,10 @@ EnvMerger2::operator()(MvnModule* parent_module,
       mgr()->connect(node2, 0, new_node, 2);
       new_block = info2.mBlock;
     }
-    else if ( node2 == NULL ) {
-      // node2 が NULL
-      ASSERT_COND( node1 != NULL );
-      if ( node0 == NULL ) {
+    else if ( node2 == nullptr ) {
+      // node2 が nullptr
+      ASSERT_COND( node1 != nullptr );
+      if ( node0 == nullptr ) {
 	node0 = mGlobalEnv.get_from_id(i);
       }
       ymuint bw = node0->bit_width();
@@ -282,8 +282,8 @@ EnvMerger2::operator()(MvnModule* parent_module,
       new_block = info1.mBlock;
     }
     else {
-      // node1 も node2 も NULL ではない．
-      //ASSERT_COND( node0 != NULL );
+      // node1 も node2 も nullptr ではない．
+      //ASSERT_COND( node0 != nullptr );
       ymuint bw = node1->bit_width();
       if ( node1->bit_width() != bw ) {
 	// ビット幅が異なる．
@@ -304,7 +304,7 @@ EnvMerger2::operator()(MvnModule* parent_module,
       }
       new_block = info1.mBlock;
     }
-    env.add_by_id(i, new_node, NULL, new_block);
+    env.add_by_id(i, new_node, nullptr, new_block);
   }
 }
 

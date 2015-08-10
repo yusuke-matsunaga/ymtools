@@ -34,37 +34,37 @@ DotlibTiming::set_data(const DotlibNode* timing_node)
 {
   init();
 
-  mFallResistance = NULL;
-  mRiseResistance = NULL;
-  mIntrinsicFall = NULL;
-  mIntrinsicRise = NULL;
-  mRelatedBusEquivalent = NULL;
-  mRelatedBusPins = NULL;
-  mRelatedPin = NULL;
-  mSlopeFall = NULL;
-  mSlopeRise = NULL;
+  mFallResistance = nullptr;
+  mRiseResistance = nullptr;
+  mIntrinsicFall = nullptr;
+  mIntrinsicRise = nullptr;
+  mRelatedBusEquivalent = nullptr;
+  mRelatedBusPins = nullptr;
+  mRelatedPin = nullptr;
+  mSlopeFall = nullptr;
+  mSlopeRise = nullptr;
   mTimingSense = kCellNonUnate;
   mTimingType = kCellTimingCombinational;
-  mWhen = NULL;
-  mWhenStart = NULL;
-  mWhenEnd = NULL;
-  mFallDelayIntercept = NULL;
-  mRiseDelayIntercept = NULL;
-  mFallPinResistance = NULL;
-  mRisePinResistance = NULL;
-  mCellDegradation = NULL;
-  mCellFall = NULL;
-  mCellRise = NULL;
-  mFallConstraint = NULL;
-  mRiseConstraint = NULL;
-  mFallPropagation = NULL;
-  mRisePropagation = NULL;
-  mFallTransition = NULL;
-  mRiseTransition = NULL;
-  mRetainingFall = NULL;
-  mRetainingRise = NULL;
-  mRetainFallSlew = NULL;
-  mRetainRiseSlew = NULL;
+  mWhen = nullptr;
+  mWhenStart = nullptr;
+  mWhenEnd = nullptr;
+  mFallDelayIntercept = nullptr;
+  mRiseDelayIntercept = nullptr;
+  mFallPinResistance = nullptr;
+  mRisePinResistance = nullptr;
+  mCellDegradation = nullptr;
+  mCellFall = nullptr;
+  mCellRise = nullptr;
+  mFallConstraint = nullptr;
+  mRiseConstraint = nullptr;
+  mFallPropagation = nullptr;
+  mRisePropagation = nullptr;
+  mFallTransition = nullptr;
+  mRiseTransition = nullptr;
+  mRetainingFall = nullptr;
+  mRetainingRise = nullptr;
+  mRetainFallSlew = nullptr;
+  mRetainRiseSlew = nullptr;
 
   // 属性を内部のハッシュに登録する．
   for (const DotlibAttr* attr = timing_node->attr_top();
@@ -90,11 +90,11 @@ DotlibTiming::set_data(const DotlibNode* timing_node)
   }
 
   // 'timing_sense' を取り出す．
-  const DotlibNode* ts_node = NULL;
+  const DotlibNode* ts_node = nullptr;
   if ( !get_singleton_or_null("timing_sense", ts_node) ) {
     return false;
   }
-  if ( ts_node == NULL ) {
+  if ( ts_node == nullptr ) {
     mTimingSense = kCellNonUnate;
   }
   else {
@@ -119,11 +119,11 @@ DotlibTiming::set_data(const DotlibNode* timing_node)
   }
 
   // 'timing_type' を取り出す．
-  const DotlibNode* tt_node = NULL;
+  const DotlibNode* tt_node = nullptr;
   if ( !get_singleton_or_null("timing_type", tt_node) ) {
     return false;
   }
-  if ( tt_node == NULL ) {
+  if ( tt_node == nullptr ) {
     mTimingType = kCellTimingCombinational;
   }
   else {

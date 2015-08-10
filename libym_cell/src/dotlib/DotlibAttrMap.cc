@@ -67,7 +67,7 @@ DotlibAttrMap::get_singleton(const char* name,
   if ( !get_singleton_or_null(name, node) ) {
     return false;
   }
-  if ( node == NULL ) {
+  if ( node == nullptr ) {
     ostringstream buf;
     buf << "No '" << name << "' definition.";
     MsgMgr::put_msg(__FILE__, __LINE__,
@@ -86,7 +86,7 @@ DotlibAttrMap::get_singleton(const char* name,
 // @retval true 値の読み出しが成功した．
 // @retval false エラーが起こった．
 //
-// 空の時は node に NULL を入れて true を返す．
+// 空の時は node に nullptr を入れて true を返す．
 bool
 DotlibAttrMap::get_singleton_or_null(const char* name,
 				     const DotlibNode*& node) const
@@ -94,7 +94,7 @@ DotlibAttrMap::get_singleton_or_null(const char* name,
   ShString sh_name(name);
 
   if ( !mHash.check(sh_name) ) {
-    node = NULL;
+    node = nullptr;
     return true;
   }
 

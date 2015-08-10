@@ -49,7 +49,7 @@ DotlibNode::get_string_pair(ShString& str1,
     return false;
   }
   const DotlibNode* node1 = list_elem(0);
-  ASSERT_COND( node1 != NULL );
+  ASSERT_COND( node1 != nullptr );
   if ( !node1->is_string() ) {
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    node1->loc(),
@@ -59,7 +59,7 @@ DotlibNode::get_string_pair(ShString& str1,
     return false;
   }
   const DotlibNode* node2 = list_elem(1);
-  ASSERT_COND( node2 != NULL );
+  ASSERT_COND( node2 != nullptr );
   if ( !node2->is_string() ) {
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    node2->loc(),

@@ -28,7 +28,7 @@ EiFactory::new_UnaryOp(const PtExpr* pt_expr,
 		       tVlOpType op_type,
 		       ElbExpr* opr1)
 {
-  ElbExpr* expr = NULL;
+  ElbExpr* expr = nullptr;
   void* p;
   switch ( op_type ) {
   case kVlPosedgeOp:

@@ -96,13 +96,13 @@ public:
 
   /// @brief id に対応する宣言要素を返す．(単一要素版)
   /// @param[in] id MvNode の ID番号
-  /// @note is_single_elem(id) == false の時は NULL が返される．
+  /// @note is_single_elem(id) == false の時は nullptr が返される．
   const VlDecl*
   get_single_elem(ymuint id) const;
 
   /// @brief id に対応する宣言要素を返す．(配列要素版)
   /// @param[in] id MvNode の ID番号
-  /// @note is_array_elem(id) == false の時は NULL が返される．
+  /// @note is_array_elem(id) == false の時は nullptr が返される．
   const VlDeclArray*
   get_array_elem(ymuint id) const;
 
@@ -127,7 +127,7 @@ private:
 
   /// @brief 要素を取り出す．
   /// @param[in] id ID番号
-  /// @note id が範囲外の時は NULL が返される．
+  /// @note id が範囲外の時は nullptr が返される．
   MapRec*
   get(ymuint id) const;
 

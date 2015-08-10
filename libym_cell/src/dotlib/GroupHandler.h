@@ -75,7 +75,7 @@ public:
 
   /// @brief ハンドラを取り出す．
   /// @param[in] attr_name 属性名
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   DotlibHandler*
   find_handler(const ShString& attr_name);
 

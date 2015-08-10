@@ -97,11 +97,11 @@ MvnNodeBase::control_pol(ymuint pos) const
 
 // @brief 非同期セットの値を表す定数ノードを得る．
 // @param[in] pos 位置 ( 0 <= pos < input_num() - 2 )
-// @note デフォルトの実装では NULL を返す．
+// @note デフォルトの実装では nullptr を返す．
 const MvnNode*
 MvnNodeBase::control_val(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ビット位置を得る．
@@ -151,11 +151,11 @@ MvnNodeBase::xmask(vector<ymuint32>& val) const
 
 // @brief セルを得る．
 // @note type() が kCell の時のみ意味をモツ．
-// @note デフォルトの実装では NULL を返す．
+// @note デフォルトの実装では nullptr を返す．
 const Cell*
 MvnNodeBase::cell() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief セルの出力ピン番号を返す．
@@ -170,11 +170,11 @@ MvnNodeBase::cell_opin_pos() const
 // @brief 多出力セルノードの場合の代表ノードを返す．
 // @note type() が kCell の時のみ意味を持つ．
 // @note 1出力セルノードの時には自分自身を返す．
-// @note デフォルトの実装では NULL を返す．
+// @note デフォルトの実装では nullptr を返す．
 const MvnNode*
 MvnNodeBase::cell_node() const
 {
-  return NULL;
+  return nullptr;
 }
 
 

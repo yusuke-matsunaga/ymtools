@@ -132,7 +132,7 @@ CompTbl1::resize(ymuint64 new_size)
 
   // 新しいメモリ領域を確保する．
   Cell* new_table = (Cell*)allocate(new_size * sizeof(Cell));
-  if ( new_table == NULL ) {
+  if ( new_table == nullptr ) {
     return false;
   }
 
@@ -237,7 +237,7 @@ CompTbl2::resize(ymuint64 new_size)
 
   // 新たなサイズを設定し，テーブルを確保する．
   Cell* new_table = (Cell*)allocate(new_size * sizeof(Cell));
-  if ( new_table == NULL ) {
+  if ( new_table == nullptr ) {
     return false;
   }
 
@@ -377,7 +377,7 @@ CompTbl1n::resize(ymuint64 new_size)
 
   // 新しいメモリ領域を確保する．
   Cell* new_table = (Cell*)allocate(new_size * sizeof(Cell));
-  if ( new_table == NULL ) {
+  if ( new_table == nullptr ) {
     return false;
   }
 
@@ -450,7 +450,7 @@ CompTbl2n::resize(ymuint64 new_size)
 
   // 新たなサイズを設定し，テーブルを確保する．
   Cell* new_table = (Cell*)allocate(new_size * sizeof(Cell));
-  if ( new_table == NULL ) {
+  if ( new_table == nullptr ) {
     return false;
   }
 

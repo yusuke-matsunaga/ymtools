@@ -82,7 +82,7 @@ BdnMgr::max_dff_id() const
 
 // @brief ID番号から D-FF を得る．
 // @param[in] id ID番号 ( 0 <= id < max_dff_id() )
-// @note 該当するD-FFが無い場合には NULL を返す．
+// @note 該当するD-FFが無い場合には nullptr を返す．
 const BdnDff*
 BdnMgr::dff(ymuint id) const
 {
@@ -112,7 +112,7 @@ BdnMgr::max_latch_id() const
 
 // @brief ID番号からラッチを得る．
 // @param[in] id ID番号 ( 0 <= id < max_latch_id() )
-// @note 該当するラッチが無い場合には NULL を返す．
+// @note 該当するラッチが無い場合には nullptr を返す．
 const BdnLatch*
 BdnMgr::latch(ymuint id) const
 {
@@ -400,7 +400,7 @@ BdnNodeHandle
 BdnMgr::new_and(BdnNodeHandle inode1_handle,
 		BdnNodeHandle inode2_handle)
 {
-  return mImpl->set_and(NULL, inode1_handle, inode2_handle);
+  return mImpl->set_and(nullptr, inode1_handle, inode2_handle);
 }
 
 // @brief AND ノードを作る．
@@ -410,7 +410,7 @@ BdnMgr::new_and(BdnNodeHandle inode1_handle,
 BdnNodeHandle
 BdnMgr::new_and(const vector<BdnNodeHandle>& inode_handle_list)
 {
-  return mImpl->make_and_tree(NULL, inode_handle_list);
+  return mImpl->make_and_tree(nullptr, inode_handle_list);
 }
 
 // @brief NAND ノードを作る．
@@ -423,7 +423,7 @@ BdnNodeHandle
 BdnMgr::new_nand(BdnNodeHandle inode1_handle,
 		 BdnNodeHandle inode2_handle)
 {
-  return ~mImpl->set_and(NULL, inode1_handle, inode2_handle);
+  return ~mImpl->set_and(nullptr, inode1_handle, inode2_handle);
 }
 
 // @brief NAND ノードを作る．
@@ -433,7 +433,7 @@ BdnMgr::new_nand(BdnNodeHandle inode1_handle,
 BdnNodeHandle
 BdnMgr::new_nand(const vector<BdnNodeHandle>& inode_handle_list)
 {
-  return ~mImpl->make_and_tree(NULL, inode_handle_list);
+  return ~mImpl->make_and_tree(nullptr, inode_handle_list);
 }
 
 // @brief OR ノードを作る．
@@ -445,7 +445,7 @@ BdnNodeHandle
 BdnMgr::new_or(BdnNodeHandle inode1_handle,
 	       BdnNodeHandle inode2_handle)
 {
-  return ~mImpl->set_and(NULL, ~inode1_handle, ~inode2_handle);
+  return ~mImpl->set_and(nullptr, ~inode1_handle, ~inode2_handle);
 }
 
 // @brief OR ノードを作る．
@@ -455,7 +455,7 @@ BdnMgr::new_or(BdnNodeHandle inode1_handle,
 BdnNodeHandle
 BdnMgr::new_or(const vector<BdnNodeHandle>& inode_handle_list)
 {
-  return mImpl->make_or_tree(NULL, inode_handle_list);
+  return mImpl->make_or_tree(nullptr, inode_handle_list);
 }
 
 // @brief NOR ノードを作る．
@@ -467,7 +467,7 @@ BdnNodeHandle
 BdnMgr::new_nor(BdnNodeHandle inode1_handle,
 		BdnNodeHandle inode2_handle)
 {
-  return mImpl->set_and(NULL, ~inode1_handle, ~inode2_handle);
+  return mImpl->set_and(nullptr, ~inode1_handle, ~inode2_handle);
 }
 
 // @brief NOR ノードを作る．
@@ -477,7 +477,7 @@ BdnMgr::new_nor(BdnNodeHandle inode1_handle,
 BdnNodeHandle
 BdnMgr::new_nor(const vector<BdnNodeHandle>& inode_handle_list)
 {
-  return ~mImpl->make_or_tree(NULL, inode_handle_list);
+  return ~mImpl->make_or_tree(nullptr, inode_handle_list);
 }
 
 // @brief XOR ノードを作る．
@@ -489,7 +489,7 @@ BdnNodeHandle
 BdnMgr::new_xor(BdnNodeHandle inode1_handle,
 		BdnNodeHandle inode2_handle)
 {
-  return mImpl->set_xor(NULL, inode1_handle, inode2_handle);
+  return mImpl->set_xor(nullptr, inode1_handle, inode2_handle);
 }
 
 // @brief XOR ノードを作る．
@@ -499,7 +499,7 @@ BdnMgr::new_xor(BdnNodeHandle inode1_handle,
 BdnNodeHandle
 BdnMgr::new_xor(const vector<BdnNodeHandle>& inode_handle_list)
 {
-  return mImpl->make_xor_tree(NULL, inode_handle_list);
+  return mImpl->make_xor_tree(nullptr, inode_handle_list);
 }
 
 // @brief XNOR ノードを作る．
@@ -511,7 +511,7 @@ BdnNodeHandle
 BdnMgr::new_xnor(BdnNodeHandle inode1_handle,
 		 BdnNodeHandle inode2_handle)
 {
-  return ~mImpl->set_xor(NULL, inode1_handle, inode2_handle);
+  return ~mImpl->set_xor(nullptr, inode1_handle, inode2_handle);
 }
 
 // @brief XNOR ノードを作る．
@@ -521,7 +521,7 @@ BdnMgr::new_xnor(BdnNodeHandle inode1_handle,
 BdnNodeHandle
 BdnMgr::new_xnor(const vector<BdnNodeHandle>& inode_handle_list)
 {
-  return ~mImpl->make_xor_tree(NULL, inode_handle_list);
+  return ~mImpl->make_xor_tree(nullptr, inode_handle_list);
 }
 
 // @brief AND タイプに変更する．

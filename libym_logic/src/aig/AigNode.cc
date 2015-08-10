@@ -45,7 +45,7 @@ bool
 Aig::is_input() const
 {
   AigNode* aignode = unpack_node(mPackedData);
-  return aignode != NULL && aignode->is_input();
+  return aignode != nullptr && aignode->is_input();
 }
 
 // @brief 外部入力ノードへのハンドルのとき，入力番号を返す．
@@ -67,7 +67,7 @@ bool
 Aig::is_and() const
 {
   AigNode* aignode = unpack_node(mPackedData);
-  return aignode != NULL && aignode->is_and();
+  return aignode != nullptr && aignode->is_and();
 }
 
 // @brief pos で指示されたファンインのハンドルを得る．

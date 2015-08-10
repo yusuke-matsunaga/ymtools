@@ -233,7 +233,7 @@ public:
 
   /// @brief セルを得る．
   /// @note type() が kCell の時のみ意味を持つ．
-  /// @note デフォルトの実装では NULL を返す．
+  /// @note デフォルトの実装では nullptr を返す．
   virtual
   const Cell*
   cell() const = 0;

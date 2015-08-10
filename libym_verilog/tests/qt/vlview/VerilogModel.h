@@ -30,7 +30,7 @@ public:
 
   /// @brief コンストラクタ
   /// @param[in] parent 親のオブジェクト
-  VerilogModel(QObject* parent = NULL);
+  VerilogModel(QObject* parent = nullptr);
 
   /// @brief デストラクタ
   ~VerilogModel();

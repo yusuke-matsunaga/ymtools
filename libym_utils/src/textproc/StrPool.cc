@@ -108,7 +108,7 @@ StrPool::destroy()
   delete [] mTable;
   mCellAlloc.destroy();
   mTableSize = 0;
-  mTable = NULL;
+  mTable = nullptr;
 }
 
 // テーブルを確保して初期化する．
@@ -120,7 +120,7 @@ StrPool::alloc_table(ymuint32 new_size)
   mExpandLimit = static_cast<ymuint32>(mTableSize * 1.8);
   mTable = new Cell*[mTableSize];
   for (ymuint32 i = 0; i < mTableSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

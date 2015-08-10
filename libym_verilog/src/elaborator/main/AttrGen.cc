@@ -62,9 +62,9 @@ AttrGen::instantiate_attribute(PtAttrInstArray pt_attr_array,
 	 pt_ai; pt_ai = pt_ai->next()) {
       for (const PtAttrSpec* pt_as = pt_ai->attr_spec_top();
 	   pt_as; pt_as = pt_as->next()) {
-	ElbExpr* expr = NULL;
+	ElbExpr* expr = nullptr;
 	if ( pt_as->expr() ) {
-	  expr = instantiate_constant_expr(NULL, pt_as->expr());
+	  expr = instantiate_constant_expr(nullptr, pt_as->expr());
 	  if ( !expr ) {
 	    // エラー．たぶん expr() が constant_expression ではなかった．
 	    // でも無視する．

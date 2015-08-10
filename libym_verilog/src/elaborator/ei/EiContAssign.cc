@@ -26,13 +26,13 @@ BEGIN_NAMESPACE_YM_VERILOG
 // @param[in] module 親のモジュール
 // @param[in] pt_head パース木のヘッダ定義
 // @param[in] delay 遅延値
-// @note 遅延を持たないときは NULL を与える．
+// @note 遅延を持たないときは nullptr を与える．
 ElbCaHead*
 EiFactory::new_CaHead(const VlModule* module,
 		      const PtItem* pt_head,
 		      ElbDelay* delay)
 {
-  EiCaHead* head = NULL;
+  EiCaHead* head = nullptr;
   if ( delay ) {
     void* p = mAlloc.get_memory(sizeof(EiCaHeadD));
     head = new (p) EiCaHeadD(module, pt_head, delay);
@@ -126,11 +126,11 @@ EiCaHead::drive1() const
 }
 
 // @brief 遅延を表す式を返す．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbDelay*
 EiCaHead::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -328,7 +328,7 @@ EiContAssign2::drive1() const
 const VlDelay*
 EiContAssign2::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ネット宣言中の assignment の時に true を返す．

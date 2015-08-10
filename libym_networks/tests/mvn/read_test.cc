@@ -51,7 +51,7 @@ main(int argc,
   vector<string> filename_list;
   ymuint n_files = popt.get_args(filename_list);
 
-  const CellLibrary* cell_library = NULL;
+  const CellLibrary* cell_library = nullptr;
   if ( popt_dotlib.is_specified() ) {
     CellDotlibReader read;
     cell_library = read(popt_dotlib.val());
@@ -85,19 +85,19 @@ main(int argc,
     { "mislib", '\0', POPT_ARG_STRING, &mislib_name, 0,
       "specify mislib library", "\"file name\"" },
 
-    { "dump", 'd', POPT_ARG_NONE, NULL, 1,
-      "dump network", NULL},
+    { "dump", 'd', POPT_ARG_NONE, nullptr, 1,
+      "dump network", nullptr},
 
-    { "verilog", 'V', POPT_ARG_NONE, NULL, 2,
-      "dump verilog", NULL},
+    { "verilog", 'V', POPT_ARG_NONE, nullptr, 2,
+      "dump verilog", nullptr},
 
     POPT_AUTOHELP
 
-    { NULL, '\0', 0, NULL, 0, NULL, NULL }
+    { nullptr, '\0', 0, nullptr, 0, nullptr, nullptr }
   };
 
   // オプション解析用のコンテキストを生成する．
-  poptContext popt_context = poptGetContext(NULL, argc, argv, options, 0);
+  poptContext popt_context = poptGetContext(nullptr, argc, argv, options, 0);
   poptSetOtherOptionHelp(popt_context, "[OPTIONS]* <file-name> ...");
 
   // オプション解析を行う．
@@ -121,16 +121,16 @@ main(int argc,
   list<string> filename_list;
   for ( ; ; ) {
     const char* str = poptGetArg(popt_context);
-    if ( str == NULL ) break;
+    if ( str == nullptr ) break;
     filename_list.push_back(str);
   }
 
-  const CellLibrary* cell_library = NULL;
-  if ( liberty_name != NULL ) {
+  const CellLibrary* cell_library = nullptr;
+  if ( liberty_name != nullptr ) {
     CellDotlibReader read;
     cell_library = read(liberty_name);
   }
-  else if ( mislib_name != NULL ) {
+  else if ( mislib_name != nullptr ) {
     CellMislibReader read;
     cell_library = read(mislib_name);
   }

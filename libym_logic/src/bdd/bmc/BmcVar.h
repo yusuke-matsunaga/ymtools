@@ -38,7 +38,7 @@ private:
   BmcVar(ymuint level) :
     mLevel(level),
     mMark(0),
-    mLink(NULL)
+    mLink(nullptr)
   {
   }
 

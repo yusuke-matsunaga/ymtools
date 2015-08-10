@@ -258,8 +258,8 @@ RsrvWordDic::RsrvWordDic()
   mTable1 = new Cell*[mSize];
   mTable2 = new Cell*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable1[i] = NULL;
-    mTable2[i] = NULL;
+    mTable1[i] = nullptr;
+    mTable2[i] = nullptr;
   }
   for (ymuint i = 0; i < mSize; ++ i) {
     STpair& p = init_data[i];
@@ -304,7 +304,7 @@ RsrvWordDic::token(const char* str) const
 }
 
 // トークンから文字列を取り出す．
-// トークンが正しくなければ NULL を返す．
+// トークンが正しくなければ nullptr を返す．
 const char*
 RsrvWordDic::str(int token) const
 {
@@ -314,7 +314,7 @@ RsrvWordDic::str(int token) const
       return cell->mStr;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 
@@ -345,7 +345,7 @@ print_token(ostream& s,
   default:
     s << "RSRV[" << id << "](";
     str = dic.str(id);
-    if ( str != NULL ) {
+    if ( str != nullptr ) {
       s << str;
     }
     else {

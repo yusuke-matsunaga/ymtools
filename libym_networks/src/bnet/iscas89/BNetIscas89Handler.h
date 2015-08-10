@@ -92,7 +92,7 @@ private:
 
   struct NodeInfo
   {
-    NodeInfo(ymuint32 id) : mId(id), mNode(NULL) { }
+    NodeInfo(ymuint32 id) : mId(id), mNode(nullptr) { }
 
     ymuint32 mId;
     BNode* mNode;

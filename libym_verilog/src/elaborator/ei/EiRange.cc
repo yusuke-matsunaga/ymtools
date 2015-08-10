@@ -169,8 +169,8 @@ EiRange::rindex(int roffset) const
 
 // コンストラクタ
 EiRangeImpl::EiRangeImpl() :
-  mLeftRange(NULL),
-  mRightRange(NULL)
+  mLeftRange(nullptr),
+  mRightRange(nullptr)
 {
 }
 

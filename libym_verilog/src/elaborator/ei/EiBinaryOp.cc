@@ -30,7 +30,7 @@ EiFactory::new_BinaryOp(const PtExpr* pt_expr,
 			ElbExpr* opr0,
 			ElbExpr* opr1)
 {
-  ElbExpr* expr = NULL;
+  ElbExpr* expr = nullptr;
   void* p;
   switch( op_type ) {
   case kVlBitAndOp:

@@ -18,9 +18,9 @@ BEGIN_NAMESPACE_YM_CELL
 
 // @brief コンストラクタ
 CiBus::CiBus() :
-  mBusType(NULL),
+  mBusType(nullptr),
   mPinNum(0),
-  mPinList(NULL)
+  mPinList(nullptr)
 {
 }
 

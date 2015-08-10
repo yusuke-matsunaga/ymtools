@@ -770,28 +770,28 @@ public:
   /// @brief nameという名前をもつノードを探す．
   /// @param[in] name 探索対象の名前
   /// @retval name という名前を持つノード
-  /// @retval NULL 該当するノードがない場合
+  /// @retval nullptr 該当するノードがない場合
   BNode*
   find_node(const char* name) const;
 
   /// @brief nameという名前をもつノードを探す．
   /// @param[in] name 探索対象の名前
   /// @retval name という名前を持つノード
-  /// @retval NULL 該当するノードがない場合
+  /// @retval nullptr 該当するノードがない場合
   BNode*
   find_node(const string& name) const;
 
   /// @brief name という名前を持つ外部出力節点を取出す．
   /// @param[in] name 探索対象の名前
   /// @retval name という名前を持つ外部出力ノード
-  /// @retval NULL 該当する節点が無い場合
+  /// @retval nullptr 該当する節点が無い場合
   BNode*
   find_ponode(const char* name) const;
 
   /// @brief name という名前を持つ外部出力節点を取出す．
   /// @param[in] name 探索対象の名前
   /// @retval name という名前を持つ外部出力ノード
-  /// @retval NULL 該当する節点が無い場合
+  /// @retval nullptr 該当する節点が無い場合
   BNode*
   find_ponode(const string& name) const;
 
@@ -970,12 +970,12 @@ private:
   /// @param[in] type 型
   /// @param[in] name 名前
   /// @retval 生成したノード
-  /// @retval NULL 何らかのエラーが起きた場合
-  /// @note 名前が NULL の場合には，既存の名前と重複しない名前を適当に
+  /// @retval nullptr 何らかのエラーが起きた場合
+  /// @note 名前が nullptr の場合には，既存の名前と重複しない名前を適当に
   /// つける．
   BNode*
   new_node(BNode::tType type,
-	   const char* name = NULL);
+	   const char* name = nullptr);
 
   // @brief ノードの削除を行う．
   // @param[in] node 削除対象のノード
@@ -998,7 +998,7 @@ private:
   // 名前が重複していた場合には false を返す．
   bool
   set_node_name(BNode* node,
-		const char* name = NULL);
+		const char* name = nullptr);
 
   // ノードの名前をクリアする．
   // 実際には名前をキーにした連想配列から取り除く
@@ -1599,7 +1599,7 @@ BNodeList::size() const
 inline
 BNodeList::const_iterator::const_iterator() :
   mWhich(0),
-  mNode(NULL)
+  mNode(nullptr)
 {
 }
 
@@ -1876,7 +1876,7 @@ BNetwork::change_name_rule(const string& prefix,
 inline
 BNetworkTrace::BNetworkTrace()
 {
-  mNetwork = NULL;
+  mNetwork = nullptr;
 }
 
 // ネットワークとのバインドを解除する．
@@ -1886,7 +1886,7 @@ BNetworkTrace::unbind()
 {
   if ( mNetwork ) {
     mNetwork->mTraceMgr.unreg_binder(this);
-    mNetwork = NULL;
+    mNetwork = nullptr;
   }
 }
 

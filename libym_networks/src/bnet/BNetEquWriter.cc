@@ -34,7 +34,7 @@ write_expr(const Expr& f,
 
 // node のファンアウトの中に外部出力がただ一つ，含まれていたら
 // そのノードをとってくる．
-// 外部出力が全く含まれない場合および複数含まれる場合には NULL
+// 外部出力が全く含まれない場合および複数含まれる場合には nullptr
 // を返す．
 const BNode*
 po_node(const BNode* node)

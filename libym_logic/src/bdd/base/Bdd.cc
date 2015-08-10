@@ -36,7 +36,7 @@ Bdd::set(BddMgrImpl* mgr,
     top->mPrev = this;
   }
   mMgr->mTopBdd = this;
-  mPrev = NULL;
+  mPrev = nullptr;
 }
 
 // @brief (mMgr, mRoot) への参照をなくす時に呼ばれる関数

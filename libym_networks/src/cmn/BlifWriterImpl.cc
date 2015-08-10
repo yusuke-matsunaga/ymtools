@@ -99,7 +99,7 @@ BlifWriterImpl::dump(ostream& s,
       continue;
     }
     const CmnNode* inode = node->fanin(0);
-    ASSERT_COND( inode != NULL );
+    ASSERT_COND( inode != nullptr );
     s << ".names " << node_name(inode) << " ";
     if ( node->alt_node() ) {
       s << node_name(node->alt_node());
@@ -184,7 +184,7 @@ BlifWriterImpl::dump(ostream& s,
        p != logic_list.end(); ++ p) {
     const CmnNode* node = *p;
     const Cell* cell = node->cell();
-    ASSERT_COND( cell != NULL );
+    ASSERT_COND( cell != nullptr );
     ymuint ni = cell->input_num();
     ymuint no = cell->output_num();
     ASSERT_COND( no == 1 );
@@ -230,7 +230,7 @@ string
 BlifWriterImpl::dff_node_name(const CmnNode* node) const
 {
   const CmnNode* inode = node->fanin(0);
-  ASSERT_COND( inode != NULL );
+  ASSERT_COND( inode != nullptr );
   return node_name(inode);
 }
 

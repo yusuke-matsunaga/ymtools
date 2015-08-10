@@ -22,7 +22,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief コンストラクタ
 MacroSource::MacroSource() :
-  mParamArray(NULL)
+  mParamArray(nullptr)
 {
 }
 
@@ -43,7 +43,7 @@ MacroSource::set(const char* name,
 {
   mName = name;
   mNextToken1 = top;
-  mNextToken2 = NULL;
+  mNextToken2 = nullptr;
   mParamArray = param_array;
 }
 

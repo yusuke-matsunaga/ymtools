@@ -45,7 +45,7 @@ BlifNetwork::max_node_id() const
 
 // @brief ID 番号からノードを得る．
 // @param[in] id ID 番号 ( 0 <= id < max_node_id() )
-// @note 使われていない ID の場合には NULL が返される．
+// @note 使われていない ID の場合には nullptr が返される．
 const BlifNode*
 BlifNetwork::node(ymuint32 id) const
 {

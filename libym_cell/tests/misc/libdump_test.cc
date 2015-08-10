@@ -30,7 +30,7 @@ libdump_test(const char* in_filename)
   MsgMgr::reg_handler(mh);
 
   const CellLibrary* library = reader.read(in_filename);
-  if ( library == NULL ) {
+  if ( library == nullptr ) {
     cerr << in_filename << ": Error in reading library" << endl;
     return false;
   }

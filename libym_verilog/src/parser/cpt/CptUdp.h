@@ -155,7 +155,7 @@ public:
   input_array() const;
 
   /// @brief 現状態の値を取り出す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtUdpValue*
   current() const;

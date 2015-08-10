@@ -57,16 +57,16 @@ public:
 
   /// @brief 範囲のMSBの取得
   /// @retval 範囲のMSB 範囲を持つとき
-  /// @retval NULL 範囲を持たないとき
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr 範囲を持たないとき
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   left_range() const;
 
   /// @brief 範囲のLSBの取得
   /// @retval 範囲のLSB 範囲を持つとき
-  /// @retval NULL 範囲を持たないとき
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr 範囲を持たないとき
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   right_range() const;
@@ -98,16 +98,16 @@ public:
 
   /// @brief strength の取得
   /// @retval strength
-  /// @retval NULL strength の指定なし
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr strength の指定なし
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtStrength*
   strength() const;
 
   /// @brief delay の取得
   /// @retval delay
-  /// @retval NULL delay の指定なし
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr delay の指定なし
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtDelay*
   delay() const;
@@ -1351,13 +1351,13 @@ public:
   dimension_list_size() const;
 
   /// 範囲の取得
-  /// @note ここでは常に NULL を返す．
+  /// @note ここでは常に nullptr を返す．
   virtual
   const PtRange*
   range(ymuint pos) const;
 
   /// @brief 初期値を取り出す．
-  /// @return ここでは常に NULL を返す．
+  /// @return ここでは常に nullptr を返す．
   virtual
   const PtExpr*
   init_value() const;
@@ -1514,7 +1514,7 @@ public:
 
   /// @brief 初期値を取り出す．
   /// @retval 初期値
-  /// @retval NULL 設定がない場合
+  /// @retval nullptr 設定がない場合
   virtual
   const PtExpr*
   init_value() const;

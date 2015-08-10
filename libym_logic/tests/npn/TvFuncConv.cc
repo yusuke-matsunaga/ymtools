@@ -80,7 +80,7 @@ int
 TvFuncConv::set_from_any(Tcl_Interp* interp,
 			 Tcl_Obj* obj)
 {
-  const char* str = Tcl_GetStringFromObj(obj, NULL);
+  const char* str = Tcl_GetStringFromObj(obj, nullptr);
   const char* bar = strchr(str, '|');
 
   size_t ni = 0;
@@ -132,7 +132,7 @@ TvFuncConv::set_from_any(Tcl_Interp* interp,
 
   TvFunc* func_ptr = new TvFunc(ni, vec);
 
-  if ( obj->typePtr != NULL && obj->typePtr->freeIntRepProc != NULL ) {
+  if ( obj->typePtr != nullptr && obj->typePtr->freeIntRepProc != nullptr ) {
     // 以前の内部表現を解放する．
     obj->typePtr->freeIntRepProc(obj);
   }

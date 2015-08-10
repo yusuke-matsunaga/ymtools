@@ -35,7 +35,7 @@ bool
 node_to_var(const DotlibNode* node,
 	    tCellVarType &var)
 {
-  if ( node == NULL ) {
+  if ( node == nullptr ) {
     var = kCellVarNone;
     return true;
   }
@@ -128,7 +128,7 @@ DotlibTemplate::set_data(const DotlibNode* template_node)
   if ( !get_singleton_or_null("variable_3", var3_node) ) {
     return false;
   }
-  if ( var3_node != NULL && var2_node == NULL ) {
+  if ( var3_node != nullptr && var2_node == nullptr ) {
     // variable_2 がなくて variable_3 があるのはエラー
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    var3_node->loc(),
@@ -154,7 +154,7 @@ DotlibTemplate::set_data(const DotlibNode* template_node)
   if ( !get_singleton_or_null("index_2", index2_node) ) {
     return false;
   }
-  if ( var2_node != NULL && index2_node == NULL ) {
+  if ( var2_node != nullptr && index2_node == nullptr ) {
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    template_node->loc(),
 		    kMsgError,
@@ -162,7 +162,7 @@ DotlibTemplate::set_data(const DotlibNode* template_node)
 		    "Syntax error. missing 'index_2'.");
     return false;
   }
-  if ( var2_node == NULL && index2_node != NULL ) {
+  if ( var2_node == nullptr && index2_node != nullptr ) {
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    template_node->loc(),
 		    kMsgError,
@@ -174,7 +174,7 @@ DotlibTemplate::set_data(const DotlibNode* template_node)
     mIndex2 = index2_node->list_elem(0);
   }
   else {
-    mIndex2 = NULL;
+    mIndex2 = nullptr;
   }
 
   // 'index_3' を取り出す．
@@ -182,7 +182,7 @@ DotlibTemplate::set_data(const DotlibNode* template_node)
   if ( !get_singleton_or_null("index_3", index3_node) ) {
     return false;
   }
-  if ( var3_node != NULL && index3_node == NULL ) {
+  if ( var3_node != nullptr && index3_node == nullptr ) {
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    template_node->loc(),
 		    kMsgError,
@@ -190,7 +190,7 @@ DotlibTemplate::set_data(const DotlibNode* template_node)
 		    "Syntax error. missing 'index_3'.");
     return false;
   }
-  if ( var3_node == NULL && index3_node != NULL ) {
+  if ( var3_node == nullptr && index3_node != nullptr ) {
     MsgMgr::put_msg(__FILE__, __LINE__,
 		    template_node->loc(),
 		    kMsgError,
@@ -202,13 +202,13 @@ DotlibTemplate::set_data(const DotlibNode* template_node)
     mIndex3 = index3_node->list_elem(0);
   }
   else {
-    mIndex3 = NULL;
+    mIndex3 = nullptr;
   }
 
-  if ( var3_node != NULL ) {
+  if ( var3_node != nullptr ) {
     mDimension = 3;
   }
-  else if ( var2_node != NULL ) {
+  else if ( var2_node != nullptr ) {
     mDimension = 2;
   }
   else {
@@ -257,7 +257,7 @@ DotlibTemplate::variable_3() const
 }
 
 // @brief 'index_1' を返す．
-// @note 未定義なら NULL を返す．
+// @note 未定義なら nullptr を返す．
 const DotlibNode*
 DotlibTemplate::index_1() const
 {
@@ -265,7 +265,7 @@ DotlibTemplate::index_1() const
 }
 
 /// @brief 'index_2' を返す．
-// @note 未定義なら NULL を返す．
+// @note 未定義なら nullptr を返す．
 const DotlibNode*
 DotlibTemplate::index_2() const
 {
@@ -273,7 +273,7 @@ DotlibTemplate::index_2() const
 }
 
 // @brief 'index_3' を返す．
-// @note 未定義なら NULL を返す．
+// @note 未定義なら nullptr を返す．
 const DotlibNode*
 DotlibTemplate::index_3() const
 {

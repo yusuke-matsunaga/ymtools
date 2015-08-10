@@ -57,7 +57,7 @@ public:
   ///  - kVpiFork
   ///  - kVpiNamedBegin
   ///  - kVpiNamedFork
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlNamedObj*
   scope() const;
@@ -65,7 +65,7 @@ public:
   /// @brief task の実体を返す．
   /// @note この関数が意味を持つオブジェクトの型
   ///  - kVpiTaskCall
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlTaskFunc*
   task() const;
@@ -73,7 +73,7 @@ public:
   /// @brief user systf クラスへのポインタを返す．
   /// @note この関数が意味を持つオブジェクトの型
   ///  - kVpiSysTaskCall
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlUserSystf*
   user_systf() const;
@@ -92,7 +92,7 @@ public:
   /// @note この関数が意味を持つオブジェクトの型
   ///  - kVpiSysTaskCall
   ///  - kVpiTaskCall
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlExpr*
   arg(ymuint pos) const;
@@ -102,7 +102,7 @@ public:
   ///  - kVpiAssignment
   ///  - kVpiDelayControl
   ///  - kVpiEventControl
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlControl*
   control() const;
@@ -118,7 +118,7 @@ public:
   ///  - kVpiRepeat
   ///  - kVpiWait
   ///  - kVpiWhile
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlStmt*
   body_stmt() const;
@@ -132,7 +132,7 @@ public:
   ///  - kVpiRepeat
   ///  - kVpiWait
   ///  - kVpiWhile
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlExpr*
   expr() const;
@@ -154,7 +154,7 @@ public:
   ///  - kVpiDeassign
   ///  - kVpiForce
   ///  - kVpiRelease
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlExpr*
   lhs() const;
@@ -164,7 +164,7 @@ public:
   ///  - kVpiAssignStmt
   ///  - kVpiAssignment
   ///  - kVpiForce
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlExpr*
   rhs() const;
@@ -173,7 +173,7 @@ public:
   /// @note この関数が意味を持つオブジェクトの型
   ///  - kVpiEvent
   /// @note 返されるオブジェクトの型は kVpiNamedEvent のはず．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlExpr*
   named_event() const;
@@ -181,7 +181,7 @@ public:
   /// @brief 条件が成り立たなかったとき実行されるステートメントの取得
   /// @note この関数が意味を持つオブジェクトの型
   ///  - kVpiIfElse
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlStmt*
   else_stmt() const;
@@ -208,7 +208,7 @@ public:
   /// @param[in] pos 位置番号 (0 <= pos < caseitem_num())
   /// @note この関数が意味を持つオブジェクトの型
   ///  - kVpiCase
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlCaseItem*
   caseitem(ymuint pos) const;
@@ -216,7 +216,7 @@ public:
   /// @brief 初期化代入文の取得
   /// @note この関数が意味を持つオブジェクトの型
   ///  - kVpiFor
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlStmt*
   init_stmt() const;
@@ -224,7 +224,7 @@ public:
   /// @brief 繰り返し代入文の取得
   /// @note この関数が意味を持つオブジェクトの型
   ///  - kVpiFor
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlStmt*
   inc_stmt() const;
@@ -271,7 +271,7 @@ public:
 	       ElbStmt* stmt);
 
   /// @brief 子供ののステートメントの取得
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbStmt*
   _child_stmt(ymuint pos) const;

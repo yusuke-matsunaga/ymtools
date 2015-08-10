@@ -101,7 +101,7 @@ ReaderImpl::gen_stmt(MvnModule* module,
       const VlExpr* expr = stmt->expr();
       Xmask xmask;
       MvnNode* expr_node = gen_expr(module, expr, stmt->case_type(), env, xmask);
-      if ( expr_node == NULL ) {
+      if ( expr_node == nullptr ) {
 	MsgMgr::put_msg(__FILE__, __LINE__,
 			expr->file_region(),
 			kMsgWarning,
@@ -171,7 +171,7 @@ ReaderImpl::gen_caseitem(MvnModule* module,
     Xmask label_xmask;
     MvnNode* label = gen_expr(module, label_expr, case_type,
 			      env, label_xmask);
-    if ( label == NULL ) {
+    if ( label == nullptr ) {
       ostringstream buf;
       buf << "Expression '" << label_expr->decompile()
 	  << "' contains 'x' or 'z', which is never match.";
@@ -183,7 +183,7 @@ ReaderImpl::gen_caseitem(MvnModule* module,
     }
     else {
       Xmask xmask1 = xmask | label_xmask;
-      MvnNode* cond = NULL;
+      MvnNode* cond = nullptr;
       if ( xmask1.has_x() ) {
 	vector<ymuint32> xmask_vect;
 	xmask1.to_vector(xmask_vect);
@@ -204,7 +204,7 @@ ReaderImpl::gen_caseitem(MvnModule* module,
     return true;
   }
 
-  MvnNode* all_cond = NULL;
+  MvnNode* all_cond = nullptr;
   if ( ni == 1 ) {
     all_cond = cond_list[0];
   }
@@ -214,7 +214,7 @@ ReaderImpl::gen_caseitem(MvnModule* module,
       mMvnMgr->connect(cond_list[i], 0, all_cond, i);
     }
   }
-  ASSERT_COND( all_cond != NULL );
+  ASSERT_COND( all_cond != nullptr );
 
   ProcEnv then_env(env);
   gen_stmt(module, caseitem->body_stmt(), then_env, merge);
@@ -266,7 +266,7 @@ ReaderImpl::gen_assign(MvnModule* module,
       ASSERT_NOT_REACHED;
     }
 
-    MvnNode* dst_node = NULL;
+    MvnNode* dst_node = nullptr;
     if ( lhs1->is_primary() ) {
       MvnNode* src_node = splice_rhs(module, rhs_node, offset, bw);
       dst_node = mMvnMgr->new_through(module, bw);

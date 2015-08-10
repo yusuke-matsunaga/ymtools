@@ -48,7 +48,7 @@ EiFactory::new_BitSelect(const PtExpr* pt_expr,
 			 int index_val)
 {
   void* p = mAlloc.get_memory(sizeof(EiConstBitSelect));
-  return new (p) EiConstBitSelect(pt_expr, base_expr, NULL, index_val);
+  return new (p) EiConstBitSelect(pt_expr, base_expr, nullptr, index_val);
 }
 
 // @brief 可変ビット選択式を生成する．
@@ -119,7 +119,7 @@ EiBitSelect::is_bitselect() const
 }
 
 // @brief 宣言要素もしくは配列型宣言要素への参照を返す．
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlDeclBase*
 EiBitSelect::decl_base() const
 {
@@ -152,7 +152,7 @@ EiBitSelect::declarray_dimension() const
 
 // @brief 配列型宣言要素への参照の場合，配列のインデックスを返す．
 // @param[in] pos 位置番号 ( 0 <= pos < declarray_dimension() )
-// @note それ以外では NULL を返す．
+// @note それ以外では nullptr を返す．
 const VlExpr*
 EiBitSelect::declarray_index(ymuint pos) const
 {
@@ -198,11 +198,11 @@ EiBitSelect::_set_reqsize(const VlValueType& type)
 // @brief オペランドを返す．
 // @param[in] pos 位置番号
 // @note 演算子の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbExpr*
 EiBitSelect::_operand(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 
@@ -242,7 +242,7 @@ EiConstBitSelect::is_constant_select() const
 const VlExpr*
 EiConstBitSelect::index() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief インデックス値を返す．

@@ -47,7 +47,7 @@ void
 TagDict::clear()
 {
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
   mNum = 0;
 }
@@ -98,7 +98,7 @@ TagDict::find_cell(const VlNamedObj* parent,
       return cell;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief このオブジェクトが使用しているメモリ量を返す．
@@ -116,7 +116,7 @@ TagDict::alloc_table(ymuint size)
   mLimit = static_cast<ymuint>(mSize * 1.8);
   mTable = new TagDictCell*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 
@@ -145,7 +145,7 @@ const ElbDecl*
 TagDictCell::decl()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // 宣言要素配列を追加する．
@@ -160,7 +160,7 @@ const ElbDeclArray*
 TagDictCell::declarray()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief  パラメータを追加する．
@@ -175,7 +175,7 @@ const ElbParameter*
 TagDictCell::parameter()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // defparam を追加する．
@@ -190,7 +190,7 @@ const ElbDefParam*
 TagDictCell::defparam()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // param assign を追加する．
@@ -205,7 +205,7 @@ const ElbParamAssign*
 TagDictCell::paramassign()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // module array を追加する．
@@ -220,7 +220,7 @@ const ElbModuleArray*
 TagDictCell::modulearray()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // module を追加する．
@@ -235,7 +235,7 @@ const ElbModule*
 TagDictCell::module()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // primitive array を追加する．
@@ -250,7 +250,7 @@ const ElbPrimArray*
 TagDictCell::primarray()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // primitive を追加する．
@@ -265,7 +265,7 @@ const ElbPrimitive*
 TagDictCell::primitive()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief タスクを追加する．
@@ -280,7 +280,7 @@ const ElbTaskFunc*
 TagDictCell::task()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // @brief 関数を追加する．
@@ -295,7 +295,7 @@ const ElbTaskFunc*
 TagDictCell::function()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // continuous assignment を追加する．
@@ -310,7 +310,7 @@ const ElbContAssign*
 TagDictCell::contassign()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // process を追加する．
@@ -325,7 +325,7 @@ const ElbProcess*
 TagDictCell::process()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 // internal scope を追加する．
@@ -340,7 +340,7 @@ const ElbScope*
 TagDictCell::internalscope()
 {
   ASSERT_NOT_REACHED;
-  return NULL;
+  return nullptr;
 }
 
 

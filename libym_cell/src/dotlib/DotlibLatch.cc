@@ -35,9 +35,9 @@ DotlibLatch::set_data(const DotlibNode* latch_node)
     return false;
   }
 
-  mDataIn = NULL;
-  mEnable = NULL;
-  mEnableAlso = NULL;
+  mDataIn = nullptr;
+  mEnable = nullptr;
+  mEnableAlso = nullptr;
 
   // data_in を取り出す．
   if ( !get_singleton_or_null("data_in", mDataIn) ) {

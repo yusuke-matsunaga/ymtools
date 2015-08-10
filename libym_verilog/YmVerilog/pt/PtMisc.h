@@ -43,7 +43,7 @@ public:
 
   /// @brief 遅延式の取得
   /// @retval 遅延を表す式 delay control の場合
-  /// @retval NULL 上記以外
+  /// @retval nullptr 上記以外
   virtual
   const PtExpr*
   delay() const = 0;
@@ -64,7 +64,7 @@ public:
 
   /// @brief 繰り返し数の取得
   /// @retval 繰り返し数を表す式 repeat control の場合
-  /// @retval NULL 上記以外
+  /// @retval nullptr 上記以外
   virtual
   const PtExpr*
   rep_expr() const = 0;
@@ -175,7 +175,7 @@ public:
   /// @brief 値の取得
   /// @param[in] pos 取得する遅延値の位置(0 〜 2)
   /// @return pos 番目の遅延を表す式\n
-  /// 該当する要素がなければ NULL を返す．
+  /// 該当する要素がなければ nullptr を返す．
   virtual
   const PtExpr*
   value(ymuint pos) const = 0;

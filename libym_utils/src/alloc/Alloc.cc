@@ -36,7 +36,7 @@ void*
 Alloc::get_memory(ymuint64 n)
 {
   if ( n == 0 ) {
-    return NULL;
+    return nullptr;
   }
 
   mUsedSize += n;

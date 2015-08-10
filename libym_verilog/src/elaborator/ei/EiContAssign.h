@@ -57,7 +57,7 @@ public:
   drive1() const;
 
   /// @brief 遅延を表す式を返す．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbDelay*
   delay() const;

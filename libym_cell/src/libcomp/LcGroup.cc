@@ -20,8 +20,8 @@ BEGIN_NAMESPACE_YM_CELL_LIBCOMP
 // @param[in] id ID番号
 LcGroup::LcGroup(ymuint id) :
   mId(id),
-  mParent(NULL),
-  mCellGroup(NULL)
+  mParent(nullptr),
+  mCellGroup(nullptr)
 {
 }
 

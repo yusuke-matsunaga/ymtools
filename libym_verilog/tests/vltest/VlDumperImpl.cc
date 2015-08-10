@@ -59,21 +59,21 @@ VlDumperImpl::file_loc_mode() const
   return mFileLocMode;
 }
 
-// @brief NULL ポインタの出力を抑止する．
+// @brief nullptr ポインタの出力を抑止する．
 void
 VlDumperImpl::enable_nullptr_suppress_mode()
 {
   mNullptrSuppressMode = true;
 }
 
-// @brief NULL ポインタの出力を行う．
+// @brief nullptr ポインタの出力を行う．
 void
 VlDumperImpl::disable_nullptr_suppress_mode()
 {
   mNullptrSuppressMode = false;
 }
 
-// @brief NULL ポインタの出力抑止モードの状態を得る．
+// @brief nullptr ポインタの出力抑止モードの状態を得る．
 bool
 VlDumperImpl::nullptr_suppress_mode() const
 {
@@ -152,7 +152,7 @@ VlDumperImpl::put(const char* label,
 		  const VlMgr& mgr,
 		  const VlObj* obj)
 {
-  if ( obj == NULL ) {
+  if ( obj == nullptr ) {
     if ( !nullptr_suppress_mode() ) {
       VlDumpHeader x(*this, label, "null-pointer");
     }

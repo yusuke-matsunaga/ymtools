@@ -20,7 +20,7 @@ BEGIN_NAMESPACE_YM_DOTLIB
 // @brief コンストラクタ
 FhScanner::FhScanner()
 {
-  mSrcString = NULL;
+  mSrcString = nullptr;
   mCurPos = 0;
 }
 
@@ -144,7 +144,7 @@ FhScanner::cur_string()
 int
 FhScanner::cur_int()
 {
-  return strtol(mCurString.c_str(), NULL, 10);
+  return strtol(mCurString.c_str(), nullptr, 10);
 }
 
 // @brief 一文字読み出す．

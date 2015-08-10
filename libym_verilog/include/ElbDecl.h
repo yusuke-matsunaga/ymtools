@@ -160,8 +160,8 @@ public:
 
   /// @brief delay の取得
   /// @retval delay
-  /// @retval NULL delay の指定なし
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr delay の指定なし
+  /// @note このクラスでは nullptr を返す．
   virtual
   ElbDelay*
   delay() const;

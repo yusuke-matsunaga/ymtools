@@ -73,7 +73,7 @@ CptStmt::stmt_name() const
 
 // @brief 階層ブランチの取得
 // @note kDisable/kEnable/kSysEnable で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 PtNameBranchArray
 CptStmt::namebranch_array() const
 {
@@ -83,11 +83,11 @@ CptStmt::namebranch_array() const
 // @brief 名前の取得
 // @return 名前
 // kDisable/kEnable/kSysEnable/kParBlock/kSeqBlock で意味のある関数/
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const char*
 CptStmt::name() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 引数の数の取得
@@ -105,77 +105,77 @@ CptStmt::arg_num() const
 const PtExpr*
 CptStmt::arg(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief コントロールの取得
 // @return ディレイ/イベントコントロール
 // kDc/kEc で意味のある関数
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtControl*
 CptStmt::control() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 本体のステートメントの取得
 // @return 本体のステートメント
 // kDc/kEc/kWait/kForever/kRepeat/kWhile/kFor/kIf で意味のある関数
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtStmt*
 CptStmt::body() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 式の取得
 // @return 式
 // kWait/kRepeat/kWhile/kFor/kIf/kCase/kCaseX/kCaseZ で意味のある関数
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptStmt::expr() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 左辺式の取得
 // @return 左辺式
 // kAssign/kForce/kPcAssign/kRelease/kDeassign で意味のある関数
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptStmt::lhs() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 右辺式の取得
 // @return 右辺式
 // kAssign/kForce/kPcAssign で意味のある関数
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptStmt::rhs() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief イベントプライマリの取得
 // @return イベントプライマリ
 // kEvent で意味のある関数
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtExpr*
 CptStmt::primary() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 条件が成り立たなかったとき実行されるステートメントの取得
 // @return 条件が成り立たなかったとき実行されるステートメント
 // kIf で意味のある関数
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtStmt*
 CptStmt::else_body() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief case item の要素数の取得
@@ -190,31 +190,31 @@ CptStmt::caseitem_num() const
 
 // @brief case item の取得
 // kCase/kCaseX/kCaseZ で意味のある関数
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtCaseItem*
 CptStmt::caseitem(ymuint /* pos */) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 初期化代入文の取得
 // @return 初期化代入文
 // kFor で意味のある関数
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtStmt*
 CptStmt::init_stmt() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 繰り返し代入文の取得
 // @return 繰り返し代入文
 // kFor で意味のある関数
-// このクラスでは NULL を返す．
+// このクラスでは nullptr を返す．
 const PtStmt*
 CptStmt::next_stmt() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 宣言ヘッダ配列の取得
@@ -285,7 +285,7 @@ CptDisableH::~CptDisableH()
 
 // @brief 階層ブランチの取得
 // @note kDisable/kEnable/kSysEnable で意味のある関数
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 PtNameBranchArray
 CptDisableH::namebranch_array() const
 {

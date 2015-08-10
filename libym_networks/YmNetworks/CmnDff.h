@@ -69,12 +69,12 @@ public:
   clock() const;
 
   /// @brief クリア信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   const CmnNode*
   clear() const;
 
   /// @brief プリセット信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   const CmnNode*
   preset() const;
 
@@ -95,12 +95,12 @@ public:
   _clock();
 
   /// @brief クリア信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   CmnNode*
   _clear();
 
   /// @brief プリセット信号のノードを返す．
-  /// @note NULL の場合もある．
+  /// @note nullptr の場合もある．
   CmnNode*
   _preset();
 
@@ -204,7 +204,7 @@ CmnDff::clock() const
 }
 
 // @brief クリア信号のノードを返す．
-// @note NULL の場合もある．
+// @note nullptr の場合もある．
 inline
 const CmnNode*
 CmnDff::clear() const
@@ -213,7 +213,7 @@ CmnDff::clear() const
 }
 
 // @brief プリセット信号のノードを返す．
-// @note NULL の場合もある．
+// @note nullptr の場合もある．
 inline
 const CmnNode*
 CmnDff::preset() const
@@ -254,7 +254,7 @@ CmnDff::_clock()
 }
 
 // @brief クリア信号のノードを返す．
-// @note NULL の場合もある．
+// @note nullptr の場合もある．
 inline
 CmnNode*
 CmnDff::_clear()
@@ -263,7 +263,7 @@ CmnDff::_clear()
 }
 
 // @brief プリセット信号のノードを返す．
-// @note NULL の場合もある．
+// @note nullptr の場合もある．
 inline
 CmnNode*
 CmnDff::_preset()

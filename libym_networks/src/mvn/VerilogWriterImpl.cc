@@ -62,7 +62,7 @@ VerilogWriterImpl::dump(ostream& s,
   ymuint n = mgr.max_module_id();
   for (ymuint i = 0; i < n; ++ i) {
     const MvnModule* module = mgr.module(i);
-    if ( module == NULL ) continue;
+    if ( module == nullptr ) continue;
 
     dump_module(s, module, mgr);
   }
@@ -82,17 +82,17 @@ VerilogWriterImpl::dump(ostream& s,
   ymuint node_num = mgr.max_node_id();
   for (ymuint i = 0; i < node_num; ++ i) {
     const MvnNode* node = mgr.node(i);
-    if ( node == NULL ) continue;
+    if ( node == nullptr ) continue;
 
     s << "// node" << node->id() << " : ";
     if ( node_map.is_single_elem(i) ) {
       const VlDecl* decl = node_map.get_single_elem(i);
-      ASSERT_COND( decl != NULL );
+      ASSERT_COND( decl != nullptr );
       s << decl->full_name();
     }
     else if ( node_map.is_array_elem(i) ) {
       const VlDeclArray* declarray = node_map.get_array_elem(i);
-      ASSERT_COND( declarray != NULL );
+      ASSERT_COND( declarray != nullptr );
       ymuint offset = node_map.get_array_offset(i);
       ymuint d = declarray->dimension();
       vector<int> index_array(d);
@@ -312,10 +312,10 @@ VerilogWriterImpl::dump_node(ostream& s,
 
       const MvnInputPin* ipin0 = node->input(0);
       const MvnNode* src_node0 = ipin0->src_node();
-      ASSERT_COND( src_node0 != NULL );
+      ASSERT_COND( src_node0 != nullptr );
       const MvnInputPin* ipin1 = node->input(1);
       const MvnNode* src_node1 = ipin1->src_node();
-      ASSERT_COND( src_node1 != NULL );
+      ASSERT_COND( src_node1 != nullptr );
 
       s << "  always @ ( ";
       if ( node->clock_pol() == 1 ) {
@@ -365,10 +365,10 @@ VerilogWriterImpl::dump_node(ostream& s,
 
       const MvnInputPin* ipin0 = node->input(0);
       const MvnNode* src_node0 = ipin0->src_node();
-       ASSERT_COND( src_node0 != NULL );
+       ASSERT_COND( src_node0 != nullptr );
       const MvnInputPin* ipin1 = node->input(1);
       const MvnNode* src_node1 = ipin1->src_node();
-      ASSERT_COND( src_node1 != NULL );
+      ASSERT_COND( src_node1 != nullptr );
 
       s << "  always @ ( * )" << endl
 	<< "    if ( " << node_name(src_node1) << " )" << endl

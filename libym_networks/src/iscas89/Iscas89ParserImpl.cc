@@ -23,7 +23,7 @@ BEGIN_NAMESPACE_YM_ISCAS89
 // コンストラクタ
 Iscas89ParserImpl::Iscas89ParserImpl()
 {
-  mScanner = NULL;
+  mScanner = nullptr;
 }
 
 // デストラクタ
@@ -76,7 +76,7 @@ Iscas89ParserImpl::read(const string& filename)
     Iscas89Handler* handler = *p;
     if ( !handler->init() ) {
       delete mScanner;
-      mScanner = NULL;
+      mScanner = nullptr;
       return false;
     }
   }
@@ -149,7 +149,7 @@ Iscas89ParserImpl::read(const string& filename)
   }
 
   delete mScanner;
-  mScanner = NULL;
+  mScanner = nullptr;
 
   if ( !has_error ) {
     // 成功

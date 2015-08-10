@@ -20,7 +20,7 @@ BEGIN_NAMESPACE_YM_CELL
 CiPatGraph::CiPatGraph() :
   mInputNum(0U),
   mEdgeNum(0U),
-  mEdgeList(NULL)
+  mEdgeList(nullptr)
 {
 }
 
@@ -143,7 +143,7 @@ CiPatGraph::alloc_array(Alloc& alloc)
     mEdgeList = new (p) ymuint32[mEdgeNum];
   }
   else {
-    mEdgeList = NULL;
+    mEdgeList = nullptr;
   }
 }
 

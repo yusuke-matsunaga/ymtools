@@ -23,7 +23,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // @brief begin ブロックを生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] stmt_list 子のステートメントリスト
 ElbStmt*
@@ -42,7 +42,7 @@ EiFactory::new_Begin(const VlNamedObj* parent,
 
 // @brief fork ブロックを生成する．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] stmt_list 子のステートメントリスト
 ElbStmt*
@@ -61,7 +61,7 @@ EiFactory::new_Fork(const VlNamedObj* parent,
 
 // @brief 名前付き begin ブロックを生成する．
 // @param[in] block 自分自身に対応するスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] stmt_list 子のステートメントリスト
 ElbStmt*
@@ -80,7 +80,7 @@ EiFactory::new_NamedBegin(const VlNamedObj* block,
 
 // @brief 名前付き fork ブロックを生成する．
 // @param[in] block 自分自身に対応するスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] stmt_list 子のステートメントリスト
 ElbStmt*
@@ -104,7 +104,7 @@ EiFactory::new_NamedFork(const VlNamedObj* block,
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] stmt_num ステートメントのリストの要素数
 // @param[in] array ステートメントのリスト用配列
@@ -146,7 +146,7 @@ EiBlockStmt::_child_stmt(ymuint pos) const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] stmt_num ステートメントのリストの要素数
 // @param[in] array ステートメントのリスト用配列
@@ -178,7 +178,7 @@ EiBegin::type() const
 
 // @brief コンストラクタ
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] pt_stmt パース木のステートメント定義
 // @param[in] stmt_num ステートメントのリストの要素数
 // @param[in] array ステートメントのリスト用配列
@@ -210,7 +210,7 @@ EiFork::type() const
 
 // @brief コンストラクタ
 // @param[in] block 自分自身に対応するスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] stmt_num ステートメントのリストの要素数
 // @param[in] array ステートメントのリスト用配列
 EiNamedBlockStmt::EiNamedBlockStmt(const VlNamedObj* block,
@@ -272,7 +272,7 @@ EiNamedBlockStmt::_child_stmt(ymuint pos) const
 
 // @brief コンストラクタ
 // @param[in] block 自分自身に対応するスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] stmt_num ステートメントのリストの要素数
 // @param[in] array ステートメントのリスト用配列
 EiNamedBegin::EiNamedBegin(const VlNamedObj* block,
@@ -302,7 +302,7 @@ EiNamedBegin::type() const
 
 // @brief コンストラクタ
 // @param[in] block 自分自身に対応するスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] stmt_num ステートメントのリストの要素数
 // @param[in] array ステートメントのリスト用配列
 EiNamedFork::EiNamedFork(const VlNamedObj* block,

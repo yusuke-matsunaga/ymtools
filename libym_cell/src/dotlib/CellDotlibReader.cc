@@ -64,7 +64,7 @@ dot2expr(const DotlibNode* node,
 	 const HashMap<ShString, ymuint>& pin_map)
 {
   // 特例
-  if ( node == NULL ) {
+  if ( node == nullptr ) {
     return Expr::make_zero();
   }
 
@@ -123,11 +123,11 @@ gen_lut(CellLibrary* library,
 {
   DotlibLut lut_info;
   if ( !lut_info.set_data(lut_node) ) {
-    return NULL;
+    return nullptr;
   }
   const char* name = lut_info.template_name();
   const CellLutTemplate* templ = library->lu_table_template(name);
-  if ( templ == NULL ) {
+  if ( templ == nullptr ) {
     ostringstream buf;
     buf << lut_info.template_name()
 	<< ": No such lu_table template";
@@ -136,7 +136,7 @@ gen_lut(CellLibrary* library,
 		    kMsgError,
 		    "DOTLIB_PARSER",
 		    buf.str());
-    return NULL;
+    return nullptr;
   }
 
   ymuint d = templ->dimension();
@@ -162,7 +162,7 @@ gen_lut(CellLibrary* library,
     lut_info.index_3()->get_vector(index3_array);
   }
 
-  CellLut* lut = NULL;
+  CellLut* lut = nullptr;
   if ( d == 1 ) {
     lut = library->new_lut1(templ, value_array,
 			    index1_array);
@@ -365,11 +365,11 @@ gen_timing(CellLibrary* library,
 	const DotlibNode* rt_node = timing_info.rise_transition();
 	const DotlibNode* rp_node = timing_info.rise_propagation();
 
-	CellLut* cr_lut = NULL;
-	CellLut* rt_lut = NULL;
-	CellLut* rp_lut = NULL;
-	if ( cr_node != NULL ) {
-	  if ( rp_node != NULL ) {
+	CellLut* cr_lut = nullptr;
+	CellLut* rt_lut = nullptr;
+	CellLut* rp_lut = nullptr;
+	if ( cr_node != nullptr ) {
+	  if ( rp_node != nullptr ) {
 	    MsgMgr::put_msg(__FILE__, __LINE__,
 			    dt_timing->loc(),
 			    kMsgError,
@@ -377,7 +377,7 @@ gen_timing(CellLibrary* library,
 			    "cell_rise and rise_propagation are mutually exclusive.");
 	    continue;
 	  }
-	  if ( rt_node == NULL ) {
+	  if ( rt_node == nullptr ) {
 	    MsgMgr::put_msg(__FILE__, __LINE__,
 			    dt_timing->loc(),
 			    kMsgError,
@@ -388,8 +388,8 @@ gen_timing(CellLibrary* library,
 	  cr_lut = gen_lut(library, cr_node);
 	  rt_lut = gen_lut(library, rt_node);
 	}
-	else if ( rp_node != NULL ) {
-	  if ( rt_node == NULL ) {
+	else if ( rp_node != nullptr ) {
+	  if ( rt_node == nullptr ) {
 	    MsgMgr::put_msg(__FILE__, __LINE__,
 			    dt_timing->loc(),
 			    kMsgError,
@@ -400,7 +400,7 @@ gen_timing(CellLibrary* library,
 	  rt_lut = gen_lut(library, rt_node);
 	  rp_lut = gen_lut(library, rp_node);
 	}
-	else if ( rt_node != NULL ) {
+	else if ( rt_node != nullptr ) {
 	  MsgMgr::put_msg(__FILE__, __LINE__,
 			  dt_timing->loc(),
 			  kMsgError,
@@ -413,11 +413,11 @@ gen_timing(CellLibrary* library,
 	const DotlibNode* ft_node = timing_info.fall_transition();
 	const DotlibNode* fp_node = timing_info.fall_propagation();
 
-	CellLut* cf_lut = NULL;
-	CellLut* ft_lut = NULL;
-	CellLut* fp_lut = NULL;
-	if ( cf_node != NULL ) {
-	  if ( fp_node != NULL ) {
+	CellLut* cf_lut = nullptr;
+	CellLut* ft_lut = nullptr;
+	CellLut* fp_lut = nullptr;
+	if ( cf_node != nullptr ) {
+	  if ( fp_node != nullptr ) {
 	    MsgMgr::put_msg(__FILE__, __LINE__,
 			    dt_timing->loc(),
 			    kMsgError,
@@ -425,7 +425,7 @@ gen_timing(CellLibrary* library,
 			    "cell_fall and fall_propagation are mutually exclusive.");
 	    continue;
 	  }
-	  if ( ft_node == NULL ) {
+	  if ( ft_node == nullptr ) {
 	    MsgMgr::put_msg(__FILE__, __LINE__,
 			    dt_timing->loc(),
 			    kMsgError,
@@ -436,8 +436,8 @@ gen_timing(CellLibrary* library,
 	  cf_lut = gen_lut(library, cf_node);
 	  ft_lut = gen_lut(library, ft_node);
 	}
-	else if ( fp_node != NULL ) {
-	  if ( ft_node == NULL ) {
+	else if ( fp_node != nullptr ) {
+	  if ( ft_node == nullptr ) {
 	    MsgMgr::put_msg(__FILE__, __LINE__,
 			    dt_timing->loc(),
 			    kMsgError,
@@ -448,7 +448,7 @@ gen_timing(CellLibrary* library,
 	  ft_lut = gen_lut(library, ft_node);
 	  fp_lut = gen_lut(library, fp_node);
 	}
-	else if ( ft_node != NULL ) {
+	else if ( ft_node != nullptr ) {
 	  MsgMgr::put_msg(__FILE__, __LINE__,
 			  dt_timing->loc(),
 			  kMsgError,
@@ -457,8 +457,8 @@ gen_timing(CellLibrary* library,
 	  continue;
 	}
 
-	if ( cr_lut != NULL || cf_lut != NULL ) {
-	  if ( fp_lut != NULL ) {
+	if ( cr_lut != nullptr || cf_lut != nullptr ) {
+	  if ( fp_lut != nullptr ) {
 	    MsgMgr::put_msg(__FILE__, __LINE__,
 			    dt_timing->loc(),
 			    kMsgError,
@@ -471,7 +471,7 @@ gen_timing(CellLibrary* library,
 				   cr_lut, cf_lut,
 				   rt_lut, ft_lut);
 	}
-	else { // cr_lut == NULL && cf_lut == NULL
+	else { // cr_lut == nullptr && cf_lut == nullptr
 	  library->new_timing_lut2(cell_id, timing_id,
 				   timing_type, cond,
 				   rt_lut, ft_lut,
@@ -504,7 +504,7 @@ gen_timing(CellLibrary* library,
 	   p != pin_name_list.end(); ++ p) {
 	string pin_name = *p;
 	const CellPin* ipin = cell->pin(pin_name);
-	if ( ipin == NULL ) {
+	if ( ipin == nullptr ) {
 	  ostringstream buf;
 	  buf << pin_name << ": no such pin";
 	  MsgMgr::put_msg(__FILE__, __LINE__,
@@ -549,14 +549,14 @@ gen_timing(CellLibrary* library,
 // @brief DotlibNode から CellLibrary を生成する．
 // @param[in] dt_library ライブラリを表すパース木のルート
 // @return 生成したライブラリを返す．
-// @note 生成が失敗したら NULL を返す．
+// @note 生成が失敗したら nullptr を返す．
 const CellLibrary*
 gen_library(const DotlibNode* dt_library)
 {
   DotlibLibrary library_info;
 
   if ( !library_info.set_data(dt_library) ) {
-    return NULL;
+    return nullptr;
   }
 
   // ライブラリの生成
@@ -639,7 +639,7 @@ gen_library(const DotlibNode* dt_library)
        p != dt_lut_template_list.end(); ++ p, ++ templ_id) {
     DotlibTemplate templ_info;
     if ( !templ_info.set_data(*p) ) {
-      return NULL;
+      return nullptr;
     }
     ymuint d = templ_info.dimension();
     switch ( d ) {
@@ -798,7 +798,7 @@ gen_library(const DotlibNode* dt_library)
     // FF情報の読み出し
     const DotlibNode* dt_ff = cell_info.ff();
     DotlibFF ff_info;
-    if ( dt_ff != NULL ) {
+    if ( dt_ff != nullptr ) {
       if ( !ff_info.set_data(dt_ff) ) {
 	continue;
       }
@@ -812,7 +812,7 @@ gen_library(const DotlibNode* dt_library)
     // ラッチ情報の読み出し
     const DotlibNode* dt_latch = cell_info.latch();
     DotlibLatch latch_info;
-    if ( dt_latch != NULL) {
+    if ( dt_latch != nullptr) {
       if ( !latch_info.set_data(dt_latch) ) {
 	continue;
       }
@@ -938,7 +938,7 @@ gen_library(const DotlibNode* dt_library)
       for (ymuint i = 0; i < nop; ++ i) {
 	ShString oname = pin_info.name(i);
 	const CellPin* opin = cell->pin((const char*)oname);
-	ASSERT_COND( opin != NULL );
+	ASSERT_COND( opin != nullptr );
 	ymuint oid = opin->output_id();
 	bool has_logic = cell->has_logic(oid);
 	TvFunc tv_function;
@@ -1014,7 +1014,7 @@ CellDotlibReader::~CellDotlibReader()
 // @brief dotlib ファイルを読み込む
 // @param[in] filename ファイル名
 // @return 読み込んで作成したセルライブラリを返す．
-// @note エラーが起きたら NULL を返す．
+// @note エラーが起きたら nullptr を返す．
 const CellLibrary*
 CellDotlibReader::operator()(const string& filename)
 {
@@ -1023,7 +1023,7 @@ CellDotlibReader::operator()(const string& filename)
   DotlibMgr mgr;
   DotlibParser parser;
   if ( !parser.read_file(filename, mgr, false) ) {
-    return NULL;
+    return nullptr;
   }
   return gen_library(mgr.root_node());
 }
@@ -1031,7 +1031,7 @@ CellDotlibReader::operator()(const string& filename)
 // @brief dotlib ファイルを読み込む
 // @param[in] filename ファイル名
 // @return 読み込んで作成したセルライブラリを返す．
-// @note エラーが起きたら NULL を返す．
+// @note エラーが起きたら nullptr を返す．
 const CellLibrary*
 CellDotlibReader::operator()(const char* filename)
 {
@@ -1040,7 +1040,7 @@ CellDotlibReader::operator()(const char* filename)
   DotlibMgr mgr;
   DotlibParser parser;
   if ( !parser.read_file(filename, mgr, false) ) {
-    return NULL;
+    return nullptr;
   }
   return gen_library(mgr.root_node());
 }

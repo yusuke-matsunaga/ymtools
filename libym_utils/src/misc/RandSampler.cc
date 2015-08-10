@@ -50,8 +50,8 @@ RandSampler::init()
     RsNode* node = &mNodeArray[i];
     node->mIndex = i;
     node->mWeight = mWeightArray[i];
-    node->mLeft = NULL;
-    node->mRight = NULL;
+    node->mLeft = nullptr;
+    node->mRight = nullptr;
     node_heap[heap_end] = node;
     move_up(node_heap, heap_end);
     ++ heap_end;
@@ -110,14 +110,14 @@ RandSampler::weight(ymuint pos) const
 ymuint
 RandSampler::get_sample(RandGen& randgen)
 {
-  ASSERT_COND( mRoot != NULL );
+  ASSERT_COND( mRoot != nullptr );
 
   ymuint total_weight = mRoot->mWeight;
   ymuint val = randgen.int32() % total_weight;
 
   for (RsNode* node = mRoot; ; ) {
     RsNode* l_node = node->mLeft;
-    if ( l_node == NULL ) {
+    if ( l_node == nullptr ) {
       return node->mIndex;
     }
     if ( l_node->mWeight > val ) {

@@ -34,7 +34,7 @@ ElbParamHead::~ElbParamHead()
 
 // @brief コンストラクタ
 ElbParameter::ElbParameter() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 
@@ -53,23 +53,23 @@ ElbParameter::is_consttype() const
 // @brief ビット要素を返す．
 // @param[in] index インデックス
 // @retval ビット要素 index が範囲内の場合
-// @retval NULL index が範囲外の場合．またはビット展開されていない場合
-// @note このクラスでは NULL を返す．
+// @retval nullptr index が範囲外の場合．またはビット展開されていない場合
+// @note このクラスでは nullptr を返す．
 const VlDecl*
 ElbParameter::elem_by_index(int index) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief ビット要素を返す．
 // @param[in] offset オフセット
 // @retval ビット要素 offset が範囲内の場合
-// @retval NULL offset が範囲外の場合．またはビット展開されていない場合
-// @note このクラスでは NULL を返す．
+// @retval nullptr offset が範囲外の場合．またはビット展開されていない場合
+// @note このクラスでは nullptr を返す．
 const VlDecl*
 ElbParameter::elem_by_offset(ymuint offset) const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief net 型の取得
@@ -120,20 +120,20 @@ ElbParameter::charge() const
 
 // @brief delay の取得
 // @retval delay
-// @retval NULL delay の指定なし
+// @retval nullptr delay の指定なし
 const VlDelay*
 ElbParameter::delay() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 初期値の取得
 // @retval 初期値
-// @retval NULL 設定がない場合
+// @retval nullptr 設定がない場合
 const VlExpr*
 ElbParameter::init_value() const
 {
-  return NULL;
+  return nullptr;
 }
 
 END_NAMESPACE_YM_VERILOG

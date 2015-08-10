@@ -41,7 +41,7 @@ void
 DeclMap::clear()
 {
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
   mNum = 0;
   mAlloc.destroy();
@@ -95,7 +95,7 @@ DeclMap::add(const VlDecl* decl,
 // @brief 対応するノードを取り出す．
 // @param[in] decl 宣言要素
 // @return 対応するノードを返す．
-// @note 登録されていない場合と配列型の場合には NULL を返す．
+// @note 登録されていない場合と配列型の場合には nullptr を返す．
 MvnNode*
 DeclMap::get(const VlDecl* decl) const
 {
@@ -103,7 +103,7 @@ DeclMap::get(const VlDecl* decl) const
   if ( cell ) {
     return cell->mNode;
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief 対応するノードを取り出す(配列型)．
@@ -111,7 +111,7 @@ DeclMap::get(const VlDecl* decl) const
 // @param[in] offset オフセット
 // @return 対応するノードを返す．
 // @note 登録されていない場合と配列型でない場合，
-// オフセットが範囲外の場合には NULL を返す．
+// オフセットが範囲外の場合には nullptr を返す．
 MvnNode*
 DeclMap::get(const VlDecl* decl,
 	     ymuint offset) const
@@ -120,7 +120,7 @@ DeclMap::get(const VlDecl* decl,
   if ( cell ) {
     return cell->mNode;
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief Cell を登録する．
@@ -167,7 +167,7 @@ DeclMap::find_cell(const VlDecl* decl,
       return cell;
     }
   }
-  return NULL;
+  return nullptr;
 }
 
 // @brief テーブルの領域を確保する．
@@ -179,7 +179,7 @@ DeclMap::alloc_table(ymuint size)
   mLimit = static_cast<ymuint32>(mSize * 1.8);
   mTable = new Cell*[mSize];
   for (ymuint i = 0; i < mSize; ++ i) {
-    mTable[i] = NULL;
+    mTable[i] = nullptr;
   }
 }
 

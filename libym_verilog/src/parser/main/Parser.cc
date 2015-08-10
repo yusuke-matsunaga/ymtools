@@ -181,7 +181,7 @@ Parser::check_function_statement(const PtStmt* stmt)
     return true;
 
   case kPtAssignStmt:
-    if ( stmt->control() == NULL) return true;
+    if ( stmt->control() == nullptr) return true;
     break;
 
   case kPtIfStmt:
@@ -381,7 +381,7 @@ Parser::add_item(const PtItem* item,
 void
 Parser::init_block()
 {
-  push_declhead_list(NULL);
+  push_declhead_list(nullptr);
 }
 
 // @brief block-statement の終了

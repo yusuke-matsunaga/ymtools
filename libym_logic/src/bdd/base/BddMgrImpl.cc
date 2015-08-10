@@ -112,7 +112,7 @@ clear_mark(BddEdge e)
 // クラス BddMgrImpl
 //////////////////////////////////////////////////////////////////////
 
-BddMgrImpl* BddMgrImpl::mDefaultMgr = NULL;
+BddMgrImpl* BddMgrImpl::mDefaultMgr = nullptr;
 
 // デフォルトマネージャを返すクラスメソッド
 BddMgrImpl*
@@ -134,7 +134,7 @@ BddMgrImpl::new_mgr(const string& type,
 		    const string& name,
 		    const string& option)
 {
-  BddMgrImpl* impl = NULL;
+  BddMgrImpl* impl = nullptr;
 
   if ( type == "bmc" ) {
     impl = new BddMgrClassic(name, option);
@@ -183,7 +183,7 @@ BddMgrImpl::BddMgrImpl(const string& name) :
   mLogFp = mNullStream;
 
   // BDD リストの初期化
-  mTopBdd = NULL;
+  mTopBdd = nullptr;
 
   mOverflow = false;
 
@@ -214,7 +214,7 @@ BddMgrImpl::~BddMgrImpl()
   // と言っても Bdd のオブジェクトを削除するわけには行かないので
   // デフォルトマネージャのエラーBDDにすり替える．
   if ( mTopBdd ) {
-    Bdd* last = NULL;
+    Bdd* last = nullptr;
     for (Bdd* bdd = mTopBdd; bdd; bdd = bdd->mNext) {
       bdd->mRoot = BddEdge::make_error();
       bdd->mMgr = mDefaultMgr;
@@ -222,7 +222,7 @@ BddMgrImpl::~BddMgrImpl()
     }
     Bdd* first = mDefaultMgr->mTopBdd;
     mDefaultMgr->mTopBdd = mTopBdd;
-    mTopBdd->mPrev = NULL;
+    mTopBdd->mPrev = nullptr;
     last->mNext = first;
     if ( first ) {
       first->mPrev = last;

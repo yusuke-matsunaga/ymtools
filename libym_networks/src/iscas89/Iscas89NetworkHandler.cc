@@ -19,7 +19,7 @@ BEGIN_NAMESPACE_YM_ISCAS89
 
 // @brief コンストラクタ
 Iscas89NetworkHandler::Iscas89NetworkHandler() :
-  mNetwork(NULL)
+  mNetwork(nullptr)
 {
 }
 

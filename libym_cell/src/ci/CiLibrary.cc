@@ -56,13 +56,13 @@ CiLibrary::CiLibrary() :
   mTechnology = kCellTechCmos;
   mDelayModel = kCellDelayGenericCmos;
   mLutTemplateNum = 0;
-  mLutTemplateArray = NULL;
+  mLutTemplateArray = nullptr;
   mCellNum = 0;
-  mCellArray = NULL;
+  mCellArray = nullptr;
   mGroupNum = 0;
-  mGroupArray = NULL;
+  mGroupArray = nullptr;
   mClassNum = 0;
-  mClassArray = NULL;
+  mClassArray = nullptr;
 }
 
 // @brief デストラクタ
@@ -195,7 +195,7 @@ CiLibrary::lu_table_template(ymuint pos) const
 
 // @brief ルックアップテーブルのテンプレートの取得
 // @param[in] name テンプレート名
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const CellLutTemplate*
 CiLibrary::lu_table_template(const char* name) const
 {
@@ -204,12 +204,12 @@ CiLibrary::lu_table_template(const char* name) const
 
 // @brief バスタイプの取得
 // @param[in] name バスタイプ名
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 const CellBusType*
 CiLibrary::bus_type(const char* name) const
 {
   // 未完
-  return NULL;
+  return nullptr;
 }
 
 // @brief このライブラリの持つセル数の取得
@@ -755,7 +755,7 @@ CiLibrary::new_ff_cell(ymuint cell_id,
 
   ShString shname(name);
 
-  CiCell* cell = NULL;
+  CiCell* cell = nullptr;
   if ( has_clear ) {
     if ( has_preset ) {
       void* p = mAlloc.get_memory(sizeof(CiFFSRCell));
@@ -863,7 +863,7 @@ CiLibrary::new_latch_cell(ymuint cell_id,
 
   ShString shname(name);
 
-  CiCell* cell = NULL;
+  CiCell* cell = nullptr;
   if ( has_clear ) {
     if ( has_preset ) {
       void* p = mAlloc.get_memory(sizeof(CiLatchSRCell));
@@ -1277,7 +1277,7 @@ CiLibrary::set_timing(ymuint cell_id,
 
   ymuint n = tid_list.size();
   if ( n == 0 ) {
-    cell->mTimingMap[base] = NULL;
+    cell->mTimingMap[base] = nullptr;
   }
   else {
     void* p = mAlloc.get_memory(sizeof(CiTimingArray) + sizeof(CiTiming*) * (n - 1));
@@ -2134,11 +2134,11 @@ CiLibrary::restore_lut(IDO& s)
   string template_name;
   s >> template_name;
   if ( template_name == string() ) {
-    return NULL;
+    return nullptr;
   }
 
   const CellLutTemplate* templ = lu_table_template(template_name.c_str());
-  ASSERT_COND( templ != NULL );
+  ASSERT_COND( templ != nullptr );
 
   ymuint d = templ->dimension();
   switch ( d ) {
@@ -2245,7 +2245,7 @@ CiLibrary::restore_lut(IDO& s)
     ASSERT_NOT_REACHED;
     break;
   }
-  return NULL;
+  return nullptr;
 }
 
 END_NAMESPACE_YM_CELL

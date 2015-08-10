@@ -31,7 +31,7 @@ struct ElimElem
   int mOvalue;
 
   // コンストラクタ
-  ElimElem(BNode* node = NULL,
+  ElimElem(BNode* node = nullptr,
 	   int level = 0,
 	   int ovalue = 0) :
     mNode(node),

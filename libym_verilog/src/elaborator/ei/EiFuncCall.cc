@@ -105,11 +105,11 @@ EiFcBase::_set_reqsize(const VlValueType& type)
 // @brief オペランドを返す．
 // @param[in] pos 位置番号
 // @note 演算子の時，意味を持つ．
-// @note このクラスでは NULL を返す．
+// @note このクラスでは nullptr を返す．
 ElbExpr*
 EiFcBase::_operand(ymuint pos) const
 {
-  return NULL;
+  return nullptr;
 }
 
 

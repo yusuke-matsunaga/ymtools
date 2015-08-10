@@ -28,7 +28,7 @@ public:
   /// @param[in] node ノード
   /// @param[in] inv 反転属性
   explicit
-  LcPatHandle(LcPatNode* node = NULL,
+  LcPatHandle(LcPatNode* node = nullptr,
 	      bool inv = false);
 
   /// @brief デストラクタ

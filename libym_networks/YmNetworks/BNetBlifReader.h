@@ -52,7 +52,7 @@ public:
   bool
   operator()(const string& filename,
 	     BNetwork& network,
-	     const CellLibrary* cell_library = NULL);
+	     const CellLibrary* cell_library = nullptr);
 
 
 private:

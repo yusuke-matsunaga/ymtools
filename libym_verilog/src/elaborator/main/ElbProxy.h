@@ -84,14 +84,14 @@ protected:
   /// @brief 名前から UDP 定義を取出す．
   /// @param[in] name 名前
   /// @return name という名の UDP を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const ElbUdpDefn*
   find_udp(const char* name) const;
 
   /// @brief 名前から UserSystf を取出す．
   /// @param[in] name 名前
   /// @return name という名のユーザー定義関数を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const ElbUserSystf*
   find_user_systf(const char* name) const;
 
@@ -99,18 +99,18 @@ protected:
   /// @param[in] parent 検索対象のスコープ
   /// @param[in] name 名前
   /// @return parent というスコープ内の name という要素を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   ElbObjHandle*
   find_obj(const VlNamedObj* parent,
 	   const char* name) const;
 
   /// @brief 名前によるオブジェクトの探索
   /// @param[in] base_scope 起点となるスコープ
-  /// @param[in] nb_array 階層名の上部 (NULL の場合も有りうる)
+  /// @param[in] nb_array 階層名の上部 (nullptr の場合も有りうる)
   /// @param[in] name 末尾の名前
   /// @param[in] ulimit 探索する名前空間の上限
   /// @return 見付かったオブジェクトを返す．
-  /// 見付からなかったら NULL を返す．
+  /// 見付からなかったら nullptr を返す．
   ElbObjHandle*
   find_obj_up(const VlNamedObj* base_scope,
 	      PtNameBranchArray nb_array,
@@ -120,7 +120,7 @@ protected:
   /// @brief 名前からモジュール定義を取り出す．
   /// @param[in] name 名前
   /// @return name という名のモジュール定義
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const PtModule*
   find_moduledef(const char* name) const;
 
@@ -128,7 +128,7 @@ protected:
   /// @param[in] parent 検索対象のスコープ
   /// @param[in] name 名前
   /// @return parent というスコープ内の name という関数を返す．
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   const ElbTaskFunc*
   find_constant_function(const VlNamedObj* parent,
 			 const char* name) const;
@@ -141,7 +141,7 @@ protected:
   /// @brief セルの探索
   /// @param[in] name セル名
   /// @return name という名のセルを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   const Cell*
   find_cell(const char* name) const;
 
@@ -386,7 +386,7 @@ protected:
   /// @param[in] module 親のモジュール
   /// @param[in] taskfunc 親のタスク/関数
   /// @param[in] pt_head_array IO宣言ヘッダの配列
-  /// @note module, task, function は1つのみが値を持つ．残りは NULL．
+  /// @note module, task, function は1つのみが値を持つ．残りは nullptr．
   void
   instantiate_iodecl(ElbModule* module,
 		     ElbTaskFunc* taskfunc,
@@ -456,7 +456,7 @@ protected:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された ElbExpr のポインタを返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_expr(const VlNamedObj* parent,
 		   const ElbEnv& env,
@@ -466,7 +466,7 @@ protected:
   /// @param[in] parent 親のスコープ
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された ElbExpr のポインタを返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_constant_expr(const VlNamedObj* parent,
 			    const PtExpr* pt_expr);
@@ -476,7 +476,7 @@ protected:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された ElbExpr のポインタを返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_event_expr(const VlNamedObj* parent,
 			 const ElbEnv& env,
@@ -487,7 +487,7 @@ protected:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された ElbExpr のポインタを返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_arg(const VlNamedObj* parent,
 		  const ElbEnv& env,
@@ -498,7 +498,7 @@ protected:
   /// @param[in] env 生成時の環境
   /// @param[in] pt_expr 式を表すパース木
   /// @return 生成された ElbExpr のポインタを返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_lhs(const VlNamedObj* parent,
 		  const ElbEnv& env,
@@ -510,7 +510,7 @@ protected:
   /// @param[in] pt_expr 式を表すパース木
   /// @param[in] lhs 左辺式
   /// @return 生成された ElbExpr のポインタを返す．
-  /// @note 不適切な式ならばエラーメッセージを出力し NULL を返す．
+  /// @note 不適切な式ならばエラーメッセージを出力し nullptr を返す．
   ElbExpr*
   instantiate_rhs(const VlNamedObj* parent,
 		  const ElbEnv& env,
@@ -678,7 +678,7 @@ private:
 // @brief 名前から UDP 定義を取出す．
 // @param[in] name 名前
 // @return name という名の UDP を返す．
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 inline
 const ElbUdpDefn*
 ElbProxy::find_udp(const char* name) const
@@ -689,7 +689,7 @@ ElbProxy::find_udp(const char* name) const
 // @brief 名前から UserSystf を取出す．
 // @param[in] name 名前
 // @return name という名のユーザー定義関数を返す．
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 inline
 const ElbUserSystf*
 ElbProxy::find_user_systf(const char* name) const
@@ -701,7 +701,7 @@ ElbProxy::find_user_systf(const char* name) const
 // @param[in] parent 検索対象のスコープ
 // @param[in] name 名前
 // @return parent というスコープ内の name という要素を返す．
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 inline
 ElbObjHandle*
 ElbProxy::find_obj(const VlNamedObj* parent,
@@ -712,11 +712,11 @@ ElbProxy::find_obj(const VlNamedObj* parent,
 
 // @brief 名前によるオブジェクトの探索
 // @param[in] base_scope 起点となるスコープ
-// @param[in] nb_array 階層名の上部 (NULL の場合も有りうる)
+// @param[in] nb_array 階層名の上部 (nullptr の場合も有りうる)
 // @param[in] name 末尾の名前
 // @param[in] ulimit 探索する名前空間の上限
 // @return 見付かったオブジェクトを返す．
-// 見付からなかったら NULL を返す．
+// 見付からなかったら nullptr を返す．
 inline
 ElbObjHandle*
 ElbProxy::find_obj_up(const VlNamedObj* base_scope,
@@ -730,7 +730,7 @@ ElbProxy::find_obj_up(const VlNamedObj* base_scope,
 // @brief セルの探索
 // @param[in] name セル名
 // @return name という名のセルを返す．
-// @note なければ NULL を返す．
+// @note なければ nullptr を返す．
 inline
 const Cell*
 ElbProxy::find_cell(const char* name) const
@@ -922,7 +922,7 @@ ElbProxy::reg_gfroot(ElbGfRoot* obj)
 // @brief 名前からモジュール定義を取り出す．
 // @param[in] name 名前
 // @return name という名のモジュール定義
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 inline
 const PtModule*
 ElbProxy::find_moduledef(const char* name) const
@@ -934,7 +934,7 @@ ElbProxy::find_moduledef(const char* name) const
 // @param[in] parent 検索対象のスコープ
 // @param[in] name 名前
 // @return parent というスコープ内の name という関数を返す．
-// @return なければ NULL を返す．
+// @return なければ nullptr を返す．
 inline
 const ElbTaskFunc*
 ElbProxy::find_constant_function(const VlNamedObj* parent,

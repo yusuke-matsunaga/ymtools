@@ -50,7 +50,7 @@ public:
   bool
   operator()(const string& filename,
 	     TgNetwork& network,
-	     const CellLibrary* cell_library = NULL);
+	     const CellLibrary* cell_library = nullptr);
 
 
 private:

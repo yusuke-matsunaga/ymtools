@@ -163,7 +163,7 @@ public:
   /// @brief 関数名から関数の検索
   /// @param[in] name 検索対象の関数名
   /// @return 該当する関数
-  /// @return なければ NULL を返す．
+  /// @return なければ nullptr を返す．
   virtual
   const PtItem*
   find_function(const char* name) const = 0;

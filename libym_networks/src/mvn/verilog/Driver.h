@@ -28,7 +28,7 @@ public:
   /// @param[in] node 右辺のノード
   explicit
   Driver(const FileRegion& loc = FileRegion(),
-	 MvnNode* node = NULL);
+	 MvnNode* node = nullptr);
 
   /// @brief ビット指定形式のコンストラクタ
   /// @param[in] loc 対応する Verilog 記述のファイル位置

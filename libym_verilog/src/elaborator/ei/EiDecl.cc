@@ -32,7 +32,7 @@ EiFactory::new_Decl(ElbDeclHead* head,
 		    const PtNamedBase* pt_item,
 		    ElbExpr* init)
 {
-  EiDecl* decl = NULL;
+  EiDecl* decl = nullptr;
 
   switch ( head->type() ) {
   case kVpiReg:
@@ -74,7 +74,7 @@ EiFactory::new_Decl(ElbDeclHead* head,
     break;
 
   case kVpiNamedEvent:
-    ASSERT_COND(init == NULL );
+    ASSERT_COND(init == nullptr );
     {
       void* p = mAlloc.get_memory(sizeof(EiDeclN));
       decl = new (p) EiDeclN(head, pt_item);
@@ -313,7 +313,7 @@ EiDecl::charge() const
 
 // @brief delay の取得
 // @retval delay
-// @retval NULL delay の指定なし
+// @retval nullptr delay の指定なし
 const VlDelay*
 EiDecl::delay() const
 {
@@ -322,11 +322,11 @@ EiDecl::delay() const
 
 // @brief 初期値の取得
 // @retval 初期値
-// @retval NULL 設定がない場合
+// @retval nullptr 設定がない場合
 const VlExpr*
 EiDecl::init_value() const
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief 符号付きに補正する．
@@ -865,7 +865,7 @@ EiDeclIS::~EiDeclIS()
 
 // @brief 初期値の取得
 // @retval 初期値
-// @retval NULL 設定がない場合
+// @retval nullptr 設定がない場合
 const VlExpr*
 EiDeclIS::init_value() const
 {
@@ -904,7 +904,7 @@ EiDeclIR::~EiDeclIR()
 
 // @brief 初期値の取得
 // @retval 初期値
-// @retval NULL 設定がない場合
+// @retval nullptr 設定がない場合
 const VlExpr*
 EiDeclIR::init_value() const
 {
@@ -943,7 +943,7 @@ EiDeclIV::~EiDeclIV()
 
 // @brief 初期値の取得
 // @retval 初期値
-// @retval NULL 設定がない場合
+// @retval nullptr 設定がない場合
 const VlExpr*
 EiDeclIV::init_value() const
 {

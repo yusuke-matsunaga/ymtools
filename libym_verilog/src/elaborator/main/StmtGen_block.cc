@@ -49,7 +49,7 @@ StmtGen::phase2_namedblock(const VlNamedObj* parent,
 
 // @brief parallel block のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -65,7 +65,7 @@ StmtGen::instantiate_parblock(const VlNamedObj* parent,
     const PtStmt* pt_stmt1 = pt_stmt_array[i];
     ElbStmt* stmt1 = instantiate_stmt(parent, process, env, pt_stmt1);
     if ( !stmt1 ) {
-      return NULL;
+      return nullptr;
     }
     stmt_list[i] = stmt1;
   }
@@ -77,7 +77,7 @@ StmtGen::instantiate_parblock(const VlNamedObj* parent,
 
 // @brief sequential block のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -93,7 +93,7 @@ StmtGen::instantiate_seqblock(const VlNamedObj* parent,
     const PtStmt* pt_stmt1 = pt_stmt_array[i];
     ElbStmt* stmt1 = instantiate_stmt(parent, process, env, pt_stmt1);
     if ( !stmt1 ) {
-      return NULL;
+      return nullptr;
     }
     stmt_list[i] = stmt1;
   }
@@ -105,7 +105,7 @@ StmtGen::instantiate_seqblock(const VlNamedObj* parent,
 
 // @brief 名前つき parallel block のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -126,7 +126,7 @@ StmtGen::instantiate_namedparblock(const VlNamedObj* parent,
     ElbStmt* stmt1 = instantiate_stmt(block, process, env,
 				      pt_stmt1);
     if ( !stmt1 ) {
-      return NULL;
+      return nullptr;
     }
     stmt_list[i] = stmt1;
   }
@@ -139,7 +139,7 @@ StmtGen::instantiate_namedparblock(const VlNamedObj* parent,
 
 // @brief 名前つき sequential block のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -159,7 +159,7 @@ StmtGen::instantiate_namedseqblock(const VlNamedObj* parent,
     const PtStmt* pt_stmt1 = pt_stmt_array[i];
     ElbStmt* stmt1 = instantiate_stmt(block, process, env, pt_stmt1);
     if ( !stmt1 ) {
-      return NULL;
+      return nullptr;
     }
     stmt_list[i] = stmt1;
   }

@@ -154,7 +154,7 @@ private:
 // @brief コンストラクタ
 inline
 ElbModuleArray::ElbModuleArray() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 
@@ -175,7 +175,7 @@ ElbModuleArray::next() const
 // @brief コンストラクタ
 inline
 ElbModule::ElbModule() :
-  mNext(NULL)
+  mNext(nullptr)
 {
 }
 

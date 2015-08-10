@@ -52,7 +52,7 @@ public:
 	    const FileRegion& attr_loc) = 0;
 
   /// @brief 対応するノードを得る．
-  /// @note デフォルトの実装は NULL を返す．
+  /// @note デフォルトの実装は nullptr を返す．
   virtual
   const DotlibNode*
   node();
@@ -81,7 +81,7 @@ protected:
   /// @param[in] vector_mode ベクタモードの時 true にするフラグ
   /// @param[out] end_loc 右括弧の位置を格納する変数
   /// @return 読み込んだ値(リスト)を返す．
-  /// @note エラーが起きたら NULL を返す．
+  /// @note エラーが起きたら nullptr を返す．
   DotlibNodeImpl*
   parse_complex(bool vector_mode,
 		FileRegion& end_loc);

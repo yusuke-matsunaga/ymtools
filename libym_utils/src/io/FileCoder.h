@@ -30,7 +30,7 @@ public:
   /// @brief FileCoder のインスタンスを作る関数
   /// @param[in] type FileCoder の型
   /// @return 作成したインスタンスを返す．
-  /// @note type が不正な値の場合は NULL を返す．
+  /// @note type が不正な値の場合は nullptr を返す．
   static
   FileCoder*
   new_coder(CodecType type);

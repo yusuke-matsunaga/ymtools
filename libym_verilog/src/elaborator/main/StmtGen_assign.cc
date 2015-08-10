@@ -23,7 +23,7 @@ BEGIN_NAMESPACE_YM_VERILOG
 
 // 代入文のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 // @param[in] block ブロッキング代入の時 true
@@ -41,14 +41,14 @@ StmtGen::instantiate_assign(const VlNamedObj* parent,
   ElbVarLhsEnv env1(env);
   ElbExpr* lhs = instantiate_lhs(parent, env1, pt_lhs);
   if ( !lhs ) {
-    return NULL;
+    return nullptr;
   }
   ElbExpr* rhs = instantiate_rhs(parent, env, pt_rhs, lhs);
   if ( !rhs ) {
-    return NULL;
+    return nullptr;
   }
 
-  ElbControl* control = NULL;
+  ElbControl* control = nullptr;
   if ( pt_control ) {
     if ( env.inside_function() ) {
       // function 内のインスタンス化なのでコントロールは付いていないはず
@@ -59,7 +59,7 @@ StmtGen::instantiate_assign(const VlNamedObj* parent,
 		      "ELAB",
 		      "assignment in a constant function cannot have"
 		      " timing/event specification.");
-      return NULL;
+      return nullptr;
     }
     else {
       // 通常のインスタンス化
@@ -75,7 +75,7 @@ StmtGen::instantiate_assign(const VlNamedObj* parent,
 
 // @brief procedural continuous assign 文のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -89,11 +89,11 @@ StmtGen::instantiate_pca(const VlNamedObj* parent,
   ElbPcaLhsEnv env1(env);
   ElbExpr* lhs = instantiate_lhs(parent, env1, pt_lhs);
   if ( !lhs ) {
-    return NULL;
+    return nullptr;
   }
   ElbExpr* rhs = instantiate_rhs(parent, env, pt_rhs, lhs);
   if ( !rhs ) {
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_AssignStmt(parent, process, pt_stmt,
@@ -104,7 +104,7 @@ StmtGen::instantiate_pca(const VlNamedObj* parent,
 
 // @brief deassign 文のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -117,7 +117,7 @@ StmtGen::instantiate_deassign(const VlNamedObj* parent,
   ElbPcaLhsEnv env1(env);
   ElbExpr* lhs = instantiate_lhs(parent, env1, pt_lhs);
   if ( !lhs ) {
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_DeassignStmt(parent, process, pt_stmt,
@@ -128,7 +128,7 @@ StmtGen::instantiate_deassign(const VlNamedObj* parent,
 
 // @brief force 文のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -142,11 +142,11 @@ StmtGen::instantiate_force(const VlNamedObj* parent,
   ElbForceLhsEnv env1(env);
   ElbExpr* lhs = instantiate_lhs(parent, env1, pt_lhs);
   if ( !lhs ) {
-    return NULL;
+    return nullptr;
   }
   ElbExpr* rhs = instantiate_rhs(parent, env, pt_rhs, lhs);
   if ( !rhs ) {
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_ForceStmt(parent, process, pt_stmt,
@@ -157,7 +157,7 @@ StmtGen::instantiate_force(const VlNamedObj* parent,
 
 // @brief release 文のインスタンス化を行う．
 // @param[in] parent 親のスコープ
-// @param[in] process 親のプロセス (or NULL)
+// @param[in] process 親のプロセス (or nullptr)
 // @param[in] env 生成時の環境
 // @param[in] pt_stmt 対象のステートメント
 ElbStmt*
@@ -170,7 +170,7 @@ StmtGen::instantiate_release(const VlNamedObj* parent,
   ElbForceLhsEnv env1(env);
   ElbExpr* lhs = instantiate_lhs(parent, env1, pt_lhs);
   if ( !lhs ) {
-    return NULL;
+    return nullptr;
   }
 
   ElbStmt* stmt = factory().new_ReleaseStmt(parent, process, pt_stmt,

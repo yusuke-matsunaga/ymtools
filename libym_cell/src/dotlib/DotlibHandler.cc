@@ -25,7 +25,7 @@ BEGIN_NAMESPACE_YM_DOTLIB
 // @param[in] parser パーサー
 DotlibHandler::DotlibHandler(DotlibParserImpl& parser) :
   mParser(parser),
-  mParent(NULL)
+  mParent(nullptr)
 {
 }
 
@@ -43,24 +43,24 @@ DotlibHandler::~DotlibHandler()
 }
 
 // @brief 対応するノードを得る．
-// @note デフォルトの実装は NULL を返す．
+// @note デフォルトの実装は nullptr を返す．
 const DotlibNode*
 DotlibHandler::node()
 {
-  return NULL;
+  return nullptr;
 }
 
 // @brief group attribute 用のパースを行う．
 // @param[in] vector_mode ベクタモードの時 true にするフラグ
 // @param[out] end_loc 右括弧の位置を格納する変数
 // @return 読み込んだ値(リスト)を返す．
-// @note エラーが起きたら NULL を返す．
+// @note エラーが起きたら nullptr を返す．
 DotlibNodeImpl*
 DotlibHandler::parse_complex(bool vector_mode,
 			     FileRegion& end_loc)
 {
   if ( !expect(LP) ) {
-    return NULL;
+    return nullptr;
   }
 
   DotlibNodeImpl* value_list = mgr()->new_list();
@@ -69,8 +69,8 @@ DotlibHandler::parse_complex(bool vector_mode,
   if ( type != RP ) {
     for ( ; ; ) {
       DotlibNodeImpl* value = new_value(type, vector_mode, loc);
-      if ( value == NULL ) {
-	return NULL;
+      if ( value == nullptr ) {
+	return nullptr;
       }
 
       value_list->add_node(value);
@@ -85,7 +85,7 @@ DotlibHandler::parse_complex(bool vector_mode,
 			kMsgError,
 			"DOTLIB_PARSER",
 			"syntax error. ',' is expected.");
-	return NULL;
+	return nullptr;
       }
       type = parser().read_token(loc);
     }
@@ -129,9 +129,9 @@ DotlibHandler::new_value(tTokenType type,
 			    kMsgError,
 			    "DOTLIB_PARSER",
 			    "Syntax error. Null element.");
-	    return NULL;
+	    return nullptr;
 	  }
-	  value_list.push_back(strtod(buf.c_str(), NULL));
+	  value_list.push_back(strtod(buf.c_str(), nullptr));
 	  buf.clear();
 	}
 	else {
@@ -139,7 +139,7 @@ DotlibHandler::new_value(tTokenType type,
 	}
       }
       if ( buf.size() > 0 ) {
-	value_list.push_back(strtod(buf.c_str(), NULL));
+	value_list.push_back(strtod(buf.c_str(), nullptr));
       }
       return mgr()->new_vector(value_list, loc);
     }
@@ -155,7 +155,7 @@ DotlibHandler::new_value(tTokenType type,
 		  kMsgError,
 		  "DOTLIB_PARSER",
 		  "Syntax error. int/float/string value is expected.");
-  return NULL;
+  return nullptr;
 }
 
 // @brief 引数の種類のトークンでなければエラーメッセージを出力する．
@@ -205,7 +205,7 @@ ostream&
 operator<<(ostream& s,
 	   tTokenType type)
 {
-  const char* type_str = NULL;
+  const char* type_str = nullptr;
   switch ( type ) {
   case COLON:      type_str = "':'"; break;
   case SEMI:       type_str = "';'"; break;

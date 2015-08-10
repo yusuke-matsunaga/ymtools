@@ -156,7 +156,7 @@ public:
   /// @brief ファンインのノードを得る．
   /// @param[in] pos 入力番号 ( 0 <= pos < fanin_num() )
   /// @return pos 番めのファンインのノード
-  /// @note 該当するファンインがなければ NULL を返す．
+  /// @note 該当するファンインがなければ nullptr を返す．
   virtual
   const CmnNode*
   fanin(ymuint pos) const;
@@ -164,7 +164,7 @@ public:
   /// @brief ファンインの枝を得る．
   /// @param[in] pos 入力番号
   /// @return pos 番目の入力の枝
-  /// @note 該当するファンインの枝がなければ NULL を返す．
+  /// @note 該当するファンインの枝がなければ nullptr を返す．
   virtual
   const CmnEdge*
   fanin_edge(ymuint pos) const;
@@ -172,7 +172,7 @@ public:
   /// @brief ファンインの枝を得る．
   /// @param[in] pos 入力番号
   /// @return pos 番目の入力の枝
-  /// @note 該当するファンインの枝がなければ NULL を返す．
+  /// @note 該当するファンインの枝がなければ nullptr を返す．
   virtual
   CmnEdge*
   _fanin_edge(ymuint pos);
@@ -206,7 +206,7 @@ public:
 
   /// @brief 関連するポートを返す．
   /// @note kPRIMARY_INPUT および kPRIMARY_OUTPUT の時のみ意味を持つ．
-  /// @note それ以外では NULL を返す．
+  /// @note それ以外では nullptr を返す．
   virtual
   const CmnPort*
   port() const;
@@ -219,19 +219,19 @@ public:
   port_bitpos() const;
 
   /// @brief 入出力ノードの場合に相方のノードを返す．
-  /// @note なければ NULL を返す．
+  /// @note なければ nullptr を返す．
   virtual
   const CmnNode*
   alt_node() const;
 
   /// @brief 関連する D-FF を返す．
-  /// @note D-FF に関連していない場合には NULL を返す．
+  /// @note D-FF に関連していない場合には nullptr を返す．
   virtual
   const CmnDff*
   dff() const;
 
   /// @brief 関連するラッチを返す．
-  /// @note ラッチに関連していない場合には NULL を返す．
+  /// @note ラッチに関連していない場合には nullptr を返す．
   virtual
   const CmnLatch*
   latch() const;

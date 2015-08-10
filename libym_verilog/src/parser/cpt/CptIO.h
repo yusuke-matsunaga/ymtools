@@ -85,16 +85,16 @@ public:
 
   /// @brief 範囲のMSBの取得
   /// @retval 範囲のMSB
-  /// @retval NULL 範囲を持たないとき
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr 範囲を持たないとき
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   left_range() const;
 
   /// @brief 範囲のLSBの取得
   /// @retval 範囲のLSB
-  /// @retval NULL 範囲を持たないとき
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr 範囲を持たないとき
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   right_range() const;
@@ -270,8 +270,8 @@ public:
 
   /// @brief 初期値の取得
   /// @retval 初期値
-  /// @retval NULL 初期値を持たないとき
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr 初期値を持たないとき
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   init_value() const;

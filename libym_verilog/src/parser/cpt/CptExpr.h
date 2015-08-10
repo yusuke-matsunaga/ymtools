@@ -46,14 +46,14 @@ public:
   op_type() const;
 
   /// @brief 階層ブランチの取得
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   PtNameBranchArray
   namebranch_array() const;
 
   /// @brief 末尾の名前の取得
   /// @return 末尾の名前
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const char*
   name() const;
@@ -100,14 +100,14 @@ public:
 
   /// @brief 範囲の左側の式の取得
   /// @return 範囲の左側の式
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   left_range() const;
 
   /// @brief 範囲の右側の式の取得
   /// @return 範囲の右側の式
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const PtExpr*
   right_range() const;
@@ -137,7 +137,7 @@ public:
   /// @brief 整数型および文字列型の定数の文字列表現の取得
   /// @return 値の文字列表現\n
   /// 整数型時のサイズと基数は含まない．
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   const char*
   const_str() const;
@@ -1326,7 +1326,7 @@ public:
 
   /// @brief 階層ブランチの取得
   /// @note kDisable/kEnable/kSysEnable で意味のある関数
-  /// @note このクラスでは NULL を返す．
+  /// @note このクラスでは nullptr を返す．
   virtual
   PtNameBranchArray
   namebranch_array() const;

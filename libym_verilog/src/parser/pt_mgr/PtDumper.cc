@@ -168,7 +168,7 @@ void
 PtDumper::put(const char* label,
 	      const PtUdpValue* v)
 {
-  if ( v == NULL ) {
+  if ( v == nullptr ) {
     return;
   }
 
@@ -250,7 +250,7 @@ PtDumper::put(const PtModule* m)
     PtHeader x(*this, "mPort", "Port");
 
     put("mFileRegion", port->file_region());
-    if ( port->ext_name() != NULL ) {
+    if ( port->ext_name() != nullptr ) {
       put("mExprname", port->ext_name());
     }
 
@@ -291,7 +291,7 @@ void
 PtDumper::put(const char* label,
 	      const PtIOHead* io)
 {
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( io->type() ) {
   case kPtIO_Input:  nm = "Input"; break;
   case kPtIO_Output: nm = "Output"; break;
@@ -330,7 +330,7 @@ void
 PtDumper::put(const char* label,
 	      const PtDeclHead* decl)
 {
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( decl->type() ) {
   case kPtDecl_Param:
     switch ( decl->data_type() ) {
@@ -423,11 +423,11 @@ void
 PtDumper::put(const char* label,
 	      const PtItem* item)
 {
-  if ( item == NULL ) {
+  if ( item == nullptr ) {
     return;
   }
 
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( item->type() ) {
   case kPtItem_DefParam:        nm = "DefparamHeader"; break;
   case kPtItem_ContAssign:      nm = "ContAssignHeader"; break;
@@ -523,7 +523,7 @@ PtDumper::put(const char* label,
       PtHeader x(*this, "mElem", "GateInst");
 
       put("mFileRegion", gi->file_region());
-      if ( gi->name() != NULL ) {
+      if ( gi->name() != nullptr ) {
 	put("mName", gi->name());
       }
       if ( gi->left_range() ) {
@@ -592,7 +592,7 @@ PtDumper::put(const char* label,
 
   case kPtItem_Generate:
   case kPtItem_GenBlock:
-    if ( item->name() != NULL ) {
+    if ( item->name() != nullptr ) {
       put("mName", item->name());
     }
     put_decl_item("mBody", item->declhead_array(), item->item_array());
@@ -704,7 +704,7 @@ operator<<(PtDumper& s,
   s << item->file_region();
 
   for (ymuint i = 0; i < 12; ++ i) {
-    if ( item->value(i) == NULL ) {
+    if ( item->value(i) == nullptr ) {
       break;
     }
     PtHeader x2(s, "mValue", i);
@@ -722,11 +722,11 @@ void
 PtDumper::put(const char* label,
 	      const PtStmt* stmt)
 {
-  if ( stmt == NULL ) {
+  if ( stmt == nullptr ) {
     return;
   }
 
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( stmt->type() ) {
   case kPtDisableStmt:       nm = "Disable"; break;
   case kPtEnableStmt:        nm = "Enable"; break;
@@ -874,7 +874,7 @@ void
 PtDumper::put(const char* label,
 	      const PtExpr* expr)
 {
-  if ( expr == NULL ) {
+  if ( expr == nullptr ) {
     return;
   }
 
@@ -922,7 +922,7 @@ PtDumper::put(const char* label,
   case kPtFuncCallExpr:
   case kPtSysFuncCallExpr:
     {
-      const char* nm = NULL;
+      const char* nm = nullptr;
       if ( expr->type() == kPtFuncCallExpr ) {
 	nm = "FuncCall";
       }
@@ -1464,7 +1464,7 @@ void
 PtDumper::put(const char* label,
 	      const PtAttrInst* attr)
 {
-  if ( attr == NULL ) {
+  if ( attr == nullptr ) {
     return;
   }
 
@@ -1491,11 +1491,11 @@ void
 PtDumper::put(const char* label,
 	      const PtControl* ctrl)
 {
-  if ( ctrl == NULL ) {
+  if ( ctrl == nullptr ) {
     return;
   }
 
-  const char* nm = NULL;
+  const char* nm = nullptr;
   switch ( ctrl->type() ) {
   case kPtDelayControl:  nm = "DelayControl"; break;
   case kPtEventControl:  nm = "EventControl"; break;
@@ -1520,7 +1520,7 @@ void
 PtDumper::put(const char* label,
 	      const PtStrength* str)
 {
-  if ( str == NULL ) {
+  if ( str == nullptr ) {
     return;
   }
 
@@ -1545,7 +1545,7 @@ void
 PtDumper::put(const char* label,
 	      const PtDelay* delay)
 {
-  if ( delay == NULL ) {
+  if ( delay == nullptr ) {
     return;
   }
 
@@ -1564,12 +1564,12 @@ void
 PtDumper::put(const char* label,
 	      const PtConnection* con)
 {
-  if ( con == NULL ) {
+  if ( con == nullptr ) {
     return;
   }
 
-  const char* nm = NULL;
-  if ( con->name() != NULL ) {
+  const char* nm = nullptr;
+  if ( con->name() != nullptr ) {
     nm = "NamedCon";
   }
   else {
@@ -1582,7 +1582,7 @@ PtDumper::put(const char* label,
   put("mAttrInst", con->attr_top());
 #endif
 
-  if ( con->name() != NULL ) {
+  if ( con->name() != nullptr ) {
     put("mName", con->name());
   }
   if ( con->expr() ) {

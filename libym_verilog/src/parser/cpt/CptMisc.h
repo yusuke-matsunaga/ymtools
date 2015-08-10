@@ -39,8 +39,8 @@ public:
 
   /// @brief 遅延式の取得
   /// @retval 遅延を表す式 delay control の場合
-  /// @retval NULL 上記以外
-  /// @note デフォルトでは NULL を返す．
+  /// @retval nullptr 上記以外
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const PtExpr*
   delay() const;
@@ -61,8 +61,8 @@ public:
 
   /// @brief 繰り返し数の取得
   /// @retval 繰り返し数を表す式 repeat control の場合
-  /// @retval NULL 上記以外
-  /// @note デフォルトでは NULL を返す．
+  /// @retval nullptr 上記以外
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const PtExpr*
   rep_expr() const;
@@ -292,7 +292,7 @@ public:
   /// @brief 名前の取得
   /// @retval 名前 named connection の場合
   /// @retval "" ordered connection の場合
-  /// @note デフォルトでは NULL を返す．
+  /// @note デフォルトでは nullptr を返す．
   virtual
   const char*
   name() const;
@@ -683,7 +683,7 @@ public:
   const char*
   name() const;
 
-  /// @brief 式を取り出す．NULL の場合もある．
+  /// @brief 式を取り出す．nullptr の場合もある．
   virtual
   const PtExpr*
   expr() const;

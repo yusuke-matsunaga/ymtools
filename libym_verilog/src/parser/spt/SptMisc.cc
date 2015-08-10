@@ -60,7 +60,7 @@ SptControl::type() const
 
 // 遅延式の取得
 // @retval 遅延を表す式 delay control の場合
-// @retval NULL 上記以外
+// @retval nullptr 上記以外
 const PtExpr*
 SptControl::delay() const
 {
@@ -68,13 +68,13 @@ SptControl::delay() const
     return mExpr;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
 // イベントリストのサイズの取得
 // @retval イベントリストのサイズ event control/repeat control の場合
-// @retval NULL 上記以外
+// @retval nullptr 上記以外
 ymuint
 SptControl::event_num() const
 {
@@ -92,7 +92,7 @@ SptControl::event(ymuint pos) const
 
 // 繰り返し数の取得
 // @retval 繰り返し数を表す式 repeat control の場合
-// @retval NULL 上記以外
+// @retval nullptr 上記以外
 const PtExpr*
 SptControl::rep_expr() const
 {
@@ -100,7 +100,7 @@ SptControl::rep_expr() const
     return mExpr;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 
@@ -234,8 +234,8 @@ SptDelay::SptDelay(const FileRegion& file_region,
   mFileRegion(file_region)
 {
   mValue[0] = value1;
-  mValue[1] = NULL;
-  mValue[2] = NULL;
+  mValue[1] = nullptr;
+  mValue[2] = nullptr;
 }
 
 // 二つの値をとるコンストラクタ
@@ -249,7 +249,7 @@ SptDelay::SptDelay(const FileRegion& file_region,
 {
   mValue[0] = value1;
   mValue[1] = value2;
-  mValue[2] = NULL;
+  mValue[2] = nullptr;
 }
 
 // 三つの値をとるコンストラクタ
@@ -285,14 +285,14 @@ SptDelay::file_region() const
 // 値の取得
 // @param pos 取得する遅延値の位置(0 〜 3)
 // @return pos 番目の遅延を表す式
-// 該当する要素がなければ NULL を返す．
+// 該当する要素がなければ nullptr を返す．
 const PtExpr*
 SptDelay::value(ymuint pos) const
 {
   if ( pos < 3 ) {
     return mValue[pos];
   }
-  return NULL;
+  return nullptr;
 }
 
 
@@ -389,7 +389,7 @@ SptAttrInst::attrspec(ymuint pos) const
 // コンストラクタ
 // @param file_region ファイル位置の情報
 // @param name 名前
-// @param expr 式(NULLの場合もある)
+// @param expr 式(nullptrの場合もある)
 SptAttrSpec::SptAttrSpec(const FileRegion& file_region,
 			 const char* name,
 			 const PtExpr* expr) :
@@ -422,7 +422,7 @@ SptAttrSpec::name() const
 
 // 式の取得
 // @return 式
-// NULL の場合もある．
+// nullptr の場合もある．
 const PtExpr*
 SptAttrSpec::expr() const
 {
@@ -457,7 +457,7 @@ SptFactory::new_EventControl(const FileRegion& file_region,
 {
   void* p = alloc().get_memory(sizeof(SptControl));
   return new (p) SptControl(file_region, kPtEventControl,
-			    NULL, event_array);
+			    nullptr, event_array);
 }
 
 // @brief リピートコントロールの生成
@@ -484,7 +484,7 @@ SptFactory::new_OrderedCon(const FileRegion& file_region,
 			   const PtExpr* expr)
 {
   void* p = alloc().get_memory(sizeof(SptConnection));
-  return new (p) SptConnection(file_region, expr, NULL);
+  return new (p) SptConnection(file_region, expr, nullptr);
 }
 
 // @brief 順序つき結合子の生成

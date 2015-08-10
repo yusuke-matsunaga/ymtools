@@ -164,8 +164,8 @@ public:
   /// @brief ビット要素を返す．
   /// @param[in] index インデックス
   /// @retval ビット要素 index が範囲内の場合
-  /// @retval NULL index が範囲外の場合．またはビット展開されていない場合
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr index が範囲外の場合．またはビット展開されていない場合
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlDecl*
   elem_by_index(int index) const;
@@ -173,8 +173,8 @@ public:
   /// @brief ビット要素を返す．
   /// @param[in] offset オフセット
   /// @retval ビット要素 offset が範囲内の場合
-  /// @retval NULL offset が範囲外の場合．またはビット展開されていない場合
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr offset が範囲外の場合．またはビット展開されていない場合
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlDecl*
   elem_by_offset(ymuint offset) const;
@@ -229,15 +229,15 @@ public:
 
   /// @brief delay の取得
   /// @retval delay
-  /// @retval NULL delay の指定なし
-  /// @note このクラスでは NULL を返す．
+  /// @retval nullptr delay の指定なし
+  /// @note このクラスでは nullptr を返す．
   virtual
   const VlDelay*
   delay() const;
 
   /// @brief 初期値の取得
   /// @retval 初期値
-  /// @retval NULL 設定がない場合
+  /// @retval nullptr 設定がない場合
   virtual
   const VlExpr*
   init_value() const;
