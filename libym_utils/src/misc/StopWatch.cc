@@ -11,6 +11,8 @@
 #include "YmUtils/StopWatch.h"
 #include "YmUtils/MStopWatch.h"
 
+#include "YmTools_int.h"
+
 
 #if defined(HAVE_SYS_TIME_H) && defined(HAVE_TIME_H)
 #  include <sys/time.h>

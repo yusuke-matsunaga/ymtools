@@ -11,18 +11,6 @@
 
 #include "YmTools.h"
 
-/// @todo pwd.h や sys/param.h がないときの対処
-#if defined(HAVE_PWD_H)
-#  include <pwd.h>
-#endif
-#if defined(HAVE_SYS_PARAM_H)
-#  include <sys/param.h>
-#endif
-#if defined(HAVE_SYS_STAT_H) || defined(YM_WIN32)
-#  include <sys/stat.h>
-#  include <sys/types.h>
-#endif
-
 
 BEGIN_NAMESPACE_YM
 
@@ -126,6 +114,7 @@ public:
   PathName
   expand() const;
 
+#if 0
 #if defined(YM_WIN32)
   /// @brief パスが存在しているか調べる．
   /// @param[out] sbp stat システムコールの結果を格納する構造体
@@ -140,6 +129,12 @@ public:
   /// @return 存在していたら true を返す．
   bool
   stat(struct stat* sbp = nullptr) const;
+#endif
+#else
+  /// @brief パスが存在しているか調べる．
+  /// @return 存在していたら true を返す．
+  bool
+  stat() const;
 #endif
 
   /// @brief 末尾にパスをつなげる．

@@ -8,10 +8,21 @@
 
 
 #include "YmUtils/File.h"
-
+#include "YmTools_int.h"
 
 #if defined(YM_WIN32)
 #include <direct.h>
+#endif
+/// @todo pwd.h や sys/param.h がないときの対処
+#if defined(HAVE_PWD_H)
+#  include <pwd.h>
+#endif
+#if defined(HAVE_SYS_PARAM_H)
+#  include <sys/param.h>
+#endif
+#if defined(HAVE_SYS_STAT_H) || defined(YM_WIN32)
+#  include <sys/stat.h>
+#  include <sys/types.h>
 #endif
 
 
@@ -231,6 +242,7 @@ PathName::expand() const
   return PathName();
 }
 
+#if 0
 #if defined(YM_WIN32)
 // パスが存在しているか調べる．
 bool
@@ -253,6 +265,25 @@ PathName::stat(struct stat* sbp) const
   }
   return ::stat(str().c_str(), sbp) == 0;
 }
+#endif
+#else
+#if defined(YM_WIN32)
+// パスが存在しているか調べる．
+bool
+PathName::stat() const
+{
+  struct _stat64i32 dummy;
+  return _stat(str().c_str(), &dummy) == 0;
+}
+#else
+// パスが存在しているか調べる．
+bool
+PathName::stat() const
+{
+  struct stat dummy;
+  return ::stat(str().c_str(), &dummy) == 0;
+}
+#endif
 #endif
 
 // 末尾にパスをつなげる．

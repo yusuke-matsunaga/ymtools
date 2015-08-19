@@ -1,0 +1,58 @@
+#ifndef YMTOOLS_INT_H
+#define YMTOOLS_INT_H
+
+/// @file YmTools_int.h
+/// @brief YmTools 非公開のヘッダファイル
+/// @author Yusuke Matsunaga (松永 裕介)
+///
+/// Copyright (C) 2014, 2015 Yusuke Matsunaga
+/// All rights reserved.
+
+
+//////////////////////////////////////////////////////////////////////
+// システム検査の結果
+//////////////////////////////////////////////////////////////////////
+
+// <stdlib.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_STDLIB_H
+
+// <string.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_STRING_H
+
+// <strings.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_STRINGS_H
+
+// <unistd.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_UNISTD_H
+
+// <limits.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_LIMITS_H
+
+// <float.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_FLOAT_H
+
+// <math.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_MATH_H
+
+// <sys/time.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_SYS_TIME_H
+
+// <time.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_TIME_H
+
+// <sys/stat.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_SYS_STAT_H
+
+// <pwd.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_PWD_H
+
+// <sys/param.h> が存在する時定義されるマクロ
+#cmakedefine HAVE_SYS_PARAM_H
+
+// getrusage() が存在する時定義されるマクロ
+#cmakedefine HAVE_GETRUSAGE
+
+// times() が存在する時定義されるマクロ
+#cmakedefine HAVE_TIMES
+
+#endif // YMTOOLS_INT_H

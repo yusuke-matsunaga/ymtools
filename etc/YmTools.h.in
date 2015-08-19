@@ -30,48 +30,6 @@
 // システム検査の結果
 //////////////////////////////////////////////////////////////////////
 
-// <stdlib.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_STDLIB_H
-
-// <string.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_STRING_H
-
-// <strings.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_STRINGS_H
-
-// <unistd.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_UNISTD_H
-
-// <limits.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_LIMITS_H
-
-// <float.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_FLOAT_H
-
-// <math.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_MATH_H
-
-// <sys/time.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_SYS_TIME_H
-
-// <time.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_TIME_H
-
-// <sys/stat.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_SYS_STAT_H
-
-// <pwd.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_PWD_H
-
-// <sys/param.h> が存在する時定義されるマクロ
-#cmakedefine HAVE_SYS_PARAM_H
-
-// getrusage() が存在する時定義されるマクロ
-#cmakedefine HAVE_GETRUSAGE
-
-// times() が存在する時定義されるマクロ
-#cmakedefine HAVE_TIMES
-
 // UNIX の時 true となるマクロ
 #cmakedefine YM_UNIX
 
@@ -86,29 +44,12 @@
 // 標準ヘッダファイルのインクルード
 //////////////////////////////////////////////////////////////////////
 
-#if defined(HAVE_STDLIB_H)
-#include <stdlib.h>
-#endif
-
-#if defined(HAVE_STRING_H)
-#include <string.h>
-#endif
-
-#if defined(HAVE_UNISTD_H)
-#include <unistd.h>
-#endif
-
-#if defined(HAVE_LIMITS_H)
-#include <limits.h>
-#endif
-
-#if defined(HAVE_FLOAT_H)
-#include <float.h>
-#endif
-
-#if defined(HAVE_MATH_H)
-#include <math.h>
-#endif
+@INCLUDE_STDLIB@
+@INCLUDE_STRING@
+@INCLUDE_UNISTD@
+@INCLUDE_LIMITS@
+@INCLUDE_FLOAT@
+@INCLUDE_MATH@
 
 
 //////////////////////////////////////////////////////////////////////

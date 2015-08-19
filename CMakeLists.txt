@@ -71,7 +71,7 @@ ym_use_gtest ()
 include (CheckIncludeFileCXX)
 check_include_file_cxx (stdlib.h    HAVE_STDLIB_H)
 check_include_file_cxx (string.h    HAVE_STRING_H)
-check_include_file_cxx (strings.h   HAVE_STRINGS_H)
+#check_include_file_cxx (strings.h   HAVE_STRINGS_H)
 check_include_file_cxx (unistd.h    HAVE_UNISTD_H)
 check_include_file_cxx (limits.h    HAVE_LIMITS_H)
 check_include_file_cxx (float.h     HAVE_FLOAT_H)
@@ -81,6 +81,42 @@ check_include_file_cxx (time.h      HAVE_TIME_H)
 check_include_file_cxx (sys/stat.h  HAVE_SYS_STAT_H)
 check_include_file_cxx (pwd.h       HAVE_PWD_H)
 check_include_file_cxx (sys/param.h HAVE_SYS_PARAM_H)
+
+if ( HAVE_STDLIB_H )
+  set ( INCLUDE_STDLIB "#include <stdlib.h>" )
+else ()
+  set ( INCLUDE_STDLIB )
+endif ()
+
+if ( HAVE_STRING_H )
+  set ( INCLUDE_STRING "#include <string.h>" )
+else ()
+  set ( INCLUDE_STRING )
+endif ()
+
+if ( HAVE_UNISTD_H )
+  set ( INCLUDE_UNISTD "#include <unistd.h>" )
+else ()
+  set ( INCLUDE_UNISTD )
+endif ()
+
+if ( HAVE_LIMITS_H )
+  set ( INCLUDE_LIMITS "#include <limits.h>" )
+else ()
+  set ( INCLUDE_LIMITS )
+endif ()
+
+if ( HAVE_FLOAT_H )
+  set ( INCLUDE_FLOAT "#include <float.h>" )
+else ()
+  set ( INCLUDE_FLOAT )
+endif ()
+
+if ( HAVE_MATH_H )
+  set ( INCLUDE_MATH "#include <math.h>" )
+else ()
+  set ( INCLUDE_MATH )
+endif ()
 
 
 # ===================================================================
@@ -187,6 +223,11 @@ add_subdirectory (libym_networks)
 configure_file(
   "${PROJECT_SOURCE_DIR}/etc/YmTools.h.in"
   "${PROJECT_BINARY_DIR}/YmTools.h"
+  )
+
+configure_file(
+  "${PROJECT_SOURCE_DIR}/etc/YmTools_int.h.in"
+  "${PROJECT_BINARY_DIR}/YmTools_int.h"
   )
 
 
