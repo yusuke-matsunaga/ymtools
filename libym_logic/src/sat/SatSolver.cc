@@ -210,6 +210,15 @@ SatSolver::solve(const vector<Literal>& assumptions,
   return mImpl->solve(assumptions, model);
 }
 
+// @brief 探索を中止する．
+//
+// 割り込みハンドラや別スレッドから非同期に呼ばれることを仮定している．
+void
+SatSolver::stop()
+{
+  mImpl->stop();
+}
+
 // @brief リテラルを出力する．
 void
 SatSolver::put_lit(Literal lit) const

@@ -94,7 +94,8 @@ public:
   /// @retval kB3True  充足した．
   /// @retval kB3False 充足不能が判明した．
   /// @retval kB3X     わからなかった．
-  /// @note i 番めの変数の割り当て結果は model[i] に入る．
+  ///
+  /// i 番めの変数の割り当て結果は model[i] に入る．
   /// 通常は complete な割り当てなので値は true/false だけになるはず
   Bool3
   solve(vector<Bool3>& model);
@@ -105,10 +106,17 @@ public:
   /// @retval kSat 充足した．
   /// @retval kUnsat 充足不能が判明した．
   /// @retval kUndet わからなかった．
-  /// @note i 番めの変数の割り当て結果は model[i] に入る．
+  ///
+  /// i 番めの変数の割り当て結果は model[i] に入る．
   Bool3
   solve(const vector<Literal>& assumptions,
 	vector<Bool3>& model);
+
+  /// @brief 探索を中止する．
+  ///
+  /// 割り込みハンドラや別スレッドから非同期に呼ばれることを仮定している．
+  void
+  stop();
 
   /// @brief 学習節をすべて削除する．
   void

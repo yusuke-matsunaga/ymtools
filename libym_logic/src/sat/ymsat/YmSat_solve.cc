@@ -65,6 +65,8 @@ YmSat::solve(const vector<Literal>& assumptions,
     mTimer.start();
   }
 
+  mGoOn = true;
+
   // 変数領域の確保を行う．
   alloc_var();
 
@@ -149,7 +151,7 @@ YmSat::solve(const vector<Literal>& assumptions,
       break;
     }
 
-    if ( mConflictNum == mMaxConflict ) {
+    if ( !mGoOn || mConflictNum == mMaxConflict ) {
       // 制限値に達した．(アボート)
       break;
     }
@@ -202,6 +204,15 @@ YmSat::solve(const vector<Literal>& assumptions,
   }
 
   return sat_stat;
+}
+
+// @brief 探索を中止する．
+//
+// 割り込みハンドラや別スレッドから非同期に呼ばれることを仮定している．
+void
+YmSat::stop()
+{
+  mGoOn = false;
 }
 
 // @brief 探索を行う本体の関数

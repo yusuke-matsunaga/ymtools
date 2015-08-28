@@ -155,6 +155,15 @@ SatSolverGlueMiniSat2::solve(const vector<Literal>& assumptions,
   return kB3False;
 }
 
+// @brief 探索を中止する．
+//
+// 割り込みハンドラや別スレッドから非同期に呼ばれることを仮定している．
+void
+SatSolverGlueMiniSat2::stop()
+{
+  mSolver.interrupt();
+}
+
 // @brief 学習節をすべて削除する．
 void
 SatSolverGlueMiniSat2::forget_learnt_clause()

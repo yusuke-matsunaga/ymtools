@@ -108,6 +108,13 @@ public:
   solve(const vector<Literal>& assumptions,
 	vector<Bool3>& model) = 0;
 
+  /// @brief 探索を中止する．
+  ///
+  /// 割り込みハンドラや別スレッドから非同期に呼ばれることを仮定している．
+  virtual
+  void
+  stop() = 0;
+
   /// @brief 学習節をすべて削除する．
   virtual
   void

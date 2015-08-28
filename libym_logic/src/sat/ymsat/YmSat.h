@@ -160,6 +160,13 @@ public:
   solve(const vector<Literal>& assumptions,
 	vector<Bool3>& model);
 
+  /// @brief 探索を中止する．
+  ///
+  /// 割り込みハンドラや別スレッドから非同期に呼ばれることを仮定している．
+  virtual
+  void
+  stop();
+
   /// @brief 学習節をすべて削除する．
   virtual
   void
@@ -585,6 +592,9 @@ private:
 
   // トータルのコンフリクト数の制限
   ymuint64 mMaxConflict;
+
+  // stop() が用いるフラグ
+  bool mGoOn;
 
   // メッセージハンドラのリスト
   list<SatMsgHandler*> mMsgHandlerList;
