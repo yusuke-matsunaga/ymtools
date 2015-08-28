@@ -2043,8 +2043,10 @@ lbool Solver::search(int nof_conflicts)
                 if (conflicts % init_fluc_base == 0)
                     var_decay += 0.01;
                 if (init_fluc_period <= conflicts) {
-                    init_fluc_finished = true;
+		  init_fluc_finished = true;
+		  if ( verbosity ) {
                     printProgress('f');
+		  }
                 }
             }
 
