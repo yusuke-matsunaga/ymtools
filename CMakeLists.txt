@@ -180,11 +180,11 @@ else ()
 endif ()
 
 if ( INT_SIZE EQUAL VOIDP_SIZE )
-  set( PTRINT_TYPE int )
+  set( PTRINT_TYPE "unsigned int" )
 elseif ( LONG_SIZE EQUAL VOIDP_SIZE )
-  set( PTRINT_TYPE long )
+  set( PTRINT_TYPE "unsigned long" )
 elseif ( LLONG_SIZE EQUAL VOIDP_SIZE )
-  set( PTRINT_TYPE "long long" )
+  set( PTRINT_TYPE "unsigned long long" )
 else ()
   # エラー
   message ( FATAL_ERROR
