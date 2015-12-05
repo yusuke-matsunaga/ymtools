@@ -126,14 +126,15 @@ public:
   /// @brief モジュールのポートを初期化する．
   /// @param[in] module 対象のモジュール
   /// @param[in] pos ポート番号
+  /// @param[in] portref_list ポート参照式のリスト
   /// @param[in] name 名前
-  /// @param[in] port_ref_num ポート参照式の数
   void
   init_port(MvnModule* module,
 	    ymuint pos,
-	    const char* name,
-	    ymuint port_ref_num);
+	    const vector<MvnPortRef>& portref_list = vector<MvnPortRef>(),
+	    const char* name = nullptr);
 
+#if 0
   /// @brief ポート参照式の内容を設定する(単純な形式)．
   /// @param[in] module 対象のモジュール
   /// @param[in] pos ポート番号
@@ -172,6 +173,7 @@ public:
 	       MvnNode* node,
 	       ymuint msb,
 	       ymuint lsb);
+#endif
 
   /// @brief 冗長な through ノードを取り除く
   void

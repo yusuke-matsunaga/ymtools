@@ -265,7 +265,7 @@ private:
   // 出力のビット幅
   ymuint32 mBitWidth;
 
-  // 接続している入力ピンのリスト
+  // ファンアウト先の入力ピンのリスト
   MvnInputPinList mDstPinList;
 
 };

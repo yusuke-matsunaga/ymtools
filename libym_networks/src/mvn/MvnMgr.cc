@@ -192,17 +192,18 @@ MvnMgr::delete_module(MvnModule* module)
 // @brief モジュールのポートを初期化する．
 // @param[in] module 対象のモジュール
 // @param[in] pos ポート番号
+// @param[in] portref_list ポート参照式のリスト
 // @param[in] name 名前
-// @param[in] port_ref_num ポート参照式の数
 void
 MvnMgr::init_port(MvnModule* module,
 		  ymuint pos,
-		  const char* name,
-		  ymuint port_ref_num)
+		  const vector<MvnPortRef>& portref_list,
+		  const char* name)
 {
-  module->mPortArray[pos] = new MvnPort(name, port_ref_num);
+  module->mPortArray[pos] = new MvnPort(portref_list, name);
 }
 
+#if 0
 // @brief ポート参照式の内容を設定する(単純な形式)．
 // @param[in] module 対象のモジュール
 // @param[in] pos ポート番号
@@ -250,6 +251,7 @@ MvnMgr::set_port_ref(MvnModule* module,
 {
   module->mPortArray[pos]->mPortRefArray[port_ref_pos].set(node, msb, lsb);
 }
+#endif
 
 // @brief ノードを削除する．
 // @param[in] node 対象のノード

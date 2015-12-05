@@ -64,7 +64,7 @@ private:
 
   void
   dump_port_ref(ostream& s,
-		const MvnPortRef* port_ref);
+		const MvnPortRef& port_ref);
 
   void
   dump_node(ostream& s,

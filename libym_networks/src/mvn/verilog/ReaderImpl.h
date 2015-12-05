@@ -107,17 +107,15 @@ private:
 
   /// @brief ポート参照式の実体化を行う．
   /// @param[in] expr 対象の式
+  /// @return 生成されたポート参照式を返す．
   /// @param[out] node 対応するノードを格納する変数
   /// @param[out] msb ビット指定位置か範囲指定の MSB を格納する変数
   /// @param[out] lsb 範囲指定の LSB を格納する変数
   /// @retval 0 単純な形式だった．
   /// @retval 1 ビット指定形式だった．
   /// @retval 2 範囲指定形式だった．
-  int
-  gen_portref(const VlExpr* expr,
-	      MvnNode*& node,
-	      ymuint& msb,
-	      ymuint& lsb);
+  MvnPortRef
+  gen_portref(const VlExpr* expr);
 
   /// @brief プロセス文を生成する．
   /// @param[in] vl_process プロセス文

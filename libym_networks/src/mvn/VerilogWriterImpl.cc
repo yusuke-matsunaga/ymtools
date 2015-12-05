@@ -223,17 +223,17 @@ VerilogWriterImpl::dump_port(ostream& s,
   string port_name = port->name();
   ymuint n = port->port_ref_num();
   if ( n == 1 ) {
-    const MvnPortRef* port_ref = port->port_ref(0);
-    if ( !port_ref->has_bitselect() && !port_ref->has_partselect() ) {
+    const MvnPortRef& port_ref = port->port_ref(0);
+    if ( !port_ref.has_bitselect() && !port_ref.has_partselect() ) {
       s << port_name;
-      set_node_name(port_ref->node(), port_name);
+      set_node_name(port_ref.node(), port_name);
       return;
     }
   }
 
   s << "." << port_name << "(";
   if ( n == 1 ) {
-    const MvnPortRef* port_ref = port->port_ref(0);
+    const MvnPortRef& port_ref = port->port_ref(0);
     dump_port_ref(s, port_ref);
   }
   else if ( n > 1 ) {
@@ -242,7 +242,7 @@ VerilogWriterImpl::dump_port(ostream& s,
     for (ymuint i = 0; i < n; ++ i) {
       s << comma;
       comma = ", ";
-      const MvnPortRef* port_ref = port->port_ref(i);
+      const MvnPortRef& port_ref = port->port_ref(i);
       dump_port_ref(s, port_ref);
     }
     s << "}";
@@ -252,14 +252,14 @@ VerilogWriterImpl::dump_port(ostream& s,
 
 void
 VerilogWriterImpl::dump_port_ref(ostream& s,
-				 const MvnPortRef* port_ref)
+				 const MvnPortRef& port_ref)
 {
-  s << node_name(port_ref->node());
-  if ( port_ref->has_bitselect() ) {
-    s << "[" << port_ref->bitpos() << "]";
+  s << node_name(port_ref.node());
+  if ( port_ref.has_bitselect() ) {
+    s << "[" << port_ref.bitpos() << "]";
   }
-  else if ( port_ref->has_partselect() ) {
-    s << "[" << port_ref->msb() << ":" << port_ref->lsb() << "]";
+  else if ( port_ref.has_partselect() ) {
+    s << "[" << port_ref.msb() << ":" << port_ref.lsb() << "]";
   }
 }
 

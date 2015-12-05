@@ -105,7 +105,7 @@ MvnBdnConv::MvnBdnConv()
 // @brief デストラクタ
 MvnBdnConv::~MvnBdnConv()
 {
-  for (list<MvnConv*>::iterator p = mConvList.begin();
+  for (vector<MvnConv*>::iterator p = mConvList.begin();
        p != mConvList.end(); ++ p) {
     delete *p;
   }
@@ -230,29 +230,29 @@ MvnBdnConv::operator()(const MvnMgr& mvmgr,
     ymuint bitpos = 0;
     ymuint n = port->port_ref_num();
     for (ymuint j = 0; j < n; ++ j) {
-      const MvnPortRef* port_ref = port->port_ref(j);
-      ymuint nb1 = port_ref->bit_width();
-      const MvnNode* node = port_ref->node();
+      const MvnPortRef& port_ref = port->port_ref(j);
+      ymuint nb1 = port_ref.bit_width();
+      const MvnNode* node = port_ref.node();
       ymuint val = 0U;
       switch ( node->type() ) {
-      case MvnNode::kInput: val = 1U; break;
+      case MvnNode::kInput:  val = 1U; break;
       case MvnNode::kOutput: val = 2U; break;
-      case MvnNode::kInout: val = 3U; break;
+      case MvnNode::kInout:  val = 3U; break;
       default: ASSERT_NOT_REACHED; break;
       }
-      if ( port_ref->is_simple() ) {
+      if ( port_ref.is_simple() ) {
 	for (ymuint k = 0; k < nb1; ++ k) {
 	  iovect[bitpos] = val;
 	  ++ bitpos;
 	}
       }
-      else if ( port_ref->has_bitselect() ) {
+      else if ( port_ref.has_bitselect() ) {
 	iovect[bitpos] = val;
 	++ bitpos;
       }
-      else if ( port_ref->has_partselect() ) {
-	ymuint msb = port_ref->msb();
-	ymuint lsb = port_ref->lsb();
+      else if ( port_ref.has_partselect() ) {
+	ymuint msb = port_ref.msb();
+	ymuint lsb = port_ref.lsb();
 	for (ymuint k = lsb; k <= msb; ++ k) {
 	  iovect[bitpos] = val;
 	  ++ bitpos;
@@ -267,23 +267,23 @@ MvnBdnConv::operator()(const MvnMgr& mvmgr,
     tmp.reserve(nb);
     bitpos = 0;
     for (ymuint j = 0; j < n; ++ j) {
-      const MvnPortRef* port_ref = port->port_ref(j);
-      ymuint nb1 = port_ref->bit_width();
-      const MvnNode* node = port_ref->node();
-      if ( port_ref->is_simple() ) {
+      const MvnPortRef& port_ref = port->port_ref(j);
+      ymuint nb1 = port_ref.bit_width();
+      const MvnNode* node = port_ref.node();
+      if ( port_ref.is_simple() ) {
 	for (ymuint k = 0; k < nb1; ++ k) {
 	  make_io(bdnetwork, mvnode_map, node, k, bdnport, bitpos);
 	  ++ bitpos;
 	}
       }
-      else if ( port_ref->has_bitselect() ) {
-	make_io(bdnetwork, mvnode_map, node, port_ref->bitpos(),
+      else if ( port_ref.has_bitselect() ) {
+	make_io(bdnetwork, mvnode_map, node, port_ref.bitpos(),
 		bdnport, bitpos);
 	++ bitpos;
       }
-      else if ( port_ref->has_partselect() ) {
-	ymuint msb = port_ref->msb();
-	ymuint lsb = port_ref->lsb();
+      else if ( port_ref.has_partselect() ) {
+	ymuint msb = port_ref.msb();
+	ymuint lsb = port_ref.lsb();
 	for (ymuint k = lsb; k <= msb; ++ k) {
 	  make_io(bdnetwork, mvnode_map, node, k, bdnport, bitpos);
 	  ++ bitpos;
@@ -382,7 +382,7 @@ MvnBdnConv::operator()(const MvnMgr& mvmgr,
 
     // node に対応する BdnNode を作る．
     bool done = false;
-    for (list<MvnConv*>::iterator p = mConvList.begin();
+    for (vector<MvnConv*>::iterator p = mConvList.begin();
 	 p != mConvList.end(); ++ p) {
       MvnConv& conv = **p;
       if ( conv(node, bdnetwork, mvnode_map) ) {

@@ -3,7 +3,7 @@
 /// @brief MvnPort の実装ファイル
 /// @author Yusuke Matsunaga (松永 裕介)
 ///
-/// Copyright (C) 2005-2010, 2014 Yusuke Matsunaga
+/// Copyright (C) 2005-2010, 2014, 2015 Yusuke Matsunaga
 /// All rights reserved.
 
 
@@ -17,6 +17,48 @@ BEGIN_NAMESPACE_YM_NETWORKS_MVN
 // クラス MvnPortRef
 //////////////////////////////////////////////////////////////////////
 
+// @brief コンストラクタ
+MvnPortRef::MvnPortRef()
+{
+}
+
+// @brief ノード単体のポート要素用のコンストラクタ
+// @param[in] node ノード
+MvnPortRef::MvnPortRef(const MvnNode* node)
+{
+  mNode = node;
+  mMsb = 0U;
+  mLsb = 0U;
+}
+
+// @brief ビット指定のポート要素用のコンストラクタ
+// @param[in] node ノード
+// @param[in] bitpos ビット位置
+MvnPortRef::MvnPortRef(const MvnNode* node,
+		       ymuint bitpos)
+{
+  mNode = node;
+  mMsb = (bitpos << 1) | 1U;
+  mLsb = 0U;
+}
+
+// @brief 範囲指定のポート要素用のコンストラクタ
+// @param[in] node ノード
+// @param[in] msb 範囲指定の MSB
+// @param[in] lsb 範囲指定の LSB
+MvnPortRef::MvnPortRef(const MvnNode* node,
+		       ymuint msb,
+		       ymuint lsb)
+{
+  mNode = node;
+  mMsb = (msb << 1);
+  mLsb = (lsb << 1) | 1U;
+}
+
+// @brief デストラクタ
+MvnPortRef::~MvnPortRef()
+{
+}
 
 // @brief この実体のビット幅を返す．
 ymuint
@@ -50,14 +92,26 @@ MvnPortRef::bit_width() const
 //////////////////////////////////////////////////////////////////////
 
 // @brief コンストラクタ
+// @param[in] portref_list ポート参照式のリスト
 // @param[in] name 名前
-// @param[in] np portref 数
-MvnPort::MvnPort(const char* name,
-		 ymuint np) :
-  mName(name),
-  mPortRefNum(np),
-  mPortRefArray(new MvnPortRef[np])
+//
+// 名前がない場合(name == nullptr)もありうる．
+// name == "" の場合も考慮する．
+MvnPort::MvnPort(const vector<MvnPortRef>& portref_list,
+		 const char* name)
 {
+  if ( name == nullptr || name[0] == '\0' ) {
+    mName = string();
+  }
+  else {
+    mName = string(name);
+  }
+
+  mPortRefNum = portref_list.size();
+  mPortRefArray = new MvnPortRef[mPortRefNum];
+  for (ymuint i = 0; i < mPortRefNum; ++ i) {
+    mPortRefArray[i] = portref_list[i];
+  }
 }
 
 // @brief デストラクタ

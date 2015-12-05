@@ -247,13 +247,13 @@ MvnDumper::operator()(ostream& s,
       s << "  Port#" << j << "(" << port->name() << ")" << endl;
       ymuint n = port->port_ref_num();
       for (ymuint k = 0; k < n; ++ k) {
-	const MvnPortRef* port_ref = port->port_ref(k);
-	s << "    " << node_idstr(port_ref->node());
-	if ( port_ref->has_bitselect() ) {
-	  s << "[" << port_ref->bitpos() << "]";
+	const MvnPortRef& port_ref = port->port_ref(k);
+	s << "    " << node_idstr(port_ref.node());
+	if ( port_ref.has_bitselect() ) {
+	  s << "[" << port_ref.bitpos() << "]";
 	}
-	else if ( port_ref->has_partselect() ) {
-	  s << "[" << port_ref->msb() << ":" << port_ref->lsb() << "]";
+	else if ( port_ref.has_partselect() ) {
+	  s << "[" << port_ref.msb() << ":" << port_ref.lsb() << "]";
 	}
 	s << endl;
       }

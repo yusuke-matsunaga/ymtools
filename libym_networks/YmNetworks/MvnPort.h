@@ -30,14 +30,46 @@ BEGIN_NAMESPACE_YM_NETWORKS_MVN
 //////////////////////////////////////////////////////////////////////
 class MvnPortRef
 {
-  friend class MvnPort;
-  friend class MvnMgr;
+public:
+  //////////////////////////////////////////////////////////////////////
+  // コンストラクタ / デストラクタ
+  //////////////////////////////////////////////////////////////////////
+
+  /// @brief 空のコンストラクタ
+  ///
+  /// 内容は不定
+  MvnPortRef();
+
+  /// @brief ノード単体のポート要素用のコンストラクタ
+  /// @param[in] node ノード
+  MvnPortRef(const MvnNode* node);
+
+  /// @brief ビット指定のポート要素用のコンストラクタ
+  /// @param[in] node ノード
+  /// @param[in] bitpos ビット位置
+  MvnPortRef(const MvnNode* node,
+	     ymuint bitpos);
+
+  /// @brief 範囲指定のポート要素用のコンストラクタ
+  /// @param[in] node ノード
+  /// @param[in] msb 範囲指定の MSB
+  /// @param[in] lsb 範囲指定の LSB
+  MvnPortRef(const MvnNode* node,
+	     ymuint msb,
+	     ymuint lsb);
+
+  /// @brief デストラクタ
+  ~MvnPortRef();
+
 
 public:
+  //////////////////////////////////////////////////////////////////////
+  /// @name 内部情報を得るためのメンバ関数
+  /// @{
 
   /// @brief ノードを返す．
   /// @note ノードのタイプは kInput か kOutput
-  MvnNode*
+  const MvnNode*
   node() const;
 
   /// @brief 単純な形式の場合 true を返す．
@@ -72,44 +104,7 @@ public:
   ymuint
   lsb() const;
 
-
-private:
-  //////////////////////////////////////////////////////////////////////
-  // コンストラクタ / デストラクタ
-  //////////////////////////////////////////////////////////////////////
-
-  /// @brief コンストラクタ
-  MvnPortRef();
-
-  /// @brief デストラクタ
-  ~MvnPortRef();
-
-
-private:
-  //////////////////////////////////////////////////////////////////////
-  // MvnMgr が用いる設定用の関数
-  //////////////////////////////////////////////////////////////////////
-
-  /// @brief 通常タイプに設定する．
-  /// @param[in] node ノード
-  void
-  set(MvnNode* ndoe);
-
-  /// @brief ビット指定タイプに設定する．
-  /// @param[in] node ノード
-  /// @param[in] bitpos ビット位置
-  void
-  set(MvnNode* ndoe,
-      ymuint bitpos);
-
-  /// @brief 範囲指定タイプに設定する．
-  /// @param[in] node ノード
-  /// @param[in] msb 範囲指定の MSB
-  /// @param[in] lsb 範囲指定の LSB
-  void
-  set(MvnNode* ndoe,
-      ymuint msb,
-      ymuint lsb);
+  /// @}
 
 
 private:
@@ -118,7 +113,7 @@ private:
   //////////////////////////////////////////////////////////////////////
 
   // ノード
-  MvnNode* mNode;
+  const MvnNode* mNode;
 
   // 範囲指定の MSB
   // ただし下位1ビットは範囲指定/ビット指定ありのフラグ
@@ -142,9 +137,28 @@ private:
 //////////////////////////////////////////////////////////////////////
 class MvnPort
 {
-  friend class MvnMgr;
+public:
+  //////////////////////////////////////////////////////////////////////
+  // コンストラクタ / デストラクタ
+  //////////////////////////////////////////////////////////////////////
+
+  /// @brief コンストラクタ
+  /// @param[in] portref_list ポート参照式のリスト
+  /// @param[in] name 名前
+  ///
+  /// 名前がない場合(name == nullptr)もありうる．
+  /// name == "" の場合も考慮する．
+  MvnPort(const vector<MvnPortRef>& portref_list = vector<MvnPortRef>(),
+	  const char* name = nullptr);
+
+  /// @brief デストラクタ
+  ~MvnPort();
+
 
 public:
+  //////////////////////////////////////////////////////////////////////
+  /// @name 内部情報を得るためのメンバ関数
+  /// @{
 
   /// @brief 名前を得る．
   /// @note 空("")の場合もある．
@@ -161,23 +175,10 @@ public:
 
   /// @brief port_ref を得る．
   /// @param[in] pos 位置 ( 0 <= pos < port_ref_num() )
-  const MvnPortRef*
+  const MvnPortRef&
   port_ref(ymuint pos) const;
 
-
-private:
-  //////////////////////////////////////////////////////////////////////
-  // コンストラクタ / デストラクタ
-  //////////////////////////////////////////////////////////////////////
-
-  /// @brief コンストラクタ
-  /// @param[in] name 名前
-  /// @param[in] np portref 数
-  MvnPort(const char* name,
-	  ymuint np);
-
-  /// @brief デストラクタ
-  ~MvnPort();
+  /// @}
 
 
 private:
@@ -204,7 +205,7 @@ private:
 // @brief ノードを返す．
 // @note ノードのタイプは kInput か kOutput
 inline
-MvnNode*
+const MvnNode*
 MvnPortRef::node() const
 {
   return mNode;
@@ -263,57 +264,6 @@ MvnPortRef::lsb() const
   return mLsb >> 1;
 }
 
-// @brief コンストラクタ
-inline
-MvnPortRef::MvnPortRef()
-{
-}
-
-// @brief デストラクタ
-inline
-MvnPortRef::~MvnPortRef()
-{
-}
-
-// @brief 通常タイプに設定する．
-// @param[in] node ノード
-inline
-void
-MvnPortRef::set(MvnNode* node)
-{
-  mNode = node;
-  mMsb = 0U;
-  mLsb = 0U;
-}
-
-// @brief ビット指定タイプに設定する．
-// @param[in] node ノード
-// @param[in] bitpos ビット位置
-inline
-void
-MvnPortRef::set(MvnNode* node,
-		ymuint bitpos)
-{
-  mNode = node;
-  mMsb = (bitpos << 1) | 1U;
-  mLsb = 0U;
-}
-
-// @brief 範囲指定タイプに設定する．
-// @param[in] node ノード
-// @param[in] msb 範囲指定の MSB
-// @param[in] lsb 範囲指定の LSB
-inline
-void
-MvnPortRef::set(MvnNode* node,
-		ymuint msb,
-		ymuint lsb)
-{
-  mNode = node;
-  mMsb = (msb << 1);
-  mLsb = (lsb << 1) | 1U;
-}
-
 // @brief 名前を得る．
 // @note 空(nullptr)の場合もある．
 inline
@@ -334,10 +284,10 @@ MvnPort::port_ref_num() const
 // @brief port_ref を得る．
 // @param[in] pos 位置 ( 0 <= pos < port_ref_num() )
 inline
-const MvnPortRef*
+const MvnPortRef&
 MvnPort::port_ref(ymuint pos) const
 {
-  return &mPortRefArray[pos];
+  return mPortRefArray[pos];
 }
 
 END_NAMESPACE_YM_NETWORKS_MVN

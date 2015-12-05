@@ -18,6 +18,9 @@ BEGIN_NAMESPACE_YM_NETWORKS_MVN
 //////////////////////////////////////////////////////////////////////
 /// @class MvnModule MvnModule.h "YmNetworks/MvnModule.h"
 /// @brief 多値ネットワークを表すクラス
+///
+/// 基本的には MvnNode のネットワークだが，MvnPort というオブジェクト
+/// も持つ．これはモジュールのIOを名前で参照するためのクラス
 //////////////////////////////////////////////////////////////////////
 class MvnModule
 {
@@ -92,6 +95,8 @@ public:
   /// @brief 内部ノードのリストの末尾の反復子を得る．
   MvnNodeList::const_iterator
   nodes_end() const;
+
+  /// @}
 
 
 private:

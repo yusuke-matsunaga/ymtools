@@ -54,7 +54,7 @@ private:
   //////////////////////////////////////////////////////////////////////
 
   // MvNode の変換関数のリスト
-  list<MvnConv*> mConvList;
+  vector<MvnConv*> mConvList;
 
 };
 

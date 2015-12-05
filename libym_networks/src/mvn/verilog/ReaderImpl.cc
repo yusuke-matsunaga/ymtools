@@ -13,6 +13,7 @@
 #include "Env.h"
 #include "YmNetworks/MvnMgr.h"
 #include "YmNetworks/MvnModule.h"
+#include "YmNetworks/MvnPort.h"
 #include "YmNetworks/MvnNode.h"
 #include "YmVerilog/BitVector.h"
 #include "YmVerilog/vl/VlModule.h"
@@ -343,52 +344,15 @@ ReaderImpl::gen_module(const VlModule* vl_module)
     if ( expr->is_operation() ) {
       ASSERT_COND( expr->op_type() == kVlConcatOp );
       ymuint n = expr->operand_num();
-      mMvnMgr->init_port(module, i, port->name(), n);
+      vector<MvnPortRef> portref_list(n);
       for (ymuint j = 0; j < n; ++ j) {
-	MvnNode* node;
-	ymuint msb;
-	ymuint lsb;
-	switch ( gen_portref(expr->operand(j), node, msb, lsb) ) {
-	case 0:
-	  mMvnMgr->set_port_ref(module, i, j, node);
-	  break;
-
-	case 1:
-	  mMvnMgr->set_port_ref(module, i, j, node, msb);
-	  break;
-
-	case 2:
-	  mMvnMgr->set_port_ref(module, i, j, node, msb, lsb);
-	  break;
-
-	default:
-	  ASSERT_NOT_REACHED;
-	  break;
-	}
+	portref_list[j] = gen_portref(expr->operand(j));
       }
+      mMvnMgr->init_port(module, i, portref_list, port->name());
     }
     else {
-      mMvnMgr->init_port(module, i, port->name(), 1);
-      MvnNode* node;
-      ymuint msb;
-      ymuint lsb;
-      switch ( gen_portref(expr, node, msb, lsb) ) {
-      case 0:
-	mMvnMgr->set_port_ref(module, i, 0, node);
-	break;
-
-      case 1:
-	mMvnMgr->set_port_ref(module, i, 0, node, msb);
-	break;
-
-      case 2:
-	mMvnMgr->set_port_ref(module, i, 0, node, msb, lsb);
-	break;
-
-      default:
-	ASSERT_NOT_REACHED;
-	break;
-      }
+      MvnPortRef portref = gen_portref(expr);
+      mMvnMgr->init_port(module, i, vector<MvnPortRef>(1, portref), port->name());
     }
   }
 
@@ -515,21 +479,13 @@ ReaderImpl::gen_decl(MvnModule* module,
 
 // @brief portref の実体化を行う．
 // @param[in] expr 対象の式
-// @param[out] node 対応するノードを格納する変数
-// @param[out] msb ビット指定位置か範囲指定の MSB を格納する変数
-// @param[out] lsb 範囲指定の LSB を格納する変数
-// @retval 0 単純な形式だった．
-// @retval 1 ビット指定形式だった．
-// @retval 2 範囲指定形式だった．
-int
-ReaderImpl::gen_portref(const VlExpr* expr,
-			MvnNode*& node,
-			ymuint& msb,
-			ymuint& lsb)
+// @return 生成されたポート参照式を返す．
+MvnPortRef
+ReaderImpl::gen_portref(const VlExpr* expr)
 {
   const VlDecl* decl = expr->decl_obj();
   ASSERT_COND( decl != nullptr );
-  node = mIODeclMap.get(decl);
+  MvnNode* node = mIODeclMap.get(decl);
   if ( node == nullptr ) {
     ostringstream buf;
     buf << decl->full_name() << ": Not found.";
@@ -538,25 +494,27 @@ ReaderImpl::gen_portref(const VlExpr* expr,
 		    kMsgError,
 		    "MVN_VL",
 		    buf.str());
-    return 0;
+    return MvnPortRef();
   }
 
   if ( expr->is_bitselect() ) {
     ASSERT_COND( node != nullptr );
     ASSERT_COND( expr->is_constant_select() );
     ASSERT_COND( expr->declarray_dimension() == 0 );
-    msb = expr->index_val();
-    return 1;
+    ymuint bitpos = expr->index_val();
+    return MvnPortRef(node, bitpos);
   }
+
   if ( expr->is_partselect() ) {
     ASSERT_COND( node != nullptr );
     ASSERT_COND( expr->is_constant_select() );
     ASSERT_COND( expr->declarray_dimension() == 0 );
-    msb = expr->left_range_val();
-    lsb = expr->right_range_val();
-    return 2;
+    ymuint msb = expr->left_range_val();
+    ymuint lsb = expr->right_range_val();
+    return MvnPortRef(node, msb, lsb);
   }
-  return 0;
+
+  return MvnPortRef(node);
 }
 
 // @brief 左辺式に接続する．
