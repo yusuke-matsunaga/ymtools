@@ -64,11 +64,15 @@ nega_equiv(const ExprNode* node0,
     return node1->is_posiliteral() && node0->varid() == node1->varid();
   }
 
+  ymuint n = node0->child_num();
+  if ( node1->child_num() != n ) {
+    return false;
+  }
+
   if ( node0->is_and() ) {
     if ( !node1->is_or() ) {
       return false;
     }
-    ymuint n = node0->child_num();
     for (ymuint i = 0; i < n; i ++) {
       const ExprNode* chd0 = node0->child(i);
       const ExprNode* chd1 = node1->child(i);
@@ -78,11 +82,10 @@ nega_equiv(const ExprNode* node0,
     }
     return true;
   }
-  if ( node0->is_or() ) {
+  else if ( node0->is_or() ) {
     if ( !node1->is_and() ) {
       return false;
     }
-    ymuint n = node0->child_num();
     for (ymuint i = 0; i < n; i ++) {
       const ExprNode* chd0 = node0->child(i);
       const ExprNode* chd1 = node1->child(i);
@@ -92,7 +95,7 @@ nega_equiv(const ExprNode* node0,
     }
     return true;
   }
-  if ( node0->is_xor() ) {
+  else if ( node0->is_xor() ) {
     if ( !node1->is_xor() ) {
       return false;
     }
