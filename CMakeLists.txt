@@ -33,6 +33,8 @@ list ( APPEND CMAKE_MODULE_PATH
 
 include (FindDoxygen)
 
+set ( Python_ADDITIONAL_VERSIONS 3.6 3.5 3.4 3.3 3.2 3.1 )
+
 find_package(BISON REQUIRED)
 
 find_package(Gperftools)

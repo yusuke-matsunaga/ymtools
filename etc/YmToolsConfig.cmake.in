@@ -7,3 +7,4 @@ include ("${_prefix}/lib/ymtools-@YMTOOLS_VERSION@/ymtools-targets.cmake")
 
 # Report other information
 set (YmTools_INCLUDE_DIRS "${_prefix}/include")
+set (YmTools_LIB_DIR "${_prefix}/lib")
