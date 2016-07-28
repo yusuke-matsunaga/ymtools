@@ -52,6 +52,16 @@ public:
       ymuint max_id,
       BackTracer& bt) = 0;
 
+  /// @brief テスト生成を行なう．
+  /// @param[in] flist 対象の故障リスト
+  /// @param[in] max_id ノード番号の最大値 + 1
+  /// @param[in] op テスト生成後に呼ばれるファンクター
+  virtual
+  void
+  run(TpgFault* fault,
+      ymuint max_id,
+      BackTracer& bt) = 0;
+
   /// @brief 統計情報をクリアする．
   virtual
   void

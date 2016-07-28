@@ -141,7 +141,7 @@ DtpgSat::dtpg_single(TpgFault* fault,
        fault->is_rep() &&
        fault->status() != kFsDetected &&
        !fault->is_skip() ) {
-    mSatEngine->run(vector<TpgFault*>(1, fault), mMaxId, bt);
+    mSatEngine->run(fault, mMaxId, bt);
   }
 }
 
