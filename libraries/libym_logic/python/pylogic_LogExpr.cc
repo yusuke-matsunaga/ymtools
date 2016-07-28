@@ -423,7 +423,7 @@ LogExpr_multi_compose(LogExprObject* self,
 
     VarId vid = PyVarId_AsVarId(vid_obj);
     LogExpr* sub_expr_p = PyLogExpr_AsLogExprPtr(sub_obj);
-    comp_map.insert(make_pair(vid, *sub_expr_p));
+    comp_map.add(vid, *sub_expr_p);
   }
 
   return PyLogExpr_FromLogExpr(self->mLogExpr->compose(comp_map));
@@ -455,7 +455,7 @@ LogExpr_remap_var(LogExprObject* self,
 
     VarId vid = PyVarId_AsVarId(obj1);
     VarId new_vid = PyVarId_AsVarId(obj2);
-    var_map.insert(make_pair(vid, new_vid));
+    var_map.add(vid, new_vid);
   }
 
   return PyLogExpr_FromLogExpr(self->mLogExpr->remap_var(var_map));

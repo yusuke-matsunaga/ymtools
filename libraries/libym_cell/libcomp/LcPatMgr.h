@@ -119,7 +119,7 @@ private:
   static
   void
   add_pg_list(vector<LcPatHandle>& pg_list,
-	      hash_set<string>& pg_hash,
+	      HashSet<string>& pg_hash,
 	      LcPatHandle new_handle);
 
   /// @brief テンプレートにしたがって2分木を作る．

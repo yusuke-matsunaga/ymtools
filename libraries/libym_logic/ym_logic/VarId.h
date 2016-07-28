@@ -10,6 +10,9 @@
 
 
 #include "ymtools.h"
+#include "ym_utils/HashFunc.h"
+#include "ym_utils/HashSet.h"
+#include "ym_utils/HashMap.h"
 #include "ym_utils/BinI.h"
 #include "ym_utils/BinO.h"
 
@@ -145,15 +148,15 @@ typedef list<VarId> VarList;
 
 /// @ingroup LogicGroup
 /// @brief 変数番号から変数番号への写像 (連想配列)
-typedef hash_map<VarId, VarId> VarVarMap;
+typedef HashMap<VarId, VarId> VarVarMap;
 
 /// @ingroup LogicGroup
 /// @brief 文字列から変数番号への写像 (連想配列)
-typedef hash_map<string, VarId> StrVarMap;
+typedef HashMap<string, VarId> StrVarMap;
 
 /// @ingroup LogicGroup
 /// @brief 変数番号から文字列への写像 (連想配列)
-typedef hash_map<VarId, string> VarStrMap;
+typedef HashMap<VarId, string> VarStrMap;
 
 
 //////////////////////////////////////////////////////////////////////
@@ -307,19 +310,17 @@ operator>>(BinI& s,
   return s;
 }
 
-END_NAMESPACE_YM
-
-BEGIN_NAMESPACE_HASH
 // VarId をキーにしたハッシュ関数クラスの定義
 template <>
-struct hash<nsYm::VarId>
+struct HashFunc<VarId>
 {
   ymuint
-  operator()(const nsYm::VarId& varid) const
+  operator()(const VarId& varid) const
   {
     return varid.val();
   }
 };
-END_NAMESPACE_HASH
+
+END_NAMESPACE_YM
 
 #endif // YM_LOGIC_VARID_H

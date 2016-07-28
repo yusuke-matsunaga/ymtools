@@ -106,9 +106,11 @@ using std::make_pair;
 using std::string;
 using std::vector;
 using std::list;
+#if 0
 using HASH_NAMESPACE::hash;
 using HASH_NAMESPACE::hash_set;
 using HASH_NAMESPACE::hash_map;
+#endif
 
 END_NAMESPACE_YM
 

@@ -134,7 +134,7 @@ public:
   /// @param[in] name_map 端子名をキーにして端子番号を取り出す連想配列
   virtual
   LogExpr
-  to_expr(const hash_map<ShString, ymuint>& name_map) const = 0;
+  to_expr(const HashMap<ShString, ymuint>& name_map) const = 0;
 
 
 public:

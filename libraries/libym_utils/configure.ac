@@ -94,7 +94,7 @@ AC_CHECK_FUNCS([getcwd gettimeofday strtod])
 # ===================================================================
 
 # Check for Python
-YM_CHECK_PYTHON([ym_have_python=1], [ym_have_python=0])
+#YM_CHECK_PYTHON([ym_have_python=1], [ym_have_python=0])
 
 AC_CACHE_SAVE
 

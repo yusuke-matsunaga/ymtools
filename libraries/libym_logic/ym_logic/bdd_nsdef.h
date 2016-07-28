@@ -15,6 +15,7 @@
 
 #include "ymtools.h"
 #include "ym_logic/VarId.h"
+#include "ym_utils/HashMap.h"
 
 
 //////////////////////////////////////////////////////////////////////
@@ -60,7 +61,7 @@ class BddList;
 
 /// @brief 変数番号をキートして BDD を値とする連想配列
 /// @ingroup Bdd
-typedef hash_map<VarId, Bdd> VarBddMap;
+typedef HashMap<VarId, Bdd> VarBddMap;
 
 /// @}
 //////////////////////////////////////////////////////////////////////

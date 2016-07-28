@@ -40,7 +40,7 @@ IdMgr::has_id(BddEdge e) const
 {
   BddEdge e_p(e);
   e_p.normalize();
-  return mMap.count(e_p);
+  return mMap.check(e_p);
 }
 
 // e の ID 番号を返す．
@@ -51,14 +51,10 @@ IdMgr::id(BddEdge e)
   BddEdge e_p(e);
   e_p.normalize();
   ymuint64 id;
-  hash_map<BddEdge, ymuint64>::iterator p = mMap.find(e_p);
-  if ( p == mMap.end() ) {
+  if ( !mMap.find(e_p, id) ) {
     id = mNext;
     ++ mNext;
-    mMap.insert(make_pair(e_p, id));
-  }
-  else {
-    id = p->second;
+    mMap.add(e_p, id);
   }
   return id;
 }

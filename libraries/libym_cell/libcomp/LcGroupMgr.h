@@ -106,10 +106,10 @@ private:
   LibComp& mLibComp;
 
   // 多出力論理関数をキーとしてグループ番号を保持するハッシュ表
-  hash_map<TvFuncM, ymuint> mGroupMap;
+  HashMap<TvFuncM, ymuint> mGroupMap;
 
   // 代表関数をキーとしてクラス番号を保持するハッシュ表
-  hash_map<TvFuncM, ymuint> mClassMap;
+  HashMap<TvFuncM, ymuint> mClassMap;
 
 };
 

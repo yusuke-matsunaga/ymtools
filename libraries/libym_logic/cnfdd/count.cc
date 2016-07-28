@@ -55,7 +55,7 @@ CNFddMgrImpl::count(CNFddEdge e)
     return 0;
   }
 
-  hash_map<CNFddEdge, mpz_class> mc_map;
+  HashMap<CNFddEdge, mpz_class> mc_map;
   mpz_class ans = count_step(e, mc_map);
   return ans;
 }
@@ -63,7 +63,7 @@ CNFddMgrImpl::count(CNFddEdge e)
 // count の下請関数
 mpz_class
 CNFddMgrImpl::count_step(CNFddEdge e,
-			 hash_map<CNFddEdge, mpz_class>& mc_map)
+			 HashMap<CNFddEdge, mpz_class>& mc_map)
 {
   bool zattr = e.zattr();
   e.normalize();
@@ -78,10 +78,8 @@ CNFddMgrImpl::count_step(CNFddEdge e,
     ymuint ref = vp->refcount();
     bool found = false;
     if ( ref != 1 ) {
-      hash_map<CNFddEdge, mpz_class>::iterator p = mc_map.find(e);
-      if ( p != mc_map.end() ) {
+      if ( mc_map.find(e, ans) ) {
 	found = true;
-	ans = p->second;
       }
     }
     if ( !found ) {
@@ -94,7 +92,7 @@ CNFddMgrImpl::count_step(CNFddEdge e,
       ans = n0 + np + nn;
 
       if ( ref != 1) {
-	mc_map[e] = ans;
+	mc_map.add(e, ans);
       }
     }
   }

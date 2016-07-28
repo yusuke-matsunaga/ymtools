@@ -128,12 +128,12 @@ LogExprWriter::dump_sub(ostream& s,
       s << not_str();
     }
     VarId id = expr.varid();
-    VarStrMap::const_iterator p = var_names.find(id);
-    if ( p == var_names.end() ) {
-      s << "V" << id;
+    string name;
+    if ( var_names.find(id, name) ) {
+      s << name;
     }
     else {
-      s << p->second;
+      s << "V" << id;
     }
   }
   else { // AND/OR/XOR

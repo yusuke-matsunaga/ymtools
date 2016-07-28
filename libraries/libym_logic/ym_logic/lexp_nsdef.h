@@ -56,7 +56,7 @@ typedef list<LogExpr> LogExprList;
 
 /// @ingroup LexpGroup
 /// @brief 変数番号から LogExpr への写像 (連想配列)
-typedef hash_map<VarId, LogExpr> VarLogExprMap;
+typedef HashMap<VarId, LogExpr> VarLogExprMap;
 
 
 END_NAMESPACE_YM_LEXP

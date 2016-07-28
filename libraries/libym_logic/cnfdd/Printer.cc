@@ -127,10 +127,10 @@ Printer::print_step(CNFddEdge e)
   }
   CNFddEdge e2(e);
   e2.normalize();
-  if ( mMark.count(e2) ) {
+  if ( mMark.check(e2) ) {
     return;
   }
-  mMark.insert(e2);
+  mMark.add(e2);
   print_id(e2);
   CNFddNode* node = e2.get_node();
   ymuint level = node->level();

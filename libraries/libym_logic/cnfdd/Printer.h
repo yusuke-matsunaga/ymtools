@@ -73,7 +73,7 @@ private:
   ostream& mStream;
 
   // 処理済の CNFddEdge に印を付けておくためのハッシュ表
-  hash_set<CNFddEdge> mMark;
+  HashSet<CNFddEdge> mMark;
 
   // ID 番号を管理するマネージャ
   IdMgr mIdMgr;

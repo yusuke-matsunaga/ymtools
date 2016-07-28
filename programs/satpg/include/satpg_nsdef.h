@@ -111,7 +111,7 @@ class UntestOp;
 class TestVector;
 class TvMgr;
 class Dtpg;
-class DtpgStats;
+struct DtpgStats;
 class Rtpg;
 class RtpgStats;
 class MinPat;

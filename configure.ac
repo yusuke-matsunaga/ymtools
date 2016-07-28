@@ -47,7 +47,7 @@ AC_CONFIG_FILES([programs/Makefile])
 AC_CONFIG_FILES([Doxyfile])
 
 AC_CONFIG_SUBDIRS([include])
-AC_CONFIG_SUBDIRS([tests])
+#AC_CONFIG_SUBDIRS([tests])
 
 
 # ===================================================================
@@ -58,13 +58,13 @@ ym_libym_utils_enable=1
 ym_libym_logic_enable=1
 ym_libym_smtlibv2_enable=0
 ym_libym_cell_enable=1
-ym_libym_verilog_enable=1
+ym_libym_verilog_enable=0
 ym_libym_networks_enable=1
 ym_libym_gds_enable=0
-ym_libym_cec_enable=1
-ym_libym_techmap_enable=1
+ym_libym_cec_enable=0
+ym_libym_techmap_enable=0
 ym_libym_gbm_enable=0
-ym_libym_seal_enable=1
+ym_libym_seal_enable=0
 ym_libym_tclpp_enable=1
 ym_libym_ymsh_enable=0
 
@@ -78,11 +78,6 @@ YM_BUILD_LIBRARY([libym_utils],
 # libym_logic
 YM_BUILD_LIBRARY([libym_logic],
 		 [ym_libym_utils_enable])
-
-# libym_smtlibv2
-YM_BUILD_LIBRARY([libym_smtlibv2],
-		 [ym_libym_utils_enable,
-		  ym_libym_logic_enable])
 
 # libym_mincov
 YM_BUILD_LIBRARY([libym_mincov],
@@ -100,41 +95,11 @@ YM_BUILD_LIBRARY([libym_verilog],
 # libym_networks
 YM_BUILD_LIBRARY([libym_networks],
 		 [ym_libym_utils_enable,
-		  ym_libym_logic_enable,
-		  ym_libym_verilog_enable])
-
-# libym_gds
-YM_BUILD_LIBRARY([libym_gds],
-		 [])
-
-# libym_cec
-YM_BUILD_LIBRARY([libym_cec],
-		 [ym_libym_networks_enable,
 		  ym_libym_logic_enable])
-
-# libym_techmap
-YM_BUILD_LIBRARY([libym_techmap],
-		 [ym_libym_utils_enable,
-		  ym_libym_logic_enable])
-
-# libym_gbm
-YM_BUILD_LIBRARY([libym_gbm],
-		 [ym_libym_networks_enable,
-		  ym_libym_logic_enable])
-
-# libym_seal
-YM_BUILD_LIBRARY([libym_seal],
-		 [ym_libym_logic_enable,
-		  ym_libym_networks_enable])
 
 # libym_tclpp
 YM_BUILD_LIBRARY([libym_tclpp],
 		 [])
-
-# libym_ymsh
-YM_BUILD_LIBRARY([libym_ymsh],
-		 [])
-
 
 YM_FINISH_LIBRARIES_SUBDIRS
 
@@ -143,29 +108,12 @@ YM_FINISH_LIBRARIES_SUBDIRS
 # Declare files in 'programs' subdirectories
 # ===================================================================
 
-ym_magus_tclsh_enable=1
-ym_atpg_enable=1
-ym_matpg_enable=1
+ym_magus_tclsh_enable=0
+ym_atpg_enable=0
+ym_matpg_enable=0
 ym_satpg_enable=1
 
 YM_INIT_PROGRAMS_SUBDIRS
-
-# magus_tclsh
-YM_BUILD_PROGRAM([magus_tclsh],
-		 [ym_libym_tclpp_enable])
-
-# atpg
-YM_BUILD_PROGRAM([atpg],
-		 [ym_libym_utils_enable,
-		  ym_libym_networks_enable,
-		  ym_libym_tclpp_enable])
-
-# matpg
-YM_BUILD_PROGRAM([matpg],
-		 [ym_libym_utils_enable,
-		  ym_libym_logic_enable,
-		  ym_libym_networks_enable,
-		  ym_libym_tclpp_enable])
 
 # satpg
 YM_BUILD_PROGRAM([satpg],

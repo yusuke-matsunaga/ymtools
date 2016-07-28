@@ -54,7 +54,7 @@ private:
   //////////////////////////////////////////////////////////////////////
 
   // BddEdge と ID 番号の対応表
-  hash_map<BddEdge, ymuint64> mMap;
+  HashMap<BddEdge, ymuint64> mMap;
 
   // 次に割り当てるID番号
   ymuint64 mNext;

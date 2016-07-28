@@ -6,7 +6,6 @@
 SUBDIRS = \
 	include \
 	libraries \
-	tests \
 	programs
 
 CLEANFILES = doxygen.warnings
@@ -35,6 +34,3 @@ EXTRA_DIST = \
 
 dox:
 	@DOXYGEN@
-
-
-

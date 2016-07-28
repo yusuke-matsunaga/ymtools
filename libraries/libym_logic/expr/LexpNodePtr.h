@@ -10,6 +10,7 @@
 
 
 #include "ym_logic/LogExpr.h"
+#include "ym_utils/HashMap.h"
 
 
 BEGIN_NAMESPACE_YM_LEXP
@@ -64,7 +65,6 @@ private:
 typedef vector<LexpNodePtr> LexpNodeList;
 typedef vector<LexpNodePtr>::iterator LexpNode_itr;
 typedef vector<LexpNodePtr>::const_iterator LexpNode_citr;
-typedef hash_map<VarId, LexpNodePtr> VarLexpNodeMap;
 
 
 

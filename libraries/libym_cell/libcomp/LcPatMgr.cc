@@ -123,7 +123,7 @@ LcPatMgr::reg_pat(const LogExpr& expr,
   pg_sub(expr, tmp_pat_list);
 
   // 重複チェック
-  hash_set<string> pg_hash;
+  HashSet<string> pg_hash;
   ymuint n = mPatList.size();
   for (ymuint i = 0; i < n; ++ i) {
     if ( mRepList[i] != rep_id ) continue;
@@ -134,7 +134,7 @@ LcPatMgr::reg_pat(const LogExpr& expr,
     if ( inv1 ) {
       signature1 = "~" + signature1;
     }
-    pg_hash.insert(signature1);
+    pg_hash.add(signature1);
   }
 
   for (vector<LcPatHandle>::iterator p = tmp_pat_list.begin();
@@ -146,7 +146,7 @@ LcPatMgr::reg_pat(const LogExpr& expr,
     if ( inv1 ) {
       signature2 = "~" + signature2;
     }
-    if ( pg_hash.find(signature2) == pg_hash.end() ) {
+    if ( !pg_hash.check(signature2) ) {
       // pat1 を登録する．
       mPatList.push_back(pat1);
       mRepList.push_back(rep_id);
@@ -297,7 +297,7 @@ LcPatMgr::pg_sub(const LogExpr& expr,
       nk_array[i] = make_pair(input_pg_list[i].size(), 1);
     }
 
-    hash_set<string> pg_hash;
+    HashSet<string> pg_hash;
     // ファンインのパタンの組み合わせを列挙するオブジェクト
     MultiCombiGen mcg(nk_array);
     for (MultiCombiGen::iterator p = mcg.begin(); !p.is_end(); ++ p) {
@@ -383,15 +383,15 @@ LcPatMgr::pg_sub(const LogExpr& expr,
 // ただし，同形のパタンがすでにある場合には追加しない．
 void
 LcPatMgr::add_pg_list(vector<LcPatHandle>& pg_list,
-		      hash_set<string>& pg_hash,
+		      HashSet<string>& pg_hash,
 		      LcPatHandle new_handle)
 {
   string signature = new_handle.node()->signature();
   if ( new_handle.inv() ) {
     signature = "~" + signature;
   }
-  if ( pg_hash.find(signature) == pg_hash.end() ) {
-    pg_hash.insert(signature);
+  if ( !pg_hash.check(signature) ) {
+    pg_hash.add(signature);
     pg_list.push_back(new_handle);
   }
 }

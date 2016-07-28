@@ -49,16 +49,16 @@ BEGIN_NONAMESPACE
 void
 dfs(ostream& s,
     Aig aig,
-    hash_set<ymuint>& mark)
+    HashSet<ymuint>& mark)
 {
   if ( aig.is_const() ) {
     return;
   }
   ymuint id = aig.node_id();
-  if ( mark.count(id) > 0 ) {
+  if ( mark.check(id) > 0 ) {
     return;
   }
-  mark.insert(id);
+  mark.add(id);
   s << "Node#" << id << ": ";
   if ( aig.is_input() ) {
     s << "Input#" << aig.input_id() << endl;
@@ -81,7 +81,7 @@ AigMgr::print_handles(ostream& s,
 		      const list<Aig>& handle_list) const
 {
   ymuint i = 0;
-  hash_set<ymuint> mark;
+  HashSet<ymuint> mark;
   for (list<Aig>::const_iterator p = handle_list.begin();
        p != handle_list.end(); ++ p) {
     Aig handle = *p;
@@ -222,7 +222,7 @@ AigMgr::make_xor(const list<Aig>& edge_list)
 // @param[in] input_map 入力とAIGの対応表
 Aig
 AigMgr::make_logic(const LogExpr& expr,
-		   const hash_map<VarId, Aig>& input_map)
+		   const HashMap<VarId, Aig>& input_map)
 {
   if ( expr.is_zero() ) {
     return make_zero();
@@ -232,18 +232,18 @@ AigMgr::make_logic(const LogExpr& expr,
   }
   if ( expr.is_posiliteral() ) {
     VarId id = expr.varid();
-    hash_map<VarId, Aig>::const_iterator p = input_map.find(id);
-    if ( p != input_map.end() ) {
-      return p->second;
+    Aig ans;
+    if ( input_map.find(id, ans) ) {
+      return ans;
     }
     // なかったらそのままの入力ノードに変換する．
     return make_input(id);
   }
   if ( expr.is_negaliteral() ) {
     VarId id = expr.varid();
-    hash_map<VarId, Aig>::const_iterator p = input_map.find(id);
-    if ( p != input_map.end() ) {
-      return ~p->second;
+    Aig ans;
+    if ( input_map.find(id, ans) ) {
+      return ~ans;
     }
     // なかったらそのままの入力ノードに変換する．
     return ~make_input(id);

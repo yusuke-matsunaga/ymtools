@@ -208,13 +208,9 @@ BddMgr::expr_to_bdd(const LogExpr& expr,
   // リテラルの場合
   if ( expr.is_literal() ) {
     VarId pos = expr.varid();
-    VarBddMap::const_iterator p = varmap.find(pos);
     Bdd ans;
-    if ( p == varmap.end() ) {
+    if ( !varmap.find(pos, ans) ) {
       ans = make_posiliteral(pos);
-    }
-    else {
-      ans = p->second;
     }
     if ( expr.is_negaliteral() ) {
       ans.negate();
@@ -250,12 +246,12 @@ BddMgr::expr_to_bdd(const LogExpr& expr,
 		    const VarVarMap& varmap)
 {
   VarBddMap vbmap;
-  for (VarVarMap::const_iterator p = varmap.begin();
+  for (HashMapIterator<VarId, VarId> p = varmap.begin();
        p != varmap.end(); ++ p) {
-    VarId id = p->first;
-    VarId id2 = p->second;
+    VarId id = p.key();
+    VarId id2 = p.value();
     Bdd bdd = make_posiliteral(id2);
-    vbmap.insert(make_pair(id, bdd));
+    vbmap.add(id, bdd);
   }
   return expr_to_bdd(expr, vbmap);
 }

@@ -12,6 +12,7 @@
 #include "dotlib_nsdef.h"
 #include "ym_utils/ShString.h"
 #include "ym_utils/FileRegion.h"
+#include "ym_utils/HashMap.h"
 
 
 BEGIN_NAMESPACE_YM_DOTLIB
@@ -89,7 +90,7 @@ private:
   //////////////////////////////////////////////////////////////////////
 
   // ハッシュ表
-  hash_map<ShString, list<const DotlibNode*> > mHash;
+  HashMap<ShString, list<const DotlibNode*> > mHash;
 
 };
 

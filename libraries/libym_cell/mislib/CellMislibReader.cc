@@ -36,7 +36,7 @@ BEGIN_NONAMESPACE
 void
 dfs(const MislibNode* node,
     vector<ShString>& name_list,
-    hash_map<ShString, ymuint>& name_map)
+    HashMap<ShString, ymuint>& name_map)
 {
   switch ( node->type() ) {
   case MislibNode::kConst0:
@@ -46,9 +46,9 @@ dfs(const MislibNode* node,
   case MislibNode::kStr:
     {
       ShString name = node->str();
-      if ( name_map.count(name) == 0 ) {
+      if ( !name_map.check(name) ) {
 	// 登録する．
-	name_map.insert(make_pair(name, name_list.size()));
+	name_map.add(name, name_list.size());
 	name_list.push_back(name);
       }
     }
@@ -101,15 +101,15 @@ gen_library(const string& lib_name,
     const MislibNode* ipin_list = gate->ipin_list();
     vector<const MislibNode*> ipin_array;
     vector<ShString> ipin_name_list;
-    hash_map<ShString, ymuint> ipin_name_map;
+    HashMap<ShString, ymuint> ipin_name_map;
     if ( ipin_list->type() == MislibNode::kList ) {
       // 通常の入力ピン定義がある場合
       // ipin_list の順に入力ピンを作る．
       for (const MislibNode* pin = ipin_list->top(); pin; pin = pin->next()) {
 	assert_cond( pin->type() == MislibNode::kPin, __FILE__, __LINE__);
 	ShString name = pin->name()->str();
-	assert_cond( ipin_name_map.count(name) == 0, __FILE__, __LINE__);
-	ipin_name_map.insert(make_pair(name, ipin_array.size()));
+	assert_cond( !ipin_name_map.check(name), __FILE__, __LINE__);
+	ipin_name_map.add(name, ipin_array.size());
 	ipin_array.push_back(pin);
 	ipin_name_list.push_back(name);
       }

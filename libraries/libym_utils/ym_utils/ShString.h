@@ -10,6 +10,7 @@
 
 
 #include "ymtools.h"
+#include "ym_utils/HashFunc.h"
 
 
 BEGIN_NAMESPACE_YM
@@ -181,6 +182,18 @@ operator<<(ostream& s,
 	   const ShString& str);
 
 /// @}
+
+
+// ShString をキーにしたハッシュ関数クラスの定義
+template <>
+struct HashFunc<ShString>
+{
+  ymuint
+  operator()(ShString str) const
+  {
+    return str.hash();
+  }
+};
 
 
 //////////////////////////////////////////////////////////////////////

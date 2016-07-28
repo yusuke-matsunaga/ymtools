@@ -10,6 +10,7 @@
 
 
 #include "DotlibHandler.h"
+#include "ym_utils/HashMap.h"
 
 
 BEGIN_NAMESPACE_YM_DOTLIB
@@ -146,7 +147,7 @@ private:
   //////////////////////////////////////////////////////////////////////
 
   // ハンドラの連想配列
-  hash_map<ShString, DotlibHandler*> mHandlerMap;
+  HashMap<ShString, DotlibHandler*> mHandlerMap;
 
   // 対応する DotlibNode
   DotlibNodeImpl* mNode;

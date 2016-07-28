@@ -279,7 +279,7 @@ AigMgr_make_logic(AigMgrObject* self,
 
   LogExpr* expr_p = PyLogExpr_AsLogExprPtr(obj1);
 
-  hash_map<VarId, Aig> input_map;
+  HashMap<VarId, Aig> input_map;
   PyObject* item_list = PyDict_Items(obj2);
   ymuint n = PyList_GET_SIZE(item_list);
   for (ymuint i = 0; i < n; ++ i) {
@@ -295,7 +295,7 @@ AigMgr_make_logic(AigMgrObject* self,
     VarId vid = PyVarId_AsVarId(vid_obj);
     Aig aig = PyAig_AsAig(aig_obj);
 
-    input_map.insert(make_pair(vid, aig));
+    input_map.add(vid, aig);
   }
 
   return PyAig_FromAig(self->mMgr->make_logic(*expr_p, input_map));

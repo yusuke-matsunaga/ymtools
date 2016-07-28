@@ -257,17 +257,17 @@ fi
 ym_tmp_found=no
 ym_tmp_builtin_tclreadline=no
 AC_ARG_WITH([tclreadline],
-	AS_HELP_STRING([--with-tclreadline=DIR], [libtclreadline.la is in DIR]),
+	AS_HELP_STRING([--with-tclreadline=DIR], [libtclreadline.so is in DIR]),
 	[
 if test "x$withval" != x; then
-  if test $withval = builtin && test -r ../../tclreadline/libtclreadline.la; then
+  if test $withval = builtin && test -r ../../tclreadline/libtclreadline.so; then
     ym_tmp_found=yes
-    YM_LIBS_LIBTCLREADLINE='$(top_builddir)/../../tclreadline/libtclreadline.la'
+    YM_LIBS_LIBTCLREADLINE='$(top_builddir)/../../tclreadline/libtclreadline.so'
     ym_tmp_builtin_tclreadline=yes
   else
-    if test -r $withval/libtclreadline.la; then
+    if test -r $withval/libtclreadline.so; then
       ym_tmp_found=yes
-      YM_LIBS_LIBTCLREADLINE=$withval/libtclreadline.la
+      YM_LIBS_LIBTCLREADLINE=$withval/libtclreadline.so
     fi
   fi
 fi],[
@@ -278,17 +278,17 @@ if test $ym_tmp_found = no; then
   for dir in $prefix /usr /usr/local /opt; do
     for lib in $ym_tmp_lib_list; do
       ym_tmp_dir=$dir/$lib
-      if test -r $ym_tmp_dir/libtclreadline.la; then
+      if test -r $ym_tmp_dir/libtclreadline.so; then
         ym_tmp_found=yes
-        YM_LIBS_LIBTCLREADLINE=$ym_tmp_dir/libtclreadline.la
+        YM_LIBS_LIBTCLREADLINE=$ym_tmp_dir/libtclreadline.so
         break
       fi
     done
   done
 fi
-if test $ym_tmp_found = no && test -r  ../tclreadline/libtclreadline.la; then
+if test $ym_tmp_found = no && test -r  ../tclreadline/libtclreadline.so; then
   ym_tmp_found=yes
-  YM_LIBS_LIBTCLREADLINE='$(top_builddir)/../tclreadline/libtclreadline.la'
+  YM_LIBS_LIBTCLREADLINE='$(top_builddir)/../tclreadline/libtclreadline.so'
   ym_tmp_builtin_tclreadline=yes
 fi
 ])
@@ -296,7 +296,7 @@ if test "x$withval" = xno; then
   AC_MSG_RESULT([don't use tclreadline])
 else
   if test $ym_tmp_found = no; then
-    AC_MSG_ERROR([tclreadline is not found. Use --with-tclreadline to specify the directory containing libtclreadline.la])
+    AC_MSG_ERROR([tclreadline is not found. Use --with-tclreadline to specify the directory containing libtclreadline.so])
   fi
   AC_MSG_RESULT([$YM_LIBS_LIBTCLREADLINE])
   AC_SUBST(YM_LIBS_LIBTCLREADLINE)

@@ -86,9 +86,9 @@ McOp::count_sub1(BddEdge e)
   ymuint ref = node->refcount();
   if ( ref != 1 ) {
     // 複数回参照されていたらまず演算結果テーブルを探す．
-    hash_map<BddEdge, mpz_class>::iterator p = mCompTbl1.find(e);
-    if ( p != mCompTbl1.end() ) {
-      return p->second;
+    mpz_class ans;
+    if ( mCompTbl1.find(e, ans) ) {
+      return ans;
     }
   }
 
@@ -102,7 +102,7 @@ McOp::count_sub1(BddEdge e)
 
   if ( ref != 1) {
     // 演算結果テーブルに答を登録する．
-    mCompTbl1.insert(make_pair(e, ans));
+    mCompTbl1.add(e, ans);
   }
 
   return ans;
@@ -124,9 +124,9 @@ McOp::count_sub2(BddEdge e)
   ymuint ref = node->refcount();
   if ( ref != 1 ) {
     // 複数回参照されていたらまず演算結果テーブルを探す．
-    hash_map<BddEdge, ymuint32>::iterator p = mCompTbl2.find(e);
-    if ( p != mCompTbl2.end() ) {
-      return p->second;
+    ymuint32 ans;
+    if ( mCompTbl2.find(e, ans) ) {
+      return ans;
     }
   }
 
@@ -140,11 +140,10 @@ McOp::count_sub2(BddEdge e)
 
   if ( ref != 1) {
     // 演算結果テーブルに答を登録する．
-    mCompTbl2.insert(make_pair(e, ans));
+    mCompTbl2.add(e, ans);
   }
 
   return ans;
 }
 
 END_NAMESPACE_YM_BDD
-

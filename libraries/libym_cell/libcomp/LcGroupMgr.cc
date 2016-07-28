@@ -80,28 +80,28 @@ LcGroup*
 LcGroupMgr::find_group(const TvFuncM& f)
 {
   LcGroup* fgroup = NULL;
-  hash_map<TvFuncM, ymuint>::iterator p = mGroupMap.find(f);
-  if ( p == mGroupMap.end() ) {
+  ymuint gid;
+  if ( !mGroupMap.find(f, gid) ) {
     // なかったので新たに作る．
     fgroup = mLibComp.new_group();
-    mGroupMap.insert(make_pair(f, fgroup->id()));
+    mGroupMap.add(f, fgroup->id());
 
     // 代表関数を求める．
     TvFuncM repfunc;
     NpnMapM xmap;
     find_repfunc(f, repfunc, xmap);
 
+    ymuint id;
     LcClass* fclass = NULL;
-    hash_map<TvFuncM, ymuint>::iterator q = mClassMap.find(repfunc);
-    if ( q == mClassMap.end() ) {
+    if ( !mClassMap.find(repfunc, id) ) {
       // まだ登録されていない．
       fclass = mLibComp.new_class(repfunc);
-      mClassMap.insert(make_pair(repfunc, fclass->id()));
+      mClassMap.add(repfunc, fclass->id());
       find_idmap_list(repfunc, fclass->mIdmapList);
     }
     else {
       // 登録されていた．
-      fclass = mLibComp.npn_class(q->second);
+      fclass = mLibComp.npn_class(id);
     }
 
     // グループを追加する．
@@ -109,7 +109,7 @@ LcGroupMgr::find_group(const TvFuncM& f)
   }
   else {
     // 既に登録されていた．
-    fgroup = mLibComp.group(p->second);
+    fgroup = mLibComp.group(gid);
   }
 
   return fgroup;

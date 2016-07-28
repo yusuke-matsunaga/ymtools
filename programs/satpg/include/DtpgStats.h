@@ -1,5 +1,5 @@
 #ifndef DTPGSTATS_H
-#define DTPGTTATS_H
+#define DTPGSTATS_H
 
 /// @file DtpgStats.h
 /// @brief DtpgStats のヘッダファイル

@@ -43,7 +43,7 @@ BEGIN_NONAMESPACE
 // 論理式中に現れる名前を ipin_set に積む．
 void
 get_ipin_names(const MislibNode* expr_node,
-	       hash_set<ShString>& ipin_set)
+	       HashSet<ShString>& ipin_set)
 {
   ShString name;
 
@@ -54,7 +54,7 @@ get_ipin_names(const MislibNode* expr_node,
     return;
 
   case MislibNode::kStr:
-    ipin_set.insert(expr_node->str());
+    ipin_set.add(expr_node->str());
     break;
 
   case MislibNode::kNot:
@@ -117,15 +117,15 @@ MislibParserImpl::read_file(const string& filename,
   // また，セル内のピン名が重複していないか，出力ピンの論理式に現れるピン名
   // と入力ピンに齟齬がないかもチェックする．
   const MislibNode* gate_list = mgr->gate_list();
-  hash_map<ShString, const MislibNode*> cell_map;
+  HashMap<ShString, const MislibNode*> cell_map;
   for (const MislibNode* gate = gate_list->top(); gate; gate = gate->next()) {
     assert_cond( gate->type() == MislibNode::kGate, __FILE__, __LINE__);
     ShString name = gate->name()->str();
-    hash_map<ShString, const MislibNode*>::iterator p = cell_map.find(name);
-    if ( p != cell_map.end() ) {
+    const MislibNode* node;
+    if ( cell_map.find(name, node) ) {
       ostringstream buf;
       buf << "Cell name, " << name << " is defined more than once. "
-	  << "Previous definition is " << p->second->name()->loc() << ".";
+	  << "Previous definition is " << node->name()->loc() << ".";
       MsgMgr::put_msg(__FILE__, __LINE__,
 		      gate->name()->loc(),
 		      kMsgError,
@@ -135,22 +135,22 @@ MislibParserImpl::read_file(const string& filename,
       continue;
     }
     // 情報を登録する．
-    cell_map.insert(make_pair(name, gate));
+    cell_map.add(name, gate);
 
     // 入力ピン名のチェック
     const MislibNode* ipin_list = gate->ipin_list();
     if ( ipin_list->type() == MislibNode::kList ) {
       // 通常の入力ピン定義の場合
-      hash_map<ShString, const MislibNode*> ipin_map;
+      HashMap<ShString, const MislibNode*> ipin_map;
       for (const MislibNode* ipin = ipin_list->top(); ipin; ipin = ipin->next()) {
 	assert_cond( ipin->type() == MislibNode::kPin, __FILE__, __LINE__);
 	ShString name = ipin->name()->str();
-	hash_map<ShString, const MislibNode*>::iterator p = ipin_map.find(name);
-	if ( p != ipin_map.end() ) {
+	const MislibNode* node;
+	if ( ipin_map.find(name, node) ) {
 	  ostringstream buf;
 	  buf << "Pin name, " << name << " is defined more than once. "
 	      << "Previous definition is "
-	      << p->second->name()->loc() << ".";
+	      << node->name()->loc() << ".";
 	  MsgMgr::put_msg(__FILE__, __LINE__,
 			  ipin->name()->loc(),
 			  kMsgError,
@@ -158,16 +158,16 @@ MislibParserImpl::read_file(const string& filename,
 			  buf.str());
 	}
 	else {
-	  ipin_map.insert(make_pair(name, ipin));
+	  ipin_map.add(name, ipin);
 	}
       }
       // 論理式に現れる名前の集合を求める．
-      hash_set<ShString> ipin_set;
+      HashSet<ShString> ipin_set;
       get_ipin_names(gate->opin_expr(), ipin_set);
-      for (hash_map<ShString, const MislibNode*>::iterator p = ipin_map.begin();
+      for (HashMapIterator<ShString, const MislibNode*> p = ipin_map.begin();
 	   p != ipin_map.end(); ++ p) {
-	ShString name = p->first;
-	if ( ipin_set.count(name) == 0 ) {
+	ShString name = p.key();
+	if ( !ipin_set.check(name) ) {
 	  // ピン定義に現れる名前が論理式中に現れない．
 	  // エラーではないが，このピンのタイミング情報は意味をもたない．
 	  ostringstream buf;
@@ -175,16 +175,16 @@ MislibParserImpl::read_file(const string& filename,
 	      << " does not appear in the logic expression. "
 	      << "Timing information will be ignored.";
 	  MsgMgr::put_msg(__FILE__, __LINE__,
-			  p->second->loc(),
+			  p.value()->loc(),
 			  kMsgWarning,
 			  "MISLIB_PARSER",
 			  buf.str());
 	}
       }
-      for (hash_set<ShString>::iterator p = ipin_set.begin();
+      for (HashSetIterator<ShString> p = ipin_set.begin();
 	   p != ipin_set.end(); ++ p) {
-	ShString name = *p;
-	if ( ipin_map.count(name) == 0 ) {
+	ShString name = p.key();
+	if ( !ipin_map.check(name) ) {
 	  // 論理式中に現れる名前の入力ピンが存在しない．
 	  // これはエラー
 	  ostringstream buf;

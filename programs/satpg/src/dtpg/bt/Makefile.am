@@ -24,9 +24,7 @@ libatpg_bt_la_SOURCES = \
 	BtJust1.h \
 	BtJust1.cc \
 	BtJust2.h \
-	BtJust2.cc \
-	BtZdd.h \
-	BtZdd.cc
+	BtJust2.cc
 
 libatpg_bt_la_LDFLAGS =
 

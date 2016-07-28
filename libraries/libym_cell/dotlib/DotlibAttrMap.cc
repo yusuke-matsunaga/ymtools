@@ -37,19 +37,18 @@ bool
 DotlibAttrMap::get(const char* name,
 		   vector<const DotlibNode*>& node_list) const
 {
+  list<const DotlibNode*> tmp_list;
+  bool stat = mHash.find(ShString(name), tmp_list);
   node_list.clear();
-  hash_map<ShString, list<const DotlibNode*> >::const_iterator p
-    = mHash.find(ShString(name));
-  if ( p == mHash.end() ) {
-    return false;
+  if ( stat ) {
+    for (list<const DotlibNode*>::const_iterator p = tmp_list.begin();
+	 p != tmp_list.end(); ++ p) {
+      const DotlibNode* node = *p;
+      node_list.push_back(node);
+    }
   }
-  const list<const DotlibNode*>& src_node_list = p->second;
-  node_list.reserve(src_node_list.size());
-  for (list<const DotlibNode*>::const_iterator q = src_node_list.begin();
-       q != src_node_list.end(); ++ q) {
-    node_list.push_back(*q);
-  }
-  return true;
+
+  return stat;
 }
 
 // @brief 値が単一と仮定してそのノードを返す．
@@ -88,14 +87,14 @@ bool
 DotlibAttrMap::get_singleton_or_null(const char* name,
 				     const DotlibNode*& node) const
 {
-  hash_map<ShString, list<const DotlibNode*> >::const_iterator p
-    = mHash.find(ShString(name));
-  if ( p == mHash.end() ) {
+  ShString sh_name(name);
+
+  if ( !mHash.check(sh_name) ) {
     node = NULL;
     return true;
   }
 
-  const list<const DotlibNode*>& node_list = p->second;
+  const list<const DotlibNode*>& node_list = mHash[sh_name];
   list<const DotlibNode*>::const_iterator q = node_list.begin();
   node = *q;
   ++ q;
@@ -128,12 +127,10 @@ void
 DotlibAttrMap::add(const ShString& name,
 		   const DotlibNode* node)
 {
-  hash_map<ShString, list<const DotlibNode*> >::iterator p = mHash.find(name);
-  if ( p == mHash.end() ) {
-    mHash.insert(make_pair(name, list<const DotlibNode*>()));
-    p = mHash.find(name);
+  if ( !mHash.check(name) ) {
+    mHash.add(name, list<const DotlibNode*>());
   }
-  (p->second).push_back(node);
+  mHash[name].push_back(node);
 }
 
 

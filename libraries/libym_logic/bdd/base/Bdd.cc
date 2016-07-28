@@ -340,9 +340,9 @@ Bdd
 Bdd::compose(const VarBddMap& comp_map) const
 {
   // 始める前にエラーチェックを行う．
-  for (VarBddMap::const_iterator p = comp_map.begin();
+  for (HashMapIterator<VarId, Bdd> p = comp_map.begin();
        p != comp_map.end(); ++ p) {
-    Bdd bdd = p->second;
+    Bdd bdd = p.value();
     if ( mMgr != bdd.mMgr || bdd.is_error() ) {
       return Bdd(mMgr, BddEdge::make_error());
     }
@@ -352,10 +352,10 @@ Bdd::compose(const VarBddMap& comp_map) const
   }
 
   mMgr->compose_start();
-  for (VarBddMap::const_iterator p = comp_map.begin();
+  for (HashMapIterator<VarId, Bdd> p = comp_map.begin();
        p != comp_map.end(); ++ p) {
-    VarId id = p->first;
-    Bdd bdd = p->second;
+    VarId id = p.key();
+    Bdd bdd = p.value();
     BddEdge e1(bdd.mRoot);
     mMgr->compose_reg(id, e1);
   }
@@ -369,10 +369,10 @@ Bdd
 Bdd::remap_var(const VarVarMap& var_map) const
 {
   mMgr->compose_start();
-  for (VarVarMap::const_iterator p = var_map.begin();
+  for (HashMapIterator<VarId, VarId> p = var_map.begin();
        p != var_map.end(); ++ p) {
-    VarId id = p->first;
-    VarId mid = p->second;
+    VarId id = p.key();
+    VarId mid = p.value();
     BddEdge e1 = mMgr->make_posiliteral(mid);
     mMgr->compose_reg(id, e1);
   }

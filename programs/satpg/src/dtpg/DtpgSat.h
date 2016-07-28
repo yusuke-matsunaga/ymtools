@@ -97,92 +97,12 @@ private:
   // 内部で用いられる下請け関数
   //////////////////////////////////////////////////////////////////////
 
-  /// @brief single モードでテスト生成を行なう．
-  /// @param[in] bt バックトレーサー
-  void
-  single_mode(BackTracer& bt);
-
-  /// @brief dual モードでテスト生成を行なう．
-  /// @param[in] bt バックトレーサー
-  void
-  dual_mode(BackTracer& bt);
-
-  /// @brief node モードでテスト生成を行なう．
-  /// @param[in] bt バックトレーサー
-  void
-  node_mode(BackTracer& bt);
-
-  /// @brief ffr モードでテスト生成を行なう．
-  /// @param[in] bt バックトレーサー
-  void
-  ffr_mode(BackTracer& bt);
-
-  /// @brief mffc モードでテスト生成を行なう．
-  /// @param[in] bt バックトレーサー
-  void
-  mffc_mode(BackTracer& bt);
-
-  /// @brief all モードでテスト生成を行なう．
-  /// @param[in] bt バックトレーサー
-  void
-  all_mode(BackTracer& bt);
-
-  /// @brief single モードの共通処理
-  void
-  single_sub(BackTracer& bt);
-
-  /// @brief dual モードの共通処理
-  void
-  dual_sub(BackTracer& bt);
-
-  /// @brief ffr モードの共通処理
-  void
-  ffr_sub(BackTracer& bt);
-
-  /// @brief mffc モードの共通処理
-  void
-  mffc_sub(BackTracer& bt);
-
-  /// @brief all モードの共通処理
-  void
-  all_sub(BackTracer& bt);
-
   /// @brief 一つの故障に対してテストパタン生成を行う．
   /// @param[in] f 故障
   /// @param[in] op テスト生成の結果を処理するファンクター
   void
   dtpg_single(TpgFault* f,
 	      BackTracer& bt);
-
-  /// @brief 同じ位置の2つの出力故障に対してテストパタン生成を行なう．
-  /// @param[in] f0 0縮退故障
-  /// @param[in] f1 1縮退故障
-  /// @param[in] op テスト生成の結果を処理するファンクター
-  void
-  dtpg_dual(TpgFault* f0,
-	    TpgFault* f1,
-	    BackTracer& bt);
-
-  /// @brief DFS で FFR を求める．
-  void
-  dfs_ffr(TpgNode* node);
-
-  /// @brief DFS で MFFC を求める．
-  void
-  dfs_mffc(TpgNode* node,
-	   vector<bool>& mark);
-
-  /// @brief ノードの故障を追加する．
-  void
-  add_node_faults(TpgNode* node);
-
-  /// @brief 故障を追加する．
-  void
-  add_fault(TpgFault* fault);
-
-  /// @brief テストパタン生成を行なう．
-  void
-  do_dtpg(BackTracer& bt);
 
 
 private:
@@ -198,9 +118,6 @@ private:
 
   // mNetwork のノード数
   ymuint32 mMaxId;
-
-  // do_dtpg() で用いる対象の故障リスト
-  vector<TpgFault*> mFaultList;
 
   // テストパタンが求められたときに実行するファンクタのリスト
   vector<DetectOp*> mDetectOpList;
@@ -221,29 +138,6 @@ void
 DtpgSat::timer_enable(bool enable)
 {
   mSatEngine->timer_enable(enable);
-}
-
-// @brief 故障を追加する．
-inline
-void
-DtpgSat::add_fault(TpgFault* fault)
-{
-  if ( fault != NULL &&
-       fault->is_rep() &&
-       fault->status() != kFsDetected &&
-       !fault->is_skip() ) {
-    mFaultList.push_back(fault);
-  }
-}
-
-// @brief テストパタン生成を行なう．
-inline
-void
-DtpgSat::do_dtpg(BackTracer& bt)
-{
-  if ( !mFaultList.empty() ) {
-    mSatEngine->run(mFaultList, mMaxId, bt);
-  }
 }
 
 END_NAMESPACE_YM_SATPG

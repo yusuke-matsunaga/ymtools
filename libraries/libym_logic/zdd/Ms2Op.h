@@ -67,7 +67,7 @@ private:
   //////////////////////////////////////////////////////////////////////
 
   // 枝をキーとしてminimum set を保持するハッシュ表
-  hash_map<ZddEdge, pair<ZddEdge, ymuint32> > mHash;
+  HashMap<ZddEdge, pair<ZddEdge, ymuint32> > mHash;
 
 };
 

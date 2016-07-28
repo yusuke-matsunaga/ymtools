@@ -11,6 +11,7 @@
 
 #include "ym_logic/TvFunc.h"
 #include "ym_logic/npn_nsdef.h"
+#include "ym_utils/HashFunc.h"
 
 
 BEGIN_NAMESPACE_YM
@@ -448,6 +449,18 @@ operator<<(BinO& s,
 BinI&
 operator>>(BinI& s,
 	   TvFuncM& func);
+
+
+// TvFunc をキーにしたハッシュ関数クラスの定義
+template <>
+struct HashFunc<TvFuncM>
+{
+  ymuint
+  operator()(const TvFuncM& f) const
+  {
+    return f.hash();
+  }
+};
 
 
 //////////////////////////////////////////////////////////////////////

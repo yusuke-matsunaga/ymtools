@@ -121,7 +121,7 @@ TclCmd::bind_popt(TclPopt* popt)
 {
   mPoptList.push_back(popt);
   string tmp = "-" + popt->opt_str();
-  mPoptTable.insert(make_pair(tmp, popt));
+  mPoptTable.add(tmp, popt);
 }
 
 // @brief help/usage オプションを制御する．
@@ -174,13 +174,12 @@ TclCmd::parse_opt(TclObjVector& objv,
 	return TCL_OK;
       }
     }
-    hash_map<string, TclPopt*>::iterator p = mPoptTable.find(opt_str);
-    if ( p == mPoptTable.end() ) {
+    TclPopt* popt = NULL;
+    if ( !mPoptTable.find(opt_str, popt) ) {
       string emsg = opt_str + ": unknown option";
       set_result(emsg);
       return TCL_ERROR;
     }
-    TclPopt* popt = p->second;
     tTclPoptStat stat = popt->_action(opt_str, rpos, end);
     if ( stat == kTclPoptError ) {
       return TCL_ERROR;

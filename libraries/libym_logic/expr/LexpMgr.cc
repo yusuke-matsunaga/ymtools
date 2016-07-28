@@ -442,7 +442,7 @@ LexpMgr::compose(const LexpNode* node,
 // comp_map にしたがってリテラルを式に置き換える．
 LexpNodePtr
 LexpMgr::compose(const LexpNode* node,
-		 const VarLogExprMap& comp_map)
+		 const HashMap<VarId, LogExpr>& comp_map)
 {
   switch ( node->type() ) {
   case kConst0:
@@ -451,18 +451,18 @@ LexpMgr::compose(const LexpNode* node,
 
   case kPosiLiteral:
     {
-      VarLogExprMap::const_iterator p = comp_map.find(node->varid());
-      if ( p != comp_map.end() ) {
-	return (p->second).root();
+      LogExpr expr;
+      if ( comp_map.find(node->varid(), expr) ) {
+	return expr.root();
       }
     }
     return node;
 
   case kNegaLiteral:
     {
-      VarLogExprMap::const_iterator p = comp_map.find(node->varid());
-      if ( p != comp_map.end() ) {
-	return complement((p->second).root());
+      LogExpr expr;
+      if ( comp_map.find(node->varid(), expr) ) {
+	return complement(expr.root());
       }
     }
     return node;
@@ -509,18 +509,18 @@ LexpMgr::remap_var(const LexpNode* node,
 
   case kPosiLiteral:
     {
-      VarVarMap::const_iterator p = varmap.find(node->varid());
-      if ( p != varmap.end() ) {
-	return make_posiliteral(p->second);
+      VarId new_var;
+      if ( varmap.find(node->varid(), new_var) ) {
+	return make_posiliteral(new_var);
       }
     }
     return node;
 
   case kNegaLiteral:
     {
-      VarVarMap::const_iterator p = varmap.find(node->varid());
-      if ( p != varmap.end() ) {
-	return make_negaliteral(p->second);
+      VarId new_var;
+      if ( varmap.find(node->varid(), new_var) ) {
+	return make_negaliteral(new_var);
       }
     }
     return node;

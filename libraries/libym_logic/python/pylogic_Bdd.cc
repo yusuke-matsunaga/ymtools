@@ -455,7 +455,7 @@ Bdd_multi_compose(BddObject* self,
 
     VarId vid = PyVarId_AsVarId(vid_obj);
     Bdd sub_func = PyBdd_AsBdd(sub_obj);
-    comp_map.insert(make_pair(vid, sub_func));
+    comp_map.add(vid, sub_func);
   }
 
   return PyBdd_FromBdd(self->mBdd->compose(comp_map));
@@ -488,7 +488,7 @@ Bdd_remap_var(BddObject* self,
 
     VarId vid = PyVarId_AsVarId(obj1);
     VarId new_vid = PyVarId_AsVarId(obj2);
-    var_map.insert(make_pair(vid, new_vid));
+    var_map.add(vid, new_vid);
   }
 
   return PyBdd_FromBdd(self->mBdd->remap_var(var_map));

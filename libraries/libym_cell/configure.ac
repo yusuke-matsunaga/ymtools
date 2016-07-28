@@ -111,11 +111,11 @@ AC_SUBST([YMTOOLS_BUILDDIR])
 YM_EXTRA_SUBDIRS=""
 YM_EXTRA_LIBADD=""
 
-if test "$ym_have_python" = 1; then
-   YM_EXTRA_SUBDIRS="$YM_EXTRA_SUBDIRS python"
-   AC_CONFIG_FILES([python/Makefile])
-   AC_CONFIG_FILES([tests/python/Makefile])
-fi
+#if test "$ym_have_python" = 1; then
+#   YM_EXTRA_SUBDIRS="$YM_EXTRA_SUBDIRS python"
+#   AC_CONFIG_FILES([python/Makefile])
+#   AC_CONFIG_FILES([tests/python/Makefile])
+#fi
 
 AC_SUBST([YM_EXTRA_SUBDIRS])
 AC_SUBST([YM_EXTRA_LIBADD])

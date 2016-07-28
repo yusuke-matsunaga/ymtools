@@ -66,7 +66,8 @@ gen(ymuint ni,
     int algorithm,
     int dump)
 {
-  hash_set<TvFunc> repfunc_set;
+  HashSet<TvFunc> repfunc_set;
+  ymuint nrep = 0;
 
   ymuint nerr = 0;
 
@@ -112,8 +113,9 @@ gen(ymuint ni,
 
     TvFunc orgfunc(ni, buff);
     repfunc = orgfunc.xform(map);
-    if ( repfunc_set.count(repfunc) == 0 ) {
-      repfunc_set.insert(repfunc);
+    if ( !repfunc_set.check(repfunc) ) {
+      repfunc_set.add(repfunc);
+      ++ nrep;
     }
     ++ num;
 
@@ -159,13 +161,13 @@ gen(ymuint ni,
        << "tvmax_recur:             "
        << static_cast<double>(tvcount_total) / static_cast<double>(num)
        << endl
-       << "NPN rep:                 " << repfunc_set.size() << endl
+       << "NPN rep:                 " << nrep << endl
        << "AVE. CPU time(usec):     " << usec << endl;
 
   if ( dump ) {
-    for (hash_set<TvFunc>::iterator p = repfunc_set.begin();
+    for (HashSetIterator<TvFunc> p = repfunc_set.begin();
 	 p != repfunc_set.end(); ++ p) {
-      cout << ni << " " << *p << endl;
+      cout << ni << " " << p.key() << endl;
     }
   }
 
@@ -179,7 +181,8 @@ rgen(ymuint ni,
      ymuint flow,
      int algorithm)
 {
-  hash_set<TvFunc> repfunc_set;
+  HashSet<TvFunc> repfunc_set;
+  ymuint nrep = 0;
 
   ymuint nerr = 0;
 
@@ -233,8 +236,9 @@ rgen(ymuint ni,
 
     if ( flow & 1024 ) {
       TvFunc repfunc = func.xform(map);
-      if ( repfunc_set.count(repfunc) == 0 ) {
-	repfunc_set.insert(repfunc);
+      if ( !repfunc_set.check(repfunc) ) {
+	repfunc_set.add(repfunc);
+	++ nrep;
       }
     }
   }
@@ -251,7 +255,7 @@ rgen(ymuint ni,
        << "tvmax_recur:             "
        << static_cast<double>(tvcount_total) / static_cast<double>(num)
        << endl
-       << "NPN rep:                 " << repfunc_set.size() << endl
+       << "NPN rep:                 " << nrep << endl
        << "AVE. CPU time(usec):     " << usec << endl;
 
   return nerr;
@@ -262,8 +266,6 @@ rgen_walsh(ymuint ni,
 	   int rseed,
 	   ymuint num)
 {
-  hash_set<TvFunc> repfunc_set;
-
   ymuint ni_exp = 1 << ni;
   vector<int> buff(ni_exp);
 

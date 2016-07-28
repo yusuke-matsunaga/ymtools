@@ -60,7 +60,7 @@ split(const string& src_str,
 // DotlibNode から　LogExpr を作る．
 LogExpr
 dot2expr(const DotlibNode* node,
-	 const hash_map<ShString, ymuint>& pin_map)
+	 const HashMap<ShString, ymuint>& pin_map)
 {
   // 特例
   if ( node == NULL ) {
@@ -80,8 +80,8 @@ dot2expr(const DotlibNode* node,
   }
   if ( node->is_string() ) {
     ShString name = node->string_value();
-    hash_map<ShString, ymuint>::const_iterator p = pin_map.find(name);
-    if ( p == pin_map.end() ) {
+    ymuint id;
+    if ( !pin_map.find(name, id) ) {
       ostringstream buf;
       buf << name << ": No such pin-name.";
       MsgMgr::put_msg(__FILE__, __LINE__,
@@ -91,7 +91,6 @@ dot2expr(const DotlibNode* node,
 		      buf.str());
       return LogExpr();
     }
-    ymuint id = p->second;
     return LogExpr::make_posiliteral(VarId(id));
   }
   if ( node->is_opr() ) {
@@ -184,7 +183,7 @@ gen_lut(CellLibrary* library,
 // 論理式を生成する．
 void
 gen_expr(const DotlibPin& pin_info,
-	 const hash_map<ShString, ymuint>& pin_map,
+	 const HashMap<ShString, ymuint>& pin_map,
 	 vector<bool>& output_array,
 	 vector<LogExpr>& logic_array,
 	 vector<LogExpr>& tristate_array)
@@ -312,7 +311,7 @@ gen_timing(CellLibrary* library,
 	   const list<const DotlibNode*>& timing_list,
 	   ymuint cell_id,
 	   ymuint& timing_id,
-	   const hash_map<ShString, ymuint>& pin_map,
+	   const HashMap<ShString, ymuint>& pin_map,
 	   vector<vector<ymuint> >& tid_list)
 {
   const Cell* cell = library->cell(cell_id);
@@ -704,7 +703,7 @@ gen_library(const DotlibNode* dt_library)
     vector<DotlibPin> pin_info_array(npg);
 
     // ピン名とピン番号の連想配列
-    hash_map<ShString, ymuint> pin_map;
+    HashMap<ShString, ymuint> pin_map;
 
     // ピン情報の読み出し
     ymuint ni = 0;
@@ -766,14 +765,14 @@ gen_library(const DotlibNode* dt_library)
 	case DotlibPin::kInput:
 	case DotlibPin::kInout:
 	  for (ymuint i = 0; i < pin_info.num(); ++ i) {
-	    pin_map.insert(make_pair(pin_info.name(i), ipos));
+	    pin_map.add(pin_info.name(i), ipos);
 	    ++ ipos;
 	  }
 	  break;
 
 	case DotlibPin::kInternal:
 	  for (ymuint i = 0; i < pin_info.num(); ++ i) {
-	    pin_map.insert(make_pair(pin_info.name(i), itpos + ni2));
+	    pin_map.add(pin_info.name(i), itpos + ni2);
 	    ++ itpos;
 	  }
 	  break;
@@ -796,8 +795,8 @@ gen_library(const DotlibNode* dt_library)
       ShString var1 = ff_info.var1_name();
       ShString var2 = ff_info.var2_name();
       // pin_map に登録しておく
-      pin_map.insert(make_pair(var1, ni2 + 0));
-      pin_map.insert(make_pair(var2, ni2 + 1));
+      pin_map.add(var1, ni2 + 0);
+      pin_map.add(var2, ni2 + 1);
     }
 
     // ラッチ情報の読み出し
@@ -810,8 +809,8 @@ gen_library(const DotlibNode* dt_library)
       ShString var1 = latch_info.var1_name();
       ShString var2 = latch_info.var2_name();
       // pin_map に登録しておく
-      pin_map.insert(make_pair(var1, ni2 + 0));
-      pin_map.insert(make_pair(var2, ni2 + 1));
+      pin_map.add(var1, ni2 + 0);
+      pin_map.add(var2, ni2 + 1);
     }
 
     // 遷移表情報の読み出し

@@ -293,7 +293,7 @@ BddMgr_expr_to_bdd(BddMgrObject* self,
       VarId vid1 = PyVarId_AsVarId(vid1_obj);
       VarId vid2 = PyVarId_AsVarId(vid2_obj);
 
-      varmap.insert(make_pair(vid1, vid2));
+      varmap.add(vid1, vid2);
     }
   }
 

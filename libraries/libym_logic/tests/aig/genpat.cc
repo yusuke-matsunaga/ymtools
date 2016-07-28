@@ -276,9 +276,11 @@ ymuint32 npn5rep[] = {
 #endif
 };
 
-hash_map<ymuint32, size_t> npn4map;
+#if 0
+HashMap<ymuint32, size_t> npn4map;
 
-hash_map<ymuint32, size_t> npn5map;
+HashMap<ymuint32, size_t> npn5map;
+#endif
 
 // ni 入力関数のパタンを出力する．
 void
@@ -396,7 +398,7 @@ check_fv2(GpNode* node1,
       }
     }
   }
-  
+
   if ( node1->is_and() ) {
     if ( check_fv2(node1->fanin0(), node2, fv, mask, false) ) {
       return true;
@@ -421,19 +423,19 @@ struct PatList
 {
   // 最小サイズ
   ymuint32 mMinSize;
-  
+
   // 最小レベル
   ymuint32 mMinLevel;
-  
+
   // パタンリスト
   list<GpHandle> mList;
-  
+
   PatList() :
     mMinSize(0xffffffff),
     mMinLevel(0xffffffff)
   {
   }
-  
+
   // 追加する．
   bool
   push_back(GpHandle h)
@@ -453,7 +455,7 @@ struct PatList
     }
     return false;
   }
-  
+
 };
 
 // 非冗長なパタンを全列挙する．
@@ -461,10 +463,10 @@ void
 genpat(ymuint ni)
 {
   assert_cond(ni <= 5, __FILE__, __LINE__);
-  
+
   cout << endl;
   cout << "genpat(" << ni << ")" << endl;
-  
+
   // マスク
   ymuint np = 1U << ni;
   ymuint nf = 1U << np;
@@ -475,10 +477,10 @@ genpat(ymuint ni)
 
   // パタンリストを保持する配列
   vector<GpNode*> pat_list;
-  
+
   // GpNode を管理するオブジェクト
   GpMgr gpmgr;
-  
+
   // レベル0のパタンを作る．
   for (ymuint i = 0; i < ni; ++ i) {
     ymuint32 fv;
@@ -500,7 +502,7 @@ genpat(ymuint ni)
     func_table[fv].push_back(h);
     pat_list.push_back(node);
   }
-  
+
   for (ymuint rpos = 0; rpos < pat_list.size(); ++ rpos) {
     GpNode* node1 = pat_list[rpos];
     for (ymuint i =  0; i < rpos; ++ i) {
@@ -566,7 +568,7 @@ genpat(ymuint ni)
       }
     }
   }
-  
+
   ymuint total_cost = 0;
   ymuint total_level = 0;
   for (ymuint i = 2; i < nf; i += 2) {
@@ -589,12 +591,12 @@ main(int argc,
 {
   using namespace std;
   using namespace nsYm;
-  
+
   genpat(2);
-  
+
   genpat(3);
-  
+
   //genpat(4);
-  
+
   return 0;
 }

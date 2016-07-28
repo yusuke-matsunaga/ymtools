@@ -5,7 +5,7 @@
 # ===================================================================
 # Initial block
 # ===================================================================
-AC_INIT([ymtools_header], [1.0], 
+AC_INIT([ymtools_header], [1.0],
         [yusuke_matsunaga@ieee.org],
         [ymtools_header])dnl
 
@@ -199,11 +199,9 @@ ___EOF___
 
 if test $ym_gnuc -ge 3; then
   cat >> $ymtools << ___EOF___
-#include <ext/algorithm>
-#include <ext/functional>
-#include <ext/hash_set>
-#include <ext/hash_map>
-#define HASH_NAMESPACE __gnu_cxx
+#include <algorithm>
+#include <functional>
+#define HASH_NAMESPACE std
 ___EOF___
 else
   cat >> $ymtools << ___EOF___
@@ -279,7 +277,7 @@ cat >> $ymtools << ___EOF___
 
 BEGIN_NAMESPACE_HASH
 
-// string/const string の hash_set/map 用のハッシュ関数クラス 
+// string/const string の hash_set/map 用のハッシュ関数クラス
 // hash<string>, hash<const string>定義．
 // SGI STL の string クラス (v3.1 以降)にはこの定義は不要．
 #if !defined(__SGI_STL_STRING) && !defined(DEFINE_HASH_STRING)
@@ -294,11 +292,11 @@ hash<std::string>
   size_t
   operator()(const std::string& __x) const
   {
-    unsigned long __h = 0; 
+    unsigned long __h = 0;
     for (std::string::const_iterator __s = __x.begin(); __s != __x.end();
 	 ++__s)
       __h = 5*__h + *__s;
-    
+
     return size_t(__h);
   }
 };
@@ -309,15 +307,15 @@ hash<const std::string>
 {
   size_t
   operator()(const std::string& __x) const {
-    unsigned long __h = 0; 
+    unsigned long __h = 0;
     for (std::string::const_iterator __s = __x.begin(); __s != __x.end();
 	 ++__s)
       __h = 5*__h + *__s;
-    
+
     return size_t(__h);
   }
 };
- 
+
 #endif // __SGI_STL_STRING
 
 END_NAMESPACE_HASH

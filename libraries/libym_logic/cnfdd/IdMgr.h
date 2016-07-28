@@ -55,7 +55,7 @@ private:
   //////////////////////////////////////////////////////////////////////
 
   // CNFddEdge と ID 番号の対応表
-  hash_map<CNFddEdge, ymuint64> mMap;
+  HashMap<CNFddEdge, ymuint64> mMap;
 
   // 次に割り当てるID番号
   ymuint64 mNext;

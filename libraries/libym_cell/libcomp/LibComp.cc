@@ -37,7 +37,7 @@ xform_expr(const LogExpr& expr,
     NpnVmap imap = map.imap(src_var);
     VarId dst_var = imap.var();
     LogExpr expr = LogExpr::make_literal(dst_var, imap.pol());
-    vlm.insert(make_pair(src_var, expr));
+    vlm.add(src_var, expr);
   }
   LogExpr cexpr = expr.compose(vlm);
   if ( map.omap(VarId(0)).pol() == kPolNega ) {

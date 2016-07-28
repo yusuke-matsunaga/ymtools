@@ -12,6 +12,7 @@
 #include "ym_logic/VarId.h"
 #include "ym_logic/Pol.h"
 #include "ym_logic/npn_nsdef.h"
+#include "ym_utils/HashBase.h"
 #include "ym_utils/BinI.h"
 #include "ym_utils/BinO.h"
 
@@ -468,6 +469,18 @@ operator<<(BinO& s,
 BinI&
 operator>>(BinI& s,
 	   TvFunc& func);
+
+
+// TvFunc をキーにしたハッシュ関数クラスの定義
+template <>
+struct HashFunc<TvFunc>
+{
+  ymuint
+  operator()(const TvFunc& f) const
+  {
+    return f.hash();
+  }
+};
 
 
 //////////////////////////////////////////////////////////////////////

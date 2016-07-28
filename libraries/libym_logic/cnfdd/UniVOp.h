@@ -88,7 +88,7 @@ private:
   //////////////////////////////////////////////////////////////////////
 
   // 一時的に結果を覚えておくハッシュ表
-  hash_map<CNFddEdge, CNFddEdge> mCompTbl;
+  HashMap<CNFddEdge, CNFddEdge> mCompTbl;
 
   // apply の第2引数
   ymuint32 mLevel;
@@ -118,13 +118,11 @@ inline
 CNFddEdge
 UniVOp::get(CNFddEdge e1)
 {
-  hash_map<CNFddEdge, CNFddEdge>::iterator p = mCompTbl.find(e1);
-  if ( p == mCompTbl.end() ) {
+  CNFddEdge ans;
+  if ( !mCompTbl.find(e1, ans) ) {
     return CNFddEdge::make_error();
   }
-  else {
-    return p->second;
-  }
+  return ans;
 }
 
 // @brief 演算結果テーブルに登録する．
@@ -135,7 +133,7 @@ void
 UniVOp::put(CNFddEdge e1,
 	    CNFddEdge ans)
 {
-  mCompTbl.insert(make_pair(e1, ans));
+  mCompTbl.add(e1, ans);
 }
 
 // @brief 演算結果テーブルをクリアする．
